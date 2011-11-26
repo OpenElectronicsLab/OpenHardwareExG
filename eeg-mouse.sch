@@ -1,4 +1,4 @@
-EESchema Schematic File Version 2  date Sat 26 Nov 2011 09:35:16 PM CET
+EESchema Schematic File Version 2  date Sat 26 Nov 2011 10:06:27 PM CET
 LIBS:power
 LIBS:device
 LIBS:transistors
@@ -45,18 +45,47 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
-Connection ~ 9900 4600
+NoConn ~ 6950 3950
+NoConn ~ 7050 3950
+NoConn ~ 7150 3950
+NoConn ~ 7250 3950
+NoConn ~ 7350 3950
+Connection ~ 7450 3000
 Wire Wire Line
-	9750 4600 10050 4600
-Connection ~ 9750 4150
+	7450 4050 7450 3000
 Wire Wire Line
-	10050 4200 10050 4150
+	6250 2800 6250 3000
 Wire Wire Line
-	10050 4150 9450 4150
+	7850 4050 7850 2150
+Wire Wire Line
+	7400 2700 7400 2850
+Connection ~ 6550 3650
+Connection ~ 6550 3800
+Wire Wire Line
+	6550 4150 6550 3550
+Wire Wire Line
+	6550 3800 8050 3800
+Wire Wire Line
+	8050 3800 8050 4050
+Wire Wire Line
+	7550 3900 7550 4050
+Connection ~ 8450 4000
+Wire Wire Line
+	8250 4050 8250 4000
+Wire Wire Line
+	8250 4000 8900 4000
+Wire Wire Line
+	9750 3750 9750 3900
+Connection ~ 9450 3750
+Wire Wire Line
+	8350 4050 8350 3900
+Connection ~ 9900 4300
+Wire Wire Line
+	9750 4300 10050 4300
 Wire Wire Line
 	9200 4500 9450 4500
 Wire Wire Line
-	9450 4500 9450 3950
+	9450 4500 9450 3600
 Wire Wire Line
 	9200 5000 9550 5000
 Wire Wire Line
@@ -786,44 +815,174 @@ Wire Wire Line
 Wire Wire Line
 	9550 4600 9200 4600
 Wire Wire Line
-	9750 4150 9750 4200
-Connection ~ 9450 4150
+	9900 4450 9900 4300
 Wire Wire Line
-	9900 4600 9900 4650
+	8450 4000 8450 4050
+Wire Wire Line
+	8900 4000 8900 4150
+Wire Wire Line
+	8350 3900 9450 3900
+Connection ~ 9450 3900
+Wire Wire Line
+	9450 3750 10050 3750
+Wire Wire Line
+	10050 3750 10050 3900
+Connection ~ 9750 3750
+Wire Wire Line
+	8150 1400 8150 4050
+Connection ~ 6550 3900
+Wire Wire Line
+	6550 3900 7650 3900
+Wire Wire Line
+	7650 3900 7650 4050
+Connection ~ 7550 3900
+Connection ~ 6550 3000
+Wire Wire Line
+	6850 3000 6850 3150
+Wire Wire Line
+	6550 3000 6550 3150
+Wire Wire Line
+	6850 3550 6850 3650
+Wire Wire Line
+	6850 3650 6550 3650
+Wire Wire Line
+	6250 3000 7950 3000
+Wire Wire Line
+	7950 3000 7950 4050
+Connection ~ 6850 3000
+Connection ~ 7700 2150
+Wire Wire Line
+	7700 2700 7700 2800
+Wire Wire Line
+	7700 2150 7700 2300
+Connection ~ 7400 2150
+Wire Wire Line
+	7700 2800 7400 2800
+Connection ~ 7400 2800
+Wire Wire Line
+	7850 2150 7400 2150
+Wire Wire Line
+	7400 1850 7400 2300
+Wire Wire Line
+	7750 4050 7750 3000
+Connection ~ 7750 3000
+$Comp
+L +5VA #PWR?
+U 1 1 4ED153E8
+P 6250 2800
+F 0 "#PWR?" H 6250 2930 20  0001 C CNN
+F 1 "+5VA" H 6250 2900 30  0000 C CNN
+	1    6250 2800
+	1    0    0    -1  
+$EndComp
+$Comp
+L +5VA #PWR?
+U 1 1 4ED153AD
+P 7400 1850
+F 0 "#PWR?" H 7400 1980 20  0001 C CNN
+F 1 "+5VA" H 7400 1950 30  0000 C CNN
+	1    7400 1850
+	1    0    0    -1  
+$EndComp
+$Comp
+L AGND #PWR?
+U 1 1 4ED152B9
+P 7400 2850
+F 0 "#PWR?" H 7400 2850 40  0001 C CNN
+F 1 "AGND" H 7400 2780 50  0000 C CNN
+	1    7400 2850
+	1    0    0    -1  
+$EndComp
+$Comp
+L C C?
+U 1 1 4ED1528C
+P 7700 2500
+F 0 "C?" H 7750 2600 50  0000 L CNN
+F 1 "0.1uF" H 7750 2400 50  0000 L CNN
+	1    7700 2500
+	-1   0    0    1   
+$EndComp
+$Comp
+L C C?
+U 1 1 4ED1528B
+P 7400 2500
+F 0 "C?" H 7450 2600 50  0000 L CNN
+F 1 "1uF" H 7450 2400 50  0000 L CNN
+	1    7400 2500
+	-1   0    0    1   
+$EndComp
+$Comp
+L C C?
+U 1 1 4ED151E4
+P 6550 3350
+F 0 "C?" H 6600 3450 50  0000 L CNN
+F 1 "1uF" H 6600 3250 50  0000 L CNN
+	1    6550 3350
+	1    0    0    -1  
+$EndComp
+$Comp
+L C C?
+U 1 1 4ED151E3
+P 6850 3350
+F 0 "C?" H 6900 3450 50  0000 L CNN
+F 1 "0.1uF" H 6900 3250 50  0000 L CNN
+	1    6850 3350
+	1    0    0    -1  
+$EndComp
+$Comp
+L AGND #PWR?
+U 1 1 4ED15136
+P 6550 4150
+F 0 "#PWR?" H 6550 4150 40  0001 C CNN
+F 1 "AGND" H 6550 4080 50  0000 C CNN
+	1    6550 4150
+	1    0    0    -1  
+$EndComp
+Text Notes 8200 1450 0    60   ~ 0
+TODO:\nCLKSEL needs to go to Arduino
+$Comp
+L DGND #PWR?
+U 1 1 4ED14DD7
+P 8900 4150
+F 0 "#PWR?" H 8900 4150 40  0001 C CNN
+F 1 "DGND" H 8900 4080 40  0000 C CNN
+	1    8900 4150
+	1    0    0    -1  
+$EndComp
 $Comp
 L DGND #PWR?
 U 1 1 4ED14D15
-P 9900 4650
-F 0 "#PWR?" H 9900 4650 40  0001 C CNN
-F 1 "DGND" H 9900 4580 40  0000 C CNN
-	1    9900 4650
+P 9900 4450
+F 0 "#PWR?" H 9900 4450 40  0001 C CNN
+F 1 "DGND" H 9900 4380 40  0000 C CNN
+	1    9900 4450
 	1    0    0    -1  
 $EndComp
 $Comp
 L C C?
 U 1 1 4ED14CC1
-P 10050 4400
-F 0 "C?" H 10100 4500 50  0000 L CNN
-F 1 "0.1uF" H 10100 4300 50  0000 L CNN
-	1    10050 4400
+P 10050 4100
+F 0 "C?" H 10100 4200 50  0000 L CNN
+F 1 "0.1uF" H 10100 4000 50  0000 L CNN
+	1    10050 4100
 	1    0    0    -1  
 $EndComp
 $Comp
 L C C?
 U 1 1 4ED14CAE
-P 9750 4400
-F 0 "C?" H 9800 4500 50  0000 L CNN
-F 1 "1uF" H 9800 4300 50  0000 L CNN
-	1    9750 4400
+P 9750 4100
+F 0 "C?" H 9800 4200 50  0000 L CNN
+F 1 "1uF" H 9800 4000 50  0000 L CNN
+	1    9750 4100
 	1    0    0    -1  
 $EndComp
 $Comp
 L +3.3V #PWR?
 U 1 1 4ED14C99
-P 9450 3950
-F 0 "#PWR?" H 9450 3910 30  0001 C CNN
-F 1 "+3.3V" H 9450 4060 30  0000 C CNN
-	1    9450 3950
+P 9450 3600
+F 0 "#PWR?" H 9450 3560 30  0001 C CNN
+F 1 "+3.3V" H 9450 3710 30  0000 C CNN
+	1    9450 3600
 	1    0    0    -1  
 $EndComp
 Text Notes 10800 4950 0    60   ~ 0
