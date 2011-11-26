@@ -1,4 +1,4 @@
-EESchema Schematic File Version 2  date Sat 26 Nov 2011 10:06:27 PM CET
+EESchema Schematic File Version 2  date Sat 26 Nov 2011 10:15:38 PM CET
 LIBS:power
 LIBS:device
 LIBS:transistors
@@ -986,7 +986,7 @@ F 1 "+3.3V" H 9450 3710 30  0000 C CNN
 	1    0    0    -1  
 $EndComp
 Text Notes 10800 4950 0    60   ~ 0
-TODO:\nAll of these connections\nneed to be adjusted\nfrom 5v to 3.3v
+TODO:\nthe connections from Arduino\nto the ads1298 need to be\nadjusted from 5v to 3.3v\n(but 3.3v is fine the other way)
 NoConn ~ 9300 5200
 NoConn ~ 9300 5600
 NoConn ~ 9300 5100
