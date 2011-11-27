@@ -1,0 +1,1318 @@
+# EESchema Netlist Version 1.1 created  Sun 27 Nov 2011 04:08:33 PM CET
+(
+ ( /4ED1253B C1 C1 47pF
+  ( 1 N-000031 )
+  ( 2 AGND )
+ )
+ ( /4ED13D7D $noname$ C2 47pF
+  ( 1 N-000044 )
+  ( 2 AGND )
+ )
+ ( /4ED13DB6 $noname$ C3 47pF
+  ( 1 N-000076 )
+  ( 2 AGND )
+ )
+ ( /4ED13DA9 $noname$ C4 47pF
+  ( 1 N-000040 )
+  ( 2 AGND )
+ )
+ ( /4ED13E8D $noname$ C5 47pF
+  ( 1 N-000092 )
+  ( 2 AGND )
+ )
+ ( /4ED13E80 $noname$ C6 47pF
+  ( 1 N-000010 )
+  ( 2 AGND )
+ )
+ ( /4ED13E6A $noname$ C7 47pF
+  ( 1 N-000001 )
+  ( 2 AGND )
+ )
+ ( /4ED13E77 $noname$ C8 47pF
+  ( 1 N-000095 )
+  ( 2 AGND )
+ )
+ ( /4ED13DFF $noname$ C9 47pF
+  ( 1 N-000073 )
+  ( 2 AGND )
+ )
+ ( /4ED13DF2 $noname$ C10 47pF
+  ( 1 N-000070 )
+  ( 2 AGND )
+ )
+ ( /4ED13DDC $noname$ C11 47pF
+  ( 1 N-000074 )
+  ( 2 AGND )
+ )
+ ( /4ED13DE9 $noname$ C12 47pF
+  ( 1 N-000063 )
+  ( 2 AGND )
+ )
+ ( /4ED13E3E $noname$ C13 47pF
+  ( 1 N-000088 )
+  ( 2 AGND )
+ )
+ ( /4ED13E4B $noname$ C14 47pF
+  ( 1 N-000091 )
+  ( 2 AGND )
+ )
+ ( /4ED13E61 $noname$ C15 47pF
+  ( 1 N-000083 )
+  ( 2 AGND )
+ )
+ ( /4ED13E54 $noname$ C16 47pF
+  ( 1 N-000086 )
+  ( 2 AGND )
+ )
+ ( /4ED12546 $noname$ C17 47pF
+  ( 1 N-000032 )
+  ( 2 AGND )
+ )
+ ( /4ED13D7C $noname$ C18 47pF
+  ( 1 N-000045 )
+  ( 2 AGND )
+ )
+ ( /4ED13DB5 $noname$ C19 47pF
+  ( 1 N-000075 )
+  ( 2 AGND )
+ )
+ ( /4ED13DAA $noname$ C20 47pF
+  ( 1 N-000041 )
+  ( 2 AGND )
+ )
+ ( /4ED13E8C $noname$ C21 47pF
+  ( 1 N-000027 )
+  ( 2 AGND )
+ )
+ ( /4ED13E81 $noname$ C22 47pF
+  ( 1 N-000011 )
+  ( 2 AGND )
+ )
+ ( /4ED13E6B $noname$ C23 47pF
+  ( 1 N-000003 )
+  ( 2 AGND )
+ )
+ ( /4ED13E76 $noname$ C24 47pF
+  ( 1 N-000094 )
+  ( 2 AGND )
+ )
+ ( /4ED13DFE $noname$ C25 47pF
+  ( 1 N-000072 )
+  ( 2 AGND )
+ )
+ ( /4ED13DF3 $noname$ C26 47pF
+  ( 1 N-000069 )
+  ( 2 AGND )
+ )
+ ( /4ED13DDD $noname$ C27 47pF
+  ( 1 N-000064 )
+  ( 2 AGND )
+ )
+ ( /4ED13DE8 $noname$ C28 47pF
+  ( 1 N-000077 )
+  ( 2 AGND )
+ )
+ ( /4ED13E3F $noname$ C29 47pF
+  ( 1 N-000062 )
+  ( 2 AGND )
+ )
+ ( /4ED13E4A $noname$ C30 47pF
+  ( 1 N-000090 )
+  ( 2 AGND )
+ )
+ ( /4ED13E60 $noname$ C31 47pF
+  ( 1 N-000014 )
+  ( 2 AGND )
+ )
+ ( /4ED13E55 $noname$ C32 47pF
+  ( 1 N-000085 )
+  ( 2 AGND )
+ )
+ ( /4ED12561 $noname$ C33 0.033_uF
+  ( 1 N-000032 )
+  ( 2 N-000033 )
+ )
+ ( /4ED13D7B $noname$ C34 0.033_uF
+  ( 1 N-000045 )
+  ( 2 N-000043 )
+ )
+ ( /4ED13DB4 $noname$ C35 0.033_uF
+  ( 1 N-000075 )
+  ( 2 N-000066 )
+ )
+ ( /4ED13DAB $noname$ C36 0.033_uF
+  ( 1 N-000041 )
+  ( 2 N-000039 )
+ )
+ ( /4ED13E8B $noname$ C37 0.033_uF
+  ( 1 N-000027 )
+  ( 2 N-000026 )
+ )
+ ( /4ED13E82 $noname$ C38 0.033_uF
+  ( 1 N-000011 )
+  ( 2 N-000009 )
+ )
+ ( /4ED13E6C $noname$ C39 0.033_uF
+  ( 1 N-000003 )
+  ( 2 N-000005 )
+ )
+ ( /4ED13E75 $noname$ C40 0.033_uF
+  ( 1 N-000094 )
+  ( 2 N-000093 )
+ )
+ ( /4ED13DFD $noname$ C41 0.033_uF
+  ( 1 N-000072 )
+  ( 2 N-000071 )
+ )
+ ( /4ED13DF4 $noname$ C42 0.033_uF
+  ( 1 N-000069 )
+  ( 2 N-000060 )
+ )
+ ( /4ED13DDE $noname$ C43 0.033_uF
+  ( 1 N-000064 )
+  ( 2 N-000065 )
+ )
+ ( /4ED13DE7 $noname$ C44 0.033_uF
+  ( 1 N-000077 )
+  ( 2 N-000078 )
+ )
+ ( /4ED13E40 $noname$ C45 0.033_uF
+  ( 1 N-000062 )
+  ( 2 N-000087 )
+ )
+ ( /4ED13E49 $noname$ C46 0.033_uF
+  ( 1 N-000090 )
+  ( 2 N-000089 )
+ )
+ ( /4ED13E5F $noname$ C47 0.033_uF
+  ( 1 N-000014 )
+  ( 2 N-000082 )
+ )
+ ( /4ED13E56 $noname$ C48 0.033_uF
+  ( 1 N-000085 )
+  ( 2 N-000084 )
+ )
+ ( /4ED151E4 $noname$ C49 1uF
+  ( 1 +5VA )
+  ( 2 AGND )
+ )
+ ( /4ED1462D $noname$ C50 1uF
+  ( 1 +5VA )
+  ( 2 AGND )
+ )
+ ( /4ED151E3 $noname$ C51 0.1uF
+  ( 1 +5VA )
+  ( 2 AGND )
+ )
+ ( /4ED1463F $noname$ C52 0.1uF
+  ( 1 +5VA )
+  ( 2 AGND )
+ )
+ ( /4ED1528B $noname$ C53 1uF
+  ( 1 AGND )
+  ( 2 +5VA )
+ )
+ ( /4ED225CF $noname$ C54 10uF
+  ( 1 N-000023 )
+  ( 2 AGND )
+ )
+ ( /4ED1528C $noname$ C55 0.1uF
+  ( 1 AGND )
+  ( 2 +5VA )
+ )
+ ( /4ED1482A $noname$ C56 1uF
+  ( 1 N-000028 )
+  ( 2 AGND )
+ )
+ ( /4ED148B9 $noname$ C57 22uF
+  ( 1 N-000052 )
+  ( 2 AGND )
+ )
+ ( /4ED148EF $noname$ C58 1uF
+  ( 1 N-000079 )
+  ( 2 AGND )
+ )
+ ( /4ED2214B $noname$ C59 1.5nF
+  ( 1 N-000081 )
+  ( 2 N-000057 )
+ )
+ ( /4ED14CAE $noname$ C60 1uF
+  ( 1 +3.3V )
+  ( 2 DGND )
+ )
+ ( /4ED14CC1 $noname$ C61 0.1uF
+  ( 1 +3.3V )
+  ( 2 DGND )
+ )
+ ( /4ED11B5E $noname$ P1 CONN_8
+  ( 1 N-000068 )
+  ( 2 N-000038 )
+  ( 3 N-000067 )
+  ( 4 N-000034 )
+  ( 5 N-000035 )
+  ( 6 N-000036 )
+  ( 7 N-000037 )
+  ( 8 N-000042 )
+ )
+ ( /4ED13E92 $noname$ P2 CONN_8
+  ( 1 N-000029 )
+  ( 2 N-000008 )
+  ( 3 N-000030 )
+  ( 4 N-000007 )
+  ( 5 N-000061 )
+  ( 6 N-000012 )
+  ( 7 N-000006 )
+  ( 8 N-000013 )
+ )
+ ( /4ED21EDD $noname$ P3 CONN_4
+  ( 1 +5VA )
+  ( 2 AGND )
+  ( 3 +3.3V )
+  ( 4 DGND )
+ )
+ ( /4ED21D89 $noname$ P4 CONN_8
+  ( 1 N-000081 )
+  ( 2 N-000019 )
+  ( 3 N-000018 )
+  ( 4 N-000080 )
+  ( 5 N-000017 )
+  ( 6 N-000047 )
+  ( 7 N-000049 )
+  ( 8 N-000058 )
+ )
+ ( /4ED21D80 $noname$ P5 CONN_8
+  ( 1 N-000015 )
+  ( 2 N-000059 )
+  ( 3 N-000016 )
+  ( 4 N-000055 )
+  ( 5 N-000053 )
+  ( 6 N-000046 )
+  ( 7 N-000048 )
+  ( 8 N-000050 )
+ )
+ ( /4ED124CB $noname$ R1 22.1k
+  ( 1 N-000031 )
+  ( 2 N-000068 )
+ )
+ ( /4ED13D81 $noname$ R2 22.1k
+  ( 1 N-000044 )
+  ( 2 N-000038 )
+ )
+ ( /4ED13DBA $noname$ R3 22.1k
+  ( 1 N-000076 )
+  ( 2 N-000067 )
+ )
+ ( /4ED13DA5 $noname$ R4 22.1k
+  ( 1 N-000040 )
+  ( 2 N-000034 )
+ )
+ ( /4ED13E91 $noname$ R5 22.1k
+  ( 1 N-000092 )
+  ( 2 N-000029 )
+ )
+ ( /4ED13E7C $noname$ R6 22.1k
+  ( 1 N-000010 )
+  ( 2 N-000008 )
+ )
+ ( /4ED13E66 $noname$ R7 22.1k
+  ( 1 N-000001 )
+  ( 2 N-000030 )
+ )
+ ( /4ED13E7B $noname$ R8 22.1k
+  ( 1 N-000095 )
+  ( 2 N-000007 )
+ )
+ ( /4ED13E03 $noname$ R9 22.1k
+  ( 1 N-000073 )
+  ( 2 N-000035 )
+ )
+ ( /4ED13DEE $noname$ R10 22.1k
+  ( 1 N-000070 )
+  ( 2 N-000036 )
+ )
+ ( /4ED13DD8 $noname$ R11 22.1k
+  ( 1 N-000074 )
+  ( 2 N-000037 )
+ )
+ ( /4ED13DED $noname$ R12 22.1k
+  ( 1 N-000063 )
+  ( 2 N-000042 )
+ )
+ ( /4ED13E3A $noname$ R13 22.1k
+  ( 1 N-000088 )
+  ( 2 N-000061 )
+ )
+ ( /4ED13E4F $noname$ R14 22.1k
+  ( 1 N-000091 )
+  ( 2 N-000012 )
+ )
+ ( /4ED13E65 $noname$ R15 22.1k
+  ( 1 N-000083 )
+  ( 2 N-000006 )
+ )
+ ( /4ED13E50 $noname$ R16 22.1k
+  ( 1 N-000086 )
+  ( 2 N-000013 )
+ )
+ ( /4ED124E6 $noname$ R17 10k
+  ( 1 N-000032 )
+  ( 2 N-000031 )
+ )
+ ( /4ED13D80 $noname$ R18 10k
+  ( 1 N-000045 )
+  ( 2 N-000044 )
+ )
+ ( /4ED13DB9 $noname$ R19 10k
+  ( 1 N-000075 )
+  ( 2 N-000076 )
+ )
+ ( /4ED13DA6 $noname$ R20 10k
+  ( 1 N-000041 )
+  ( 2 N-000040 )
+ )
+ ( /4ED13E90 $noname$ R21 10k
+  ( 1 N-000027 )
+  ( 2 N-000092 )
+ )
+ ( /4ED13E7D $noname$ R22 10k
+  ( 1 N-000011 )
+  ( 2 N-000010 )
+ )
+ ( /4ED13E67 $noname$ R23 10k
+  ( 1 N-000003 )
+  ( 2 N-000001 )
+ )
+ ( /4ED13E7A $noname$ R24 10k
+  ( 1 N-000094 )
+  ( 2 N-000095 )
+ )
+ ( /4ED13E02 $noname$ R25 10k
+  ( 1 N-000072 )
+  ( 2 N-000073 )
+ )
+ ( /4ED13DEF $noname$ R26 10k
+  ( 1 N-000069 )
+  ( 2 N-000070 )
+ )
+ ( /4ED13DD9 $noname$ R27 10k
+  ( 1 N-000064 )
+  ( 2 N-000074 )
+ )
+ ( /4ED13DEC $noname$ R28 10k
+  ( 1 N-000077 )
+  ( 2 N-000063 )
+ )
+ ( /4ED13E3B $noname$ R29 10k
+  ( 1 N-000062 )
+  ( 2 N-000088 )
+ )
+ ( /4ED13E4E $noname$ R30 10k
+  ( 1 N-000090 )
+  ( 2 N-000091 )
+ )
+ ( /4ED13E64 $noname$ R31 10k
+  ( 1 N-000014 )
+  ( 2 N-000083 )
+ )
+ ( /4ED13E51 $noname$ R32 10k
+  ( 1 N-000085 )
+  ( 2 N-000086 )
+ )
+ ( /4ED124FA $noname$ R33 10k
+  ( 1 N-000033 )
+  ( 2 AGND )
+ )
+ ( /4ED13D7E $noname$ R34 10k
+  ( 1 N-000043 )
+  ( 2 AGND )
+ )
+ ( /4ED13DB7 $noname$ R35 10k
+  ( 1 N-000066 )
+  ( 2 AGND )
+ )
+ ( /4ED13DA8 $noname$ R36 10k
+  ( 1 N-000039 )
+  ( 2 AGND )
+ )
+ ( /4ED13E8E $noname$ R37 10k
+  ( 1 N-000026 )
+  ( 2 AGND )
+ )
+ ( /4ED13E7F $noname$ R38 10k
+  ( 1 N-000009 )
+  ( 2 AGND )
+ )
+ ( /4ED13E69 $noname$ R39 10k
+  ( 1 N-000005 )
+  ( 2 AGND )
+ )
+ ( /4ED13E78 $noname$ R40 10k
+  ( 1 N-000093 )
+  ( 2 AGND )
+ )
+ ( /4ED13E00 $noname$ R41 10k
+  ( 1 N-000071 )
+  ( 2 AGND )
+ )
+ ( /4ED13DF1 $noname$ R42 10k
+  ( 1 N-000060 )
+  ( 2 AGND )
+ )
+ ( /4ED13DDB $noname$ R43 10k
+  ( 1 N-000065 )
+  ( 2 AGND )
+ )
+ ( /4ED13DEA $noname$ R44 10k
+  ( 1 N-000078 )
+  ( 2 AGND )
+ )
+ ( /4ED13E3D $noname$ R45 10k
+  ( 1 N-000087 )
+  ( 2 AGND )
+ )
+ ( /4ED13E4C $noname$ R46 10k
+  ( 1 N-000089 )
+  ( 2 AGND )
+ )
+ ( /4ED13E62 $noname$ R47 10k
+  ( 1 N-000082 )
+  ( 2 AGND )
+ )
+ ( /4ED13E53 $noname$ R48 10k
+  ( 1 N-000084 )
+  ( 2 AGND )
+ )
+ ( /4ED124F1 $noname$ R49 10k
+  ( 1 +5VA )
+  ( 2 N-000033 )
+ )
+ ( /4ED13D7F $noname$ R50 10k
+  ( 1 +5VA )
+  ( 2 N-000043 )
+ )
+ ( /4ED13DB8 $noname$ R51 10k
+  ( 1 +5VA )
+  ( 2 N-000066 )
+ )
+ ( /4ED13DA7 $noname$ R52 10k
+  ( 1 +5VA )
+  ( 2 N-000039 )
+ )
+ ( /4ED13E8F $noname$ R53 10k
+  ( 1 +5VA )
+  ( 2 N-000026 )
+ )
+ ( /4ED13E7E $noname$ R54 10k
+  ( 1 +5VA )
+  ( 2 N-000009 )
+ )
+ ( /4ED13E68 $noname$ R55 10k
+  ( 1 +5VA )
+  ( 2 N-000005 )
+ )
+ ( /4ED13E79 $noname$ R56 10k
+  ( 1 +5VA )
+  ( 2 N-000093 )
+ )
+ ( /4ED13E01 $noname$ R57 10k
+  ( 1 +5VA )
+  ( 2 N-000071 )
+ )
+ ( /4ED13DF0 $noname$ R58 10k
+  ( 1 +5VA )
+  ( 2 N-000060 )
+ )
+ ( /4ED13DDA $noname$ R59 10k
+  ( 1 +5VA )
+  ( 2 N-000065 )
+ )
+ ( /4ED13DEB $noname$ R60 10k
+  ( 1 +5VA )
+  ( 2 N-000078 )
+ )
+ ( /4ED13E3C $noname$ R61 10k
+  ( 1 +5VA )
+  ( 2 N-000087 )
+ )
+ ( /4ED13E4D $noname$ R62 10k
+  ( 1 +5VA )
+  ( 2 N-000089 )
+ )
+ ( /4ED13E63 $noname$ R63 10k
+  ( 1 +5VA )
+  ( 2 N-000082 )
+ )
+ ( /4ED13E52 $noname$ R64 10k
+  ( 1 +5VA )
+  ( 2 N-000084 )
+ )
+ ( /4ED22174 $noname$ R65 1M
+  ( 1 N-000081 )
+  ( 2 N-000057 )
+ )
+ ( /4ED11795 $noname$ U1 ADS1298
+  ( 1 N-000033 )
+  ( 2 N-000043 )
+  ( 3 N-000066 )
+  ( 4 N-000039 )
+  ( 5 N-000071 )
+  ( 6 N-000060 )
+  ( 7 N-000065 )
+  ( 8 N-000078 )
+  ( 9 N-000026 )
+  ( 10 N-000009 )
+  ( 11 N-000005 )
+  ( 12 N-000093 )
+  ( 13 N-000087 )
+  ( 14 N-000089 )
+  ( 15 N-000082 )
+  ( 16 N-000084 )
+  ( 17 ? )
+  ( 18 ? )
+  ( 19 +5VA )
+  ( 20 AGND )
+  ( 21 +5VA )
+  ( 22 +5VA )
+  ( 23 AGND )
+  ( 24 N-000023 )
+  ( 25 AGND )
+  ( 26 N-000028 )
+  ( 27 ? )
+  ( 28 N-000052 )
+  ( 29 ? )
+  ( 30 N-000079 )
+  ( 31 DGND )
+  ( 32 AGND )
+  ( 33 DGND )
+  ( 34 N-000050 )
+  ( 35 N-000048 )
+  ( 36 N-000046 )
+  ( 37 ? )
+  ( 38 N-000053 )
+  ( 39 N-000055 )
+  ( 40 N-000016 )
+  ( 41 DGND )
+  ( 42 N-000058 )
+  ( 43 N-000059 )
+  ( 44 N-000049 )
+  ( 45 N-000047 )
+  ( 46 N-000017 )
+  ( 47 N-000015 )
+  ( 48 +3.3V )
+  ( 49 DGND )
+  ( 50 +3.3V )
+  ( 51 DGND )
+  ( 52 N-000080 )
+  ( 53 AGND )
+  ( 54 +5VA )
+  ( 55 +5VA )
+  ( 56 +5VA )
+  ( 57 AGND )
+  ( 58 AGND )
+  ( 59 +5VA )
+  ( 60 N-000018 )
+  ( 61 N-000057 )
+  ( 62 N-000019 )
+  ( 63 N-000081 )
+  ( 64 ? )
+ )
+)
+*
+{ Allowed footprints by component:
+$component C1
+ SM*
+ C?
+ C1-1
+$endlist
+$component C2
+ SM*
+ C?
+ C1-1
+$endlist
+$component C3
+ SM*
+ C?
+ C1-1
+$endlist
+$component C4
+ SM*
+ C?
+ C1-1
+$endlist
+$component C5
+ SM*
+ C?
+ C1-1
+$endlist
+$component C6
+ SM*
+ C?
+ C1-1
+$endlist
+$component C7
+ SM*
+ C?
+ C1-1
+$endlist
+$component C8
+ SM*
+ C?
+ C1-1
+$endlist
+$component C9
+ SM*
+ C?
+ C1-1
+$endlist
+$component C10
+ SM*
+ C?
+ C1-1
+$endlist
+$component C11
+ SM*
+ C?
+ C1-1
+$endlist
+$component C12
+ SM*
+ C?
+ C1-1
+$endlist
+$component C13
+ SM*
+ C?
+ C1-1
+$endlist
+$component C14
+ SM*
+ C?
+ C1-1
+$endlist
+$component C15
+ SM*
+ C?
+ C1-1
+$endlist
+$component C16
+ SM*
+ C?
+ C1-1
+$endlist
+$component C17
+ SM*
+ C?
+ C1-1
+$endlist
+$component C18
+ SM*
+ C?
+ C1-1
+$endlist
+$component C19
+ SM*
+ C?
+ C1-1
+$endlist
+$component C20
+ SM*
+ C?
+ C1-1
+$endlist
+$component C21
+ SM*
+ C?
+ C1-1
+$endlist
+$component C22
+ SM*
+ C?
+ C1-1
+$endlist
+$component C23
+ SM*
+ C?
+ C1-1
+$endlist
+$component C24
+ SM*
+ C?
+ C1-1
+$endlist
+$component C25
+ SM*
+ C?
+ C1-1
+$endlist
+$component C26
+ SM*
+ C?
+ C1-1
+$endlist
+$component C27
+ SM*
+ C?
+ C1-1
+$endlist
+$component C28
+ SM*
+ C?
+ C1-1
+$endlist
+$component C29
+ SM*
+ C?
+ C1-1
+$endlist
+$component C30
+ SM*
+ C?
+ C1-1
+$endlist
+$component C31
+ SM*
+ C?
+ C1-1
+$endlist
+$component C32
+ SM*
+ C?
+ C1-1
+$endlist
+$component C33
+ SM*
+ C?
+ C1-1
+$endlist
+$component C34
+ SM*
+ C?
+ C1-1
+$endlist
+$component C35
+ SM*
+ C?
+ C1-1
+$endlist
+$component C36
+ SM*
+ C?
+ C1-1
+$endlist
+$component C37
+ SM*
+ C?
+ C1-1
+$endlist
+$component C38
+ SM*
+ C?
+ C1-1
+$endlist
+$component C39
+ SM*
+ C?
+ C1-1
+$endlist
+$component C40
+ SM*
+ C?
+ C1-1
+$endlist
+$component C41
+ SM*
+ C?
+ C1-1
+$endlist
+$component C42
+ SM*
+ C?
+ C1-1
+$endlist
+$component C43
+ SM*
+ C?
+ C1-1
+$endlist
+$component C44
+ SM*
+ C?
+ C1-1
+$endlist
+$component C45
+ SM*
+ C?
+ C1-1
+$endlist
+$component C46
+ SM*
+ C?
+ C1-1
+$endlist
+$component C47
+ SM*
+ C?
+ C1-1
+$endlist
+$component C48
+ SM*
+ C?
+ C1-1
+$endlist
+$component C49
+ SM*
+ C?
+ C1-1
+$endlist
+$component C50
+ SM*
+ C?
+ C1-1
+$endlist
+$component C51
+ SM*
+ C?
+ C1-1
+$endlist
+$component C52
+ SM*
+ C?
+ C1-1
+$endlist
+$component C53
+ SM*
+ C?
+ C1-1
+$endlist
+$component C54
+ SM*
+ C?
+ C1-1
+$endlist
+$component C55
+ SM*
+ C?
+ C1-1
+$endlist
+$component C56
+ SM*
+ C?
+ C1-1
+$endlist
+$component C57
+ SM*
+ C?
+ C1-1
+$endlist
+$component C58
+ SM*
+ C?
+ C1-1
+$endlist
+$component C59
+ SM*
+ C?
+ C1-1
+$endlist
+$component C60
+ SM*
+ C?
+ C1-1
+$endlist
+$component C61
+ SM*
+ C?
+ C1-1
+$endlist
+$component R1
+ R?
+ SM0603
+ SM0805
+ R?-*
+$endlist
+$component R2
+ R?
+ SM0603
+ SM0805
+ R?-*
+$endlist
+$component R3
+ R?
+ SM0603
+ SM0805
+ R?-*
+$endlist
+$component R4
+ R?
+ SM0603
+ SM0805
+ R?-*
+$endlist
+$component R5
+ R?
+ SM0603
+ SM0805
+ R?-*
+$endlist
+$component R6
+ R?
+ SM0603
+ SM0805
+ R?-*
+$endlist
+$component R7
+ R?
+ SM0603
+ SM0805
+ R?-*
+$endlist
+$component R8
+ R?
+ SM0603
+ SM0805
+ R?-*
+$endlist
+$component R9
+ R?
+ SM0603
+ SM0805
+ R?-*
+$endlist
+$component R10
+ R?
+ SM0603
+ SM0805
+ R?-*
+$endlist
+$component R11
+ R?
+ SM0603
+ SM0805
+ R?-*
+$endlist
+$component R12
+ R?
+ SM0603
+ SM0805
+ R?-*
+$endlist
+$component R13
+ R?
+ SM0603
+ SM0805
+ R?-*
+$endlist
+$component R14
+ R?
+ SM0603
+ SM0805
+ R?-*
+$endlist
+$component R15
+ R?
+ SM0603
+ SM0805
+ R?-*
+$endlist
+$component R16
+ R?
+ SM0603
+ SM0805
+ R?-*
+$endlist
+$component R17
+ R?
+ SM0603
+ SM0805
+ R?-*
+$endlist
+$component R18
+ R?
+ SM0603
+ SM0805
+ R?-*
+$endlist
+$component R19
+ R?
+ SM0603
+ SM0805
+ R?-*
+$endlist
+$component R20
+ R?
+ SM0603
+ SM0805
+ R?-*
+$endlist
+$component R21
+ R?
+ SM0603
+ SM0805
+ R?-*
+$endlist
+$component R22
+ R?
+ SM0603
+ SM0805
+ R?-*
+$endlist
+$component R23
+ R?
+ SM0603
+ SM0805
+ R?-*
+$endlist
+$component R24
+ R?
+ SM0603
+ SM0805
+ R?-*
+$endlist
+$component R25
+ R?
+ SM0603
+ SM0805
+ R?-*
+$endlist
+$component R26
+ R?
+ SM0603
+ SM0805
+ R?-*
+$endlist
+$component R27
+ R?
+ SM0603
+ SM0805
+ R?-*
+$endlist
+$component R28
+ R?
+ SM0603
+ SM0805
+ R?-*
+$endlist
+$component R29
+ R?
+ SM0603
+ SM0805
+ R?-*
+$endlist
+$component R30
+ R?
+ SM0603
+ SM0805
+ R?-*
+$endlist
+$component R31
+ R?
+ SM0603
+ SM0805
+ R?-*
+$endlist
+$component R32
+ R?
+ SM0603
+ SM0805
+ R?-*
+$endlist
+$component R33
+ R?
+ SM0603
+ SM0805
+ R?-*
+$endlist
+$component R34
+ R?
+ SM0603
+ SM0805
+ R?-*
+$endlist
+$component R35
+ R?
+ SM0603
+ SM0805
+ R?-*
+$endlist
+$component R36
+ R?
+ SM0603
+ SM0805
+ R?-*
+$endlist
+$component R37
+ R?
+ SM0603
+ SM0805
+ R?-*
+$endlist
+$component R38
+ R?
+ SM0603
+ SM0805
+ R?-*
+$endlist
+$component R39
+ R?
+ SM0603
+ SM0805
+ R?-*
+$endlist
+$component R40
+ R?
+ SM0603
+ SM0805
+ R?-*
+$endlist
+$component R41
+ R?
+ SM0603
+ SM0805
+ R?-*
+$endlist
+$component R42
+ R?
+ SM0603
+ SM0805
+ R?-*
+$endlist
+$component R43
+ R?
+ SM0603
+ SM0805
+ R?-*
+$endlist
+$component R44
+ R?
+ SM0603
+ SM0805
+ R?-*
+$endlist
+$component R45
+ R?
+ SM0603
+ SM0805
+ R?-*
+$endlist
+$component R46
+ R?
+ SM0603
+ SM0805
+ R?-*
+$endlist
+$component R47
+ R?
+ SM0603
+ SM0805
+ R?-*
+$endlist
+$component R48
+ R?
+ SM0603
+ SM0805
+ R?-*
+$endlist
+$component R49
+ R?
+ SM0603
+ SM0805
+ R?-*
+$endlist
+$component R50
+ R?
+ SM0603
+ SM0805
+ R?-*
+$endlist
+$component R51
+ R?
+ SM0603
+ SM0805
+ R?-*
+$endlist
+$component R52
+ R?
+ SM0603
+ SM0805
+ R?-*
+$endlist
+$component R53
+ R?
+ SM0603
+ SM0805
+ R?-*
+$endlist
+$component R54
+ R?
+ SM0603
+ SM0805
+ R?-*
+$endlist
+$component R55
+ R?
+ SM0603
+ SM0805
+ R?-*
+$endlist
+$component R56
+ R?
+ SM0603
+ SM0805
+ R?-*
+$endlist
+$component R57
+ R?
+ SM0603
+ SM0805
+ R?-*
+$endlist
+$component R58
+ R?
+ SM0603
+ SM0805
+ R?-*
+$endlist
+$component R59
+ R?
+ SM0603
+ SM0805
+ R?-*
+$endlist
+$component R60
+ R?
+ SM0603
+ SM0805
+ R?-*
+$endlist
+$component R61
+ R?
+ SM0603
+ SM0805
+ R?-*
+$endlist
+$component R62
+ R?
+ SM0603
+ SM0805
+ R?-*
+$endlist
+$component R63
+ R?
+ SM0603
+ SM0805
+ R?-*
+$endlist
+$component R64
+ R?
+ SM0603
+ SM0805
+ R?-*
+$endlist
+$component R65
+ R?
+ SM0603
+ SM0805
+ R?-*
+$endlist
+$endfootprintlist
+}
