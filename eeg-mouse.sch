@@ -1,4 +1,4 @@
-EESchema Schematic File Version 2  date Sat 03 Dec 2011 12:58:54 PM UTC
+EESchema Schematic File Version 2  date Sat 10 Dec 2011 09:58:33 PM UTC
 LIBS:power
 LIBS:device
 LIBS:transistors
@@ -36,7 +36,7 @@ $Descr A1 33070 23400
 encoding utf-8
 Sheet 1 1
 Title ""
-Date "3 dec 2011"
+Date "10 dec 2011"
 Rev ""
 Comp ""
 Comment1 ""
@@ -1010,7 +1010,7 @@ P 8050 7150
 F 0 "C57" H 8100 7250 50  0000 L CNN
 F 1 "22uF" H 8100 7050 50  0000 L CNN
 	1    8050 7150
-	-1   0    0    1   
+	1    0    0    1   
 $EndComp
 $Comp
 L PWR_FLAG #FLG01
