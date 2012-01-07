@@ -1,4 +1,4 @@
-PCBNEW-BOARD Version 1 date Sat 07 Jan 2012 10:07:26 PM UTC
+PCBNEW-BOARD Version 1 date Sat 07 Jan 2012 10:29:12 PM UTC
 
 # Created by Pcbnew(2011-05-25)-stable
 
@@ -10,11 +10,11 @@ EnabledLayers 1FFF8001
 Links 257
 NoConn 0
 Di 33924 26924 80576 61076
-Ndraw 43
+Ndraw 46
 Ntrack 637
 Nzone 0
 BoardThickness 630
-Nmodule 136
+Nmodule 137
 Nnets 90
 $EndGENERAL
 
@@ -59,6 +59,7 @@ TextModWidth 120
 PadSize 600 600
 PadDrill 320
 Pad2MaskClearance 100
+GridOrigin 34000 27000
 AuxiliaryAxisOrg 0 0
 PcbPlotParams (pcbplotparams (layerselection 284983297) (usegerberextensions true) (excludeedgelayer true) (linewidth 60) (plotframeref false) (viasonmask false) (mode 1) (useauxorigin false) (hpglpennumber 1) (hpglpenspeed 20) (hpglpendiameter 15) (hpglpenoverlay 0) (pscolor true) (psnegative false) (psa4output false) (plotreference true) (plotvalue true) (plotothertext true) (plotinvisibletext false) (padsonsilk false) (subtractmaskfromsilk false) (outputformat 1) (mirror false) (drillshape 1) (scaleselection 1) (outputdirectory ""))
 $EndSETUP
@@ -533,6 +534,293 @@ AddNet "+5VA"
 AddNet "AGND"
 AddNet "DGND"
 $EndNCLASS
+$MODULE 
+Po 65000 55500 900 15 00000000 4F08C415 ~~
+Li 
+Sc 4F08C415
+AR 
+Op 0 0 0
+T0 0 1162 100 100 900 20 N I 21 N "G***"
+T1 0 -1162 100 100 900 20 N I 21 N "LOGO"
+DP 0 0 0 0 277 1 21
+Dl -664 984
+Dl -652 978
+Dl -627 962
+Dl -590 938
+Dl -547 909
+Dl -503 879
+Dl -468 855
+Dl -443 839
+Dl -432 834
+Dl -427 836
+Dl -406 846
+Dl -376 861
+Dl -359 870
+Dl -331 882
+Dl -318 884
+Dl -315 881
+Dl -305 860
+Dl -290 824
+Dl -269 776
+Dl -245 721
+Dl -220 661
+Dl -194 600
+Dl -170 541
+Dl -149 489
+Dl -132 446
+Dl -120 417
+Dl -116 404
+Dl -117 401
+Dl -131 388
+Dl -155 370
+Dl -207 328
+Dl -258 264
+Dl -289 191
+Dl -300 111
+Dl -291 36
+Dl -261 -36
+Dl -211 -100
+Dl -151 -148
+Dl -80 -179
+Dl 0 -188
+Dl 76 -180
+Dl 149 -151
+Dl 214 -102
+Dl 241 -70
+Dl 279 -5
+Dl 300 65
+Dl 303 83
+Dl 299 160
+Dl 277 233
+Dl 236 299
+Dl 180 353
+Dl 173 359
+Dl 146 378
+Dl 129 392
+Dl 115 403
+Dl 213 639
+Dl 229 676
+Dl 256 741
+Dl 279 796
+Dl 298 840
+Dl 311 870
+Dl 317 882
+Dl 318 882
+Dl 326 884
+Dl 344 877
+Dl 377 861
+Dl 399 850
+Dl 424 838
+Dl 435 834
+Dl 445 839
+Dl 469 854
+Dl 504 878
+Dl 546 907
+Dl 586 934
+Dl 623 958
+Dl 650 975
+Dl 663 982
+Dl 665 982
+Dl 677 976
+Dl 698 958
+Dl 730 928
+Dl 776 883
+Dl 783 876
+Dl 820 838
+Dl 850 806
+Dl 871 784
+Dl 878 773
+Dl 878 773
+Dl 871 760
+Dl 854 734
+Dl 830 696
+Dl 800 652
+Dl 722 539
+Dl 765 432
+Dl 778 399
+Dl 795 359
+Dl 807 331
+Dl 813 318
+Dl 825 314
+Dl 854 307
+Dl 897 298
+Dl 948 289
+Dl 996 280
+Dl 1039 272
+Dl 1071 266
+Dl 1085 263
+Dl 1089 261
+Dl 1091 254
+Dl 1093 239
+Dl 1094 213
+Dl 1095 171
+Dl 1095 111
+Dl 1095 104
+Dl 1094 46
+Dl 1093 1
+Dl 1092 -29
+Dl 1090 -41
+Dl 1090 -41
+Dl 1076 -44
+Dl 1045 -51
+Dl 1002 -59
+Dl 950 -69
+Dl 946 -70
+Dl 895 -80
+Dl 851 -89
+Dl 821 -96
+Dl 808 -100
+Dl 805 -104
+Dl 795 -124
+Dl 780 -156
+Dl 763 -195
+Dl 746 -236
+Dl 731 -272
+Dl 721 -300
+Dl 718 -312
+Dl 719 -312
+Dl 726 -325
+Dl 744 -352
+Dl 769 -389
+Dl 800 -433
+Dl 802 -436
+Dl 832 -480
+Dl 856 -517
+Dl 872 -544
+Dl 878 -556
+Dl 878 -556
+Dl 868 -569
+Dl 846 -594
+Dl 814 -628
+Dl 775 -666
+Dl 763 -678
+Dl 721 -720
+Dl 691 -747
+Dl 673 -762
+Dl 664 -765
+Dl 663 -765
+Dl 650 -757
+Dl 623 -739
+Dl 585 -713
+Dl 541 -683
+Dl 538 -681
+Dl 494 -651
+Dl 457 -626
+Dl 431 -609
+Dl 420 -602
+Dl 418 -602
+Dl 400 -608
+Dl 369 -619
+Dl 331 -633
+Dl 290 -650
+Dl 254 -665
+Dl 226 -678
+Dl 213 -685
+Dl 213 -686
+Dl 208 -701
+Dl 200 -734
+Dl 191 -779
+Dl 181 -833
+Dl 179 -842
+Dl 169 -894
+Dl 161 -937
+Dl 155 -967
+Dl 152 -979
+Dl 144 -981
+Dl 119 -983
+Dl 80 -984
+Dl 33 -984
+Dl -16 -984
+Dl -65 -983
+Dl -106 -981
+Dl -136 -979
+Dl -148 -977
+Dl -148 -976
+Dl -153 -960
+Dl -160 -927
+Dl -169 -882
+Dl -180 -828
+Dl -182 -818
+Dl -191 -766
+Dl -200 -724
+Dl -206 -694
+Dl -210 -683
+Dl -214 -680
+Dl -236 -671
+Dl -271 -656
+Dl -314 -639
+Dl -414 -598
+Dl -537 -683
+Dl -549 -690
+Dl -593 -720
+Dl -629 -745
+Dl -654 -761
+Dl -665 -767
+Dl -666 -766
+Dl -678 -756
+Dl -702 -733
+Dl -736 -700
+Dl -774 -662
+Dl -803 -633
+Dl -837 -599
+Dl -858 -576
+Dl -870 -561
+Dl -874 -552
+Dl -873 -546
+Dl -865 -533
+Dl -847 -506
+Dl -822 -469
+Dl -792 -425
+Dl -767 -389
+Dl -741 -348
+Dl -723 -318
+Dl -717 -304
+Dl -719 -298
+Dl -727 -274
+Dl -742 -237
+Dl -760 -194
+Dl -803 -97
+Dl -867 -84
+Dl -906 -77
+Dl -960 -67
+Dl -1011 -57
+Dl -1092 -41
+Dl -1095 255
+Dl -1083 261
+Dl -1071 264
+Dl -1041 271
+Dl -998 279
+Dl -948 289
+Dl -905 297
+Dl -861 305
+Dl -830 311
+Dl -816 314
+Dl -813 318
+Dl -802 339
+Dl -787 373
+Dl -770 413
+Dl -752 454
+Dl -737 493
+Dl -726 522
+Dl -722 537
+Dl -728 548
+Dl -745 574
+Dl -769 610
+Dl -798 653
+Dl -827 696
+Dl -852 733
+Dl -869 759
+Dl -877 771
+Dl -873 780
+Dl -856 800
+Dl -823 834
+Dl -775 882
+Dl -767 889
+Dl -729 926
+Dl -696 956
+Dl -674 976
+Dl -664 984
+$EndMODULE  
 $MODULE TQFP_64
 Po 70996 45307 2700 15 48A969ED 4EDA2CB6 ~~
 Li TQFP_64
@@ -5687,14 +5975,14 @@ Ro 0.000000 0.000000 0.000000
 $EndSHAPE3D
 $EndMODULE  C1
 $MODULE 1pin
-Po 78500 59000 0 15 00200000 4F08C059 ~~
+Po 78500 59000 0 15 4F08C351 4F08C059 ~~
 Li 1pin
 Cd module 1 pin (ou trou mecanique de percage)
 Kw DEV
 Sc 4F08C059
-AR 
+AR 1pin
 Op 0 0 0
-T0 0 -1200 400 400 0 100 N V 21 N "1PIN"
+T0 0 -1200 400 400 0 100 N I 21 N "1PIN"
 T1 0 1100 400 400 0 100 N I 21 N "P***"
 DC 0 0 0 -900 150 21
 $PAD
@@ -5706,14 +5994,14 @@ Po 0 0
 $EndPAD
 $EndMODULE  1pin
 $MODULE 1pin
-Po 36000 59000 0 15 00200000 4F08C0C7 ~~
+Po 36000 59000 0 15 4F08C35B 4F08C0C7 ~~
 Li 1pin
 Cd module 1 pin (ou trou mecanique de percage)
 Kw DEV
 Sc 4F08C0C7
-AR 
+AR 1pin
 Op 0 0 0
-T0 0 -1200 400 400 0 100 N V 21 N "1PIN"
+T0 0 -1200 400 400 0 100 N I 21 N "1PIN"
 T1 0 1100 400 400 0 100 N I 21 N "P***"
 DC 0 0 0 -900 150 21
 $PAD
@@ -5725,14 +6013,14 @@ Po 0 0
 $EndPAD
 $EndMODULE  1pin
 $MODULE 1pin
-Po 36000 29000 0 15 00200000 4F08C0D2 ~~
+Po 36000 29000 0 15 4F08C362 4F08C0D2 ~~
 Li 1pin
 Cd module 1 pin (ou trou mecanique de percage)
 Kw DEV
 Sc 4F08C0D2
-AR 
+AR 1pin
 Op 0 0 0
-T0 0 -1200 400 400 0 100 N V 21 N "1PIN"
+T0 0 -1200 400 400 0 100 N I 21 N "1PIN"
 T1 0 1100 400 400 0 100 N I 21 N "P***"
 DC 0 0 0 -900 150 21
 $PAD
@@ -5744,14 +6032,14 @@ Po 0 0
 $EndPAD
 $EndMODULE  1pin
 $MODULE 1pin
-Po 79000 33500 0 15 00200000 4F08C0FB ~~
+Po 79000 33500 0 15 4F08C36C 4F08C0FB ~~
 Li 1pin
 Cd module 1 pin (ou trou mecanique de percage)
 Kw DEV
 Sc 4F08C0FB
-AR 
+AR 1pin
 Op 0 0 0
-T0 0 -1200 400 400 0 100 N V 21 N "1PIN"
+T0 0 -1200 400 400 0 100 N I 21 N "1PIN"
 T1 0 1100 400 400 0 100 N I 21 N "P***"
 DC 0 0 0 -900 150 21
 $PAD
@@ -5763,8 +6051,23 @@ Po 0 0
 $EndPAD
 $EndMODULE  1pin
 $TEXTPCB
+Te "hardware"
+Po 67500 55500 400 500 100 900
+De 21 1 0 Normal
+$EndTEXTPCB
+$TEXTPCB
+Te "open source"
+Po 66500 55500 400 500 100 900
+De 21 1 0 Normal
+$EndTEXTPCB
+$TEXTPCB
+Te "https://github.com/ericherman/eeg-mouse"
+Po 66000 42500 600 800 120 900
+De 21 1 0 Normal
+$EndTEXTPCB
+$TEXTPCB
 Te "eeg-mouse rev 0.0"
-Po 70000 58000 600 800 120 0
+Po 64500 48000 600 800 120 900
 De 21 1 0 Normal
 $EndTEXTPCB
 $TEXTPCB
