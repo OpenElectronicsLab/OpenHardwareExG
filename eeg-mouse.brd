@@ -1,4 +1,4 @@
-PCBNEW-BOARD Version 1 date Sun 08 Jan 2012 07:51:23 PM UTC
+PCBNEW-BOARD Version 1 date Mon 09 Jan 2012 02:05:01 AM UTC
 
 # Created by Pcbnew(2011-05-25)-stable
 
@@ -21,7 +21,7 @@ $EndGENERAL
 $SHEETDESCR
 Sheet A4 11700 8267
 Title ""
-Date "8 jan 2012"
+Date "9 jan 2012"
 Rev ""
 Comp ""
 Comment1 ""
@@ -828,7 +828,8 @@ Kw TQFP64 TQFP SMD IC
 Sc 4EDA2CB6
 AR /4ED11795
 Op 0 0 0
-.LocalClearance 60
+.SolderMask 20
+.LocalClearance 70
 T0 50 -600 433 433 2700 50 N V 21 N "U1"
 T1 0 650 394 394 2700 60 N V 21 N "ADS1298"
 DC -1568 1568 -1568 1418 80 21
