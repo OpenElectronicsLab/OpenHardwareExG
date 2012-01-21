@@ -1,4 +1,4 @@
-PCBNEW-BOARD Version 1 date Mon 09 Jan 2012 02:05:01 AM UTC
+PCBNEW-BOARD Version 1 date Sat 21 Jan 2012 04:14:08 PM UTC
 
 # Created by Pcbnew(2011-05-25)-stable
 
@@ -9,8 +9,8 @@ Ly 1FFF8001
 EnabledLayers 1FFF8001
 Links 257
 NoConn 0
-Di 33424 26924 80076 61076
-Ndraw 46
+Di 33424 16417 80076 61076
+Ndraw 47
 Ntrack 628
 Nzone 0
 BoardThickness 630
@@ -21,7 +21,7 @@ $EndGENERAL
 $SHEETDESCR
 Sheet A4 11700 8267
 Title ""
-Date "9 jan 2012"
+Date "21 jan 2012"
 Rev ""
 Comp ""
 Comment1 ""
@@ -6051,6 +6051,18 @@ Ne 0 ""
 Po 0 0
 $EndPAD
 $EndMODULE  1pin
+$TEXTPCB
+Te "Important:"
+nl "C33-48 and R33-64 are _potential_ values for a high"
+nl "pass filter that we may or may not need.  Don't solder"
+nl "these in to more than one of the pairs of inputs until"
+nl "we're sure this is a good idea.  If you solder a wire"
+nl "across the capacitor and leave the two resistors out,"
+nl "this bypasses the filter; we may want to try this with a"
+nl "second pair of inputs.  "
+Po 58016 17157 600 800 120 0
+De 25 1 0 Normal
+$EndTEXTPCB
 $DRAWSEGMENT
 Po 0 33500 27000 33500 60500 150
 De 28 0 900 0 0
