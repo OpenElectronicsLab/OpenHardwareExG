@@ -3,8 +3,10 @@
 #include <string.h>
 #include <WProgram.h>
 
-char incomingByte;		// for incoming serial data
-char str1[50];
+#define IN_BUF_SIZE 50
+
+char incomingByte;
+char str1[IN_BUF_SIZE];
 int count = 0;
 
 extern "C" void __cxa_pure_virtual(void)
@@ -16,12 +18,10 @@ extern "C" void __cxa_pure_virtual(void)
 int main(void)
 {
 
-// setup ()
 	init();
 	Serial.begin(19200);
 	digitalWrite(13, HIGH);	//turn on debugging LED
 
-//  MAIN CODE
 	while (1) {
 		// send data only when you receive data:
 		if (Serial.available() > 0) {
@@ -32,9 +32,10 @@ int main(void)
 			str1[count] = incomingByte;
 			count++;
 
-			// check if we have over 49 characaters or we recieve a return or line feed
-			if (count > 49 || incomingByte == 10
-			    || incomingByte == 13) {
+			// send if we recieve a carriage return or line feed
+			// or if we are about to over-run our buffer
+			if ((incomingByte == 10 || incomingByte == 13)
+			    || (count > (IN_BUF_SIZE - 1))) {
 				// Send the string back
 				Serial.print(str1);
 				count = 0;
