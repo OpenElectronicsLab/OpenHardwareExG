@@ -21,6 +21,7 @@ $port->stopbits(1);
 
 my $count = 0;
 while (1) {
+
     # Poll to see if any data is coming in
     my $char = $port->lookfor();
 
@@ -28,7 +29,8 @@ while (1) {
     # Send a number to the arduino
     if ($char) {
         print "Recieved character: " . $char . " \n";
-    } else {
+    }
+    else {
         sleep(1);
         $count++;
         my $count_out = $port->write("$count\n");
