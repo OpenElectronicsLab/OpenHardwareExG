@@ -4,10 +4,14 @@ APPNAME=serial_echo
 SOURCES=$(APPNAME).o
 
 # CPU type as defined by gcc and AVR-DUDE
-GCC_MMCU=atmega1280
-AVRDUDE_MCU=m1280
+#GCC_MMCU=atmega1280
+#AVRDUDE_MCU=m1280
 #GCC_MMCU=atmega328p
 #AVRDUDE_MCU=atmega328p
+#AVRDUDE_STK=stk500v1
+AVRDUDE_STK=stk500v2
+GCC_MMCU=atmega2560
+AVRDUDE_MCU=atmega2560
 
 # CPU Clock speed (cycles per second)
 CLOCKSPEED=16000000
@@ -62,8 +66,8 @@ clean:
 
 upload: $(APPNAME).hex
 	stty -F $(PORT) hupcl # e.g. reset the arduino
-	avrdude -v -c stk500v1 -p $(AVRDUDE_MCU) \
-		-b 57600 -P $(PORT) -U flash:w:$(APPNAME).hex
+	avrdude -v -c $(AVRDUDE_STK) -p $(AVRDUDE_MCU) \
+		-b 115200 -P $(PORT) -U flash:w:$(APPNAME).hex
 
 %.hex : %
 	avr-objcopy -O ihex -R .eeprom $< $@
