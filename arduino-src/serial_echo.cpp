@@ -17,6 +17,7 @@ int main(void)
 {
 
 // setup ()
+	init();
 	Serial.begin(19200);
 	digitalWrite(13, HIGH);	//turn on debugging LED
 
