@@ -3,35 +3,40 @@
 APPNAME=serial_echo
 SOURCES=$(APPNAME).o
 
-# CPU type as defined by gcc and AVR-DUDE
-#GCC_MMCU=atmega1280
-#AVRDUDE_MCU=m1280
-#GCC_MMCU=atmega328p
-#AVRDUDE_MCU=atmega328p
-#AVRDUDE_STK=stk500v1
-AVRDUDE_STK=stk500v2
-GCC_MMCU=atmega2560
-AVRDUDE_MCU=atmega2560
-
-# CPU Clock speed (cycles per second)
-CLOCKSPEED=16000000
-#CLOCKSPEED=8000000
+ARDUINO_SOURCES_DIR=/usr/share/arduino/hardware/arduino/cores/arduino
 
 # port the arduino is connected to
 PORT=/dev/ttyACM0
 # PORT=/dev/ttyUSB0
 
+# CPU type as defined by gcc and AVR-DUDE
+GCC_MMCU=atmega2560
+AVRDUDE_STK=stk500v2
+AVRDUDE_MCU=atmega2560
+AVRDUDE_BAUD=115200
+#GCC_MMCU=atmega1280
+#GCC_MMCU=atmega328p
+#AVRDUDE_MCU=m1280
+#AVRDUDE_MCU=atmega328p
+#AVRDUDE_STK=stk500v1
+#AVRDUDE_BAUD=57600
+
+# CPU Clock speed (cycles per second)
+CLOCKSPEED=16000000
+#CLOCKSPEED=8000000
+
 CC=avr-gcc
 CXX=avr-g++
 
-ARDUINO_SOURCES_DIR=/usr/share/arduino/hardware/arduino/cores/arduino
-
-SHAREDFLAGS= -gstabs -Os -Wall \
-		-funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums \
+SHAREDFLAGS= -gstabs -Os \
+		-funsigned-char -funsigned-bitfields -fpack-struct \
+		-fshort-enums \
 		-I$(ARDUINO_SOURCES_DIR) -mmcu=$(GCC_MMCU) -DF_CPU=$(CLOCKSPEED)
 
 CFLAGS=-std=gnu99 -Wstrict-prototypes $(SHAREDFLAGS)
 CXXFLAGS=$(SHAREDFLAGS)
+NOISYFLAGS=-Wall -Wextra -pedantic -Werror
+#NOISYFLAGS=
 
 ARDUINOSOURCES= HardwareSerial.o \
 			pins_arduino.o \
@@ -67,7 +72,7 @@ clean:
 upload: $(APPNAME).hex
 	stty -F $(PORT) hupcl # e.g. reset the arduino
 	avrdude -v -c $(AVRDUDE_STK) -p $(AVRDUDE_MCU) \
-		-b 115200 -P $(PORT) -U flash:w:$(APPNAME).hex
+		-b $(AVRDUDE_BAUD) -P $(PORT) -U flash:w:$(APPNAME).hex
 
 %.hex : %
 	avr-objcopy -O ihex -R .eeprom $< $@
@@ -76,6 +81,6 @@ libarduinocore.a: $(ARDUINOSOURCES)
 	ar rc $@ $^
 
 $(APPNAME) : $(SOURCES) libarduinocore.a
-	$(CXX) $(CXXFLAGS) $^ -o $@ -L. -larduinocore \
+	$(CXX) $(CXXFLAGS) $(NOISYFLAGS) $^ -o $@ -L. -larduinocore \
 	&& echo YAY || echo "DARN $$?"
 
