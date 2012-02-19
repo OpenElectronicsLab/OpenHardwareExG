@@ -12,8 +12,12 @@ use Device::SerialPort;
 
 # Set up the serial port
 # 19200, 81N on the USB ftdi driver
-# my $port = Device::SerialPort->new("/dev/ttyUSB0");
-my $port = Device::SerialPort->new("/dev/ttyACM0");
+my $port;
+if (-e "/dev/ttyACM0") {
+    $port = Device::SerialPort->new("/dev/ttyACM0");
+} else {
+    $port = Device::SerialPort->new("/dev/ttyUSB0");
+}
 $port->databits(8);
 $port->baudrate(19200);
 $port->parity("none");

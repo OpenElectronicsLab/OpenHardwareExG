@@ -6,17 +6,22 @@ SOURCES=$(APPNAME).o
 ARDUINO_SOURCES_DIR=/usr/share/arduino/hardware/arduino/cores/arduino
 
 # port the arduino is connected to
+# and CPU type as defined by gcc and AVR-DUDE
+ifeq ($(wildcard /dev/ttyACM0),) 
+PORT=/dev/ttyUSB0
+GCC_MMCU=atmega1280
+AVRDUDE_MCU=m1280
+AVRDUDE_STK=stk500v1
+AVRDUDE_BAUD=57600
+else
 PORT=/dev/ttyACM0
-# PORT=/dev/ttyUSB0
-
-# CPU type as defined by gcc and AVR-DUDE
 GCC_MMCU=atmega2560
 AVRDUDE_STK=stk500v2
 AVRDUDE_MCU=atmega2560
 AVRDUDE_BAUD=115200
-#GCC_MMCU=atmega1280
+endif
+
 #GCC_MMCU=atmega328p
-#AVRDUDE_MCU=m1280
 #AVRDUDE_MCU=atmega328p
 #AVRDUDE_STK=stk500v1
 #AVRDUDE_BAUD=57600
