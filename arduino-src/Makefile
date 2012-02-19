@@ -7,7 +7,7 @@ ARDUINO_SOURCES_DIR=/usr/share/arduino/hardware/arduino/cores/arduino
 
 # port the arduino is connected to
 # and CPU type as defined by gcc and AVR-DUDE
-ifeq ($(wildcard /dev/ttyACM0),) 
+ifeq ($(wildcard /dev/ttyACM0),)
 PORT=/dev/ttyUSB0
 GCC_MMCU=atmega1280
 AVRDUDE_MCU=m1280
