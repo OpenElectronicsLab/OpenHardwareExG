@@ -67,7 +67,7 @@ ARDUINOSOURCES= HardwareSerial.o \
 all: $(APPNAME).hex
 
 clean:
-	rm -f *.o *.o *.hex
+	rm -f *.o *.a *.hex
 
 upload: $(APPNAME).hex
 	stty -F $(PORT) hupcl # e.g. reset the arduino
