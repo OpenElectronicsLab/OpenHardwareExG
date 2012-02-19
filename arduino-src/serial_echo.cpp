@@ -1,6 +1,4 @@
 // modified from: http://www.windmeadow.com/node/38
-#include <stdio.h>
-#include <string.h>
 #include <WProgram.h>
 
 #define IN_BUF_SIZE 50
@@ -17,8 +15,8 @@ extern "C" void __cxa_pure_virtual(void)
 
 int main(void)
 {
-
 	init();
+
 	Serial.begin(19200);
 	digitalWrite(13, HIGH);	//turn on debugging LED
 
@@ -42,5 +40,4 @@ int main(void)
 			}
 		}
 	}
-
 }
