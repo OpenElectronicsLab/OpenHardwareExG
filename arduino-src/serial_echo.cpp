@@ -3,8 +3,8 @@
 
 #define IN_BUF_SIZE 50
 
-char incomingByte;
-char str1[IN_BUF_SIZE];
+char incoming_byte;
+char byte_buf[IN_BUF_SIZE];
 int count = 0;
 
 extern "C" void __cxa_pure_virtual(void)
@@ -17,27 +17,31 @@ int main(void)
 {
 	init();
 
+	// set the LED on
+	digitalWrite(13, HIGH);
+
 	Serial.begin(19200);
-	digitalWrite(13, HIGH);	//turn on debugging LED
 
 	while (1) {
-		// send data only when you receive data:
-		if (Serial.available() > 0) {
-			// read the incoming byte:
-			incomingByte = Serial.read();
+		// loop until data available
+		if (Serial.available() == 0) {
+			continue;
+		}
 
-			// Store it in a character array
-			str1[count] = incomingByte;
-			count++;
+		// read an available byte:
+		incoming_byte = Serial.read();
 
-			// send if we recieve a carriage return or line feed
-			// or if we are about to over-run our buffer
-			if ((incomingByte == 10 || incomingByte == 13)
-			    || (count > (IN_BUF_SIZE - 1))) {
-				// Send the string back
-				Serial.print(str1);
-				count = 0;
-			}
+		// Store it in the buffer
+		byte_buf[count++] = incoming_byte;
+
+		// if we recieve a carriage return or line feed
+		// or if we are about to over-run our buffer
+		if ((incoming_byte == 10 || incoming_byte == 13)
+		    || (count > (IN_BUF_SIZE - 1))) {
+			// then send the buffer contents back
+			Serial.print(byte_buf);
+			// and return the buffer index to start
+			count = 0;
 		}
 	}
 }
