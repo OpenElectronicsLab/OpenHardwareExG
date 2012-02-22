@@ -27,17 +27,18 @@ my $count = 0;
 while (1) {
 
     # Poll to see if any data is coming in
-    my $char = $port->lookfor();
+    my $received = $port->lookfor();
 
     # If we get data, then print it
     # Send a number to the arduino
-    if ($char) {
-        print "Recieved character: " . $char . " \n";
+    if ($received) {
+        print "Received '$received'\n";
     }
     else {
         sleep(1);
         $count++;
-        my $count_out = $port->write("$count\n");
-        print "Sent     character: $count \n";
+        my $send = "foo $count\n";
+        my $count_out = $port->write($send);
+        print "Sent '$send'\n";
     }
 }
