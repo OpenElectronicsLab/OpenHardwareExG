@@ -71,6 +71,7 @@ ARDUINOSOURCES= HardwareSerial.o \
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 all: $(APPNAME).hex
+	echo YAY
 
 clean:
 	rm -f *.o *.a *.hex
@@ -87,6 +88,5 @@ libarduinocore.a: $(ARDUINOSOURCES)
 	ar rc $@ $^
 
 $(APPNAME) : $(SOURCES) libarduinocore.a
-	$(CXX) $(CXXFLAGS) $(NOISYFLAGS) $^ -o $@ -L. -larduinocore \
-	&& echo YAY || echo "DARN $$?"
+	$(CXX) $(CXXFLAGS) $(NOISYFLAGS) $^ -o $@ -L. -larduinocore
 
