@@ -42,6 +42,7 @@ CFLAGS=-std=gnu99 -Wstrict-prototypes $(SHAREDFLAGS)
 CXXFLAGS=$(SHAREDFLAGS)
 NOISYFLAGS=-Wall -Wextra -pedantic -Werror
 #NOISYFLAGS=
+WORKAROUNDFLAGS=-Wno-variadic-macros -Wno-ignored-qualifiers
 
 ARDUINOSOURCES= HardwareSerial.o \
 			pins_arduino.o \
@@ -58,10 +59,10 @@ ARDUINOSOURCES= HardwareSerial.o \
 
 
 %.o : %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) $(NOISFLAGS) $(WORKAROUNDFLAGS) -c $< -o $@
 
 %.o : %.cpp
-	$(CXX) $(CXXFLAGS) -c $< -o $@
+	$(CXX) $(NOISYFLAGS) $(CXXFLAGS) $(WORKAROUNDFLAGS) -c $< -o $@
 
 %.o : $(ARDUINO_SOURCES_DIR)/%.c
 	$(CC) $(CFLAGS) -c $< -o $@
