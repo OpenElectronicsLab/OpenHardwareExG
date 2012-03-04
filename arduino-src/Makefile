@@ -74,7 +74,7 @@ all: $(APPNAME).hex
 	echo YAY
 
 clean:
-	rm -f *.o *.a *.hex
+	rm -f *.o *.a *.hex $(APPNAME)
 
 upload: $(APPNAME).hex
 	stty -F $(PORT) hupcl # e.g. reset the arduino
