@@ -4,6 +4,7 @@ APPNAME=serial_echo
 SOURCES=$(APPNAME).o
 
 ARDUINO_SOURCES_DIR=/usr/share/arduino/hardware/arduino/cores/arduino
+ARDUINO_LIB_DIR=/usr/share/arduino/libraries
 
 # port the arduino is connected to
 # and CPU type as defined by gcc and AVR-DUDE
@@ -36,12 +37,14 @@ CXX=avr-g++
 SHAREDFLAGS= -gstabs -Os \
 		-funsigned-char -funsigned-bitfields -fpack-struct \
 		-fshort-enums \
-		-I$(ARDUINO_SOURCES_DIR) -mmcu=$(GCC_MMCU) -DF_CPU=$(CLOCKSPEED)
+		-I$(ARDUINO_SOURCES_DIR) \
+		-I$(ARDUINO_LIB_DIR) \
+		-mmcu=$(GCC_MMCU) -DF_CPU=$(CLOCKSPEED)
 
 CFLAGS=-std=gnu99 -Wstrict-prototypes $(SHAREDFLAGS)
 CXXFLAGS=$(SHAREDFLAGS)
-NOISYFLAGS=-Wall -Wextra -pedantic -Werror
-#NOISYFLAGS=
+#NOISYFLAGS=-Wall -Wextra -pedantic -Werror
+NOISYFLAGS=
 CXX_WORKAROUND_FLAGS=-Wno-variadic-macros -Wno-ignored-qualifiers
 
 ARDUINOSOURCES= HardwareSerial.o \
