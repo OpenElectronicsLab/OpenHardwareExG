@@ -4,7 +4,7 @@ APPNAME=serial_echo
 SOURCES=$(APPNAME).o
 
 ARDUINO_SOURCES_DIR=/usr/share/arduino/hardware/arduino/cores/arduino
-ARDUINO_LIB_DIR=/usr/share/arduino/libraries
+ARDUINO_SPI_LIB_DIR=/usr/share/arduino/libraries/SPI
 
 # port the arduino is connected to
 # and CPU type as defined by gcc and AVR-DUDE
@@ -38,16 +38,17 @@ SHAREDFLAGS= -gstabs -Os \
 		-funsigned-char -funsigned-bitfields -fpack-struct \
 		-fshort-enums \
 		-I$(ARDUINO_SOURCES_DIR) \
-		-I$(ARDUINO_LIB_DIR) \
+		-I$(ARDUINO_SPI_LIB_DIR) \
 		-mmcu=$(GCC_MMCU) -DF_CPU=$(CLOCKSPEED)
 
 CFLAGS=-std=gnu99 -Wstrict-prototypes $(SHAREDFLAGS)
 CXXFLAGS=$(SHAREDFLAGS)
+NOISYFLAGS=-Wall -Wextra -pedantic
 #NOISYFLAGS=-Wall -Wextra -pedantic -Werror
-NOISYFLAGS=
+#NOISYFLAGS=
 CXX_WORKAROUND_FLAGS=-Wno-variadic-macros -Wno-ignored-qualifiers
 
-ARDUINOSOURCES= HardwareSerial.o \
+ARDUINO_SOURCES= HardwareSerial.o \
 			pins_arduino.o \
 			Print.o \
 			Tone.o \
@@ -60,6 +61,7 @@ ARDUINOSOURCES= HardwareSerial.o \
 			WMath.o \
 			WString.o
 
+ARDUINO_SPI_SOURCES= SPI.o
 
 %.o : %.c
 	$(CC) $(CFLAGS) $(NOISYFLAGS) -c $< -o $@
@@ -71,6 +73,9 @@ ARDUINOSOURCES= HardwareSerial.o \
 	$(CC) $(CFLAGS) -c $< -o $@
 
 %.o : $(ARDUINO_SOURCES_DIR)/%.cpp
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+
+%.o : $(ARDUINO_SPI_LIB_DIR)/%.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 all: $(APPNAME).hex
@@ -87,7 +92,7 @@ upload: $(APPNAME).hex
 %.hex : %
 	avr-objcopy -O ihex -R .eeprom $< $@
 
-libarduinocore.a: $(ARDUINOSOURCES)
+libarduinocore.a: $(ARDUINO_SOURCES) $(ARDUINO_SPI_SOURCES)
 	ar rc $@ $^
 
 $(APPNAME) : $(SOURCES) libarduinocore.a

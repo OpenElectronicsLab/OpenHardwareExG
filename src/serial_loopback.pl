@@ -19,7 +19,7 @@ if (-e "/dev/ttyACM0") {
     $port = Device::SerialPort->new("/dev/ttyUSB0");
 }
 $port->databits(8);
-$port->baudrate(19200);
+$port->baudrate(230400);
 $port->parity("none");
 $port->stopbits(1);
 
@@ -37,7 +37,7 @@ while (1) {
     else {
         sleep(1);
         $count++;
-        my $send = "foo $count\n";
+        my $send = "$count\n";
         my $count_out = $port->write($send);
         print "Sent '$send'\n";
     }
