@@ -3,6 +3,7 @@
 
 use strict;
 use warnings;
+use Time::HiRes;
 
 # Sample Perl script to transmit number
 # to Arduino then listen for the Arduino
@@ -35,10 +36,10 @@ while (1) {
         print "Received '$received'\n";
     }
     else {
-        sleep(1);
+        Time::HiRes::usleep(2000);
         $count++;
         my $send = "$count\n";
         my $count_out = $port->write($send);
-        print "Sent '$send'\n";
+        #print "Sent '$send'\n";
     }
 }
