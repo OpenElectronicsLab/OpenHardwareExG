@@ -1,3 +1,6 @@
+The rev 0.0 board incorectly labels DIN as inverted.
+
+
 Texas Instruments: SN74LS126ANE4
 Buffers & Line Drivers Quad Bus Buffer With 3-State Outputs
 http://nl.mouser.com/ProductDetail/Texas-Instruments/SN74LS126ANE4/?qs=sGAEpiMZZMutXGli8Ay4kP28D9wZ8SQIMqpIftnsrsk%3d
