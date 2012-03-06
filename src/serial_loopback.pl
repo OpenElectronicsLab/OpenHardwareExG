@@ -14,9 +14,10 @@ use Device::SerialPort;
 # Set up the serial port
 # 19200, 81N on the USB ftdi driver
 my $port;
-if (-e "/dev/ttyACM0") {
+if ( -e "/dev/ttyACM0" ) {
     $port = Device::SerialPort->new("/dev/ttyACM0");
-} else {
+}
+else {
     $port = Device::SerialPort->new("/dev/ttyUSB0");
 }
 $port->databits(8);
@@ -24,7 +25,8 @@ $port->baudrate(230400);
 $port->parity("none");
 $port->stopbits(1);
 
-my $count = 0;
+my $missing   = 0;
+my $have_sent = 0;
 while (1) {
 
     # Poll to see if any data is coming in
@@ -34,12 +36,15 @@ while (1) {
     # Send a number to the arduino
     if ($received) {
         print "Received '$received'\n";
+        $missing = 0;
     }
     else {
         Time::HiRes::usleep(2000);
-        $count++;
-        my $send = "$count\n";
-        my $count_out = $port->write($send);
-        #print "Sent '$send'\n";
+        if ( ( $missing++ % 1000 ) == 0 ) {
+            if ( ( not $have_sent ) or ( $missing > 1000 ) ) {
+                my $write_out = $port->write("1");
+            }
+            print "$missing\n";
+        }
     }
 }
