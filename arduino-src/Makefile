@@ -1,6 +1,6 @@
 
 # the name of the main file and sources to be used
-APPNAME=serial_echo
+APPNAME=eeg-mouse
 SOURCES=$(APPNAME).o
 
 ARDUINO_SOURCES_DIR=/usr/share/arduino/hardware/arduino/cores/arduino
