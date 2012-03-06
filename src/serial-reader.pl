@@ -12,7 +12,7 @@ use Time::HiRes;
 use Device::SerialPort;
 
 # Set up the serial port
-# 19200, 81N on the USB ftdi driver
+# 230400, 8N1 on the USB ftdi driver
 my $port;
 if ( -e "/dev/ttyACM0" ) {
     $port = Device::SerialPort->new("/dev/ttyACM0");
@@ -33,7 +33,6 @@ while (1) {
     my $received = $port->lookfor();
 
     # If we get data, then print it
-    # Send a number to the arduino
     if ($received) {
         print "Received '$received'\n";
         $missing = 0;
@@ -42,6 +41,8 @@ while (1) {
         Time::HiRes::usleep(2000);
         if ( ( $missing++ % 1000 ) == 0 ) {
             if ( ( not $have_sent ) or ( $missing > 1000 ) ) {
+
+                # Send a number to the arduino
                 my $write_out = $port->write("1");
             }
             print "$missing\n";
