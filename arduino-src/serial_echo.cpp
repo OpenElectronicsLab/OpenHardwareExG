@@ -61,10 +61,62 @@ extern "C" void __cxa_pure_virtual(void)
 	while (true) ;
 }
 
+void fill_sample_frame(void)
+{
+	int i, j;
+	char in_byte;
+
+	pos = 0;
+
+	byte_buf[pos++] = '[';
+	byte_buf[pos++] = 'g';
+	byte_buf[pos++] = 'o';
+	byte_buf[pos++] = ']';
+
+	// read 24bits of status then 24bits for each channel
+	for (i = 0; i <= 8; ++i) {
+		for (j = 0; j < 3; ++j) {
+			in_byte = SPI.transfer(0);
+			byte_buf[pos++] = 'A' + ((in_byte & 0xF0) >> 4);
+			byte_buf[pos++] = 'A' + (in_byte & 0x0F);
+		}
+	}
+
+	byte_buf[pos++] = '[';
+	byte_buf[pos++] = 'o';
+	byte_buf[pos++] = 'n';
+	byte_buf[pos++] = ']';
+	byte_buf[pos++] = '\n';
+}
+
+void fill_no_data_frame(void)
+{
+	pos = 0;
+
+	byte_buf[pos++] = '[';
+	byte_buf[pos++] = 'o';
+	byte_buf[pos++] = 'h';
+	byte_buf[pos++] = ']';
+
+	byte_buf[pos++] = 'n';
+	byte_buf[pos++] = 'o';
+	byte_buf[pos++] = ' ';
+	byte_buf[pos++] = 'd';
+	byte_buf[pos++] = 'a';
+	byte_buf[pos++] = 't';
+	byte_buf[pos++] = 'a';
+
+	byte_buf[pos++] = '[';
+	byte_buf[pos++] = 'n';
+	byte_buf[pos++] = 'o';
+	byte_buf[pos++] = ']';
+	byte_buf[pos++] = '\n';
+}
+
 int main(void)
 {
 	char in_byte;
-	int i, j;
+	int i;
 
 	init();
 
@@ -153,30 +205,14 @@ int main(void)
 
 	while (1) {
 		// wait for DRDY
-		while (digitalRead(IPIN_DRDY) == HIGH) {
+		for (i = 0; (digitalRead(IPIN_DRDY) == HIGH) && i < 5000; ++i) {
 			;	// no data yet
 		}
-		pos = 0;
-
-		byte_buf[pos++] = '[';
-		byte_buf[pos++] = 'g';
-		byte_buf[pos++] = 'o';
-		byte_buf[pos++] = ']';
-
-		// read 24bits of status then 24bits for each channel
-		for (i = 0; i <= 8; ++i) {
-			for (j = 0; j < 3; ++j) {
-				in_byte = SPI.transfer(0);
-				byte_buf[pos++] = 'A' + ((in_byte & 0xF0) >> 4);
-				byte_buf[pos++] = 'A' + (in_byte & 0x0F);
-			}
+		if (digitalRead(IPIN_DRDY) == LOW) {
+			fill_sample_frame();
+		} else {
+			fill_no_data_frame();
 		}
-
-		byte_buf[pos++] = '[';
-		byte_buf[pos++] = 'o';
-		byte_buf[pos++] = 'n';
-		byte_buf[pos++] = ']';
-		byte_buf[pos++] = '\n';
 
 		Serial.print(byte_buf);
 	}
