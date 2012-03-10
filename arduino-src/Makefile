@@ -1,7 +1,7 @@
 
 # the name of the main file and sources to be used
 APPNAME=eeg-mouse
-SOURCES=$(APPNAME).o
+SOURCES=$(APPNAME).o util.o
 
 ARDUINO_SOURCES_DIR=/usr/share/arduino/hardware/arduino/cores/arduino
 ARDUINO_SPI_LIB_DIR=/usr/share/arduino/libraries/SPI

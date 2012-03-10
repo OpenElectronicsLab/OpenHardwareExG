@@ -7,6 +7,7 @@
 #include <WProgram.h>
 
 #include "eeg-mouse.h"
+#include "util.h"
 
 #define IN_BUF_SIZE 80
 
@@ -35,8 +36,8 @@ void fill_sample_frame(void)
 	for (i = 0; i <= 8; ++i) {
 		for (j = 0; j < 3; ++j) {
 			in_byte = SPI.transfer(0);
-			byte_buf[pos++] = 'A' + ((in_byte & 0xF0) >> 4);
-			byte_buf[pos++] = 'A' + (in_byte & 0x0F);
+			byte_buf[pos++] = to_hex(in_byte, 1);
+			byte_buf[pos++] = to_hex(in_byte, 0);
 		}
 	}
 
