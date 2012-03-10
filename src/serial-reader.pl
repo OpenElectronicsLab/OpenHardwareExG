@@ -44,8 +44,11 @@ while (1) {
 
                 # Send a number to the arduino
                 my $write_out = $port->write("1");
+                $have_sent = 1;
             }
-            print "$missing\n";
+            if ( $missing > 1000 ) {
+                print "$missing\n";
+            }
         }
     }
 }
