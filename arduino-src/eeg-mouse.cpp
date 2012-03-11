@@ -97,6 +97,8 @@ int main(void)
 	SPI.begin();
 
 	SPI.setBitOrder(MSBFIRST);
+    SPI.setClockDivider(SPI_CLOCK_DIV4);
+    SPI.setDataMode(1);
 
 	digitalWrite(IPIN_CS, LOW);
 	digitalWrite(PIN_CLKSEL, HIGH);
@@ -121,6 +123,19 @@ int main(void)
 
 	// Send SDATAC Command (Stop Read Data Continuously mode)
 	SPI.transfer(SDATAC);
+
+	// All GPIO set to output 0x0101
+    delay(1);
+	digitalWrite(IPIN_CS, HIGH);
+    delay(1);
+	digitalWrite(IPIN_CS, LOW);
+	SPI.transfer(WREG | 0x14);
+	SPI.transfer(0);	// number of registers to be read/written – 1
+	SPI.transfer(0x50);
+    delay(1);
+	digitalWrite(IPIN_CS, HIGH);
+    delay(1);
+	digitalWrite(IPIN_CS, LOW);
 
 	// no external reference Configuration Register 3
 	SPI.transfer(WREG | CONFIG3);
