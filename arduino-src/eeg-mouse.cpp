@@ -48,8 +48,10 @@ void fill_sample_frame(void)
 	byte_buf[pos++] = '\n';
 }
 
-void fill_no_data_frame(void)
+void fill_error_frame(char *msg)
 {
+	int i = 0;
+
 	pos = 0;
 
 	byte_buf[pos++] = '[';
@@ -57,13 +59,9 @@ void fill_no_data_frame(void)
 	byte_buf[pos++] = 'h';
 	byte_buf[pos++] = ']';
 
-	byte_buf[pos++] = 'n';
-	byte_buf[pos++] = 'o';
-	byte_buf[pos++] = ' ';
-	byte_buf[pos++] = 'd';
-	byte_buf[pos++] = 'a';
-	byte_buf[pos++] = 't';
-	byte_buf[pos++] = 'a';
+	while ((msg[i] != 0) && (pos < (IN_BUF_SIZE - 7))) {
+		byte_buf[pos++] = msg[i++];
+	}
 
 	byte_buf[pos++] = '[';
 	byte_buf[pos++] = 'n';
@@ -185,7 +183,7 @@ int main(void)
 		if (digitalRead(IPIN_DRDY) == LOW) {
 			fill_sample_frame();
 		} else {
-			fill_no_data_frame();
+			fill_error_frame("no data");
 		}
 
 		Serial.print(byte_buf);
