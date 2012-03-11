@@ -46,4 +46,8 @@
 #define CHnSET 0x04		// CH1SET is 0x05, CH2SET is 0x06, etc.
 // we need to set the RLD at some point
 
+extern "C" void __cxa_pure_virtual(void);
+void fill_sample_frame(void);
+void fill_error_frame(const char *msg);
+
 #endif /* _EEG_MOUSE_H_ */

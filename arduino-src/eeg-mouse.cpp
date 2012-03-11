@@ -16,8 +16,16 @@ int pos;
 
 extern "C" void __cxa_pure_virtual(void)
 {
+	int i = 0;
+
 	// error - loop forever (nice if you can attach a debugger)
-	while (true) ;
+	while (1) {
+		if ((i++ % 1000) == 0) {
+			fill_error_frame("__cxa_pure_virtual");
+			Serial.print(byte_buf);
+		}
+		continue;
+	}
 }
 
 void fill_sample_frame(void)
@@ -48,7 +56,7 @@ void fill_sample_frame(void)
 	byte_buf[pos++] = '\n';
 }
 
-void fill_error_frame(char *msg)
+void fill_error_frame(const char *msg)
 {
 	int i = 0;
 
@@ -76,6 +84,9 @@ int main(void)
 	int i;
 
 	init();
+
+	// initialize the USB Serial connection
+	Serial.begin(230400);
 
 	// set the LED on
 	pinMode(13, OUTPUT);
@@ -156,11 +167,15 @@ int main(void)
 	}
 
 	digitalWrite(PIN_START, HIGH);
+	i = 0;
 	while (digitalRead(IPIN_DRDY) == HIGH) {
+		i++;
+		if ((i % 1000) == 0) {
+			fill_error_frame("waiting for DRDY in setup");
+			Serial.print(byte_buf);
+		}
 		continue;
 	}
-
-	Serial.begin(230400);
 
 	// wait for a non-zero byte as a ping from the computer
 	do {
