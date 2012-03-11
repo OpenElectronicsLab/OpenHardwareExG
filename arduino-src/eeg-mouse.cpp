@@ -78,6 +78,21 @@ void fill_error_frame(const char *msg)
 	byte_buf[pos++] = '\n';
 }
 
+void wait_for_drdy(const char *msg, int interval)
+{
+	int i = 0;
+	while (digitalRead(IPIN_DRDY) == HIGH) {
+		if ((i++ % interval) != 0) {
+			continue;
+		}
+		if (i < interval) {
+			continue;
+		}
+		fill_error_frame(msg);
+		Serial.print(byte_buf);
+	}
+}
+
 int main(void)
 {
 	char in_byte;
@@ -167,15 +182,7 @@ int main(void)
 	}
 
 	digitalWrite(PIN_START, HIGH);
-	i = 0;
-	while (digitalRead(IPIN_DRDY) == HIGH) {
-		i++;
-		if ((i % 1000) == 0) {
-			fill_error_frame("waiting for DRDY in setup");
-			Serial.print(byte_buf);
-		}
-		continue;
-	}
+	wait_for_drdy("waiting for DRDY in setup", 1000);
 
 	// wait for a non-zero byte as a ping from the computer
 	do {
@@ -191,16 +198,8 @@ int main(void)
 	SPI.transfer(RDATAC);
 
 	while (1) {
-		// wait for DRDY
-		for (i = 0; (digitalRead(IPIN_DRDY) == HIGH) && i < 5000; ++i) {
-			;	// no data yet
-		}
-		if (digitalRead(IPIN_DRDY) == LOW) {
-			fill_sample_frame();
-		} else {
-			fill_error_frame("no data");
-		}
-
+		wait_for_drdy("no data", 5000);
+		fill_sample_frame();
 		Serial.print(byte_buf);
 	}
 }

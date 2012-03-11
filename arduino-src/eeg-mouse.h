@@ -47,6 +47,7 @@
 // we need to set the RLD at some point
 
 extern "C" void __cxa_pure_virtual(void);
+void wait_for_drdy(const char *msg, int interval);
 void fill_sample_frame(void);
 void fill_error_frame(const char *msg);
 
