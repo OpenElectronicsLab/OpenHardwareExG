@@ -3,6 +3,14 @@
 APPNAME=eeg-mouse
 SOURCES=$(APPNAME).o util.o
 
+# default target
+all: $(APPNAME).hex
+	echo YAY
+
+# manual dependencies
+util.o : util.cpp util.h
+eeg-mouse.o : eeg-mouse.cpp eeg-mouse.h util.h ads1298.h
+
 ARDUINO_SOURCES_DIR=/usr/share/arduino/hardware/arduino/cores/arduino
 ARDUINO_SPI_LIB_DIR=/usr/share/arduino/libraries/SPI
 
@@ -66,7 +74,7 @@ ARDUINO_SPI_SOURCES= SPI.o
 %.o : %.c
 	$(CC) $(CFLAGS) $(NOISYFLAGS) -c $< -o $@
 
-%.o : %.cpp
+%.o : %.cpp $(HEADERS)
 	$(CXX) $(NOISYFLAGS) $(CXXFLAGS) $(CXX_WORKAROUND_FLAGS) -c $< -o $@
 
 %.o : $(ARDUINO_SOURCES_DIR)/%.c
@@ -78,8 +86,8 @@ ARDUINO_SPI_SOURCES= SPI.o
 %.o : $(ARDUINO_SPI_LIB_DIR)/%.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-all: $(APPNAME).hex
-	echo YAY
+# all:
+# see above.
 
 clean:
 	rm -f *.o *.a *.hex $(APPNAME)

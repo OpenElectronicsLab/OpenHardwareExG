@@ -7,6 +7,7 @@
 #include <WProgram.h>
 
 #include "eeg-mouse.h"
+#include "ads1298.h"
 #include "util.h"
 
 #define IN_BUF_SIZE 80
@@ -95,6 +96,7 @@ void wait_for_drdy(const char *msg, int interval)
 
 int main(void)
 {
+    using namespace ADS1298;
 	char in_byte;
 	int i;
 
@@ -164,7 +166,7 @@ int main(void)
 	// no external reference Configuration Register 3
 	SPI.transfer(WREG | CONFIG3);
 	SPI.transfer(0);	// number of registers to be read/written – 1
-	SPI.transfer(PDREFBUF | CONFIG3DEF | VREF_4V);
+	SPI.transfer(PD_REFBUF | CONFIG3_const | VREF_4V);
 
 	// Write Certain Registers, Including Input Short
 	// Set Device in HR Mode and DR = fMOD/1024
