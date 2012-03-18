@@ -63,6 +63,7 @@ void fill_error_frame(const char *msg)
 
 	pos = 0;
 
+	digitalWrite(IPIN_CS, LOW);
 	byte_buf[pos++] = '[';
 	byte_buf[pos++] = 'o';
 	byte_buf[pos++] = 'h';
@@ -77,6 +78,8 @@ void fill_error_frame(const char *msg)
 	byte_buf[pos++] = 'o';
 	byte_buf[pos++] = ']';
 	byte_buf[pos++] = '\n';
+    delayMicroseconds(1);
+	digitalWrite(IPIN_CS, HIGH);
 }
 
 void wait_for_drdy(const char *msg, int interval)
@@ -92,6 +95,24 @@ void wait_for_drdy(const char *msg, int interval)
 		fill_error_frame(msg);
 		Serial.print(byte_buf);
 	}
+}
+
+void adc_send_command(int cmd) {
+	digitalWrite(IPIN_CS, LOW);
+	SPI.transfer(cmd);
+    delayMicroseconds(1);
+    //digitalWrite(IPIN_CS, HIGH); // Causes RDATAC to fail - not sure why.
+}
+
+void adc_wreg(int reg, int val) {
+	digitalWrite(IPIN_CS, LOW);
+
+	SPI.transfer(ADS1298::WREG | reg);
+	SPI.transfer(0);	// number of registers to be read/written – 1
+	SPI.transfer(val);
+
+    delayMicroseconds(1);
+	digitalWrite(IPIN_CS, HIGH);
 }
 
 int main(void)
@@ -126,7 +147,7 @@ int main(void)
 	SPI.setClockDivider(SPI_CLOCK_DIV4);
 	SPI.setDataMode(SPI_MODE1);
 
-	digitalWrite(IPIN_CS, LOW);
+	//digitalWrite(IPIN_CS, LOW);
 	digitalWrite(PIN_CLKSEL, HIGH);
 
 	// Wait for 20 microseconds Oscillator to Wake Up
@@ -148,40 +169,23 @@ int main(void)
 	delay(1);
 
 	// Send SDATAC Command (Stop Read Data Continuously mode)
-	SPI.transfer(SDATAC);
+    adc_send_command(SDATAC);
 
-	// All GPIO set to output 0x0101
-	delay(1);
-	digitalWrite(IPIN_CS, HIGH);
-	delay(1);
-	digitalWrite(IPIN_CS, LOW);
-	SPI.transfer(WREG | GPIO);
-	SPI.transfer(0);	// number of registers to be read/written – 1
-	SPI.transfer(GPIOD3 | GPIOD1);
-	delay(1);
-	digitalWrite(IPIN_CS, HIGH);
-	delay(1);
-	digitalWrite(IPIN_CS, LOW);
+	// All GPIO set to output 0x0000
+    // (floating CMOS inputs can flicker on and off, creating noise)
+    adc_wreg(GPIO, 0);
 
-	// no external reference Configuration Register 3
-	SPI.transfer(WREG | CONFIG3);
-	SPI.transfer(0);	// number of registers to be read/written – 1
-	SPI.transfer(PD_REFBUF | CONFIG3_const | VREF_4V);
+	// Power up the internal reference and wait for it to settle
+    adc_wreg(CONFIG3, PD_REFBUF | CONFIG3_const | VREF_4V);
+	delay(150);
 
 	// Write Certain Registers, Including Input Short
 	// Set Device in HR Mode and DR = fMOD/1024
-	SPI.transfer(WREG | CONFIG1);
-	SPI.transfer(0);
-	// SPI.transfer(HIGH_RES_500_SPS);
-	SPI.transfer(LOW_POWR_250_SPS);
-	SPI.transfer(WREG | CONFIG2);
-	SPI.transfer(0);
-	SPI.transfer(INT_TEST);	// generate test signals
+    adc_wreg(CONFIG1, LOW_POWR_250_SPS);
+	adc_wreg(CONFIG2, INT_TEST);	// generate test signals
 	// Set all channels to test signal
 	for (i = 1; i <= 8; ++i) {
-		SPI.transfer(WREG | (CHnSET + i));
-		SPI.transfer(0);
-		SPI.transfer(TEST_SIGNAL | GAIN_1X);
+        adc_wreg(CHnSET + i, TEST_SIGNAL | GAIN_1X);
 	}
 
 	digitalWrite(PIN_START, HIGH);
@@ -198,7 +202,7 @@ int main(void)
 	} while (in_byte == 0);
 
 	// Put the Device Back in Read DATA Continuous Mode
-	SPI.transfer(RDATAC);
+	adc_send_command(RDATAC);
 
 	while (1) {
 		wait_for_drdy("no data", 5000);
