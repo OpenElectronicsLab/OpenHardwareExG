@@ -121,8 +121,8 @@ int main(void)
 	SPI.begin();
 
 	SPI.setBitOrder(MSBFIRST);
-    SPI.setClockDivider(SPI_CLOCK_DIV4);
-    SPI.setDataMode(SPI_MODE1);
+	SPI.setClockDivider(SPI_CLOCK_DIV4);
+	SPI.setDataMode(SPI_MODE1);
 
 	digitalWrite(IPIN_CS, LOW);
 	digitalWrite(PIN_CLKSEL, HIGH);
@@ -149,16 +149,16 @@ int main(void)
 	SPI.transfer(SDATAC);
 
 	// All GPIO set to output 0x0101
-    delay(1);
+	delay(1);
 	digitalWrite(IPIN_CS, HIGH);
-    delay(1);
+	delay(1);
 	digitalWrite(IPIN_CS, LOW);
 	SPI.transfer(WREG | GPIO);
 	SPI.transfer(0);	// number of registers to be read/written – 1
 	SPI.transfer(GPIOD3 | GPIOD1);
-    delay(1);
+	delay(1);
 	digitalWrite(IPIN_CS, HIGH);
-    delay(1);
+	delay(1);
 	digitalWrite(IPIN_CS, LOW);
 
 	// no external reference Configuration Register 3
