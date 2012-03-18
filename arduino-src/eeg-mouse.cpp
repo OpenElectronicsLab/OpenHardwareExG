@@ -153,9 +153,9 @@ int main(void)
 	digitalWrite(IPIN_CS, HIGH);
     delay(1);
 	digitalWrite(IPIN_CS, LOW);
-	SPI.transfer(WREG | 0x14);
+	SPI.transfer(WREG | GPIO);
 	SPI.transfer(0);	// number of registers to be read/written – 1
-	SPI.transfer(0x50);
+	SPI.transfer(GPIOD3); // | GPIOD1);
     delay(1);
 	digitalWrite(IPIN_CS, HIGH);
     delay(1);
@@ -170,15 +170,15 @@ int main(void)
 	// Set Device in HR Mode and DR = fMOD/1024
 	SPI.transfer(WREG | CONFIG1);
 	SPI.transfer(0);
-	SPI.transfer(0x86);	// TODO bitnames!
+	SPI.transfer(HIGH_RES_500_SPS);
 	SPI.transfer(WREG | CONFIG2);
 	SPI.transfer(0);
-	SPI.transfer(0x10);	// generate test signals
+	SPI.transfer(INT_TEST);	// generate test signals
 	// Set all channels to test signal
 	for (i = 1; i <= 8; ++i) {
 		SPI.transfer(WREG | (CHnSET + i));
 		SPI.transfer(0);
-		SPI.transfer(0x05);	// test signal
+		SPI.transfer(TEST_SIGNAL);
 	}
 
 	digitalWrite(PIN_START, HIGH);
