@@ -19,14 +19,14 @@
 // CLKSEL (clock select) is PL0 PIN 49 (through level shifter)
 #define PIN_CLKSEL 49
 
-// START is PL3 PIN 46 (through level shifter)
-#define PIN_START 46
+// PWDN (power down) is PL1 PIN 48 (through level shifter)
+#define IPIN_PWDN 48
 
 // RESET is PL2 PIN 47 (through level shifter)
 #define IPIN_RESET 47
 
-// PWDN (power down) is PL1 PIN 48 (through level shifter)
-#define IPIN_PWDN 48
+// START is PL3 PIN 46 (through level shifter)
+#define PIN_START 46
 
 // DRDY (data ready) is PL4 PIN 45 (direct)
 #define IPIN_DRDY 45
