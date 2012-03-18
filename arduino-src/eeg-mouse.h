@@ -62,12 +62,19 @@
 #define DR0 0x01
 // SPS - Samples Per Second
 #define HIGH_RES_500_SPS (HR | DR2 | DR1)
+#define LOW_POWR_250_SPS ( DR2 | DR1)
 
 #define INT_TEST 0x10
+
+#define PD 0x80
+#define GAIN2 0x40
+#define GAIN1 0x20
+#define GAIN0 0x10
 #define MUXn2 0x04
 #define MUXn1 0x02
 #define MUXn0 0x01
 #define TEST_SIGNAL (MUXn2 | MUXn0)
+#define GAIN_1X GAIN0
 
 
 extern "C" void __cxa_pure_virtual(void);

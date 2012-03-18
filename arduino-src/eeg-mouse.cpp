@@ -122,7 +122,7 @@ int main(void)
 
 	SPI.setBitOrder(MSBFIRST);
     SPI.setClockDivider(SPI_CLOCK_DIV4);
-    SPI.setDataMode(1);
+    SPI.setDataMode(SPI_MODE1);
 
 	digitalWrite(IPIN_CS, LOW);
 	digitalWrite(PIN_CLKSEL, HIGH);
@@ -155,7 +155,7 @@ int main(void)
 	digitalWrite(IPIN_CS, LOW);
 	SPI.transfer(WREG | GPIO);
 	SPI.transfer(0);	// number of registers to be read/written – 1
-	SPI.transfer(GPIOD3); // | GPIOD1);
+	SPI.transfer(GPIOD3 | GPIOD1);
     delay(1);
 	digitalWrite(IPIN_CS, HIGH);
     delay(1);
@@ -170,7 +170,8 @@ int main(void)
 	// Set Device in HR Mode and DR = fMOD/1024
 	SPI.transfer(WREG | CONFIG1);
 	SPI.transfer(0);
-	SPI.transfer(HIGH_RES_500_SPS);
+	// SPI.transfer(HIGH_RES_500_SPS);
+	SPI.transfer(LOW_POWR_250_SPS);
 	SPI.transfer(WREG | CONFIG2);
 	SPI.transfer(0);
 	SPI.transfer(INT_TEST);	// generate test signals
@@ -178,7 +179,7 @@ int main(void)
 	for (i = 1; i <= 8; ++i) {
 		SPI.transfer(WREG | (CHnSET + i));
 		SPI.transfer(0);
-		SPI.transfer(TEST_SIGNAL);
+		SPI.transfer(TEST_SIGNAL | GAIN_1X);
 	}
 
 	digitalWrite(PIN_START, HIGH);
