@@ -68,7 +68,20 @@ namespace ADS1298 {
         DEV_ID1 = 0x02,
         DEV_ID0 = 0x01,
 
-        ID_const = 0x10
+        ID_const = 0x10,
+        ID_ADS129x = DEV_ID7,
+        ID_ADS129xR = (DEV_ID7 | DEV_ID6),
+
+        ID_4CHAN = 0,
+        ID_6CHAN = DEV_ID0,
+        ID_8CHAN = DEV_ID1,
+
+        ID_ADS1294 = (ID_ADS129x | ID_4CHAN),
+        ID_ADS1296 = (ID_ADS129x | ID_6CHAN),
+        ID_ADS1298 = (ID_ADS129x | ID_8CHAN),
+        ID_ADS1294R = (ID_ADS129xR | ID_4CHAN),
+        ID_ADS1296R = (ID_ADS129xR | ID_6CHAN),
+        ID_ADS1298R = (ID_ADS129xR | ID_8CHAN)
     };
 
     enum CONFIG1_bits {
@@ -80,7 +93,12 @@ namespace ADS1298 {
         DR0 = 0x01,
 
         CONFIG1_const = 0x00,
-        HIGH_RES_4000_SPS = (HR | DR1 | DR0),
+        HIGH_RES_32k_SPS = HR,
+        HIGH_RES_16k_SPS = (HR | DR0),
+        HIGH_RES_8k_SPS = (HR | DR1),
+        HIGH_RES_4k_SPS = (HR | DR1 | DR0),
+        HIGH_RES_2k_SPS = (HR | DR2),
+        HIGH_RES_1k_SPS = (HR | DR2 | DR0),
         HIGH_RES_500_SPS = (HR | DR2 | DR1),
         LOW_POWR_250_SPS = ( DR2 | DR1)
     };
@@ -92,7 +110,10 @@ namespace ADS1298 {
         TEST_FREQ1 = 0x02,
         TEST_FREQ0 = 0x01,
 
-        CONFIG2_const = 0x00
+        CONFIG2_const = 0x00,
+        INT_TEST_4HZ = INT_TEST,
+        INT_TEST_8HZ = (INT_TEST | TEST_FREQ0),
+        INT_TEST_DC = (INT_TEST | TEST_FREQ1 | TEST_FREQ0)
     };
 
     enum CONFIG3_bits {
@@ -117,7 +138,24 @@ namespace ADS1298 {
         FLEAD_OFF1 = 0x02,
         FLEAD_OFF0 = 0x01,
 
-        LOFF_const = 0x00
+        LOFF_const = 0x00,
+
+        COMP_TH_95 = 0x00,
+        COMP_TH_92_5 = COMP_TH0,
+        COMP_TH_90 = COMP_TH1,
+        COMP_TH_87_5 = (COMP_TH1 | COMP_TH0),
+        COMP_TH_85 = COMP_TH2,
+        COMP_TH_80 = (COMP_TH2 | COMP_TH0),
+        COMP_TH_75 = (COMP_TH2 | COMP_TH1),
+        COMP_TH_70 = (COMP_TH2 | COMP_TH1 | COMP_TH0),
+
+        ILEAD_OFF_6nA = 0x00,
+        ILEAD_OFF_12nA = ILEAD_OFF0,
+        ILEAD_OFF_18nA = ILEAD_OFF1,
+        ILEAD_OFF_24nA = (ILEAD_OFF1 | ILEAD_OFF0),
+
+        FLEAD_OFF_AC = FLEAD_OFF0,
+        FLEAD_OFF_DC = (FLEAD_OFF1 | FLEAD_OFF0)
     };
 
     enum CHnSET_bits {
@@ -131,8 +169,23 @@ namespace ADS1298 {
         MUXn0 = 0x01,
 
         CHnSET_const = 0x00,
+
+        GAIN_1X = GAINn0,
+        GAIN_2X = GAINn1,
+        GAIN_3X = (GAINn1 | GAINn0),
+        GAIN_4X = GAINn2,
+        GAIN_6X = 0x00,
+        GAIN_8X = (GAINn2 | GAINn0),
+        GAIN_12X = (GAINn2 | GAINn1),
+
+        ELECTRODE_INPUT = 0x00,
+        SHORTED = MUXn0,
+        RLD_INPUT = MUXn1,
+        MVDD = (MUXn1 | MUXn0),
+        TEMP = MUXn2,
         TEST_SIGNAL = (MUXn2 | MUXn0),
-        GAIN_1X = GAINn0
+        RLD_DRP = (MUXn2 | MUXn1),
+        RLD_DRN = (MUXn2 | MUXn1 | MUXn0)
     };
 
     enum CH1SET_bits {
@@ -342,7 +395,17 @@ namespace ADS1298 {
         PACEO0 = 0x02,
         PD_PACE = 0x01,
 
-        PACE_const = 0x00
+        PACE_const = 0x00,
+
+        PACEE_CHAN2 = 0x00,
+        PACEE_CHAN4 = PACEE0,
+        PACEE_CHAN6 = PACEE1,
+        PACEE_CHAN8 = (PACEE1 | PACEE0),
+
+        PACEO_CHAN1 = 0x00,
+        PACEO_CHAN3 = PACEE0,
+        PACEO_CHAN5 = PACEE1,
+        PACEO_CHAN7 = (PACEE1 | PACEE0)
     };
 
     enum RESP_bits {
@@ -354,7 +417,20 @@ namespace ADS1298 {
         RESP_CTRL1 = 0x02,
         RESP_CTRL0 = 0x01,
 
-        RESP_const = 0x20
+        RESP_const = 0x20,
+
+        RESP_PH_22_5 = 0x00,
+        RESP_PH_45 = RESP_PH0,
+        RESP_PH_67_5 = RESP_PH1,
+        RESP_PH_90 = (RESP_PH1 | RESP_PH0),
+        RESP_PH_112_5 = RESP_PH2,
+        RESP_PH_135 = (RESP_PH2 | RESP_PH0),
+        RESP_PH_157_5 = (RESP_PH2 | RESP_PH1),
+
+        RESP_NONE = 0x00,
+        RESP_EXT = RESP_CTRL0,
+        RESP_INT_SIG_INT = RESP_CTRL1,
+        RESP_INT_SIG_EXT = (RESP_CTRL1 | RESP_CTRL0)
     };
 
     enum CONFIG4_bits {
@@ -365,7 +441,16 @@ namespace ADS1298 {
         WCT_TO_RLD = 0x04,
         PD_LOFF_COMP = 0x02,
 
-        CONFIG4_const = 0x00
+        CONFIG4_const = 0x00,
+
+        RESP_FREQ_64k_Hz = 0x00,
+        RESP_FREQ_32k_Hz = RESP_FREQ0,
+        RESP_FREQ_16k_Hz = RESP_FREQ1,
+        RESP_FREQ_8k_Hz = (RESP_FREQ1 | RESP_FREQ0),
+        RESP_FREQ_4k_Hz = RESP_FREQ2,
+        RESP_FREQ_2k_Hz = (RESP_FREQ2 | RESP_FREQ0),
+        RESP_FREQ_1k_Hz = (RESP_FREQ2 | RESP_FREQ1),
+        RESP_FREQ_500_Hz = (RESP_FREQ2 | RESP_FREQ1 | RESP_FREQ0)
     };
 
     enum WCT1_bits {
@@ -378,7 +463,16 @@ namespace ADS1298 {
         WCTA1 = 0x02,
         WCTA0 = 0x01,
 
-        WCT1_const = 0x00
+        WCT1_const = 0x00,
+
+        WCTA_CH1P = 0x00,
+        WCTA_CH1N = WCTA0,
+        WCTA_CH2P = WCTA1,
+        WCTA_CH2N = (WCTA1 | WCTA0),
+        WCTA_CH3P = WCTA2,
+        WCTA_CH3N = (WCTA2 | WCTA0),
+        WCTA_CH4P = (WCTA2 | WCTA1),
+        WCTA_CH4N = (WCTA2 | WCTA1 | WCTA0)
     };
 
     enum WCT2_bits {
@@ -391,8 +485,26 @@ namespace ADS1298 {
         WCTC1 = 0x02,
         WCTC0 = 0x01,
 
-        WCT2_const = 0x00
+        WCT2_const = 0x00,
+
+        WCTB_CH1P = 0x00,
+        WCTB_CH1N = WCTB0,
+        WCTB_CH2P = WCTB1,
+        WCTB_CH2N = (WCTB1 | WCTB0),
+        WCTB_CH3P = WCTB2,
+        WCTB_CH3N = (WCTB2 | WCTB0),
+        WCTB_CH4P = (WCTB2 | WCTB1),
+        WCTB_CH4N = (WCTB2 | WCTB1 | WCTB0),
+
+        WCTC_CH1P = 0x00,
+        WCTC_CH1N = WCTC0,
+        WCTC_CH2P = WCTC1,
+        WCTC_CH2N = (WCTC1 | WCTC0),
+        WCTC_CH3P = WCTC2,
+        WCTC_CH3N = (WCTC2 | WCTC0),
+        WCTC_CH4P = (WCTC2 | WCTC1),
+        WCTC_CH4N = (WCTC2 | WCTC1 | WCTC0)
     };
-};
+}
 
 #endif /* ADS1298_H */
