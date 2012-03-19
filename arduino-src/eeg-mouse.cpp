@@ -36,6 +36,7 @@ void fill_sample_frame(void)
 
 	pos = 0;
 
+	digitalWrite(IPIN_CS, LOW);
 	byte_buf[pos++] = '[';
 	byte_buf[pos++] = 'g';
 	byte_buf[pos++] = 'o';
@@ -55,6 +56,8 @@ void fill_sample_frame(void)
 	byte_buf[pos++] = 'n';
 	byte_buf[pos++] = ']';
 	byte_buf[pos++] = '\n';
+	delayMicroseconds(1);
+	digitalWrite(IPIN_CS, HIGH);
 }
 
 void fill_error_frame(const char *msg)
@@ -63,7 +66,6 @@ void fill_error_frame(const char *msg)
 
 	pos = 0;
 
-	digitalWrite(IPIN_CS, LOW);
 	byte_buf[pos++] = '[';
 	byte_buf[pos++] = 'o';
 	byte_buf[pos++] = 'h';
@@ -78,8 +80,6 @@ void fill_error_frame(const char *msg)
 	byte_buf[pos++] = 'o';
 	byte_buf[pos++] = ']';
 	byte_buf[pos++] = '\n';
-	delayMicroseconds(1);
-	digitalWrite(IPIN_CS, HIGH);
 }
 
 void wait_for_drdy(const char *msg, int interval)
@@ -100,7 +100,7 @@ void adc_send_command(int cmd)
 	digitalWrite(IPIN_CS, LOW);
 	SPI.transfer(cmd);
 	delayMicroseconds(1);
-	//digitalWrite(IPIN_CS, HIGH); // Causes RDATAC to fail - not sure why.
+	digitalWrite(IPIN_CS, HIGH);
 }
 
 void adc_wreg(int reg, int val)

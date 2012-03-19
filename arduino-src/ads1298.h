@@ -1,7 +1,9 @@
 #ifndef ADS1298_H
 #define ADS1298_H
 
+#ifdef __cplusplus
 namespace ADS1298 {
+#endif
 
 	enum spi_command {
 		// system commands
@@ -505,5 +507,9 @@ namespace ADS1298 {
 		WCTC_CH4P = (WCTC2 | WCTC1),
 		WCTC_CH4N = (WCTC2 | WCTC1 | WCTC0)
 	};
+
+#ifdef __cplusplus
 }
+#endif /* namespace ADS1298 */
+
 #endif				/* ADS1298_H */
