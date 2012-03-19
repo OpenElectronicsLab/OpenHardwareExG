@@ -86,12 +86,10 @@ void wait_for_drdy(const char *msg, int interval)
 {
 	int i = 0;
 	while (digitalRead(IPIN_DRDY) == HIGH) {
-		if ((i++ % interval) != 0) {
-			continue;
-		}
 		if (i < interval) {
 			continue;
 		}
+		i = 0;
 		fill_error_frame(msg);
 		Serial.print(byte_buf);
 	}
