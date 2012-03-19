@@ -78,7 +78,7 @@ void fill_error_frame(const char *msg)
 	byte_buf[pos++] = 'o';
 	byte_buf[pos++] = ']';
 	byte_buf[pos++] = '\n';
-    delayMicroseconds(1);
+	delayMicroseconds(1);
 	digitalWrite(IPIN_CS, HIGH);
 }
 
@@ -95,27 +95,29 @@ void wait_for_drdy(const char *msg, int interval)
 	}
 }
 
-void adc_send_command(int cmd) {
+void adc_send_command(int cmd)
+{
 	digitalWrite(IPIN_CS, LOW);
 	SPI.transfer(cmd);
-    delayMicroseconds(1);
-    //digitalWrite(IPIN_CS, HIGH); // Causes RDATAC to fail - not sure why.
+	delayMicroseconds(1);
+	//digitalWrite(IPIN_CS, HIGH); // Causes RDATAC to fail - not sure why.
 }
 
-void adc_wreg(int reg, int val) {
+void adc_wreg(int reg, int val)
+{
 	digitalWrite(IPIN_CS, LOW);
 
 	SPI.transfer(ADS1298::WREG | reg);
 	SPI.transfer(0);	// number of registers to be read/written – 1
 	SPI.transfer(val);
 
-    delayMicroseconds(1);
+	delayMicroseconds(1);
 	digitalWrite(IPIN_CS, HIGH);
 }
 
 int main(void)
 {
-    using namespace ADS1298;
+	using namespace ADS1298;
 	char in_byte;
 	int i;
 
@@ -167,23 +169,23 @@ int main(void)
 	delay(1);
 
 	// Send SDATAC Command (Stop Read Data Continuously mode)
-    adc_send_command(SDATAC);
+	adc_send_command(SDATAC);
 
 	// All GPIO set to output 0x0000
-    // (floating CMOS inputs can flicker on and off, creating noise)
-    adc_wreg(GPIO, 0);
+	// (floating CMOS inputs can flicker on and off, creating noise)
+	adc_wreg(GPIO, 0);
 
 	// Power up the internal reference and wait for it to settle
-    adc_wreg(CONFIG3, PD_REFBUF | CONFIG3_const | VREF_4V);
+	adc_wreg(CONFIG3, PD_REFBUF | CONFIG3_const | VREF_4V);
 	delay(150);
 
 	// Write Certain Registers, Including Input Short
 	// Set Device in HR Mode and DR = fMOD/1024
-    adc_wreg(CONFIG1, LOW_POWR_250_SPS);
+	adc_wreg(CONFIG1, LOW_POWR_250_SPS);
 	adc_wreg(CONFIG2, INT_TEST);	// generate test signals
 	// Set all channels to test signal
 	for (i = 1; i <= 8; ++i) {
-        adc_wreg(CHnSET + i, TEST_SIGNAL | GAIN_1X);
+		adc_wreg(CHnSET + i, TEST_SIGNAL | GAIN_1X);
 	}
 
 	digitalWrite(PIN_START, HIGH);
