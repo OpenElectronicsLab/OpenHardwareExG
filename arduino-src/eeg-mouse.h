@@ -31,7 +31,6 @@
 // DRDY (data ready) is PL4 PIN 45 (direct)
 #define IPIN_DRDY 45
 
-extern "C" void __cxa_pure_virtual(void);
 void wait_for_drdy(const char *msg, int interval);
 void fill_sample_frame(void);
 void fill_error_frame(const char *msg);

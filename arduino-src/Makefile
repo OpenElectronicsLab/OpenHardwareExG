@@ -1,7 +1,7 @@
 
 # the name of the main file and sources to be used
 APPNAME=eeg-mouse
-SOURCES=$(APPNAME).o util.o
+SOURCES=$(APPNAME).o util.o serial.o
 
 # default target
 all: $(APPNAME).hex

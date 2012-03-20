@@ -9,25 +9,12 @@
 #include "eeg-mouse.h"
 #include "ads1298.h"
 #include "util.h"
+#include "serial.h"
 
 #define IN_BUF_SIZE 80
 
 char byte_buf[IN_BUF_SIZE];
 int pos;
-
-extern "C" void __cxa_pure_virtual(void)
-{
-	int i = 0;
-
-	// error - loop forever (nice if you can attach a debugger)
-	while (1) {
-		if ((i++ % 1000) == 0) {
-			fill_error_frame("__cxa_pure_virtual");
-			Serial.print(byte_buf);
-		}
-		continue;
-	}
-}
 
 void fill_sample_frame(void)
 {
