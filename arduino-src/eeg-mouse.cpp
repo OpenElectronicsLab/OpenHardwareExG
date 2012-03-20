@@ -47,26 +47,11 @@ void fill_sample_frame(void)
 	digitalWrite(IPIN_CS, HIGH);
 }
 
-void fill_error_frame(const char *msg)
+void serial_print_error(const char *msg)
 {
-	int i = 0;
-
-	pos = 0;
-
-	byte_buf[pos++] = '[';
-	byte_buf[pos++] = 'o';
-	byte_buf[pos++] = 'h';
-	byte_buf[pos++] = ']';
-
-	while ((msg[i] != 0) && (pos < (IN_BUF_SIZE - 7))) {
-		byte_buf[pos++] = msg[i++];
-	}
-
-	byte_buf[pos++] = '[';
-	byte_buf[pos++] = 'n';
-	byte_buf[pos++] = 'o';
-	byte_buf[pos++] = ']';
-	byte_buf[pos++] = '\n';
+	Serial.print("[oh]");
+	Serial.print(msg);
+	Serial.print("[no]\n");
 }
 
 void wait_for_drdy(const char *msg, int interval)
@@ -77,8 +62,7 @@ void wait_for_drdy(const char *msg, int interval)
 			continue;
 		}
 		i = 0;
-		fill_error_frame(msg);
-		Serial.print(byte_buf);
+		serial_print_error(msg);
 	}
 }
 
