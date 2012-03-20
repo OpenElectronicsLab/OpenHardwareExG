@@ -11,17 +11,17 @@
 #include "util.h"
 #include "serial.h"
 
-#define IN_BUF_SIZE 80
+// actual size today is 64, but a few extra will not hurt
+#define DATA_BUF_SIZE 80
 
-char byte_buf[IN_BUF_SIZE];
-int pos;
-
-void fill_sample_frame(void)
+// if this becomes more flexible, we may need to pass in
+// the byte_buf size, but for now we are safe to skip it
+void fill_sample_frame(char *byte_buf)
 {
 	int i, j;
 	char in_byte;
 
-	pos = 0;
+	unsigned int pos = 0;
 
 	digitalWrite(IPIN_CS, LOW);
 	byte_buf[pos++] = '[';
@@ -91,6 +91,7 @@ int main(void)
 	using namespace ADS1298;
 	char in_byte;
 	int i;
+	char byte_buf[DATA_BUF_SIZE];
 
 	init();
 
@@ -177,7 +178,7 @@ int main(void)
 
 	while (1) {
 		wait_for_drdy("no data", 5000);
-		fill_sample_frame();
+		fill_sample_frame(byte_buf);
 		Serial.print(byte_buf);
 	}
 }

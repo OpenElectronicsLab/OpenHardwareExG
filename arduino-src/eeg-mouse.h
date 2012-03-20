@@ -32,7 +32,7 @@
 #define IPIN_DRDY 45
 
 void wait_for_drdy(const char *msg, int interval);
-void fill_sample_frame(void);
+void fill_sample_frame(char *byte_buf);
 void fill_error_frame(const char *msg);
 
 #endif /* _EEG_MOUSE_H_ */
