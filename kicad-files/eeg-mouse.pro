@@ -1,6 +1,6 @@
-update=Sat 03 Dec 2011 02:05:58 PM UTC
+update=Sun 25 Mar 2012 06:00:46 PM UTC
 version=1
-last_client=pcbnew
+last_client=cvpcb
 [eeschema]
 version=1
 LibDir=
@@ -66,11 +66,6 @@ LibName30=valves
 LibName31=ads1298
 [general]
 version=1
-[cvpcb]
-version=1
-NetIExt=net
-[cvpcb/libraries]
-EquName1=devcms
 [pcbnew]
 version=1
 PadDrlX=320
@@ -89,7 +84,6 @@ TxtLar=120
 MSegLar=150
 LastNetListRead=eeg-mouse.net
 [pcbnew/libraries]
-LibDir=
 LibName1=sockets
 LibName2=connect
 LibName3=discret
@@ -101,3 +95,11 @@ LibName8=valves
 LibName9=led
 LibName10=dip_sockets
 LibName11=ourcomponents
+LibName12=PIN_ARRAY_4x1
+LibName13=PINARRAY-8x1-40
+LibDir=
+[cvpcb]
+version=1
+NetIExt=net
+[cvpcb/libraries]
+EquName1=devcms
