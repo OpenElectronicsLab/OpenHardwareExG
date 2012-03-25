@@ -1,4 +1,4 @@
-PCBNEW-BOARD Version 1 date Sun 25 Mar 2012 06:02:01 PM UTC
+PCBNEW-BOARD Version 1 date Sun 25 Mar 2012 09:24:23 PM CEST
 
 # Created by Pcbnew(2011-05-25)-stable
 
@@ -6181,7 +6181,7 @@ Po 36500 55500 500 500 120 0
 De 21 1 0 Normal
 $EndTEXTPCB
 $TEXTPCB
-Te "~DIN~"
+Te "DIN"
 Po 76992 52630 500 500 120 0
 De 21 1 0 Normal
 $EndTEXTPCB

@@ -1,4 +1,4 @@
-The rev 0.0 board incorectly labels DIN as inverted.
+The rev 0.0 board incorectly labels DIN as inverted; fixed in 0.1 board.
 
 
 Texas Instruments: SN74LS126ANE4
