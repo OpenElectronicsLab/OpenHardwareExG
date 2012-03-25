@@ -43,6 +43,7 @@ void fill_sample_frame(char *byte_buf)
 	byte_buf[pos++] = 'n';
 	byte_buf[pos++] = ']';
 	byte_buf[pos++] = '\n';
+	byte_buf[pos++] = 0;
 	delayMicroseconds(1);
 	digitalWrite(IPIN_CS, HIGH);
 }
