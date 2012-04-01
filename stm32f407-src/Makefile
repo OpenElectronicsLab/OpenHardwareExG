@@ -68,6 +68,8 @@ all: images
 images: $(BINARY).images
 flash: $(BINARY).flash
 
+eeg-mouse-stm32f.o: eeg-mouse-stm32f4.c eeg-mouse-usb-descriptors.h
+
 %.images: %.bin %.hex %.srec %.list
 	@#echo "*** $* images generated ***"
 
