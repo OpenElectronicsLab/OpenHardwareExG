@@ -188,6 +188,24 @@ static int cdcacm_control_request(struct usb_setup_data *req, u8 **buf,
 	return 0;
 }
 
+// rotates all of the letters in the buffer forward one letter.
+static void rotate_letters(char* buf, int len) {
+    int i;
+
+    for (i = 0; i < len; ++i) {
+        if (buf[i] >= 'a' && buf[i] < 'z') {
+            buf[i] = buf[i] + 1;
+        } else if (buf[i] == 'z') {
+            buf[i] = 'a';
+        }
+        else if (buf[i] >= 'A' && buf[i] < 'Z') {
+            buf[i] = buf[i] + 1;
+        } else if (buf[i] == 'Z') {
+            buf[i] = 'A';
+        }
+    }
+}
+
 static void cdcacm_data_rx_cb(u8 ep)
 {
 	(void)ep;
@@ -196,11 +214,14 @@ static void cdcacm_data_rx_cb(u8 ep)
 	int len = usbd_ep_read_packet(0x01, buf, 64);
 
 	if (len) {
-		while (usbd_ep_write_packet(0x82, buf, len) == 0)
+        rotate_letters(buf, len);
+        while (usbd_ep_write_packet(0x82, buf, len) == 0)
 			;
 	}
 
+    // flash the LEDs so we know we're doing something
 	gpio_toggle(GPIOC, GPIO5);
+    gpio_toggle(GPIOD, GPIO12 | GPIO13 | GPIO14 | GPIO15);
 }
 
 static void cdcacm_set_config(u16 wValue)
@@ -219,10 +240,12 @@ static void cdcacm_set_config(u16 wValue)
 
 int main(void)
 {
-	rcc_clock_setup_hse_3v3(&hse_8mhz_3v3[CLOCK_3V3_120MHZ]);
+	//rcc_clock_setup_hse_3v3(&hse_8mhz_3v3[CLOCK_3V3_120MHZ]);
+	rcc_clock_setup_hse_3v3(&hse_8mhz_3v3[CLOCK_3V3_168MHZ]);
 
 	rcc_peripheral_enable_clock(&RCC_AHB1ENR, RCC_AHB1ENR_IOPAEN);
 	rcc_peripheral_enable_clock(&RCC_AHB2ENR, RCC_AHB2ENR_OTGFSEN);
+	rcc_peripheral_enable_clock(&RCC_AHB1ENR, RCC_AHB1ENR_IOPDEN);
 
 	gpio_mode_setup(GPIOA, GPIO_MODE_AF, GPIO_PUPD_NONE, 
 			GPIO9 | GPIO11 | GPIO12);
@@ -230,6 +253,11 @@ int main(void)
 
 	usbd_init(&otgfs_usb_driver, &dev, &config, usb_strings);
 	usbd_register_set_config_callback(cdcacm_set_config);
+
+	/* Set two LEDs for wigwag effect when toggling. */
+	gpio_mode_setup(GPIOD, GPIO_MODE_OUTPUT,
+			GPIO_PUPD_NONE, GPIO12 | GPIO13 | GPIO14 | GPIO15);
+	gpio_set(GPIOD, GPIO12 | GPIO14);
 
 	while (1)
 		usbd_poll();
