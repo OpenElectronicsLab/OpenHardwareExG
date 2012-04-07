@@ -7,9 +7,9 @@
 
 use IO::Handle;
 
-my $samplerate = 500; # SPS
-my $windowsize = 2; # seconds
-my $refresh_rate = 20; # Hz
+my $samplerate = 250; # SPS
+my $windowsize = 4; # seconds
+my $refresh_rate = 30; # Hz
 my $numchannels = 8;
 
 # start gnuplot
