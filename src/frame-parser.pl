@@ -3,6 +3,9 @@
 use strict;
 use warnings;
 
+# turn off output buffering
+$| = 1;
+
 sub v {
     my ($hex_str) = @_;
 

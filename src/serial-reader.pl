@@ -11,6 +11,9 @@ use Time::HiRes;
 
 use Device::SerialPort;
 
+# turn off output buffering
+$| = 1;
+
 # Set up the serial port
 # 230400, 8N1 on the USB ftdi driver
 my $port;
