@@ -20,7 +20,7 @@ print $pipe "set ytics\n";
 print $pipe "set style data lines\n";
 print $pipe "set grid\n";
 print $pipe "set term x11\n";
-print $pipe "set yrange [-0.003:0.003]\n";
+print $pipe "set yrange [-0.005:0.005]\n";
 print $pipe "set xrange [0:1000]\n";
 
 # set up a list of lists for buffering the incoming data
