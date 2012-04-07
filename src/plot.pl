@@ -21,7 +21,7 @@ print $pipe "set style data lines\n";
 print $pipe "set grid\n";
 print $pipe "set term x11\n";
 print $pipe "set yrange [-0.005:0.005]\n";
-print $pipe "set xrange [0:1000]\n";
+print $pipe "set xrange [0:".($samplerate * $windowsize)."]\n";
 
 # set up a list of lists for buffering the incoming data
 my @data;
