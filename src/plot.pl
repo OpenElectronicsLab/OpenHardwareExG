@@ -8,20 +8,20 @@
 use IO::Handle;
 
 my $samplerate = 250; # SPS
-my $windowsize = 4; # seconds
+my $duration_visible = 4; # seconds
 my $refresh_rate = 30; # Hz
 my $numchannels = 8;
 
 # start gnuplot
 my $pipe;
-open $pipe, "|gnuplot -geometry 800x600\n";
+open($pipe, "|-", "gnuplot -geometry 800x600\n") or die "failed to start gnuplot: $!";
 print $pipe "set xtics\n";
 print $pipe "set ytics\n";
 print $pipe "set style data lines\n";
 print $pipe "set grid\n";
 print $pipe "set term x11\n";
 print $pipe "set yrange [-0.005:0.005]\n";
-print $pipe "set xrange [0:".($samplerate * $windowsize)."]\n";
+print $pipe "set xrange [0:".($samplerate * $duration_visible)."]\n";
 
 # set up a list of lists for buffering the incoming data
 my @data;
@@ -50,11 +50,13 @@ while (<STDIN>) {
         push (@{$data[5]}, $6);
         push (@{$data[6]}, $7);
         push (@{$data[7]}, $8);
+    } else {
+        die "unrecognized data string";
     }
 
-    # if we have more data than our window size, start dropping elements
+    # Drop any data that's older than the interval of time we're showing
     for (my $i = 0; $i < $numchannels; $i++) {
-        if (scalar(@{$data[$i]}) > $samplerate * $windowsize) {
+        if (scalar(@{$data[$i]}) > $samplerate * $duration_visible) {
             shift @{$data[$i]}
         }
     }
@@ -72,4 +74,4 @@ while (<STDIN>) {
     }
 }
 
-print $pipe, "exit;"
+print $pipe, "exit;";
