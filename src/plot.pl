@@ -14,7 +14,7 @@ my $numchannels = 8;
 
 # start gnuplot
 my $pipe;
-open($pipe, "|-", "gnuplot -geometry 800x600\n") or die "failed to start gnuplot: $!";
+open($pipe, "|-", "gnuplot -geometry 800x600") or die "failed to start gnuplot: $!";
 print $pipe "set xtics\n";
 print $pipe "set ytics\n";
 print $pipe "set style data lines\n";
