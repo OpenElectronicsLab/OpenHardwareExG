@@ -1,4 +1,4 @@
-#include "util.h";
+#include "util.h"
 
 char to_hex(char byte, char high)
 {

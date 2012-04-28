@@ -1,10 +1,7 @@
 // modified from: http://www.windmeadow.com/node/38
 
-// the SPI/SPI.h in v22 has a broken double #define SPI_CLOCK_DIV64
-// this looks to be fixed with commit 965480f
+#include <Arduino.h>
 #include <SPI.h>
-
-#include <WProgram.h>
 
 #include "eeg-mouse.h"
 #include "ads1298.h"

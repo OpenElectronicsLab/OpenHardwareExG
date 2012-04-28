@@ -12,6 +12,7 @@ util.o : util.cpp util.h
 eeg-mouse.o : eeg-mouse.cpp eeg-mouse.h util.h ads1298.h
 
 ARDUINO_SOURCES_DIR=/usr/share/arduino/hardware/arduino/cores/arduino
+ARDUINO_VARIANT_DIR=/usr/share/arduino/hardware/arduino/variants/mega
 ARDUINO_SPI_LIB_DIR=/usr/share/arduino/libraries/SPI
 
 # port the arduino is connected to
@@ -46,20 +47,27 @@ SHAREDFLAGS= -gstabs -Os \
 		-funsigned-char -funsigned-bitfields -fpack-struct \
 		-fshort-enums \
 		-I$(ARDUINO_SOURCES_DIR) \
+		-I$(ARDUINO_VARIANT_DIR) \
 		-I$(ARDUINO_SPI_LIB_DIR) \
 		-mmcu=$(GCC_MMCU) -DF_CPU=$(CLOCKSPEED)
 
 CFLAGS=-std=gnu99 -Wstrict-prototypes $(SHAREDFLAGS)
 CXXFLAGS=$(SHAREDFLAGS)
-NOISYFLAGS=-Wall -Wextra -pedantic
-#NOISYFLAGS=-Wall -Wextra -pedantic -Werror
+NOISYFLAGS=-Wall -Wextra -pedantic -Werror
+#NOISYFLAGS=-Wall -Wextra -pedantic
 #NOISYFLAGS=
 CXX_WORKAROUND_FLAGS=-Wno-variadic-macros -Wno-ignored-qualifiers
 
-ARDUINO_SOURCES= HardwareSerial.o \
-			pins_arduino.o \
+ARDUINO_SOURCES=	CDC.o \
+			HardwareSerial.o \
+			HID.o \
+			IPAddress.o \
+			main.o \
+			new.o \
 			Print.o \
+			Stream.o \
 			Tone.o \
+			USBCore.o \
 			WInterrupts.o \
 			wiring_analog.o \
 			wiring.o \
