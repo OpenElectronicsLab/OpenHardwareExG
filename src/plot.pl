@@ -20,7 +20,9 @@ print $pipe "set ytics\n";
 print $pipe "set style data lines\n";
 print $pipe "set grid\n";
 print $pipe "set term x11\n";
-print $pipe "set yrange [-0.005:0.005]\n";
+#print $pipe "set yrange [-0.005:0.005]\n";
+#print $pipe "set yrange [-0.5:0.5]\n";
+#print $pipe "set yrange [-5.0:5.0]\n";
 print $pipe "set xrange [0:".($samplerate * $duration_visible)."]\n";
 
 # set up a list of lists for buffering the incoming data
@@ -66,6 +68,10 @@ while (<STDIN>) {
         $samples_since_last_update = 0;
 
         # generate the plot
+        my @sorted = sort { $b <=> $a } @{$data[0]};
+        my $onemin = $sorted[-1] - 0.005;
+        my $onemax = $sorted[0] + 0.005;
+        print $pipe "set yrange [$onemin:$onemax]\n";
         print $pipe $plotcommand;
         for (my $i = 0; $i < $numchannels; $i++) {
             print $pipe join("\n", @{$data[$i]})."\ne\n";
