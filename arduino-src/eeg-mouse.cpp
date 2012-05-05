@@ -126,9 +126,9 @@ int main(void)
 	digitalWrite(IPIN_PWDN, HIGH);
 	digitalWrite(IPIN_RESET, HIGH);
 
-	// Wait for 33 milliseconds (we will use 1 second)
+	// Wait for 33 milliseconds (we will use 100 millis)
 	//  for Power-On Reset and Oscillator Start-Up
-	delay(1000);
+	delay(100);
 
 	// Issue Reset Pulse,
 	digitalWrite(IPIN_RESET, LOW);
@@ -146,16 +146,19 @@ int main(void)
 	adc_wreg(GPIO, 0);
 
 	// Power up the internal reference and wait for it to settle
-	adc_wreg(CONFIG3, PD_REFBUF | CONFIG3_const | VREF_4V);
+	adc_wreg(CONFIG3, RLDREF_INT | PD_RLD | PD_REFBUF | VREF_4V | CONFIG3_const);
 	delay(150);
+
+	adc_wreg(RLD_SENSP, 0x01);	// only use channel IN1P and IN1N
+	adc_wreg(RLD_SENSN, 0x01);	// for the RLD Measurement
 
 	// Write Certain Registers, Including Input Short
 	// Set Device in HR Mode and DR = fMOD/1024
 	adc_wreg(CONFIG1, LOW_POWR_250_SPS);
-	adc_wreg(CONFIG2, INT_TEST);	// generate test signals
-	// Set all channels to test signal
+	adc_wreg(CONFIG2, INT_TEST);	// generate internal test signals
+	// Set all channels to input signal
 	for (i = 1; i <= 8; ++i) {
-		adc_wreg(CHnSET + i, TEST_SIGNAL | GAIN_1X);
+		adc_wreg(CHnSET + i, ELECTRODE_INPUT | GAIN_12X);
 	}
 
 	digitalWrite(PIN_START, HIGH);
