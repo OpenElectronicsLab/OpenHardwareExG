@@ -9,7 +9,7 @@ use IO::Handle;
 
 my $samplerate = 250; # SPS
 my $duration_visible = 4; # seconds
-my $refresh_rate = 30; # Hz
+my $refresh_rate = 10; # Hz
 my $numchannels = 8;
 
 # start gnuplot
@@ -69,8 +69,9 @@ while (<STDIN>) {
 
         # generate the plot
         my @sorted = sort { $b <=> $a } @{$data[0]};
-        my $onemin = $sorted[-1] - 0.005;
-        my $onemax = $sorted[0] + 0.005;
+        my $padding = 0.05 * ($sorted[0] - $sorted[-1]);
+        my $onemin = $sorted[-1] - $padding;
+        my $onemax = $sorted[0] + $padding;
         print $pipe "set yrange [$onemin:$onemax]\n";
         print $pipe $plotcommand;
         for (my $i = 0; $i < $numchannels; $i++) {
