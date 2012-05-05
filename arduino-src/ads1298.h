@@ -43,10 +43,10 @@ namespace ADS1298 {
 		CH6SET = CHnSET + 6,
 		CH7SET = CHnSET + 7,
 		CH8SET = CHnSET + 8,
-		RLD_SENSEP = 0x0d,
-		RLD_SENSEN = 0x0e,
-		LOFF_SENSEP = 0x0f,
-		LOFF_SENSEN = 0x10,
+		RLD_SENSP = 0x0d,
+		RLD_SENSN = 0x0e,
+		LOFF_SENSP = 0x0f,
+		LOFF_SENSN = 0x10,
 		LOFF_FLIP = 0x11,
 
 		// lead off status
