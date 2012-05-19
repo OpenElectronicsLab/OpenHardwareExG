@@ -12,7 +12,7 @@ N <- length(II);
 # times
 t <- (0:(N - 1)) / rate;
 
-# fft frequencies
+# possible/valid fft frequencies
 f <- (0:(N - 1)) / N * rate;
 
 # fft samples
@@ -25,7 +25,7 @@ lowPass <- 40; # Hz
 lowPassWidth <- 1; # Hz
 # windowing function (just the product of two sigmoid functions)
 win <- function(freq) { 1 / ((1 + exp(-(freq - highPass) / highPassWidth)) * (1 + exp((freq - lowPass) / lowPassWidth))) };
-II_fft_f <- II_fft * (win(f) + win((1 - 1/N) * rate - f));
+II_fft_f <- II_fft * (win(f) + win(f[length(f)] - f));
 II_f <- Re(fft(II_fft_f, inverse=TRUE) / N);
 
 plot(t, II_f, type="l", lwd=2, xlim=c(0,5))
