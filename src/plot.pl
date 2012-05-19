@@ -10,7 +10,7 @@ use IO::Handle;
 my $samplerate = 250; # SPS
 my $duration_visible = 4; # seconds
 my $refresh_rate = 10; # Hz
-my $numchannels = 8;
+my $numchannels = 1; #8;
 
 # start gnuplot
 my $pipe;
