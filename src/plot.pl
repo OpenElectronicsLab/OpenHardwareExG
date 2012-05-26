@@ -42,6 +42,8 @@ my $valid_row_regex =
 qr/C,\s*(?:\d{1,2},\s*+){6}(-?\d+(?:\.\d*)?),\s*(-?\d+(?:\.\d*)?),\s*(-?\d+(?:\.\d*)?),\s*(-?\d+(?:\.\d*)?),\s*(-?\d+(?:\.\d*)?),\s*(-?\d+(?:\.\d*)?),\s*(-?\d+(?:\.\d*)?),\s*(-?\d+(?:\.\d*)?)/;
 my $samples_since_last_update = 0;
 while (<STDIN>) {
+    next if $_ eq "\n";
+
     # parse the data
     if ( $_ =~ m/$valid_row_regex/ ) {
         push (@{$data[0]}, $1);
@@ -53,7 +55,7 @@ while (<STDIN>) {
         push (@{$data[6]}, $7);
         push (@{$data[7]}, $8);
     } else {
-        die "unrecognized data string";
+        warn "unrecognized data string: '" . $_ . "'\n";
     }
 
     # Drop any data that's older than the interval of time we're showing
