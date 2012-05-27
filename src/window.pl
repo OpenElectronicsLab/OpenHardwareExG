@@ -38,14 +38,14 @@ sub paintEvent {
     my $size    = this->size();
     my $width   = $square_size;
     my $height  = $square_size;
-    my $x       = ( ( $size->width() - $width ) / 2 ) + this->{_x};
-    my $y       = ( ( $size->height() - $height ) / 2 ) + this->{_y};
+    my $x       = this->{_x};
+    my $y       = this->{_y};
     $painter->fillRect( $x, $y, $width, $height, Qt::blue() );
     $painter->end();
 }
 
 sub scale {
-    return 10000;
+    return 100000;
 }
 
 # C, 00, 00, 0, 0, 0, 0, -0.1136117, -0.1485806, -0.1476560, -0.1508017, -0.2974134, -0.2481733, -0.2990923, -0.9263688
@@ -135,6 +135,6 @@ $widget->show();
 
 my $timer = Qt::Timer($widget);
 $widget->connect( $timer, SIGNAL 'timeout()', $widget, SLOT 'handleInput()' );
-$timer->start(100);
+$timer->start(10);
 
 exit $app->exec();
