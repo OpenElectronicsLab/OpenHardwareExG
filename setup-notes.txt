@@ -1,0 +1,9 @@
+need to install the perl module Device/SerialPort.pm
+
+    sudo apt-get install libdevice-serialport-perl
+
+need to verify the /dev/ttyACM0 (or adjust serial-reader.pl to match)
+
+need to have rights to tty device ("dialout" group on ubuntu)
+
+sudo apt-get install gnuplot
