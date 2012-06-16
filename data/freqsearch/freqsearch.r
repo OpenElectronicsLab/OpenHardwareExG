@@ -117,6 +117,8 @@ means = apply(absFftResults, 1, mean)
 sds = apply(absFftResults, 1, sd)
 cvs = sds/means
 
+plot(f,cvs,type="l");
+
 #for each subsample, get the density of results at each fft result
 #transpose it to get it in the same rows/columns as the original
 densities = t(apply(absFftResults, 1, function (x) { density(x, from=0, to=0.020)$y }))
@@ -124,5 +126,5 @@ densities = t(apply(absFftResults, 1, function (x) { density(x, from=0, to=0.020
 #install package rgl if you don't have it
 library(rgl)
 
-rgl.surface(1:1000, 1:512*2, densities/10, col="steelblue")
+rgl.surface(1:1000, 1:512*2, densities/1, col="steelblue")
 rgl.bbox()
