@@ -60,8 +60,8 @@ sub handleInput {
     my $i = 0;
     while ( this->{selector}->can_read(0.0) ) {
         my $line = readline( \*STDIN );
-        print $line, "\n";
         last if not $line;
+        print $line, "\n";
         if ( $line =~ m/$valid_row_regex/ ) {
             my $chan_1 = $+{chan1};
             my $chan_2 = $+{chan2};
