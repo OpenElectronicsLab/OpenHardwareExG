@@ -5,6 +5,7 @@ SAMPLE=`date +"%Y%m%d.%H%M%S"`
 ./serial-reader.pl |
 ./frame-parser.pl |
 tee -a sample-${USER}-${SAMPLE}.csv |
-./parsed-frame-filter.pl |
+./chan1-filter.pl |
+./freq-split-smooth.pl |
 ./window.pl |
-./plot.pl
+./plot_2chan.pl
