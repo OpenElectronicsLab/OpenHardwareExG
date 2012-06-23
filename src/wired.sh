@@ -1,6 +1,8 @@
-#!/bin/sh
+#!/bin/bash
 
 SAMPLE=`date +"%Y%m%d.%H%M%S"`
+
+# tee >(./plot_frames.pl) |
 
 ./serial-reader.pl |
 ./frame-parser.pl |
