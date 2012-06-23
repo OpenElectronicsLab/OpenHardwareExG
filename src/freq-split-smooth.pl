@@ -2,7 +2,9 @@
 use strict;
 use warnings;
 
-# turn off output buffering
+use YAML qw( LoadFile );
+
+# turn off channel buffering
 $| = 1;
 
 my $samplerate = 250;            # SPS
@@ -10,70 +12,68 @@ my $pi         = 3.1415926535;
 
 my $dt = 1.0 / $samplerate;
 
-my @lowpass_freq = ( 11.5, 23.5 );
-my @hipass_freq  = ( 10.5, 22.5 );
+# IIR filtering coefficients designed using scipy.signal with the specified
+# function call.  The first set of each pair is used to take a weighted sum of
+# the previous input values to the filter, and the second set of each pair is
+# used for taking the weighted sum of the previous channels of the filter.
+# N.B.: These need to be kept at high precision; pasting these with nine
+# significant figures produced an unstable filter (!)
+my $filter_coef = LoadFile('filter_coefs.yaml');
 
-my @lowpass_alpha =
-  map { $dt / ( ( 1 / ( 2 * $pi * $_ ) ) + $dt ) } @lowpass_freq;
-my @hipass_alpha = map { 1 / ( 1 + ( 2 * $pi * $_ ) * $dt ) } @hipass_freq;
+# old input and output values for each filter
+my @old_filter_in_vals = (
+    [ map { 0.0 } @{ $filter_coef->{x_filter}->{in_coef} } ],
+    [ map { 0.0 } @{ $filter_coef->{y_filter}->{in_coef} } ],
+    [ map { 0.0 } @{ $filter_coef->{smooth_filter}->{in_coef} } ],
+    [ map { 0.0 } @{ $filter_coef->{smooth_filter}->{in_coef} } ],
+);
+my @old_filter_out_vals = (
+    [ map { 0.0 } @{ $filter_coef->{x_filter}->{out_coef} } ],
+    [ map { 0.0 } @{ $filter_coef->{y_filter}->{out_coef} } ],
+    [ map { 0.0 } @{ $filter_coef->{smooth_filter}->{out_coef} } ],
+    [ map { 0.0 } @{ $filter_coef->{smooth_filter}->{out_coef} } ],
+);
 
-my $smoothed_freq = 5;
-my $smoothed_alpha = $dt / ( ( 1 / ( 2 * $pi * $smoothed_freq ) ) + $dt );
 
-my @previous_hipass_in = map { 0.0 * $_ } @hipass_freq;
-my @previous_hipass    = map { 0.0 * $_ } @hipass_freq;
-my @previous_lowpass   = map { 0.0 * $_ } @lowpass_freq;
-my @previous_smoothed  = map { 0.0 * $_ } @lowpass_freq;
+sub linear_filter {
+    my ( $buffer_number, $coef_name, $in_val ) = @_;
+    my $order = @{ $filter_coef->{$coef_name}->{out_coef} };
 
-sub lowpass_filter {
-    my ( $output, $in_val ) = @_;
+    # update the input value list with the new input value
+    pop @{ $old_filter_in_vals[$buffer_number] };
+    unshift @{ $old_filter_in_vals[$buffer_number] }, $in_val;
 
-    my $out_val =
-      ( $previous_lowpass[$output] * ( 1 - $lowpass_alpha[$output] ) ) +
-      ( $in_val * $lowpass_alpha[$output] );
+    # calculate a weighted sum of the old inputs minus the old outputs
+    my $total = 0;
+    my $i;
+    for ($i = 0; $i < $order + 1; $i++) {
+        $total += $filter_coef->{$coef_name}->{in_coef}[$i]
+            * $old_filter_in_vals[$buffer_number][$i];
+    }
+    for ($i = 0; $i < $order; $i++) {
+        $total -= $filter_coef->{$coef_name}->{out_coef}[$i]
+            * $old_filter_out_vals[$buffer_number][$i];
+    }
 
-    $previous_lowpass[$output] = $out_val;
+    # update the output value list with the new output value
+    pop @{ $old_filter_out_vals[$buffer_number] };
+    unshift @{ $old_filter_out_vals[$buffer_number] }, $total;
 
-    return $out_val;
-}
+    # print "@{ $old_filter_out_vals[$channel] }\n";
 
-sub hipass_filter {
-    my ( $output, $in_val ) = @_;
-
-    my $out_val =
-      ( $hipass_alpha[$output] * $previous_hipass[$output] ) +
-      $hipass_alpha[$output] * ( $in_val - $previous_hipass_in[$output] );
-
-    $previous_hipass_in[$output] = $in_val;
-    $previous_hipass[$output]    = $out_val;
-
-    return $out_val;
-}
-
-sub final_smooth {
-    my ( $output, $in_val ) = @_;
-
-    my $abs_val = abs $in_val;
-
-    my $out_val =
-      ( $previous_smoothed[$output] * ( 1 - $smoothed_alpha ) ) +
-      ( $abs_val * $smoothed_alpha );
-
-    $previous_smoothed[$output] = $out_val;
-
-    return $out_val;
+    return $total;
 }
 
 sub smooth {
-    my ( $output, $in_val ) = @_;
-    my $mid_val = hipass_filter( $output, $in_val );
-    my $rough_val = lowpass_filter( $output, $mid_val );
-    my $out_val = final_smooth( $output, $rough_val );
+    my ( $buffer_number, $coef_name, $in_val ) = @_;
+    my $rough_val = linear_filter( $buffer_number, $coef_name, $in_val );
+    my $rectified = abs($rough_val);
+    my $out_val = linear_filter( $buffer_number+2, 'smooth_filter', $rectified );
     return sprintf( "%10f", $out_val );
 }
 
 my $valid_row_regex = qr/
-   (?<val>-?[0-9]+(?:\.[0-9]*))\s*
+   (?<val>-?[0-9]+(?:\.[0-9]*)?(?:e[+-]?[0-9]+)?)\s*
 /x;
 
 my @row;
@@ -82,7 +82,7 @@ while (<STDIN>) {
     # parse the data
     if ( $_ =~ m/$valid_row_regex/ ) {
         my $val = $+{val};
-        print join( ", ", smooth( 0, $val ), smooth( 1, $val ) ), "\n";
+        print join( ", ", smooth( 0, 'x_filter', $val ), smooth( 1, 'y_filter', $val ) ), "\n";
     }
     else {
         die "unrecognized data string:\n", $_, "\n";
