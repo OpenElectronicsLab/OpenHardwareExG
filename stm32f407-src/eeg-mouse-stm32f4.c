@@ -18,11 +18,13 @@
  */
 
 #include <stdlib.h>
+#include <libopencm3/stm32/f4/spi.h>
 #include <libopencm3/stm32/f4/rcc.h>
 #include <libopencm3/stm32/f4/gpio.h>
 #include <libopencm3/usb/usbd.h>
 #include <libopencm3/usb/cdc.h>
 #include "eeg-mouse-usb-descriptors.h"
+#include "util.h"
 
 static int cdcacm_control_request(struct usb_setup_data *req, u8 ** buf,
 				  u16 * len,
@@ -51,22 +53,48 @@ static int cdcacm_control_request(struct usb_setup_data *req, u8 ** buf,
 	return 0;
 }
 
+u8 read_who_am_i() {
+	u16 data;
+	u16 command;
+
+	if (0) {
+	data = 0x17;
+	} else {
+	command = 0;
+	command = command |
+	/* READ bit */
+        (0x1 << 15) |
+	/* MS bit:  When 0 do not increment address */
+	(0x0 << 14) |
+	/* bits 2-7 are address */
+	(0x0F << 8);
+
+	gpio_clear(GPIOE, GPIO2);
+	spi_send(SPI1, command);
+	data = spi_read(SPI1);
+	gpio_set(GPIOE, GPIO2);
+	}
+	return (u8) data;
+}
+
 // rotates all of the letters in the buffer forward one letter.
-static void rotate_letters(char *buf, int len)
+static void echo_with_who_am_i(char *buf, int *len)
 {
 	int i;
+	u8 b;
 
-	for (i = 0; i < len; ++i) {
-		if (buf[i] >= 'a' && buf[i] < 'z') {
-			buf[i] = buf[i] + 1;
-		} else if (buf[i] == 'z') {
-			buf[i] = 'a';
-		} else if (buf[i] >= 'A' && buf[i] < 'Z') {
-			buf[i] = buf[i] + 1;
-		} else if (buf[i] == 'Z') {
-			buf[i] = 'A';
-		}
-	}
+	b = read_who_am_i();
+	i = 0;
+	buf[i++] = 'h';
+	buf[i++] = 'i';
+	buf[i++] = ':';
+	buf[i++] = ' ';
+	buf[i++] = to_hex(b, 1);
+	buf[i++] = to_hex(b, 0);
+	buf[i++] = '\r';
+	buf[i++] = '\n';
+
+	*len = i;
 }
 
 static void cdcacm_data_rx_cb(u8 ep)
@@ -77,11 +105,10 @@ static void cdcacm_data_rx_cb(u8 ep)
 	int len = usbd_ep_read_packet(0x01, buf, 64);
 
 	if (len) {
-		rotate_letters(buf, len);
+		echo_with_who_am_i(buf, &len);
 		while (usbd_ep_write_packet(0x82, buf, len) == 0) ;
 	}
-	// flash the LEDs so we know we're doing something
-	gpio_toggle(GPIOC, GPIO5);
+	/* flash the LEDs so we know we're doing something */
 	gpio_toggle(GPIOD, GPIO12 | GPIO13 | GPIO14 | GPIO15);
 }
 
@@ -111,9 +138,13 @@ void setup_peripheral_clocks()
 		/* GPIO A */
 		RCC_AHB1ENR_IOPAEN |
 		/* GPIO D */
-		RCC_AHB1ENR_IOPDEN);
+		RCC_AHB1ENR_IOPDEN |
+		/* GPIO E */
+		RCC_AHB1ENR_IOPEEN);
 
 	rcc_peripheral_enable_clock(&RCC_AHB2ENR,
+		/* SPI 1 */
+		RCC_APB2ENR_SPI1EN |
 		/* USB OTG */
 		RCC_AHB2ENR_OTGFSEN);
 }
@@ -128,7 +159,37 @@ void setup_usb_fullspeed()
 	usbd_register_set_config_callback(cdcacm_set_config);
 }
 
-void setup_gpio()
+void setup_spi()
+{
+	/* chip select */
+	gpio_mode_setup(GPIOE, GPIO_MODE_OUTPUT, GPIO_PUPD_NONE, GPIO2);
+	/* set to high which is not-selected */
+	gpio_set(GPIOE, GPIO2);
+
+	gpio_mode_setup(GPIOA, GPIO_MODE_AF, GPIO_PUPD_NONE,
+		/* serial clock */
+		GPIO5 |
+		/* master in/slave out */
+		GPIO6 |
+		/* master out/slave in */
+		GPIO7);
+	gpio_set_af(GPIOA, GPIO_AF5, GPIO5 | GPIO6 | GPIO7);
+
+	spi_init_master(SPI1, SPI_CR1_BAUDRATE_FPCLK_DIV_32,
+		/* high or low for the peripheral device */
+		SPI_CR1_CPOL_CLK_TO_1_WHEN_IDLE,
+		/* CPHA: Clock phase: read on rising edge of clock */
+		SPI_CR1_CPHA_CLK_TRANSITION_2,
+		/* DFF: Date frame format (8 or 16 bit) */
+		SPI_CR1_DFF_8BIT,
+		/* Most or Least Sig Bit First */
+		SPI_CR1_MSBFIRST);
+	/* spi_enable_ss_output(SPI1);*/ /* ?? */
+
+	spi_enable(SPI1);
+}
+
+void setup_leds()
 {
 	/* enable the four LEDs */
 	gpio_mode_setup(GPIOD, GPIO_MODE_OUTPUT,
@@ -142,7 +203,8 @@ int main(void)
 	setup_main_clock();
 	setup_peripheral_clocks();
 	setup_usb_fullspeed();
-	setup_gpio();
+	setup_spi();
+	setup_leds();
 
 	while (1)
 		usbd_poll();

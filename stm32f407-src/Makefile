@@ -42,7 +42,7 @@ LDFLAGS		+= -lc -lnosys -L$(TOOLCHAIN_DIR)/lib \
 			 -L$(TOOLCHAIN_DIR)/lib/stm32/f4 \
 		   -T$(LDSCRIPT) -nostartfiles -Wl,--gc-sections \
 		   -mthumb -mcpu=cortex-m4 -march=armv7 -mfix-cortex-m3-ldrd -msoft-float
-OBJS		+= $(BINARY).o
+OBJS		+= $(BINARY).o util.o
 
 OOCD		?= openocd
 OOCD_INTERFACE	?= flossjtag
