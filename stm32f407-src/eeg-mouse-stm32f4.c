@@ -29,6 +29,7 @@ static int cdcacm_control_request(struct usb_setup_data *req, u8 ** buf,
 				  void (**complete) (struct usb_setup_data *
 						     req))
 {
+	/* by casting to void, we avoid an unused argument warning */
 	(void)complete;
 	(void)buf;
 
@@ -108,6 +109,7 @@ int main(void)
 	rcc_peripheral_enable_clock(&RCC_AHB2ENR, RCC_AHB2ENR_OTGFSEN);
 	rcc_peripheral_enable_clock(&RCC_AHB1ENR, RCC_AHB1ENR_IOPDEN);
 
+	/* enable lines to micro-USB */
 	gpio_mode_setup(GPIOA, GPIO_MODE_AF, GPIO_PUPD_NONE,
 			GPIO9 | GPIO11 | GPIO12);
 	gpio_set_af(GPIOA, GPIO_AF10, GPIO9 | GPIO11 | GPIO12);
@@ -115,9 +117,10 @@ int main(void)
 	usbd_init(&otgfs_usb_driver, &dev, &config, usb_strings);
 	usbd_register_set_config_callback(cdcacm_set_config);
 
-	/* Set two LEDs for wigwag effect when toggling. */
+	/* enable the four LEDs */
 	gpio_mode_setup(GPIOD, GPIO_MODE_OUTPUT,
 			GPIO_PUPD_NONE, GPIO12 | GPIO13 | GPIO14 | GPIO15);
+	/* Set two LEDs for wigwag effect when toggling. */
 	gpio_set(GPIOD, GPIO12 | GPIO14);
 
 	while (1)
