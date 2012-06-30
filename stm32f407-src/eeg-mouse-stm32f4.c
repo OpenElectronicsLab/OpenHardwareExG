@@ -100,28 +100,49 @@ static void cdcacm_set_config(u16 wValue)
 				       cdcacm_control_request);
 }
 
-int main(void)
+void setup_main_clock()
 {
-	//rcc_clock_setup_hse_3v3(&hse_8mhz_3v3[CLOCK_3V3_120MHZ]);
 	rcc_clock_setup_hse_3v3(&hse_8mhz_3v3[CLOCK_3V3_168MHZ]);
+}
 
-	rcc_peripheral_enable_clock(&RCC_AHB1ENR, RCC_AHB1ENR_IOPAEN);
-	rcc_peripheral_enable_clock(&RCC_AHB2ENR, RCC_AHB2ENR_OTGFSEN);
-	rcc_peripheral_enable_clock(&RCC_AHB1ENR, RCC_AHB1ENR_IOPDEN);
+void setup_peripheral_clocks()
+{
+	rcc_peripheral_enable_clock(&RCC_AHB1ENR,
+		/* GPIO A */
+		RCC_AHB1ENR_IOPAEN |
+		/* GPIO D */
+		RCC_AHB1ENR_IOPDEN);
 
-	/* enable lines to micro-USB */
+	rcc_peripheral_enable_clock(&RCC_AHB2ENR,
+		/* USB OTG */
+		RCC_AHB2ENR_OTGFSEN);
+}
+
+void setup_usb_fullspeed()
+{
 	gpio_mode_setup(GPIOA, GPIO_MODE_AF, GPIO_PUPD_NONE,
 			GPIO9 | GPIO11 | GPIO12);
 	gpio_set_af(GPIOA, GPIO_AF10, GPIO9 | GPIO11 | GPIO12);
 
 	usbd_init(&otgfs_usb_driver, &dev, &config, usb_strings);
 	usbd_register_set_config_callback(cdcacm_set_config);
+}
 
+void setup_gpio()
+{
 	/* enable the four LEDs */
 	gpio_mode_setup(GPIOD, GPIO_MODE_OUTPUT,
 			GPIO_PUPD_NONE, GPIO12 | GPIO13 | GPIO14 | GPIO15);
 	/* Set two LEDs for wigwag effect when toggling. */
 	gpio_set(GPIOD, GPIO12 | GPIO14);
+}
+
+int main(void)
+{
+	setup_main_clock();
+	setup_peripheral_clocks();
+	setup_usb_fullspeed();
+	setup_gpio();
 
 	while (1)
 		usbd_poll();
