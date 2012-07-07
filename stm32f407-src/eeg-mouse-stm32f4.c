@@ -63,14 +63,18 @@ u8 read_who_am_i() {
 	command = 0;
 	command = command |
 	/* READ bit */
-        (0x1 << 15) |
+        /* (0x1 << 15) | */
+        (0x1 << 7) |
 	/* MS bit:  When 0 do not increment address */
-	(0x0 << 14) |
+	/* (0x0 << 14) | */
+	(0x0 << 6) |
 	/* bits 2-7 are address */
-	(0x0F << 8);
+	/* (0x0F << 8); */
+	(0x0F << 0);
 
 	gpio_clear(GPIOE, GPIO2);
 	spi_send(SPI1, command);
+	/* spi_send(SPI1, 0); */
 	data = spi_read(SPI1);
 	gpio_set(GPIOE, GPIO2);
 	}
@@ -143,10 +147,12 @@ void setup_peripheral_clocks()
 		RCC_AHB1ENR_IOPEEN);
 
 	rcc_peripheral_enable_clock(&RCC_AHB2ENR,
-		/* SPI 1 */
-		RCC_APB2ENR_SPI1EN |
 		/* USB OTG */
 		RCC_AHB2ENR_OTGFSEN);
+
+	rcc_peripheral_enable_clock(&RCC_APB2ENR,
+		/* SPI 1 */
+		RCC_APB2ENR_SPI1EN);
 }
 
 void setup_usb_fullspeed()
@@ -175,6 +181,7 @@ void setup_spi()
 		GPIO7);
 	gpio_set_af(GPIOA, GPIO_AF5, GPIO5 | GPIO6 | GPIO7);
 
+	spi_disable_crc(SPI1);
 	spi_init_master(SPI1, SPI_CR1_BAUDRATE_FPCLK_DIV_32,
 		/* high or low for the peripheral device */
 		SPI_CR1_CPOL_CLK_TO_1_WHEN_IDLE,
@@ -184,7 +191,9 @@ void setup_spi()
 		SPI_CR1_DFF_8BIT,
 		/* Most or Least Sig Bit First */
 		SPI_CR1_MSBFIRST);
-	/* spi_enable_ss_output(SPI1);*/ /* ?? */
+
+	spi_enable_software_slave_management(SPI1);
+	spi_set_nss_high(SPI1);
 
 	spi_enable(SPI1);
 }
