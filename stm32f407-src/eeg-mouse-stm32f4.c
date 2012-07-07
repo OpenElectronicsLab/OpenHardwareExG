@@ -25,6 +25,7 @@
 #include <libopencm3/usb/cdc.h>
 #include "eeg-mouse-usb-descriptors.h"
 #include "util.h"
+#include "opencm3util.h"
 
 static int cdcacm_control_request(struct usb_setup_data *req, u8 ** buf,
 				  u16 * len,
@@ -56,6 +57,7 @@ static int cdcacm_control_request(struct usb_setup_data *req, u8 ** buf,
 u8 read_who_am_i() {
 	u16 data;
 	u16 command;
+	u16 ignore;
 
 	if (0) {
 	data = 0x17;
@@ -74,7 +76,8 @@ u8 read_who_am_i() {
 
 	gpio_clear(GPIOE, GPIO2);
 	spi_send(SPI1, command);
-	/* spi_send(SPI1, 0); */
+	ignore = spi_read(SPI1);
+	spi_send(SPI1, 0);
 	data = spi_read(SPI1);
 	gpio_set(GPIOE, GPIO2);
 	}
@@ -194,6 +197,8 @@ void setup_spi()
 
 	spi_enable_software_slave_management(SPI1);
 	spi_set_nss_high(SPI1);
+
+	spi_clear_mode_fault(SPI1);
 
 	spi_enable(SPI1);
 }
