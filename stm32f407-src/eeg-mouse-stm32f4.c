@@ -54,42 +54,77 @@ static int cdcacm_control_request(struct usb_setup_data *req, u8 ** buf,
 	return 0;
 }
 
-u8 read_who_am_i() {
-	u16 data;
-	u16 command;
+u8 send_command(u16 command, u8 data) {
+	u16 returnValue;
 	u16 ignore;
-
-	command = 0;
-	command = command |
-	/* READ bit */
-        /* (0x1 << 15) | */
-        (0x1 << 7) |
-	/* MS bit:  When 0 do not increment address */
-	/* (0x0 << 14) | */
-	(0x0 << 6) |
-	/* bits 2-7 are address */
-	/* (0x0F << 8); */
-	(0x0F << 0);
 
 	gpio_clear(GPIOE, GPIO3);
 	spi_send(SPI1, command);
 	ignore = spi_read(SPI1);
-	spi_send(SPI1, 0);
-	data = spi_read(SPI1);
+	spi_send(SPI1, data);
+	returnValue = spi_read(SPI1);
 	gpio_set(GPIOE, GPIO3);
-	return (u8) data;
+	return (u8) returnValue;
+}
+
+u8 read_motion() {
+	u16 command;
+	u8 data;
+
+	data = 0;
+
+	command = 0;
+	command = command |
+	/* READ bit */
+        (0x1 << 7) |
+	/* MS bit:  When 0 do not increment address */
+	(0x0 << 6) |
+	/* bits 2-7 are address */
+	(0x2D << 0);
+
+	return send_command(command, data);
+}
+
+void setup_accelerometer()
+{
+	u16 command;
+	u8 data;
+
+	command = 0;
+	command = command |
+	/* READ bit not set */
+        (0x0 << 7) |
+	/* MS bit:  When 0 do not increment address */
+	(0x0 << 6) |
+	/* bits 2-7 are address */
+	(0x20 << 0);
+
+	data =
+	/* data rate selection, 1 = 400Hz */
+	(0x1 << 7) |
+	/* power down control, 1 = active */
+	(0x1 << 6) |
+	/* full scale selection (1 = 8G, 0 = 2G) */
+	(0x0 << 5) |
+	/* Z axis enable */
+	(0x1 << 2) |
+	/* Y axis enable */
+	(0x1 << 1) |
+	/* X axis enable */
+	(0x1 << 0);
+
+	send_command(command, data);
 }
 
 // rotates all of the letters in the buffer forward one letter.
-static void echo_with_who_am_i(char *buf, int *len)
+static void echo_with_read_motion(char *buf, int *len)
 {
 	int i;
 	u8 b;
 
-	b = read_who_am_i();
+	b = read_motion();
 	i = 0;
-	buf[i++] = 'h';
-	buf[i++] = 'i';
+	buf[i++] = 'Z';
 	buf[i++] = ':';
 	buf[i++] = ' ';
 	buf[i++] = to_hex((u8)b, 1);
@@ -108,7 +143,7 @@ static void cdcacm_data_rx_cb(u8 ep)
 	int len = usbd_ep_read_packet(0x01, buf, 64);
 
 	if (len) {
-		echo_with_who_am_i(buf, &len);
+		echo_with_read_motion(buf, &len);
 		while (usbd_ep_write_packet(0x82, buf, len) == 0) ;
 	}
 	/* flash the LEDs so we know we're doing something */
@@ -215,6 +250,7 @@ int main(void)
 	setup_usb_fullspeed();
 	setup_spi();
 	setup_leds();
+	setup_accelerometer();
 
 	while (1)
 		usbd_poll();

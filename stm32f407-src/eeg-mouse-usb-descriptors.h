@@ -1,5 +1,5 @@
-#ifndef EEG-MOUSE-USB-DESCRIPTORS_H
-#define EEG-MOUSE-USB-DESCRIPTORS_H
+#ifndef EEG_MOUSE_USB_DESCRIPTORS_H
+#define EEG_MOUSE_USB_DESCRIPTORS_H
 
 static const struct usb_device_descriptor dev = {
 	.bLength = USB_DT_DEVICE_SIZE,
@@ -142,4 +142,4 @@ static const char *usb_strings[] = {
 	"prototype_v0",
 };
 
-#endif /* EEG-MOUSE-USB-DESCRIPTORS_H */
+#endif /* EEG_MOUSE_USB_DESCRIPTORS_H */
