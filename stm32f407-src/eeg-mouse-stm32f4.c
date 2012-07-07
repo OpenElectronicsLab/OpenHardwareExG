@@ -59,9 +59,6 @@ u8 read_who_am_i() {
 	u16 command;
 	u16 ignore;
 
-	if (0) {
-	data = 0x17;
-	} else {
 	command = 0;
 	command = command |
 	/* READ bit */
@@ -74,13 +71,12 @@ u8 read_who_am_i() {
 	/* (0x0F << 8); */
 	(0x0F << 0);
 
-	gpio_clear(GPIOE, GPIO2);
+	gpio_clear(GPIOE, GPIO3);
 	spi_send(SPI1, command);
 	ignore = spi_read(SPI1);
 	spi_send(SPI1, 0);
 	data = spi_read(SPI1);
-	gpio_set(GPIOE, GPIO2);
-	}
+	gpio_set(GPIOE, GPIO3);
 	return (u8) data;
 }
 
@@ -96,8 +92,8 @@ static void echo_with_who_am_i(char *buf, int *len)
 	buf[i++] = 'i';
 	buf[i++] = ':';
 	buf[i++] = ' ';
-	buf[i++] = to_hex(b, 1);
-	buf[i++] = to_hex(b, 0);
+	buf[i++] = to_hex((u8)b, 1);
+	buf[i++] = to_hex((u8)b, 0);
 	buf[i++] = '\r';
 	buf[i++] = '\n';
 
@@ -171,9 +167,9 @@ void setup_usb_fullspeed()
 void setup_spi()
 {
 	/* chip select */
-	gpio_mode_setup(GPIOE, GPIO_MODE_OUTPUT, GPIO_PUPD_NONE, GPIO2);
+	gpio_mode_setup(GPIOE, GPIO_MODE_OUTPUT, GPIO_PUPD_NONE, GPIO3);
 	/* set to high which is not-selected */
-	gpio_set(GPIOE, GPIO2);
+	gpio_set(GPIOE, GPIO3);
 
 	gpio_mode_setup(GPIOA, GPIO_MODE_AF, GPIO_PUPD_NONE,
 		/* serial clock */
