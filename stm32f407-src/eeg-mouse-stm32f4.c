@@ -69,7 +69,7 @@ u8 send_command(u16 command, u8 data)
 	return (u8) return_value;
 }
 
-u8 read_motion()
+u8 read_motion_axis(u8 axis)
 {
 	u16 command;
 	u8 data;
@@ -82,9 +82,22 @@ u8 read_motion()
 	    /* MS bit:  When 0 do not increment address */
 	    (0x0 << 6) |
 	    /* bits 2-7 are address */
-	    (0x2D << 0);
+	    (axis << 0);
 
 	return send_command(command, data);
+}
+
+u32 read_motion()
+{
+	u8 x, y, z;
+	u32 combined;
+
+	x = read_motion_axis(0x29);
+	y = read_motion_axis(0x2B);
+	z = read_motion_axis(0x2D);
+
+	combined = (((u32) x) << 16) | (((u32) y) << 8) | z;
+	return combined;
 }
 
 void setup_accelerometer()
@@ -121,17 +134,46 @@ void setup_accelerometer()
 static void echo_with_read_motion(char *buf, int *len)
 {
 	int i;
-	u8 b;
+	u32 motion;
+	u8 x, y, z;
 
-	b = read_motion();
+	motion = read_motion();
+	x = (u8) (motion >> 16);
+	y = (u8) (motion >> 8);
+	z = (u8) (motion >> 0);
+
 	i = 0;
+
+	buf[i++] = 'X';
+	buf[i++] = ':';
+	buf[i++] = ' ';
+	buf[i++] = '0';
+	buf[i++] = 'x';
+	buf[i++] = to_hex(x, 1);
+	buf[i++] = to_hex(x, 0);
+
+	buf[i++] = ',';
+	buf[i++] = ' ';
+
+	buf[i++] = 'Y';
+	buf[i++] = ':';
+	buf[i++] = ' ';
+	buf[i++] = '0';
+	buf[i++] = 'x';
+	buf[i++] = to_hex(y, 1);
+	buf[i++] = to_hex(y, 0);
+
+	buf[i++] = ',';
+	buf[i++] = ' ';
+
 	buf[i++] = 'Z';
 	buf[i++] = ':';
 	buf[i++] = ' ';
 	buf[i++] = '0';
 	buf[i++] = 'x';
-	buf[i++] = to_hex((u8) b, 1);
-	buf[i++] = to_hex((u8) b, 0);
+	buf[i++] = to_hex(z, 1);
+	buf[i++] = to_hex(z, 0);
+
 	buf[i++] = '\r';
 	buf[i++] = '\n';
 
