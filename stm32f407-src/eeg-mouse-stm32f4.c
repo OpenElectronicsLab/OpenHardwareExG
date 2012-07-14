@@ -23,8 +23,9 @@
 #include <libopencm3/stm32/f4/gpio.h>
 #include <libopencm3/usb/usbd.h>
 #include <libopencm3/usb/cdc.h>
-#include "eeg-mouse-usb-descriptors.h"
+#include "ads1298.h"
 #include "eeg-mouse.h"
+#include "eeg-mouse-usb-descriptors.h"
 #include "util.h"
 #include "opencm3util.h"
 
@@ -277,8 +278,50 @@ void setup_spi()
 	spi_enable(SPI1);
 }
 
+void print_error(const char *buf, u16 len)
+{
+	while (usbd_ep_write_packet(EEG_MOUSE_USB_DATA_ENDPOINT, buf,
+		len) == 0) {
+	}
+}
+
+void wait_for_drdy(const char *msg, u16 msg_len, unsigned interval)
+{
+	unsigned i = 0;
+	while (gpio_get(ADS_GPIO, IPIN_DRDY) != 0) {
+		usbd_poll();
+		if (i < interval) {
+			continue;
+		}
+		i = 0;
+		print_error(msg, msg_len);
+	}
+}
+
+void adc_send_command(int cmd)
+{
+	gpio_clear(ADS_GPIO, IPIN_CS);
+	spi_xfer(SPI1, cmd);
+	pause_microseconds(1);
+	gpio_set(ADS_GPIO, IPIN_CS);
+}
+
+void adc_wreg(int reg, int val)
+{
+	gpio_clear(ADS_GPIO, IPIN_CS);
+
+	spi_xfer(SPI1, WREG | reg);
+	spi_xfer(SPI1, 0);	// number of registers to be read/written – 1
+	spi_xfer(SPI1, val);
+
+	pause_microseconds(1);
+	gpio_set(ADS_GPIO, IPIN_CS);
+}
+
 void setup_ads1298()
 {
+	unsigned i;
+
 	/* chip select */
 	gpio_mode_setup(ADS_GPIO, GPIO_MODE_OUTPUT, GPIO_PUPD_NONE,
 			IPIN_CS |
@@ -288,9 +331,59 @@ void setup_ads1298()
 			PIN_START);
 
 	gpio_mode_setup(ADS_GPIO, GPIO_MODE_INPUT, GPIO_PUPD_NONE, IPIN_DRDY);
-	// gpio_set(ADS_GPIO, );
 
 	setup_spi();
+
+	//gpio_clear(ADS_GPIO, IPIN_CS);
+	gpio_set(ADS_GPIO, PIN_CLKSEL);
+
+	// Wait for 20 microseconds Oscillator to Wake Up
+	pause_microseconds(50);	// we'll actually wait 50
+
+	gpio_set(ADS_GPIO, IPIN_PWDN);
+	gpio_set(ADS_GPIO, IPIN_RESET);
+
+	// Wait for 33 milliseconds (we will use 100 millis)
+	//  for Power-On Reset and Oscillator Start-Up
+	pause_microseconds(100 * 1000);
+
+	// Issue Reset Pulse,
+	gpio_clear(ADS_GPIO, IPIN_RESET);
+	// actually only needs 1 microsecond, we'll go with 100
+	pause_microseconds(100);
+	gpio_set(ADS_GPIO, IPIN_RESET);
+	// Wait for 18 tCLKs AKA 9 microseconds, we use 100
+	pause_microseconds(100);
+
+	// Send SDATAC Command (Stop Read Data Continuously mode)
+	adc_send_command(SDATAC);
+
+	// All GPIO set to output 0x0000
+	// (floating CMOS inputs can flicker on and off, creating noise)
+	adc_wreg(GPIO, 0);
+
+	// Power up the internal reference and wait for it to settle
+	adc_wreg(CONFIG3, RLDREF_INT | PD_RLD | PD_REFBUF | VREF_4V | CONFIG3_const);
+	pause_microseconds(150 * 1000);
+
+	adc_wreg(RLD_SENSP, 0x01);	// only use channel IN1P and IN1N
+	adc_wreg(RLD_SENSN, 0x01);	// for the RLD Measurement
+
+	// Write Certain Registers, Including Input Short
+	// Set Device in HR Mode and DR = fMOD/1024
+	adc_wreg(CONFIG1, LOW_POWR_250_SPS);
+	adc_wreg(CONFIG2, INT_TEST);	// generate internal test signals
+	// Set the first two channels to input signal
+	for (i = 1; i <= 2; ++i) {
+		adc_wreg(CHnSET + i, ELECTRODE_INPUT | GAIN_12X);
+	}
+	// Set all remaining channels to shorted inputs
+	for (; i <= 8; ++i) {
+		adc_wreg(CHnSET + i, SHORTED | GAIN_12X);
+	}
+
+	gpio_set(ADS_GPIO, PIN_START);
+	wait_for_drdy("waiting for DRDY in setup\r\n", 26, 1000);
 }
 
 void setup_leds()
