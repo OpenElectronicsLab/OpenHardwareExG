@@ -99,6 +99,11 @@ eeg-mouse-stm32f.o: eeg-mouse-stm32f4.c eeg-mouse-usb-descriptors.h
 	@#printf "  CC      $(subst $(shell pwd)/,,$(@))\n"
 	$(Q)$(CC) $(CFLAGS) -o $@ -c $<
 
+# always optimize util.c to make delay calls consistent
+util.o: util.c Makefile
+	@#printf "  CC      $(subst $(shell pwd)/,,$(@))\n"
+	$(Q)$(CC) $(CFLAGS) -Os -o $@ -c $<
+
 $(TOOLCHAIN_DIR)/lib/stm32/f4/libopencm3_stm32f4.a : $(TOOLCHAIN_DIR)/Makefile
 	$(MAKE) -C $(TOOLCHAIN_DIR) lib
 

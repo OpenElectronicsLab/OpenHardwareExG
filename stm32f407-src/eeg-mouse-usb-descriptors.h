@@ -1,6 +1,8 @@
 #ifndef EEG_MOUSE_USB_DESCRIPTORS_H
 #define EEG_MOUSE_USB_DESCRIPTORS_H
 
+#define EEG_MOUSE_USB_DATA_ENDPOINT 0x82
+
 static const struct usb_device_descriptor dev = {
 	.bLength = USB_DT_DEVICE_SIZE,
 	.bDescriptorType = USB_DT_DEVICE,
@@ -42,7 +44,7 @@ static const struct usb_endpoint_descriptor data_endp[] = {{
 }, {
 	.bLength = USB_DT_ENDPOINT_SIZE,
 	.bDescriptorType = USB_DT_ENDPOINT,
-	.bEndpointAddress = 0x82,
+	.bEndpointAddress = EEG_MOUSE_USB_DATA_ENDPOINT,
 	.bmAttributes = USB_ENDPOINT_ATTR_BULK,
 	.wMaxPacketSize = 64,
 	.bInterval = 1,

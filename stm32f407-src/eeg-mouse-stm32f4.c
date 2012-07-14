@@ -24,6 +24,7 @@
 #include <libopencm3/usb/usbd.h>
 #include <libopencm3/usb/cdc.h>
 #include "eeg-mouse-usb-descriptors.h"
+#include "eeg-mouse.h"
 #include "util.h"
 #include "opencm3util.h"
 
@@ -60,12 +61,12 @@ u8 send_command(u16 command, u8 data)
 	u16 return_value;
 	u16 ignore;
 
-	gpio_clear(GPIOE, GPIO3);
+	gpio_clear(ADS_GPIO, GPIO3);
 	spi_send(SPI1, command);
 	ignore = spi_read(SPI1);
 	spi_send(SPI1, data);
 	return_value = spi_read(SPI1);
-	gpio_set(GPIOE, GPIO3);
+	gpio_set(ADS_GPIO, GPIO3);
 	return (u8) return_value;
 }
 
@@ -189,7 +190,9 @@ static void cdcacm_data_rx_cb(u8 ep)
 
 	if (len) {
 		echo_with_read_motion(buf, &len);
-		while (usbd_ep_write_packet(0x82, buf, len) == 0) ;
+		while (usbd_ep_write_packet(EEG_MOUSE_USB_DATA_ENDPOINT, buf,
+			len) == 0) {
+		}
 	}
 	/* flash the LEDs so we know we're doing something */
 	gpio_toggle(GPIOD, GPIO12 | GPIO13 | GPIO14 | GPIO15);
@@ -200,7 +203,7 @@ static void cdcacm_set_config(u16 wValue)
 	(void)wValue;
 
 	usbd_ep_setup(0x01, USB_ENDPOINT_ATTR_BULK, 64, cdcacm_data_rx_cb);
-	usbd_ep_setup(0x82, USB_ENDPOINT_ATTR_BULK, 64, NULL);
+	usbd_ep_setup(EEG_MOUSE_USB_DATA_ENDPOINT, USB_ENDPOINT_ATTR_BULK, 64, NULL);
 	usbd_ep_setup(0x83, USB_ENDPOINT_ATTR_INTERRUPT, 16, NULL);
 
 	usbd_register_control_callback(USB_REQ_TYPE_CLASS |
@@ -236,9 +239,9 @@ void setup_peripheral_clocks()
 
 void setup_usb_fullspeed()
 {
-	gpio_mode_setup(GPIOA, GPIO_MODE_AF, GPIO_PUPD_NONE,
+	gpio_mode_setup(SPI_GPIO, GPIO_MODE_AF, GPIO_PUPD_NONE,
 			GPIO9 | GPIO11 | GPIO12);
-	gpio_set_af(GPIOA, GPIO_AF10, GPIO9 | GPIO11 | GPIO12);
+	gpio_set_af(SPI_GPIO, GPIO_AF10, GPIO9 | GPIO11 | GPIO12);
 
 	usbd_init(&otgfs_usb_driver, &dev, &config, usb_strings);
 	usbd_register_set_config_callback(cdcacm_set_config);
@@ -246,25 +249,20 @@ void setup_usb_fullspeed()
 
 void setup_spi()
 {
-	/* chip select */
-	gpio_mode_setup(GPIOE, GPIO_MODE_OUTPUT, GPIO_PUPD_NONE, GPIO3);
-	/* set to high which is not-selected */
-	gpio_set(GPIOE, GPIO3);
-
-	gpio_mode_setup(GPIOA, GPIO_MODE_AF, GPIO_PUPD_NONE,
+	gpio_mode_setup(SPI_GPIO, GPIO_MODE_AF, GPIO_PUPD_NONE,
 			/* serial clock */
-			GPIO5 |
+			PIN_SCLK |
 			/* master in/slave out */
-			GPIO6 |
+			PIN_DIN |
 			/* master out/slave in */
-			GPIO7);
-	gpio_set_af(GPIOA, GPIO_AF5, GPIO5 | GPIO6 | GPIO7);
+			PIN_DOUT);
+	gpio_set_af(SPI_GPIO, GPIO_AF5, PIN_SCLK | PIN_DIN | PIN_DOUT);
 
 	spi_disable_crc(SPI1);
 	spi_init_master(SPI1, SPI_CR1_BAUDRATE_FPCLK_DIV_32,
 			/* high or low for the peripheral device */
-			SPI_CR1_CPOL_CLK_TO_1_WHEN_IDLE,
-			/* CPHA: Clock phase: read on rising edge of clock */
+			SPI_CR1_CPOL_CLK_TO_0_WHEN_IDLE,
+			/* CPHA: Clock phase: read on falling edge of clock */
 			SPI_CR1_CPHA_CLK_TRANSITION_2,
 			/* DFF: Date frame format (8 or 16 bit) */
 			SPI_CR1_DFF_8BIT,
@@ -277,6 +275,22 @@ void setup_spi()
 	spi_clear_mode_fault(SPI1);
 
 	spi_enable(SPI1);
+}
+
+void setup_ads1298()
+{
+	/* chip select */
+	gpio_mode_setup(ADS_GPIO, GPIO_MODE_OUTPUT, GPIO_PUPD_NONE,
+			IPIN_CS |
+			PIN_CLKSEL |
+			IPIN_PWDN |
+			IPIN_RESET |
+			PIN_START);
+
+	gpio_mode_setup(ADS_GPIO, GPIO_MODE_INPUT, GPIO_PUPD_NONE, IPIN_DRDY);
+	// gpio_set(ADS_GPIO, );
+
+	setup_spi();
 }
 
 void setup_leds()
@@ -292,11 +306,12 @@ int main(void)
 {
 	setup_main_clock();
 	setup_peripheral_clocks();
+	setup_ads1298();
 	setup_usb_fullspeed();
-	setup_spi();
 	setup_leds();
 	setup_accelerometer();
 
-	while (1)
+	while (1) {
 		usbd_poll();
+	}
 }
