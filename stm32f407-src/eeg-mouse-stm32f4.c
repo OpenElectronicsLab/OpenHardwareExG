@@ -182,9 +182,26 @@ void print_msg(const char *msg, u16 len)
 
 void print_error(const char *msg, u16 len)
 {
-      print_msg("[oh]", 4);
-      print_msg(msg, len);
-      print_msg("[no]\r\n", 6);
+	char buf[len + 10];
+	u16 i = 0;
+
+	buf[i++] = '[';
+	buf[i++] = 'o';
+	buf[i++] = 'h';
+	buf[i++] = ']';
+
+	for (u16 j = 0; j < len; ++j) {
+		buf[j] = msg[j];
+	}
+
+	buf[i++] = '[';
+	buf[i++] = 'n';
+	buf[i++] = 'o';
+	buf[i++] = ']';
+	buf[i++] = '\r';
+	buf[i++] = '\n';
+
+	print_msg(buf, i);
 }
 
 int data_ready()
