@@ -182,7 +182,7 @@ void print_msg(const char *msg, u16 len)
 
 void print_error(const char *msg, u16 len)
 {
-	char buf[len + 10];
+	char buf[len + 11];
 	u16 i = 0;
 
 	buf[i++] = '[';
@@ -190,8 +190,8 @@ void print_error(const char *msg, u16 len)
 	buf[i++] = 'h';
 	buf[i++] = ']';
 
-	for (u16 j = 0; j < len; ++j) {
-		buf[j] = msg[j];
+	for (u16 j = 0; j < len && msg[j] != '\0'; ++j) {
+		buf[i++] = msg[j];
 	}
 
 	buf[i++] = '[';
@@ -200,6 +200,7 @@ void print_error(const char *msg, u16 len)
 	buf[i++] = ']';
 	buf[i++] = '\r';
 	buf[i++] = '\n';
+	buf[i++] = '\0';
 
 	print_msg(buf, i);
 }
