@@ -88,7 +88,7 @@ static void cdcacm_data_rx_cb(u8 ep)
 	// }
 
 	if (len) {
-		send_data = buf[0];
+		send_data = (buf[0] != 'x');
 	}
 	// flash the LEDs so we know we're doing something
 	gpio_toggle(GPIOD, GPIO12 | GPIO13 | GPIO14 | GPIO15);
@@ -176,6 +176,8 @@ void setup_spi()
 
 void print_msg(const char *msg, u16 len)
 {
+	if (!send_data) return;
+
 	while (usbd_ep_write_packet(EEG_MOUSE_USB_DATA_ENDPOINT, msg, len) == 0) {
 	}
 }
@@ -325,7 +327,7 @@ void setup_leds()
 
 // if this becomes more flexible, we may need to pass in
 // the byte_buf size, but for now we are safe to skip it
-void fill_sample_frame(char *byte_buf)
+unsigned int fill_sample_frame(char *byte_buf)
 {
 	int i, j;
 	char in_byte;
@@ -353,14 +355,18 @@ void fill_sample_frame(char *byte_buf)
 	byte_buf[pos++] = ']';
 	byte_buf[pos++] = '\r';
 	byte_buf[pos++] = '\n';
-	byte_buf[pos++] = 0;
 	pause_microseconds(1);
 	gpio_set(ADS_GPIO, IPIN_CS);
+
+	return pos;
 }
 
 int main(void)
 {
 	char byte_buf[DATA_BUF_SIZE];
+	unsigned int len;
+
+	send_data = 0;
 
 	setup_main_clock();
 	setup_peripheral_clocks();
@@ -371,9 +377,9 @@ int main(void)
 	while (1) {
 		// wait_for_drdy calls usbd_poll()
 		wait_for_drdy("no data", 7, 2);
-		fill_sample_frame(byte_buf);
+		len = fill_sample_frame(byte_buf);
 		if (send_data) {
-			print_msg(byte_buf, DATA_BUF_SIZE);
+			print_msg(byte_buf, len);
 		}
 	}
 }
