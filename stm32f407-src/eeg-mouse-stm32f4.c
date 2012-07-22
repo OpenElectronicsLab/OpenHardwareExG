@@ -210,11 +210,16 @@ int data_ready()
 	return 0 == gpio_get(ADS_GPIO, IPIN_DRDY);
 }
 
-void wait_for_drdy(const char *msg, u16 msg_len, unsigned interval)
+void wait_for_drdy(const char *msg, u16 msg_len, unsigned approx_seconds)
 {
+	// TODO setup timer and compare actual time, so we do not have to
+	// count cpu cycles.
+	unsigned USB_POLL_CYCLES = 150;
+	unsigned interval = approx_seconds * 168000000 / USB_POLL_CYCLES;
 	unsigned i = 0;
 	while (!data_ready()) {
 		usbd_poll();
+		++i;
 		if (i < interval) {
 			continue;
 		}
@@ -306,7 +311,7 @@ void setup_ads1298()
 	}
 
 	gpio_set(ADS_GPIO, PIN_START);
-	wait_for_drdy("waiting for DRDY in setup", 25, 1000);
+	// wait_for_drdy("waiting for DRDY in setup", 25, 5);
 }
 
 void setup_leds()
@@ -365,7 +370,7 @@ int main(void)
 
 	while (1) {
 		// wait_for_drdy calls usbd_poll()
-		wait_for_drdy("no data", 7, 5000);
+		wait_for_drdy("no data", 7, 2);
 		fill_sample_frame(byte_buf);
 		if (send_data) {
 			print_msg(byte_buf, DATA_BUF_SIZE);
