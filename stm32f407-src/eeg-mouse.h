@@ -11,11 +11,12 @@
 // SCLK (serial clock) is GPIO A 5
 #define PIN_SCLK GPIO5
 
-// DIN (data in) is GPIO A 6
-#define PIN_DIN GPIO6
+// DOUT (data out) is GPIO A 6
+#define PIN_DOUT GPIO6
 
-// DOUT (data out) is GPIO A 7
-#define PIN_DOUT GPIO7
+// DIN (data in) is GPIO A 7
+#define PIN_DIN GPIO7
+
 
 // ---------------
 // Other GPIOs needed for ADS1298
