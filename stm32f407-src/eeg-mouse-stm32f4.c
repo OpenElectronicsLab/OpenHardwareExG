@@ -176,7 +176,9 @@ void setup_spi()
 
 void print_msg(const char *msg, u16 len)
 {
-	if (!send_data) return;
+	if (!send_data) {
+		return;
+	}
 
 	while (usbd_ep_write_packet(EEG_MOUSE_USB_DATA_ENDPOINT, msg, len) == 0) {
 	}
