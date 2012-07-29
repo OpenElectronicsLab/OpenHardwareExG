@@ -250,6 +250,22 @@ void adc_wreg(int reg, int val)
 	gpio_set(ADS_GPIO, IPIN_CS);
 }
 
+u8 adc_rreg(int reg)
+{
+	u16 val;
+
+	gpio_clear(ADS_GPIO, IPIN_CS);
+
+	spi_xfer(SPI1, RREG | reg);
+	spi_xfer(SPI1, 0);	// number of registers to be read/written – 1
+	val = spi_xfer(SPI1, 0);
+
+	pause_microseconds(1);
+	gpio_set(ADS_GPIO, IPIN_CS);
+
+	return (u8) val;
+}
+
 void setup_ads1298()
 {
 	unsigned i;
