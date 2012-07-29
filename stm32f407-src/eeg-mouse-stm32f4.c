@@ -323,7 +323,8 @@ void setup_ads1298()
 	adc_wreg(CONFIG2, INT_TEST);	// generate internal test signals
 	// Set the first two channels to input signal
 	for (i = 1; i <= 2; ++i) {
-		adc_wreg(CHnSET + i, ELECTRODE_INPUT | GAIN_12X);
+		// adc_wreg(CHnSET + i, ELECTRODE_INPUT | GAIN_12X);
+		adc_wreg(CHnSET + i, TEST_SIGNAL | GAIN_12X);
 	}
 	// Set all remaining channels to shorted inputs
 	for (; i <= 8; ++i) {
