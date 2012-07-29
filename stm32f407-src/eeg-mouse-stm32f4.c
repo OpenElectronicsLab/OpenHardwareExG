@@ -343,6 +343,36 @@ void setup_leds()
 	gpio_set(GPIOD, GPIO12 | GPIO14);
 }
 
+unsigned int fill_debug_frame(char *byte_buf)
+{
+	u8 val;
+
+	unsigned int pos = 0;
+
+	byte_buf[pos++] = '[';
+	byte_buf[pos++] = 'u';
+	byte_buf[pos++] = 'g';
+	byte_buf[pos++] = ']';
+
+	// read the ID then the CONFIG1 registers
+	val = adc_rreg(ID);
+	byte_buf[pos++] = to_hex(val, 1);
+	byte_buf[pos++] = to_hex(val, 0);
+
+	val = adc_rreg(CONFIG1);
+	byte_buf[pos++] = to_hex(val, 1);
+	byte_buf[pos++] = to_hex(val, 0);
+
+	byte_buf[pos++] = '[';
+	byte_buf[pos++] = 'l';
+	byte_buf[pos++] = 'y';
+	byte_buf[pos++] = ']';
+	byte_buf[pos++] = '\r';
+	byte_buf[pos++] = '\n';
+
+	return pos;
+}
+
 // if this becomes more flexible, we may need to pass in
 // the byte_buf size, but for now we are safe to skip it
 unsigned int fill_sample_frame(char *byte_buf)
