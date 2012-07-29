@@ -423,6 +423,9 @@ int main(void)
 	setup_leds();
 
 	while (1) {
+		len = fill_debug_frame(byte_buf);
+		print_msg(byte_buf, len);
+
 		// wait_for_drdy calls usbd_poll()
 		wait_for_drdy("no data", 7, 2);
 		len = fill_sample_frame(byte_buf);
