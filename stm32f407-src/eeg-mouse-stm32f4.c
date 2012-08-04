@@ -221,22 +221,32 @@ void wait_for_drdy(const char *msg, u16 msg_len, unsigned approx_seconds)
 	}
 }
 
+void select_ads1298(unsigned int selected)
+{
+	if (selected) {
+		gpio_clear(ADS_GPIO, IPIN_CS);
+	} else {
+		gpio_set(ADS_GPIO, IPIN_CS);
+	}
+	pause_microseconds(1);
+
+
+}
+
 void adc_send_command(int cmd)
 {
-	gpio_clear(ADS_GPIO, IPIN_CS);
-	pause_microseconds(1);
+	select_ads1298(1);
 
 	spi_xfer(SPI1, cmd);
 	pause_microseconds(16);
 
-	gpio_set(ADS_GPIO, IPIN_CS);
+	select_ads1298(0);
 	pause_microseconds(16);
 }
 
 void adc_wreg(int reg, int val)
 {
-	gpio_clear(ADS_GPIO, IPIN_CS);
-	pause_microseconds(1);
+	select_ads1298(1);
 
 	spi_xfer(SPI1, WREG | reg);
 	pause_microseconds(16);
@@ -247,7 +257,7 @@ void adc_wreg(int reg, int val)
 	spi_xfer(SPI1, val);
 	pause_microseconds(16);
 
-	gpio_set(ADS_GPIO, IPIN_CS);
+	select_ads1298(0);
 	pause_microseconds(16);
 }
 
@@ -255,8 +265,7 @@ u8 adc_rreg(int reg)
 {
 	u16 val;
 
-	gpio_clear(ADS_GPIO, IPIN_CS);
-	pause_microseconds(1);
+	select_ads1298(1);
 
 	spi_xfer(SPI1, RREG | reg);
 	pause_microseconds(16);
@@ -267,7 +276,7 @@ u8 adc_rreg(int reg)
 	val = spi_xfer(SPI1, 0);
 	pause_microseconds(16);
 
-	gpio_set(ADS_GPIO, IPIN_CS);
+	select_ads1298(0);
 	pause_microseconds(16);
 
 	return (u8) val;
@@ -284,7 +293,7 @@ void setup_ads1298()
 
 	gpio_mode_setup(ADS_GPIO, GPIO_MODE_INPUT, GPIO_PUPD_NONE, IPIN_DRDY);
 
-	//gpio_clear(ADS_GPIO, IPIN_CS);
+	//select_ads1298(1);
 	gpio_set(ADS_GPIO, PIN_CLKSEL);
 
 	// Wait for 20 microseconds Oscillator to Wake Up
@@ -421,8 +430,7 @@ unsigned int fill_sample_frame(char *byte_buf)
 
 	unsigned int pos = 0;
 
-	gpio_clear(ADS_GPIO, IPIN_CS);
-	pause_microseconds(1);
+	select_ads1298(1);
 
 	byte_buf[pos++] = '[';
 	byte_buf[pos++] = 'g';
@@ -446,7 +454,7 @@ unsigned int fill_sample_frame(char *byte_buf)
 	byte_buf[pos++] = '\r';
 	byte_buf[pos++] = '\n';
 
-	gpio_set(ADS_GPIO, IPIN_CS);
+	select_ads1298(0);
 	pause_microseconds(16);
 
 	return pos;
