@@ -122,9 +122,9 @@ void setup_peripheral_clocks()
 
 void setup_usb_fullspeed()
 {
-	gpio_mode_setup(SPI_GPIO, GPIO_MODE_AF, GPIO_PUPD_NONE,
+	gpio_mode_setup(GPIOA, GPIO_MODE_AF, GPIO_PUPD_NONE,
 			GPIO9 | GPIO11 | GPIO12);
-	gpio_set_af(SPI_GPIO, GPIO_AF10, GPIO9 | GPIO11 | GPIO12);
+	gpio_set_af(GPIOA, GPIO_AF10, GPIO9 | GPIO11 | GPIO12);
 
 	usbd_init(&otgfs_usb_driver, &dev, &config, usb_strings);
 	usbd_register_set_config_callback(cdcacm_set_config);
