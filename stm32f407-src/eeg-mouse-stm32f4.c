@@ -106,6 +106,8 @@ void setup_peripheral_clocks()
 	rcc_peripheral_enable_clock(&RCC_AHB1ENR,
 				    // GPIO A
 				    RCC_AHB1ENR_IOPAEN |
+				    // GPIO B
+				    RCC_AHB1ENR_IOPBEN |
 				    // GPIO D
 				    RCC_AHB1ENR_IOPDEN |
 				    // GPIO E
@@ -132,14 +134,18 @@ void setup_usb_fullspeed()
 
 u32 setup_spi()
 {
-	gpio_mode_setup(SPI_GPIO, GPIO_MODE_AF, GPIO_PUPD_NONE,
+	gpio_mode_setup(SPI_C_GPIO, GPIO_MODE_AF, GPIO_PUPD_NONE,
 			// serial clock
-			PIN_SCLK |
+			PIN_SCLK);
+	gpio_set_af(SPI_C_GPIO, GPIO_AF5, PIN_SCLK);
+
+	gpio_mode_setup(SPI_D_GPIO, GPIO_MODE_AF, GPIO_PUPD_NONE,
 			// master in/slave out
 			PIN_DIN |
 			// master out/slave in
 			PIN_DOUT);
-	gpio_set_af(SPI_GPIO, GPIO_AF5, PIN_SCLK | PIN_DIN | PIN_DOUT);
+	gpio_set_af(SPI_D_GPIO, GPIO_AF5, PIN_DIN | PIN_DOUT);
+
 
 	spi_disable_crc(SPI1);
 	spi_init_master(SPI1, SPI_CR1_BAUDRATE_FPCLK_DIV_64,

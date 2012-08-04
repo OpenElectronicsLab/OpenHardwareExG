@@ -5,17 +5,21 @@
 // IPIN_ is for pins that are inverted
 
 // ---------------
-// SPI GPIOs for ADS1298
-#define SPI_GPIO GPIOA
+// SPI Clock GPIO for ADS1298
+#define SPI_C_GPIO GPIOA
 
 // SCLK (serial clock) is GPIO A 5
 #define PIN_SCLK GPIO5
 
-// DOUT (data out) is GPIO A 6
-#define PIN_DOUT GPIO6
 
-// DIN (data in) is GPIO A 7
-#define PIN_DIN GPIO7
+// SPI Data GPIOs for ADS1298
+#define SPI_D_GPIO GPIOB
+
+// DOUT (data out) is GPIO B 4
+#define PIN_DOUT GPIO4
+
+// DIN (data in) is GPIO B 5
+#define PIN_DIN GPIO5
 
 
 // ---------------
