@@ -29,7 +29,7 @@
 #include "util.h"
 #include "opencm3util.h"
 // actual size today is 64, but a few extra will not hurt
-#define DATA_BUF_SIZE 80
+#define DATA_BUF_SIZE 800
 // GLOBALS
 int send_data;
 // END GLOBALS
@@ -58,20 +58,6 @@ static int cdcacm_control_request(struct usb_setup_data *req, u8 ** buf,
 		return 1;
 	}
 	return 0;
-}
-
-u8 send_command(u16 command, u8 data)
-{
-	u16 return_value;
-	u16 ignore;
-
-	gpio_clear(ADS_GPIO, GPIO3);
-	spi_send(SPI1, command);
-	ignore = spi_read(SPI1);
-	spi_send(SPI1, data);
-	return_value = spi_read(SPI1);
-	gpio_set(ADS_GPIO, GPIO3);
-	return (u8) return_value;
 }
 
 static void cdcacm_data_rx_cb(u8 ep)
@@ -144,7 +130,7 @@ void setup_usb_fullspeed()
 	usbd_register_set_config_callback(cdcacm_set_config);
 }
 
-void setup_spi()
+u32 setup_spi()
 {
 	gpio_mode_setup(SPI_GPIO, GPIO_MODE_AF, GPIO_PUPD_NONE,
 			// serial clock
@@ -156,7 +142,7 @@ void setup_spi()
 	gpio_set_af(SPI_GPIO, GPIO_AF5, PIN_SCLK | PIN_DIN | PIN_DOUT);
 
 	spi_disable_crc(SPI1);
-	spi_init_master(SPI1, SPI_CR1_BAUDRATE_FPCLK_DIV_32,
+	spi_init_master(SPI1, SPI_CR1_BAUDRATE_FPCLK_DIV_64,
 			// high or low for the peripheral device
 			SPI_CR1_CPOL_CLK_TO_0_WHEN_IDLE,
 			// CPHA: Clock phase: read on falling edge of clock
@@ -172,6 +158,9 @@ void setup_spi()
 	spi_clear_mode_fault(SPI1);
 
 	spi_enable(SPI1);
+
+	u32 reg = SPI_CR1(SPI1);
+	return reg;
 }
 
 void print_msg(const char *msg, u16 len)
@@ -235,21 +224,31 @@ void wait_for_drdy(const char *msg, u16 msg_len, unsigned approx_seconds)
 void adc_send_command(int cmd)
 {
 	gpio_clear(ADS_GPIO, IPIN_CS);
-	spi_xfer(SPI1, cmd);
 	pause_microseconds(1);
+
+	spi_xfer(SPI1, cmd);
+	pause_microseconds(16);
+
 	gpio_set(ADS_GPIO, IPIN_CS);
+	pause_microseconds(16);
 }
 
 void adc_wreg(int reg, int val)
 {
 	gpio_clear(ADS_GPIO, IPIN_CS);
+	pause_microseconds(1);
 
 	spi_xfer(SPI1, WREG | reg);
-	spi_xfer(SPI1, 0);	// number of registers to be read/written – 1
-	spi_xfer(SPI1, val);
+	pause_microseconds(16);
 
-	pause_microseconds(1);
+	spi_xfer(SPI1, 0);	// number of registers to be read/written – 1
+	pause_microseconds(16);
+
+	spi_xfer(SPI1, val);
+	pause_microseconds(16);
+
 	gpio_set(ADS_GPIO, IPIN_CS);
+	pause_microseconds(16);
 }
 
 u8 adc_rreg(int reg)
@@ -257,13 +256,19 @@ u8 adc_rreg(int reg)
 	u16 val;
 
 	gpio_clear(ADS_GPIO, IPIN_CS);
+	pause_microseconds(1);
 
 	spi_xfer(SPI1, RREG | reg);
-	spi_xfer(SPI1, 0);	// number of registers to be read/written – 1
-	val = spi_xfer(SPI1, 0);
+	pause_microseconds(16);
 
-	pause_microseconds(1);
+	spi_xfer(SPI1, 0);	// number of registers to be read/written – 1
+	pause_microseconds(16);
+
+	val = spi_xfer(SPI1, 0);
+	pause_microseconds(16);
+
 	gpio_set(ADS_GPIO, IPIN_CS);
+	pause_microseconds(16);
 
 	return (u8) val;
 }
@@ -279,13 +284,11 @@ void setup_ads1298()
 
 	gpio_mode_setup(ADS_GPIO, GPIO_MODE_INPUT, GPIO_PUPD_NONE, IPIN_DRDY);
 
-	setup_spi();
-
 	//gpio_clear(ADS_GPIO, IPIN_CS);
 	gpio_set(ADS_GPIO, PIN_CLKSEL);
 
 	// Wait for 20 microseconds Oscillator to Wake Up
-	pause_microseconds(50);	// we'll actually wait 50
+	pause_microseconds(1000);	// we'll actually wait 1 millisecond
 
 	gpio_set(ADS_GPIO, IPIN_PWDN);
 	gpio_set(ADS_GPIO, IPIN_RESET);
@@ -296,14 +299,17 @@ void setup_ads1298()
 
 	// Issue Reset Pulse,
 	gpio_clear(ADS_GPIO, IPIN_RESET);
-	// actually only needs 1 microsecond, we'll go with 100
-	pause_microseconds(100);
+	// actually only needs 1 microsecond, we'll go with 1000
+	pause_microseconds(1000);
 	gpio_set(ADS_GPIO, IPIN_RESET);
-	// Wait for 18 tCLKs AKA 9 microseconds, we use 100
-	pause_microseconds(100);
+	// Wait for 18 tCLKs AKA 9 microseconds, we use 1000
+	pause_microseconds(1000);
 
 	// Send SDATAC Command (Stop Read Data Continuously mode)
 	adc_send_command(SDATAC);
+
+	// Wait for 4 tCLKs AKA 2 microseconds, we use 1000
+	pause_microseconds(1000);
 
 	// All GPIO set to output 0x0000
 	// (floating CMOS inputs can flicker on and off, creating noise)
@@ -315,24 +321,39 @@ void setup_ads1298()
 	pause_microseconds(150 * 1000);
 
 	adc_wreg(RLD_SENSP, 0x01);	// only use channel IN1P and IN1N
+
+	// Wait for 4 tCLKs AKA 2 microseconds, we use 1000
+	pause_microseconds(1000);
+
 	adc_wreg(RLD_SENSN, 0x01);	// for the RLD Measurement
 
 	// Write Certain Registers, Including Input Short
 	// Set Device in HR Mode and DR = fMOD/1024
 	adc_wreg(CONFIG1, LOW_POWR_250_SPS);
+	// Wait for 4 tCLKs AKA 2 microseconds, we use 1000
+	pause_microseconds(1000);
+
 	adc_wreg(CONFIG2, INT_TEST);	// generate internal test signals
+	// Wait for 4 tCLKs AKA 2 microseconds, we use 1000
+	pause_microseconds(1000);
+
 	// Set the first two channels to input signal
 	for (i = 1; i <= 2; ++i) {
 		// adc_wreg(CHnSET + i, ELECTRODE_INPUT | GAIN_12X);
 		adc_wreg(CHnSET + i, TEST_SIGNAL | GAIN_12X);
+		// Wait for 4 tCLKs AKA 2 microseconds, we use 1000
+		pause_microseconds(1000);
 	}
 	// Set all remaining channels to shorted inputs
 	for (; i <= 8; ++i) {
 		adc_wreg(CHnSET + i, SHORTED | GAIN_12X);
+		// Wait for 4 tCLKs AKA 2 microseconds, we use 1000
+		pause_microseconds(1000);
 	}
 
 	gpio_set(ADS_GPIO, PIN_START);
 	// wait_for_drdy("waiting for DRDY in setup", 25, 5);
+	adc_send_command(RDATAC);
 }
 
 void setup_leds()
@@ -344,25 +365,33 @@ void setup_leds()
 	gpio_set(GPIOD, GPIO12 | GPIO14);
 }
 
-unsigned int fill_debug_frame(char *byte_buf)
+unsigned int fill_debug_frame_inner(char *byte_buf, const char *type, u32 val)
 {
-	u8 val;
-
 	unsigned int pos = 0;
+	unsigned int i = 0;
 
 	byte_buf[pos++] = '[';
 	byte_buf[pos++] = 'u';
 	byte_buf[pos++] = 'g';
 	byte_buf[pos++] = ']';
 
-	// read the ID then the CONFIG1 registers
-	val = adc_rreg(ID);
-	byte_buf[pos++] = to_hex(val, 1);
-	byte_buf[pos++] = to_hex(val, 0);
+	while (type[i] != '\0') {
+		byte_buf[pos++] = type[i++];
+	}
+	byte_buf[pos++] = ':';
+	byte_buf[pos++] = ' ';
 
-	val = adc_rreg(CONFIG1);
-	byte_buf[pos++] = to_hex(val, 1);
-	byte_buf[pos++] = to_hex(val, 0);
+	byte_buf[pos++] = to_hex((u8) (val >> 24), 1);
+	byte_buf[pos++] = to_hex((u8) (val >> 24), 0);
+
+	byte_buf[pos++] = to_hex((u8) (val >> 16), 1);
+	byte_buf[pos++] = to_hex((u8) (val >> 16), 0);
+
+	byte_buf[pos++] = to_hex((u8) (val >> 8), 1);
+	byte_buf[pos++] = to_hex((u8) (val >> 8), 0);
+
+	byte_buf[pos++] = to_hex((u8) (val >> 0), 1);
+	byte_buf[pos++] = to_hex((u8) (val >> 0), 0);
 
 	byte_buf[pos++] = '[';
 	byte_buf[pos++] = 'l';
@@ -372,6 +401,15 @@ unsigned int fill_debug_frame(char *byte_buf)
 	byte_buf[pos++] = '\n';
 
 	return pos;
+}
+
+unsigned int fill_debug_frame(char *byte_buf)
+{
+	// read the ID then the CONFIG1 registers
+	u8 val1 = adc_rreg(ID);
+	u8 val2 = adc_rreg(CONFIG1);
+	u32 val = (val1 << 8) | val2;
+	return fill_debug_frame_inner(byte_buf, "0,0,ID,CONFIG1", val);
 }
 
 // if this becomes more flexible, we may need to pass in
@@ -384,6 +422,8 @@ unsigned int fill_sample_frame(char *byte_buf)
 	unsigned int pos = 0;
 
 	gpio_clear(ADS_GPIO, IPIN_CS);
+	pause_microseconds(1);
+
 	byte_buf[pos++] = '[';
 	byte_buf[pos++] = 'g';
 	byte_buf[pos++] = 'o';
@@ -393,6 +433,7 @@ unsigned int fill_sample_frame(char *byte_buf)
 	for (i = 0; i <= 8; ++i) {
 		for (j = 0; j < 3; ++j) {
 			in_byte = spi_xfer(SPI1, 0);
+			pause_microseconds(16);
 			byte_buf[pos++] = to_hex(in_byte, 1);
 			byte_buf[pos++] = to_hex(in_byte, 0);
 		}
@@ -404,8 +445,9 @@ unsigned int fill_sample_frame(char *byte_buf)
 	byte_buf[pos++] = ']';
 	byte_buf[pos++] = '\r';
 	byte_buf[pos++] = '\n';
-	pause_microseconds(1);
+
 	gpio_set(ADS_GPIO, IPIN_CS);
+	pause_microseconds(16);
 
 	return pos;
 }
@@ -413,25 +455,30 @@ unsigned int fill_sample_frame(char *byte_buf)
 int main(void)
 {
 	char byte_buf[DATA_BUF_SIZE];
-	unsigned int len;
+	unsigned int len, reg_to_send;
 
 	send_data = 0;
+	reg_to_send = 1;
 
 	setup_main_clock();
 	setup_peripheral_clocks();
+	u32 reg = setup_spi();
 	setup_ads1298();
 	setup_usb_fullspeed();
 	setup_leds();
 
 	while (1) {
-		len = fill_debug_frame(byte_buf);
-		print_msg(byte_buf, len);
+		if (send_data && reg_to_send) {
+			len = fill_debug_frame_inner(byte_buf, "reg", reg);
+			print_msg(byte_buf, len);
+			reg_to_send = 0;
+		}
+		// len = fill_debug_frame(byte_buf);
+		// print_msg(byte_buf, len);
 
 		// wait_for_drdy calls usbd_poll()
 		wait_for_drdy("no data", 7, 2);
 		len = fill_sample_frame(byte_buf);
-		if (send_data) {
-			print_msg(byte_buf, len);
-		}
+		print_msg(byte_buf, len);
 	}
 }
