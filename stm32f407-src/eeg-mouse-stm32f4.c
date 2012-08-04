@@ -441,7 +441,7 @@ unsigned int fill_sample_frame(char *byte_buf)
 	for (i = 0; i <= 8; ++i) {
 		for (j = 0; j < 3; ++j) {
 			in_byte = spi_xfer(SPI1, 0);
-			pause_microseconds(16);
+			pause_microseconds(2);
 			byte_buf[pos++] = to_hex(in_byte, 1);
 			byte_buf[pos++] = to_hex(in_byte, 0);
 		}
