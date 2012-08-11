@@ -114,7 +114,8 @@ int main(void)
 	SPI.begin();
 
 	SPI.setBitOrder(MSBFIRST);
-	SPI.setClockDivider(SPI_CLOCK_DIV4);
+	// SPI.setClockDivider(SPI_CLOCK_DIV4);
+	SPI.setClockDivider(SPI_CLOCK_DIV8);
 	SPI.setDataMode(SPI_MODE1);
 
 	//digitalWrite(IPIN_CS, LOW);
