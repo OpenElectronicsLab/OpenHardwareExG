@@ -2,13 +2,20 @@
 use strict;
 use warnings;
 
+use Getopt::Long;
+use Math::Trig;
 use YAML qw( LoadFile );
+
+my $pi = Math::Trig::pi;
 
 # turn off channel buffering
 $| = 1;
 
+
+my $skipsmooth = 0;
 my $samplerate = 250;            # SPS
-my $pi         = 3.1415926535;
+
+GetOptions("skipsmooth" => \$skipsmooth);
 
 my $dt = 1.0 / $samplerate;
 
@@ -67,6 +74,9 @@ sub linear_filter {
 sub smooth {
     my ( $buffer_number, $coef_name, $in_val ) = @_;
     my $rough_val = linear_filter( $buffer_number, $coef_name, $in_val );
+    if ($skipsmooth) {
+        return sprintf( "%10f", $rough_val );
+    }
     my $rectified = abs($rough_val);
     my $out_val = linear_filter( $buffer_number+2, 'smooth_filter', $rectified );
     return sprintf( "%10f", $out_val );
