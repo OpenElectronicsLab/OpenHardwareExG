@@ -11,6 +11,7 @@ signalFrequency = 11; # Hz
 time = (0:floor(duration * samplingRate)) / samplingRate;
 
 # generate the noise
+set.seed(1234);
 noise = rnorm(length(time), sd=noiseAmplitude);
 
 # generate the pure signal (as a sine wave for the given duration)
@@ -28,4 +29,5 @@ signal[signalStartingSample:signalEndingSample] =
 signalPlusNoise = signal + noise;
 
 # write out the resulting file
+write.table(signal, "signal.csv", row.names=F, col.names=F);
 write.table(signalPlusNoise, "signal-with-noise.csv", row.names=F, col.names=F);
