@@ -19,10 +19,15 @@ x_filter = signal.iirdesign(
 )
 
 # 21.5-24.5 Hz 12th order elliptic bandpass filter, from
+# y_filter = signal.iirdesign(
+#     wp = [22.0/nyquest_freq, 24.0/nyquest_freq],
+#    ws = [18./nyquest_freq, 29./nyquest_freq],
+#     gstop=105, gpass=1, ftype='ellip'
+# )
 y_filter = signal.iirdesign(
-    wp = [22.0/nyquest_freq, 24.0/nyquest_freq],
-    ws = [18./nyquest_freq, 29./nyquest_freq],
-    gstop=105, gpass=1, ftype='ellip'
+    wp = [20.0/nyquest_freq, 26.0/nyquest_freq],
+    ws = [16./nyquest_freq, 32./nyquest_freq],
+    gstop=40, gpass=3, ftype='ellip'
 )
 
 # 5 Hz 10th order elliptic lowpass filter, from
