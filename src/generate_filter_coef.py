@@ -6,10 +6,16 @@ from matplotlib import pyplot as plt
 nyquest_freq = 250./2;
 
 # 10-12 Hz 10th order elliptic bandpass filter, from
+#x_filter = signal.iirdesign(
+#    wp = [10.5/nyquest_freq, 11.5/nyquest_freq],
+#    ws = [7./nyquest_freq, 17./nyquest_freq],
+#    gstop=110, gpass=1, ftype='ellip'
+#)
+# 7-14 Hz butterworth filter, from
 x_filter = signal.iirdesign(
-    wp = [10.5/nyquest_freq, 11.5/nyquest_freq],
-    ws = [7./nyquest_freq, 17./nyquest_freq],
-    gstop=110, gpass=1, ftype='ellip'
+    wp = [7./nyquest_freq, 14./nyquest_freq],
+    ws = [4./nyquest_freq, 20./nyquest_freq],
+    gstop=40, gpass=3, ftype='ellip'
 )
 
 # 21.5-24.5 Hz 12th order elliptic bandpass filter, from
@@ -20,10 +26,15 @@ y_filter = signal.iirdesign(
 )
 
 # 5 Hz 10th order elliptic lowpass filter, from
+# smooth_filter = signal.iirdesign(
+#    wp = 5./nyquest_freq,
+#    ws= 7./nyquest_freq, gstop=100,
+#    gpass=1, ftype='ellip'
+# )
 smooth_filter = signal.iirdesign(
-    wp = 5./nyquest_freq,
-    ws= 7./nyquest_freq, gstop=100,
-    gpass=1, ftype='ellip'
+    wp = 5./ nyquest_freq,
+    ws = 10./ nyquest_freq, gstop=40,
+    gpass=3, ftype='ellip'
 )
 
 
