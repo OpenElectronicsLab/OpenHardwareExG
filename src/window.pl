@@ -48,6 +48,10 @@ sub scale {
     return 100000;
 }
 
+sub dead_zone {
+    return 0.01;
+}
+
 our $valid_row_regex = qr/
    (?<chan1>-?[0-9]+(?:\.[0-9]*)),\s*
    (?<chan2>-?[0-9]+(?:\.[0-9]*))
@@ -82,10 +86,22 @@ sub handleInput {
             my $chan1_avg = this->{chan1_sum} / $samples;
             my $chan2_avg = this->{chan2_sum} / $samples;
 
-            my $new_x = ( this->scale() * ( $chan_1 - $chan1_avg ) );
-            my $new_y = ( this->scale() * ( $chan_2 - $chan2_avg ) );
-            this->{_x} += $new_x;
-            this->{_y} += $new_y;
+            my $x_signal = ( this->scale() * ( $chan_1 - $chan1_avg ) );
+            my $y_signal = ( this->scale() * ( $chan_2 - $chan2_avg ) );
+            my $dead_zone = this->dead_zone();
+
+            if ( $x_signal > $dead_zone ) {
+                this->{_x} += $x_signal - $dead_zone;
+            }
+            elsif ( $x_signal < -$dead_zone ) {
+                this->{_x} += $x_signal + $dead_zone;
+            }
+            if ( $y_signal > $dead_zone ) {
+                this->{_y} += $y_signal - $dead_zone;
+            }
+            elsif ( $y_signal < -$dead_zone ) {
+                this->{_y} += $y_signal + $dead_zone;
+            }
 
             my $size = this->size();
             if ( this->{_x} < 0 ) {
