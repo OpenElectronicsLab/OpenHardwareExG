@@ -52,6 +52,10 @@ sub dead_zone {
     return 0.01;
 }
 
+sub wrap_pointer {
+    return 0;
+}
+
 our $valid_row_regex = qr/
    (?<chan1>-?[0-9]+(?:\.[0-9]*)),\s*
    (?<chan2>-?[0-9]+(?:\.[0-9]*))
@@ -105,16 +109,36 @@ sub handleInput {
 
             my $size = this->size();
             if ( this->{_x} < 0 ) {
-                this->{_x} = 0;
+                if ( this->wrap_pointer() ) {
+                    this->{_x} += $size->width() - $square_size;
+                }
+                else {
+                    this->{_x} = 0;
+                }
             }
             elsif ( this->{_x} > $size->width() - $square_size ) {
-                this->{_x} = $size->width() - $square_size;
+                if ( this->wrap_pointer() ) {
+                    this->{_x} -= $size->width() - $square_size;
+                }
+                else {
+                    this->{_x} = $size->width() - $square_size;
+                }
             }
             if ( this->{_y} < 0 ) {
-                this->{_y} = 0;
+                if ( this->wrap_pointer() ) {
+                    this->{_y} += $size->height() - $square_size;
+                }
+                else {
+                    this->{_y} = 0;
+                }
             }
             elsif ( this->{_y} > $size->height() - $square_size ) {
-                this->{_y} = $size->height() - $square_size;
+                if ( this->wrap_pointer() ) {
+                    this->{_y} -= $size->height() - $square_size;
+                }
+                else {
+                    this->{_y} = $size->height() - $square_size;
+                }
             }
         }
         if ( $i % 10 == 0 ) {
