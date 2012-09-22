@@ -27,6 +27,7 @@ cfftseconds <- sapply(closdfft, function (data) {
     ((0:(length(data)-1)/length(data))*250)
 });
 
+x11();
 par(mfrow=c(6,2), mar=c(0,0,0,0))
 freq_min = 15;
 freq_max = 30;
@@ -48,4 +49,16 @@ closd_beta <- sapply(1:6, function (i) {
                 & (cfftseconds[[i]] < freq_max)])) })
 
 ttest <- t.test(opens_beta, closd_beta);
+par(mfrow=c(1,1), mar=c(5,5,5,5))
+
+x11();
+open_dens = density(opens_beta)
+closd_dens = density(closd_beta)
+plot(open_dens, col="red",
+    xlim=c(min(open_dens$x, closd_dens$x), max(open_dens$x, closd_dens$x)),
+    ylim=c(min(open_dens$y, closd_dens$y), max(open_dens$y, closd_dens$y))
+)
+lines(closd_dens, col="blue")
+rug(opens_beta, col="red")
+rug(closd_beta, col="blue")
 ttest
