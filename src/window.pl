@@ -19,9 +19,11 @@ our $square_size = 50;
 sub NEW {
     my ( $class, $parent ) = @_;
     $class->SUPER::NEW($parent);
-    this->{_x}       = 45;
-    this->{_y}       = 45;
-    this->{selector} = IO::Select->new();
+    this->{_x}        = 45;
+    this->{_x_signal} = 0;
+    this->{_y}        = 45;
+    this->{_y_signal} = 0;
+    this->{selector}  = IO::Select->new();
     this->{selector}->add( \*STDIN );
     this->{chan1_samples} = [];
     this->{chan1_sum}     = 0;
@@ -40,7 +42,7 @@ sub paintEvent {
     my $height  = $square_size;
     my $x       = this->{_x};
     my $y       = this->{_y};
-    $painter->fillRect( $x, $y, $width, $height, Qt::blue() );
+    $painter->fillRect( $x, $y, $width, $height, Qt::Color( this->rgb() ) );
     $painter->end();
 }
 
@@ -54,6 +56,22 @@ sub dead_zone {
 
 sub wrap_pointer {
     return 0;
+}
+
+sub _scaled_to_0_to_255 {
+    my ($velocity) = @_;
+    $velocity = abs($velocity);
+    my $scaled = int( 255 * ( $velocity / 10 ) );
+    if ( $scaled > 255 ) {
+        return 255;
+    }
+    return $scaled;
+}
+
+sub rgb {
+    my $red  = _scaled_to_0_to_255( this->{_x_signal} );
+    my $blue = _scaled_to_0_to_255( this->{_y_signal} );
+    return ( $red, 0x00, $blue );
 }
 
 our $valid_row_regex = qr/
@@ -90,21 +108,21 @@ sub handleInput {
             my $chan1_avg = this->{chan1_sum} / $samples;
             my $chan2_avg = this->{chan2_sum} / $samples;
 
-            my $x_signal = ( this->scale() * ( $chan_1 - $chan1_avg ) );
-            my $y_signal = ( this->scale() * ( $chan_2 - $chan2_avg ) );
+            this->{_x_signal} = ( this->scale() * ( $chan_1 - $chan1_avg ) );
+            this->{_y_signal} = ( this->scale() * ( $chan_2 - $chan2_avg ) );
             my $dead_zone = this->dead_zone();
 
-            if ( $x_signal > $dead_zone ) {
-                this->{_x} += $x_signal - $dead_zone;
+            if ( this->{_x_signal} > $dead_zone ) {
+                this->{_x} += this->{_x_signal} - $dead_zone;
             }
-            elsif ( $x_signal < -$dead_zone ) {
-                this->{_x} += $x_signal + $dead_zone;
+            elsif ( this->{_x_signal} < -$dead_zone ) {
+                this->{_x} += this->{_x_signal} + $dead_zone;
             }
-            if ( $y_signal > $dead_zone ) {
-                this->{_y} += $y_signal - $dead_zone;
+            if ( this->{_y_signal} > $dead_zone ) {
+                this->{_y} += this->{_y_signal} - $dead_zone;
             }
-            elsif ( $y_signal < -$dead_zone ) {
-                this->{_y} += $y_signal + $dead_zone;
+            elsif ( this->{_y_signal} < -$dead_zone ) {
+                this->{_y} += this->{_y_signal} + $dead_zone;
             }
 
             my $size = this->size();
