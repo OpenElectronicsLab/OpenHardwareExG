@@ -1,3 +1,4 @@
+#!/usr/bin/Rscript
 totalDuration = 20.0; # seconds
 signalAmplitude = 1e-3; # volts, peak to peak
 samplingRate = 250; # samples per second
