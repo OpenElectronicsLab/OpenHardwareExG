@@ -14,9 +14,15 @@ use QtCore4;
 use QtCore4::isa qw( Qt::Widget );
 use QtCore4::slots handle_signal_input => [],
     set_vert_sensitivity => ['double'],
-    set_horz_sensitivity => ['double'];
+    set_horz_sensitivity => ['double'],
+    start_trial => [];
+use QtCore4::signals
+    x_distance_changed => ['int'],
+    y_distance_changed => ['int'],
+    time_remaining_changed => ['int'];
 
 our $square_size = 50;
+our $trial_duration = 20;
 
 sub NEW {
     my ( $class, $parent ) = @_;
@@ -33,22 +39,43 @@ sub NEW {
     this->{chan2_sum}     = 0;
     this->{_x_sensitivity} = 0.25;
     this->{_y_sensitivity} = 0.75;
+    this->{_trial_width} = 600;
+    this->{_trial_height} = 600;
+    this->{_target_size} = $square_size;
+    this->{_x_target} = 100 - this->{_target_size} / 2;
+    this->{_y_target} = 500 - this->{_target_size} / 2;
+    this->{_trial_finish} = Qt::Time::currentTime();
+}
+
+sub trialInProgress {
+    return Qt::Time::currentTime().secsTo(this->{_trial_finish}) >= 0;
 }
 
 sub sizeHint {
-    return Qt::Size( 600, 600 );
+    return Qt::Size( this->{_trial_width}, this->{_trial_height} );
 }
 
 sub paintEvent {
     my $painter = Qt::Painter(this);
+
+    # draw border
     my $size    = this->size();
-    my $width   = $square_size;
-    my $height  = $square_size;
-    my $x       = this->{_x};
-    my $y       = this->{_y};
     $painter->drawRect( 0, 0, $size->width() - 1, $size->height() - 1 );
+
+    # draw target
+    my $width   = this->{_target_size};
+    my $height  = this->{_target_size};
+    my $x       = this->{_x_target};
+    my $y       = this->{_y_target};
+    $painter->fillRect( $x, $y, $width, $height, Qt::Color( 0x00, 0xFF, 0x00 ) );
+
+    # draw cursor
+    $width   = $square_size;
+    $height  = $square_size;
+    $x       = this->{_x};
+    $y       = this->{_y};
     $painter->fillRect( $x, $y, $width, $height, Qt::Color( this->rgb() ) );
-    $painter->fillRect( $x, $y, $width, $height, Qt::Color( this->rgb() ) );
+
     $painter->end();
 }
 
@@ -99,11 +126,14 @@ sub set_horz_sensitivity {
     this->{_x_sensitivity} = $newValue;
 }
 
+sub start_trial {
+    this->{_trial_finish} = Qt::Time::currentTime()->addSecs($trial_duration);
+}
+
 sub handle_signal_input {
     if ( not this->{selector}->can_read(0.0) ) {
         return;
     }
-    my $i = 0;
     while ( this->{selector}->can_read(0.0) ) {
         my $line = readline( \*STDIN );
         last if not $line;
@@ -179,10 +209,10 @@ sub handle_signal_input {
                 }
             }
         }
-        if ( $i % 10 == 0 ) {
-            this->update();
-        }
     }
+    emit x_distance_changed(this->{_x} - this->{_x_target});
+    emit y_distance_changed(this->{_y} - this->{_y_target});
+    emit time_remaining_changed(Qt::Time::currentTime()->secsTo(this->{_trial_finish}));
     this->update();
 }
 
@@ -200,11 +230,23 @@ my $vertLabel = Qt::Label("Vert");
 my $vertSpin = Qt::DoubleSpinBox();
 my $horzLabel = Qt::Label("Horz");
 my $horzSpin = Qt::DoubleSpinBox();
+my $startTrial = Qt::PushButton("Start trial");
+my $distanceLabel = Qt::Label("Distance to Target:");
+my $xDistance = Qt::Label("XX");
+my $yDistance = Qt::Label("XX");
+my $timeRemainingLabel = Qt::Label("Time remaining:");
+my $timeRemaining = Qt::Label("XX");
 $controlPanelLayout->addWidget($vertLabel);
 $controlPanelLayout->addWidget($vertSpin);
 $controlPanelLayout->addWidget($horzLabel);
 $controlPanelLayout->addWidget($horzSpin);
 $controlPanelLayout->addStretch();
+$controlPanelLayout->addWidget($distanceLabel);
+$controlPanelLayout->addWidget($xDistance);
+$controlPanelLayout->addWidget($yDistance);
+$controlPanelLayout->addWidget($timeRemainingLabel);
+$controlPanelLayout->addWidget($timeRemaining);
+$controlPanelLayout->addWidget($startTrial);
 $layout->addLayout($controlPanelLayout);
 $layout->addWidget($boxDisplay);
 $frame->setLayout($layout);
@@ -217,6 +259,10 @@ $horzSpin->setValue( $boxDisplay->{_y_sensitivity} );
 
 $boxDisplay->connect( $vertSpin, SIGNAL 'valueChanged(double)', $boxDisplay, SLOT 'set_vert_sensitivity(double)' );
 $boxDisplay->connect( $horzSpin, SIGNAL 'valueChanged(double)', $boxDisplay, SLOT 'set_horz_sensitivity(double)' );
+$boxDisplay->connect( $startTrial, SIGNAL 'pressed()', $boxDisplay, SLOT 'start_trial()' );
+$boxDisplay->connect( $boxDisplay, SIGNAL 'x_distance_changed(int)', $xDistance, SLOT 'setNum(int)' );
+$boxDisplay->connect( $boxDisplay, SIGNAL 'y_distance_changed(int)', $yDistance, SLOT 'setNum(int)' );
+$boxDisplay->connect( $boxDisplay, SIGNAL 'time_remaining_changed(int)', $timeRemaining, SLOT 'setNum(int)' );
 
 my $timer = Qt::Timer($boxDisplay);
 $boxDisplay->connect( $timer, SIGNAL 'timeout()', $boxDisplay, SLOT 'handle_signal_input()' );
