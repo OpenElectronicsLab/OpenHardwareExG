@@ -46,6 +46,8 @@ sub paintEvent {
     my $height  = $square_size;
     my $x       = this->{_x};
     my $y       = this->{_y};
+    $painter->drawRect( 0, 0, $size->width() - 1, $size->height() - 1 );
+    $painter->fillRect( $x, $y, $width, $height, Qt::Color( this->rgb() ) );
     $painter->fillRect( $x, $y, $width, $height, Qt::Color( this->rgb() ) );
     $painter->end();
 }
