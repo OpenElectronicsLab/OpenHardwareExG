@@ -31,8 +31,8 @@ sub NEW {
     this->{chan1_sum}     = 0;
     this->{chan2_samples} = [];
     this->{chan2_sum}     = 0;
-    this->{_x_sensitivity} = 1.0;
-    this->{_y_sensitivity} = 1.0;
+    this->{_x_sensitivity} = 0.25;
+    this->{_y_sensitivity} = 0.75;
 }
 
 sub sizeHint {
