@@ -12,7 +12,9 @@ use IO::Select;
 use QtGui4;
 use QtCore4;
 use QtCore4::isa qw( Qt::Widget );
-use QtCore4::slots handleInput => [];
+use QtCore4::slots handle_signal_input => [],
+    set_vert_sensitivity => ['double'],
+    set_horz_sensitivity => ['double'];
 
 our $square_size = 50;
 
@@ -29,6 +31,8 @@ sub NEW {
     this->{chan1_sum}     = 0;
     this->{chan2_samples} = [];
     this->{chan2_sum}     = 0;
+    this->{_x_sensitivity} = 1.0;
+    this->{_y_sensitivity} = 1.0;
 }
 
 sub sizeHint {
@@ -46,8 +50,12 @@ sub paintEvent {
     $painter->end();
 }
 
-sub scale {
-    return 100000;
+sub scale_x {
+    return 100000 * this->{_x_sensitivity};
+}
+
+sub scale_y {
+    return 100000 * this->{_y_sensitivity};
 }
 
 sub dead_zone {
@@ -79,7 +87,17 @@ our $valid_row_regex = qr/
    (?<chan2>-?[0-9]+(?:\.[0-9]*))
 /x;
 
-sub handleInput {
+sub set_vert_sensitivity {
+    my ($newValue) = @_;
+    this->{_y_sensitivity} = $newValue;
+}
+
+sub set_horz_sensitivity {
+    my ($newValue) = @_;
+    this->{_x_sensitivity} = $newValue;
+}
+
+sub handle_signal_input {
     if ( not this->{selector}->can_read(0.0) ) {
         return;
     }
@@ -108,8 +126,8 @@ sub handleInput {
             my $chan1_avg = this->{chan1_sum} / $samples;
             my $chan2_avg = this->{chan2_sum} / $samples;
 
-            this->{_x_signal} = ( this->scale() * ( $chan_1 - $chan1_avg ) );
-            this->{_y_signal} = ( this->scale() * ( $chan_2 - $chan2_avg ) );
+            this->{_x_signal} = ( this->scale_x() * ( $chan_1 - $chan1_avg ) );
+            this->{_y_signal} = ( this->scale_y() * ( $chan_2 - $chan2_avg ) );
             my $dead_zone = this->dead_zone();
 
             if ( this->{_x_signal} > $dead_zone ) {
@@ -172,12 +190,34 @@ use QtCore4;
 use QtGui4;
 
 my $app = Qt::Application( \@ARGV );
+my $frame = Qt::Widget();
+my $boxDisplay = MyWidget->new();
+my $layout = Qt::HBoxLayout($frame);
+my $controlPanelLayout = Qt::VBoxLayout();
+my $vertLabel = Qt::Label("Vert");
+my $vertSpin = Qt::DoubleSpinBox();
+my $horzLabel = Qt::Label("Horz");
+my $horzSpin = Qt::DoubleSpinBox();
+$controlPanelLayout->addWidget($vertLabel);
+$controlPanelLayout->addWidget($vertSpin);
+$controlPanelLayout->addWidget($horzLabel);
+$controlPanelLayout->addWidget($horzSpin);
+$controlPanelLayout->addStretch();
+$layout->addLayout($controlPanelLayout);
+$layout->addWidget($boxDisplay);
+$frame->setLayout($layout);
+$frame->show();
 
-my $widget = MyWidget->new();
-$widget->show();
+$vertSpin->setSingleStep( 0.1 );
+$vertSpin->setValue( $boxDisplay->{_x_sensitivity} );
+$horzSpin->setSingleStep( 0.1 );
+$horzSpin->setValue( $boxDisplay->{_y_sensitivity} );
 
-my $timer = Qt::Timer($widget);
-$widget->connect( $timer, SIGNAL 'timeout()', $widget, SLOT 'handleInput()' );
+$boxDisplay->connect( $vertSpin, SIGNAL 'valueChanged(double)', $boxDisplay, SLOT 'set_vert_sensitivity(double)' );
+$boxDisplay->connect( $horzSpin, SIGNAL 'valueChanged(double)', $boxDisplay, SLOT 'set_horz_sensitivity(double)' );
+
+my $timer = Qt::Timer($boxDisplay);
+$boxDisplay->connect( $timer, SIGNAL 'timeout()', $boxDisplay, SLOT 'handle_signal_input()' );
 $timer->start(10);
 
 exit $app->exec();
