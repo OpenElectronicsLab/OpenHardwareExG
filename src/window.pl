@@ -137,7 +137,6 @@ sub handle_signal_input {
     while ( this->{selector}->can_read(0.0) ) {
         my $line = readline( \*STDIN );
         last if not $line;
-        print $line, "\n";
         if ( $line =~ m/$valid_row_regex/ ) {
             my $chan_1 = $+{chan1};
             my $chan_2 = $+{chan2};
@@ -175,6 +174,9 @@ sub handle_signal_input {
                 this->{_y} += this->{_y_signal} + $dead_zone;
             }
 
+            this->{_x} = int(this->{_x});
+            this->{_y} = int(this->{_y});
+
             my $size = this->size();
             if ( this->{_x} < 0 ) {
                 if ( this->wrap_pointer() ) {
@@ -209,6 +211,12 @@ sub handle_signal_input {
                 }
             }
         }
+        chomp $line;
+        print $line, ',',
+            this->{_x}, ',', this->{_x_target}, ',',
+            this->{_y}, ',' , this->{_y_target}, ',',
+            Qt::Time::currentTime()->msecsTo(this->{_trial_finish}),
+            "\n";
     }
     emit x_distance_changed(this->{_x} - this->{_x_target});
     emit y_distance_changed(this->{_y} - this->{_y_target});

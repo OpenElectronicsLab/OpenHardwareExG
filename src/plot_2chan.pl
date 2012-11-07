@@ -44,7 +44,7 @@ $plotcommand = $plotcommand . "\n";
 
 our $valid_row_regex = qr/
    (?<chan1>-?[0-9]+(?:\.[0-9]*)),\s*
-   (?<chan2>-?[0-9]+(?:\.[0-9]*))
+   (?<chan2>-?[0-9]+(?:\.[0-9]*))[.]*
 /x;
 my $samples_since_last_update = 0;
 while (<STDIN>) {
