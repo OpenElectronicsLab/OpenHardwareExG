@@ -22,7 +22,19 @@ use QtCore4::signals
     time_remaining_changed => ['int'];
 
 our $square_size = 50;
-our $trial_duration = 20;
+our $target_duration = 20;
+our $trial_duration = $target_duration * 9;
+our $targets = {
+    1 => { x => 100, y => 500 },
+    2 => { x => 500, y => 500 },
+    3 => { x => 100, y => 100 },
+    4 => { x => 500, y => 100 },
+    5 => { x => 300, y => 300 },
+    6 => { x => 300, y => 500 },
+    7 => { x => 100, y => 300 },
+    8 => { x => 300, y => 100 },
+    9 => { x => 500, y => 300 },
+};
 
 sub NEW {
     my ( $class, $parent ) = @_;
@@ -42,13 +54,9 @@ sub NEW {
     this->{_trial_width} = 600;
     this->{_trial_height} = 600;
     this->{_target_size} = $square_size;
-    this->{_x_target} = 100 - this->{_target_size} / 2;
-    this->{_y_target} = 500 - this->{_target_size} / 2;
-    this->{_trial_finish} = Qt::Time::currentTime();
-}
-
-sub trialInProgress {
-    return Qt::Time::currentTime().secsTo(this->{_trial_finish}) >= 0;
+    this->{_x_target} = 0;
+    this->{_y_target} = 0;
+    this->{_trial_finish} = Qt::Time::currentTime()->addSecs(-1);
 }
 
 sub sizeHint {
@@ -63,17 +71,21 @@ sub paintEvent {
     $painter->drawRect( 0, 0, $size->width() - 1, $size->height() - 1 );
 
     # draw target
-    my $width   = this->{_target_size};
-    my $height  = this->{_target_size};
-    my $x       = this->{_x_target};
-    my $y       = this->{_y_target};
-    $painter->fillRect( $x, $y, $width, $height, Qt::Color( 0x00, 0xFF, 0x00 ) );
+    my $time = Qt::Time::currentTime();
+    my $secs = $time->secsTo(this->{_trial_finish});
+    if ($secs >= 0) {
+        my $width   = this->{_target_size};
+        my $height  = this->{_target_size};
+        my $x       = this->{_x_target};
+        my $y       = this->{_y_target};
+        $painter->fillRect( $x, $y, $width, $height, Qt::Color( 0x00, 0xFF, 0x00 ) );
+    }
 
     # draw cursor
-    $width   = $square_size;
-    $height  = $square_size;
-    $x       = this->{_x};
-    $y       = this->{_y};
+    my $width   = $square_size;
+    my $height  = $square_size;
+    my $x       = this->{_x};
+    my $y       = this->{_y};
     $painter->fillRect( $x, $y, $width, $height, Qt::Color( this->rgb() ) );
 
     $painter->end();
@@ -134,6 +146,15 @@ sub handle_signal_input {
     if ( not this->{selector}->can_read(0.0) ) {
         return;
     }
+    my $time = Qt::Time::currentTime();
+    my $secs = $time->secsTo(this->{_trial_finish});
+    my $trial = 9 - int($secs / $target_duration);
+    my $target = $targets->{$trial};
+    if ($target) {
+        this->{_x_target} = $target->{x} - this->{_target_size} / 2;
+        this->{_y_target} = $target->{y} - this->{_target_size} / 2;
+    }
+
     while ( this->{selector}->can_read(0.0) ) {
         my $line = readline( \*STDIN );
         last if not $line;
@@ -215,12 +236,21 @@ sub handle_signal_input {
         print $line, ',',
             this->{_x}, ',', this->{_x_target}, ',',
             this->{_y}, ',' , this->{_y_target}, ',',
-            Qt::Time::currentTime()->msecsTo(this->{_trial_finish}),
+            $time->msecsTo(this->{_trial_finish}),
             "\n";
     }
-    emit x_distance_changed(this->{_x} - this->{_x_target});
-    emit y_distance_changed(this->{_y} - this->{_y_target});
-    emit time_remaining_changed(Qt::Time::currentTime()->secsTo(this->{_trial_finish}));
+    if ($target) {
+        emit x_distance_changed(this->{_x} - this->{_x_target});
+        emit y_distance_changed(this->{_y} - this->{_y_target});
+        emit time_remaining_changed($time->secsTo(this->{_trial_finish}));
+    }
+    elsif (this->{_x_target} != 0) {
+        this->{_x_target} = 0;
+        this->{_y_target} = 0;
+        emit x_distance_changed(0);
+        emit y_distance_changed(0);
+        emit time_remaining_changed(0);
+    }
     this->update();
 }
 
