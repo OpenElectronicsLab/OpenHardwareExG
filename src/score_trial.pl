@@ -4,9 +4,9 @@ use warnings;
 
 use Getopt::Long;
 
-my $permutations = 1;
+my $shuffle = 0;
 
-GetOptions("permutations" => \$permutations);
+GetOptions("shuffle" => \$shuffle);
 
 our $valid_row_regex = qr/
    (?<chan1>-?[0-9]+(?:\.[0-9]*)),\s*
@@ -28,9 +28,34 @@ our $default_targets = {
     '475_275' => { x => 475, y => 275 },
 };
 
+sub shuffle {
+    my @items = @_;
+    my $num_items= scalar @items;
+    foreach my $i (0 .. $num_items-1) {
+        my $temp = $items[$i];
+        my $target = $i + int(rand($num_items -$i));
+        $items[$i] = $items[$target];
+        $items[$target] = $temp;
+    }
+    return @items;
+}
+
 my $distances = [];
 
-my $permutation = $default_targets;
+my $permutation = {};
+
+if ($shuffle) {
+    my @sorted_keys = sort keys %$default_targets;
+    my @keys = shuffle(@sorted_keys);
+    foreach my $i ( 0 .. scalar @keys -1) {
+        $permutation->{$sorted_keys[$i]} = $default_targets->{$keys[$i]};
+        $i++;
+    }
+}
+else {
+    $permutation = $default_targets;
+}
+
 
 while (<STDIN>) {
     if ( $_ =~ m/$valid_row_regex/ ) {
