@@ -15,10 +15,18 @@ use QtCore4::isa qw( Qt::Widget );
 use QtCore4::slots handle_signal_input => [],
     set_vert_sensitivity => ['double'],
     set_horz_sensitivity => ['double'],
+    set_vert_baseline => ['double'],
+    set_horz_baseline => ['double'],
+    use_running_average => ['bool'],
+    use_current_average => [],
     start_trial => [];
 use QtCore4::signals
+    x_average_changed => ['double'],
+    y_average_changed => ['double'],
     x_distance_changed => ['int'],
     y_distance_changed => ['int'],
+    vert_baseline_changed => ['double'],
+    horz_baseline_changed => ['double'],
     time_remaining_changed => ['int'];
 
 our $square_size = 50;
@@ -51,6 +59,9 @@ sub NEW {
     this->{chan2_sum}     = 0;
     this->{_x_sensitivity} = 0.25;
     this->{_y_sensitivity} = 0.75;
+    this->{_x_baseline} = 1;
+    this->{_y_baseline} = 1;
+    this->{_use_running_average} = 0;
     this->{_trial_width} = 600;
     this->{_trial_height} = 600;
     this->{_target_size} = $square_size;
@@ -138,8 +149,42 @@ sub set_horz_sensitivity {
     this->{_x_sensitivity} = $newValue;
 }
 
+sub set_vert_baseline {
+    my ($newValue) = @_;
+    my $oldValue = this->{_y_baseline};
+
+    this->{_y_baseline} = $newValue;
+
+    if ($newValue != $oldValue) {
+        emit vert_baseline_changed($newValue);
+    }
+}
+
+sub set_horz_baseline {
+    my ($newValue) = @_;
+    my $oldValue = this->{_x_baseline};
+
+    this->{_x_baseline} = $newValue;
+
+    if ($newValue != $oldValue) {
+        emit horz_baseline_changed($newValue);
+    }
+}
+
 sub start_trial {
     this->{_trial_finish} = Qt::Time::currentTime()->addSecs($trial_duration);
+}
+
+sub use_running_average {
+    my ($newValue) = @_;
+    this->{_use_running_average} = $newValue;
+}
+
+sub use_current_average {
+    my $num_samples = scalar @{ this->{chan1_samples} };
+
+    this->set_horz_baseline(this->{chan1_sum} / $num_samples);
+    this->set_vert_baseline(this->{chan2_sum} / $num_samples);
 }
 
 sub handle_signal_input {
@@ -167,19 +212,24 @@ sub handle_signal_input {
             push @{ this->{chan2_samples} }, $chan_2;
             this->{chan2_sum} += $chan_2;
 
-            my $samples = scalar @{ this->{chan1_samples} };
+            my $num_samples = scalar @{ this->{chan1_samples} };
 
-            if ( $samples > 1000 ) {
+            if ( $num_samples > 1000 ) {
                 my $drop = shift @{ this->{chan1_samples} };
                 this->{chan1_sum} -= $drop;
                 $drop = shift @{ this->{chan2_samples} };
                 this->{chan2_sum} -= $drop;
             }
-            my $chan1_avg = this->{chan1_sum} / $samples;
-            my $chan2_avg = this->{chan2_sum} / $samples;
+            emit x_average_changed(this->{chan1_sum} / $num_samples);
+            emit y_average_changed(this->{chan2_sum} / $num_samples);
+            if (this->{_use_running_average}) {
+                this->use_current_average();
+            }
 
-            this->{_x_signal} = ( this->scale_x() * ( $chan_1 - $chan1_avg ) );
-            this->{_y_signal} = ( this->scale_y() * ( $chan_2 - $chan2_avg ) );
+            this->{_x_signal} = ( this->scale_x() * (
+                    $chan_1 - this->{_x_baseline} ) );
+            this->{_y_signal} = ( this->scale_y() * (
+                    $chan_2 - this->{_y_baseline} ) );
             my $dead_zone = this->dead_zone();
 
             if ( this->{_x_signal} > $dead_zone ) {
@@ -264,20 +314,38 @@ my $frame = Qt::Widget();
 my $boxDisplay = MyWidget->new();
 my $layout = Qt::HBoxLayout($frame);
 my $controlPanelLayout = Qt::VBoxLayout();
-my $vertLabel = Qt::Label("Vert");
-my $vertSpin = Qt::DoubleSpinBox();
-my $horzLabel = Qt::Label("Horz");
-my $horzSpin = Qt::DoubleSpinBox();
+my $vertSensLabel = Qt::Label("Vert Sensitivity");
+my $vertSensSpin = Qt::DoubleSpinBox();
+my $horzSensLabel = Qt::Label("Horz Sensitivity");
+my $horzSensSpin = Qt::DoubleSpinBox();
+my $vertBaseLabel = Qt::Label("Vert Baseline");
+my $vertBaseSpin = Qt::DoubleSpinBox();
+my $horzBaseLabel = Qt::Label("Horz Baseline");
+my $horzBaseSpin = Qt::DoubleSpinBox();
 my $startTrial = Qt::PushButton("Start trial");
+my $averageLabel = Qt::Label("Average Signal:");
+my $xAverage = Qt::Label("XX");
+my $yAverage = Qt::Label("XX");
+my $useAveragesButton = Qt::PushButton("Use Current Average");
+my $useAveragesCheckbox = Qt::CheckBox("Use Running Average");
 my $distanceLabel = Qt::Label("Distance to Target:");
 my $xDistance = Qt::Label("XX");
 my $yDistance = Qt::Label("XX");
 my $timeRemainingLabel = Qt::Label("Time remaining:");
 my $timeRemaining = Qt::Label("XX");
-$controlPanelLayout->addWidget($vertLabel);
-$controlPanelLayout->addWidget($vertSpin);
-$controlPanelLayout->addWidget($horzLabel);
-$controlPanelLayout->addWidget($horzSpin);
+$controlPanelLayout->addWidget($vertSensLabel);
+$controlPanelLayout->addWidget($vertSensSpin);
+$controlPanelLayout->addWidget($horzSensLabel);
+$controlPanelLayout->addWidget($horzSensSpin);
+$controlPanelLayout->addWidget($vertBaseLabel);
+$controlPanelLayout->addWidget($vertBaseSpin);
+$controlPanelLayout->addWidget($horzBaseLabel);
+$controlPanelLayout->addWidget($horzBaseSpin);
+$controlPanelLayout->addWidget($averageLabel);
+$controlPanelLayout->addWidget($xAverage);
+$controlPanelLayout->addWidget($yAverage);
+$controlPanelLayout->addWidget($useAveragesCheckbox);
+$controlPanelLayout->addWidget($useAveragesButton);
 $controlPanelLayout->addStretch();
 $controlPanelLayout->addWidget($distanceLabel);
 $controlPanelLayout->addWidget($xDistance);
@@ -290,14 +358,28 @@ $layout->addWidget($boxDisplay);
 $frame->setLayout($layout);
 $frame->show();
 
-$vertSpin->setSingleStep( 0.1 );
-$vertSpin->setValue( $boxDisplay->{_x_sensitivity} );
-$horzSpin->setSingleStep( 0.1 );
-$horzSpin->setValue( $boxDisplay->{_y_sensitivity} );
+$vertSensSpin->setSingleStep( 0.1 );
+$vertSensSpin->setValue( $boxDisplay->{_x_sensitivity} );
+$horzSensSpin->setSingleStep( 0.1 );
+$horzSensSpin->setValue( $boxDisplay->{_y_sensitivity} );
+$vertBaseSpin->setSingleStep( 1e-4 );
+$vertBaseSpin->setValue( $boxDisplay->{_x_baseline} );
+$vertBaseSpin->setDecimals(10);
+$horzBaseSpin->setSingleStep( 1e-4 );
+$horzBaseSpin->setValue( $boxDisplay->{_y_baseline} );
+$horzBaseSpin->setDecimals(10);
 
-$boxDisplay->connect( $vertSpin, SIGNAL 'valueChanged(double)', $boxDisplay, SLOT 'set_vert_sensitivity(double)' );
-$boxDisplay->connect( $horzSpin, SIGNAL 'valueChanged(double)', $boxDisplay, SLOT 'set_horz_sensitivity(double)' );
+$boxDisplay->connect( $vertSensSpin, SIGNAL 'valueChanged(double)', $boxDisplay, SLOT 'set_vert_sensitivity(double)' );
+$boxDisplay->connect( $horzSensSpin, SIGNAL 'valueChanged(double)', $boxDisplay, SLOT 'set_horz_sensitivity(double)' );
+$boxDisplay->connect( $vertBaseSpin, SIGNAL 'valueChanged(double)', $boxDisplay, SLOT 'set_vert_baseline(double)' );
+$boxDisplay->connect( $horzBaseSpin, SIGNAL 'valueChanged(double)', $boxDisplay, SLOT 'set_horz_baseline(double)' );
+$boxDisplay->connect( $boxDisplay, SIGNAL 'vert_baseline_changed(double)', $vertBaseSpin, SLOT 'setValue(double)' );
+$boxDisplay->connect( $boxDisplay, SIGNAL 'horz_baseline_changed(double)', $horzBaseSpin, SLOT 'setValue(double)' );
 $boxDisplay->connect( $startTrial, SIGNAL 'pressed()', $boxDisplay, SLOT 'start_trial()' );
+$boxDisplay->connect( $boxDisplay, SIGNAL 'x_average_changed(double)', $xAverage, SLOT 'setNum(double)' );
+$boxDisplay->connect( $boxDisplay, SIGNAL 'y_average_changed(double)', $yAverage, SLOT 'setNum(double)' );
+$boxDisplay->connect( $useAveragesButton, SIGNAL 'pressed()', $boxDisplay, SLOT 'use_current_average()' );
+$boxDisplay->connect( $useAveragesCheckbox, SIGNAL 'toggled(bool)', $boxDisplay, SLOT 'use_running_average(bool)' );
 $boxDisplay->connect( $boxDisplay, SIGNAL 'x_distance_changed(int)', $xDistance, SLOT 'setNum(int)' );
 $boxDisplay->connect( $boxDisplay, SIGNAL 'y_distance_changed(int)', $yDistance, SLOT 'setNum(int)' );
 $boxDisplay->connect( $boxDisplay, SIGNAL 'time_remaining_changed(int)', $timeRemaining, SLOT 'setNum(int)' );
