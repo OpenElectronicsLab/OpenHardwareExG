@@ -31,12 +31,16 @@ my $filter_coef = LoadFile('filter_coefs.yaml');
 my @old_filter_in_vals = (
     [ map { 0.0 } @{ $filter_coef->{x_filter}->{in_coef} } ],
     [ map { 0.0 } @{ $filter_coef->{y_filter}->{in_coef} } ],
+    [ map { 0.0 } @{ $filter_coef->{baseline_filter}->{in_coef} } ],
+    [ map { 0.0 } @{ $filter_coef->{smooth_filter}->{in_coef} } ],
     [ map { 0.0 } @{ $filter_coef->{smooth_filter}->{in_coef} } ],
     [ map { 0.0 } @{ $filter_coef->{smooth_filter}->{in_coef} } ],
 );
 my @old_filter_out_vals = (
     [ map { 0.0 } @{ $filter_coef->{x_filter}->{out_coef} } ],
     [ map { 0.0 } @{ $filter_coef->{y_filter}->{out_coef} } ],
+    [ map { 0.0 } @{ $filter_coef->{baseline_filter}->{out_coef} } ],
+    [ map { 0.0 } @{ $filter_coef->{smooth_filter}->{out_coef} } ],
     [ map { 0.0 } @{ $filter_coef->{smooth_filter}->{out_coef} } ],
     [ map { 0.0 } @{ $filter_coef->{smooth_filter}->{out_coef} } ],
 );
@@ -78,7 +82,8 @@ sub smooth {
         return sprintf( "%10f", $rough_val );
     }
     my $rectified = abs($rough_val);
-    my $out_val = linear_filter( $buffer_number+2, 'smooth_filter', $rectified );
+    my $bufoffset = $buffer_number + (( scalar @old_filter_in_vals ) / 2);
+    my $out_val = linear_filter( $bufoffset, 'smooth_filter', $rectified );
     return sprintf( "%10f", $out_val );
 }
 
@@ -92,7 +97,11 @@ while (<STDIN>) {
     # parse the data
     if ( $_ =~ m/$valid_row_regex/ ) {
         my $val = $+{val};
-        print join( ", ", smooth( 0, 'x_filter', $val ), smooth( 1, 'y_filter', $val ) ), "\n";
+        print join( ", ",
+            smooth( 0, 'x_filter', $val ),
+            smooth( 1, 'y_filter', $val ),
+            smooth( 2, 'baseline_filter', $val ),
+        ), "\n";
     }
     else {
         die "unrecognized data string:\n", $_, "\n";

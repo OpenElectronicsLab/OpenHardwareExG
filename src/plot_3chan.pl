@@ -12,7 +12,7 @@ use IO::Handle;
 my $samplerate       = 250;    # SPS
 my $duration_visible = 4;      # seconds
 my $refresh_rate     = 10;     # Hz
-my $numchannels      = 2;      #8;
+my $numchannels      = 3;      #8;
 
 # start gnuplot
 my $pipe;
@@ -44,7 +44,8 @@ $plotcommand = $plotcommand . "\n";
 
 our $valid_row_regex = qr/
    (?<chan1>-?[0-9]+(?:\.[0-9]*)),\s*
-   (?<chan2>-?[0-9]+(?:\.[0-9]*))[.]*
+   (?<chan2>-?[0-9]+(?:\.[0-9]*)),\s*[.]*
+   (?<chan3>-?[0-9]+(?:\.[0-9]*))[.]*
 /x;
 my $samples_since_last_update = 0;
 while (<STDIN>) {
@@ -54,9 +55,11 @@ while (<STDIN>) {
     if ( $_ =~ m/$valid_row_regex/ ) {
         my $chan_1 = $+{chan1};
         my $chan_2 = $+{chan2};
+        my $chan_3 = $+{chan3};
 
         push( @{ $data[0] }, $chan_1 );
         push( @{ $data[1] }, $chan_2 );
+        push( @{ $data[2] }, $chan_3 );
     }
     else {
         warn "unrecognized data string: '" . $_ . "'\n";

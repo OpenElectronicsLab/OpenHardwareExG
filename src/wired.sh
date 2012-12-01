@@ -11,4 +11,4 @@ tee -a sample-${USER}-${SAMPLE}.csv |
 ./freq-split-smooth.pl |
 ./window.pl |
 tee -a trial-${USER}-${SAMPLE}.csv |
-./plot_2chan.pl
+./plot_3chan.pl

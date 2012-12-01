@@ -5,37 +5,28 @@ from matplotlib import pyplot as plt
 
 nyquest_freq = 250./2;
 
-# 10-12 Hz 10th order elliptic bandpass filter, from
-#x_filter = signal.iirdesign(
-#    wp = [10.5/nyquest_freq, 11.5/nyquest_freq],
-#    ws = [7./nyquest_freq, 17./nyquest_freq],
-#    gstop=110, gpass=1, ftype='ellip'
-#)
-# 7-14 Hz butterworth filter, from
+# 7-14 Hz elliptic bandpass filter
 x_filter = signal.iirdesign(
     wp = [7./nyquest_freq, 14./nyquest_freq],
     ws = [4./nyquest_freq, 20./nyquest_freq],
     gstop=40, gpass=3, ftype='ellip'
 )
 
-# 21.5-24.5 Hz 12th order elliptic bandpass filter, from
-# y_filter = signal.iirdesign(
-#     wp = [22.0/nyquest_freq, 24.0/nyquest_freq],
-#    ws = [18./nyquest_freq, 29./nyquest_freq],
-#     gstop=105, gpass=1, ftype='ellip'
-# )
+# 20-26 Hz elliptic bandpass filter
 y_filter = signal.iirdesign(
     wp = [20.0/nyquest_freq, 26.0/nyquest_freq],
     ws = [16./nyquest_freq, 32./nyquest_freq],
     gstop=40, gpass=3, ftype='ellip'
 )
 
-# 5 Hz 10th order elliptic lowpass filter, from
-# smooth_filter = signal.iirdesign(
-#    wp = 5./nyquest_freq,
-#    ws= 7./nyquest_freq, gstop=100,
-#    gpass=1, ftype='ellip'
-# )
+# 16.5-17.5 Hz elliptic bandpass filter
+baseline_filter = signal.iirdesign(
+    wp = [16.5/nyquest_freq, 17.5/nyquest_freq],
+    ws = [15.5/nyquest_freq, 18.5/nyquest_freq],
+    gstop=40, gpass=3, ftype='ellip'
+)
+
+# 5 Hz elliptic lowpass filter
 smooth_filter = signal.iirdesign(
     wp = 5./ nyquest_freq,
     ws = 10./ nyquest_freq, gstop=40,
@@ -44,7 +35,7 @@ smooth_filter = signal.iirdesign(
 
 
 fig = plt.figure()
-for filter in [x_filter, y_filter, smooth_filter]:
+for filter in [x_filter, y_filter, baseline_filter, smooth_filter]:
     w,h = signal.freqz(*filter)
     plt.plot(w*(nyquest_freq/max(w)), np.abs(h))
     plt.xlim(0,40)
@@ -59,6 +50,9 @@ with open('filter_coefs.yaml','wt') as f:
     f.write('y_filter:\n');
     f.write('    in_coef: ' + str(y_filter[0].tolist()) + '\n');
     f.write('    out_coef: ' + str(y_filter[1][1:].tolist()) + '\n');
+    f.write('baseline_filter:\n');
+    f.write('    in_coef: ' + str(baseline_filter[0].tolist()) + '\n');
+    f.write('    out_coef: ' + str(baseline_filter[1][1:].tolist()) + '\n');
     f.write('smooth_filter:\n');
     f.write('    in_coef: ' + str(smooth_filter[0].tolist()) + '\n');
     f.write('    out_coef: ' + str(smooth_filter[1][1:].tolist()) + '\n');

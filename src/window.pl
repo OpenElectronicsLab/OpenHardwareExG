@@ -17,12 +17,14 @@ use QtCore4::slots handle_signal_input => [],
     set_horz_sensitivity => ['double'],
     set_vert_baseline => ['double'],
     set_horz_baseline => ['double'],
-    use_running_average => ['bool'],
-    use_current_average => [],
+    set_baseline_running_average => [],
+    set_baseline_current_base_chan => [],
+    set_baseline_manual => [],
     start_trial => [];
 use QtCore4::signals
     x_average_changed => ['double'],
     y_average_changed => ['double'],
+    base_chan_changed => ['double'],
     x_distance_changed => ['int'],
     y_distance_changed => ['int'],
     vert_baseline_changed => ['double'],
@@ -61,7 +63,8 @@ sub NEW {
     this->{_y_sensitivity} = 0.75;
     this->{_x_baseline} = 1;
     this->{_y_baseline} = 1;
-    this->{_use_running_average} = 0;
+    this->{base_chan} = 0;
+    this->{_baseline_type} = 'base_chan';
     this->{_trial_width} = 600;
     this->{_trial_height} = 600;
     this->{_target_size} = $square_size;
@@ -136,7 +139,8 @@ sub rgb {
 
 our $valid_row_regex = qr/
    (?<chan1>-?[0-9]+(?:\.[0-9]*)),\s*
-   (?<chan2>-?[0-9]+(?:\.[0-9]*))
+   (?<chan2>-?[0-9]+(?:\.[0-9]*)),\s*
+   (?<chan3>-?[0-9]+(?:\.[0-9]*))
 /x;
 
 sub set_vert_sensitivity {
@@ -175,9 +179,16 @@ sub start_trial {
     this->{_trial_finish} = Qt::Time::currentTime()->addSecs($trial_duration);
 }
 
-sub use_running_average {
-    my ($newValue) = @_;
-    this->{_use_running_average} = $newValue;
+sub set_baseline_running_average {
+    this->{_baseline_type} = 'running_avg';
+}
+
+sub set_baseline_current_base_chan {
+    this->{_baseline_type} = 'base_chan';
+}
+
+sub set_baseline_manual {
+    this->{_baseline_type} = 'manual';
 }
 
 sub use_current_average {
@@ -185,6 +196,11 @@ sub use_current_average {
 
     this->set_horz_baseline(this->{chan1_sum} / $num_samples);
     this->set_vert_baseline(this->{chan2_sum} / $num_samples);
+}
+
+sub use_base_chan {
+    this->set_horz_baseline(this->{base_chan});
+    this->set_vert_baseline(this->{base_chan});
 }
 
 sub handle_signal_input {
@@ -207,6 +223,8 @@ sub handle_signal_input {
             my $chan_1 = $+{chan1};
             my $chan_2 = $+{chan2};
 
+            this->{base_chan} = $+{chan3};
+
             push @{ this->{chan1_samples} }, $chan_1;
             this->{chan1_sum} += $chan_1;
             push @{ this->{chan2_samples} }, $chan_2;
@@ -222,8 +240,12 @@ sub handle_signal_input {
             }
             emit x_average_changed(this->{chan1_sum} / $num_samples);
             emit y_average_changed(this->{chan2_sum} / $num_samples);
-            if (this->{_use_running_average}) {
+            emit base_chan_changed(this->{base_chan});
+            if (this->{_baseline_type} eq 'running_avg') {
                 this->use_current_average();
+            }
+            elsif (this->{_baseline_type} eq 'base_chan') {
+                this->use_base_chan();
             }
 
             this->{_x_signal} = ( this->scale_x() * (
@@ -326,13 +348,24 @@ my $startTrial = Qt::PushButton("Start trial");
 my $averageLabel = Qt::Label("Average Signal:");
 my $xAverage = Qt::Label("XX");
 my $yAverage = Qt::Label("XX");
-my $useAveragesButton = Qt::PushButton("Use Current Average");
-my $useAveragesCheckbox = Qt::CheckBox("Use Running Average");
+my $baseChanLabel = Qt::Label("Baseline channel:");
+my $baseChan = Qt::Label("XX");
+my $useAveragesRadio = Qt::RadioButton("Running Average");
+my $useBaselineChanRadio = Qt::RadioButton("Baseline Channel");
+my $useManualRadio = Qt::RadioButton("Manual");
+my $baselineGroupbox = Qt::GroupBox("Baseline type");
+my $baselineLayout = Qt::VBoxLayout();
 my $distanceLabel = Qt::Label("Distance to Target:");
 my $xDistance = Qt::Label("XX");
 my $yDistance = Qt::Label("XX");
 my $timeRemainingLabel = Qt::Label("Time remaining:");
 my $timeRemaining = Qt::Label("XX");
+
+$baselineLayout->addWidget($useAveragesRadio);
+$baselineLayout->addWidget($useBaselineChanRadio);
+$baselineLayout->addWidget($useManualRadio);
+$baselineGroupbox->setLayout($baselineLayout);
+
 $controlPanelLayout->addWidget($vertSensLabel);
 $controlPanelLayout->addWidget($vertSensSpin);
 $controlPanelLayout->addWidget($horzSensLabel);
@@ -344,8 +377,9 @@ $controlPanelLayout->addWidget($horzBaseSpin);
 $controlPanelLayout->addWidget($averageLabel);
 $controlPanelLayout->addWidget($xAverage);
 $controlPanelLayout->addWidget($yAverage);
-$controlPanelLayout->addWidget($useAveragesCheckbox);
-$controlPanelLayout->addWidget($useAveragesButton);
+$controlPanelLayout->addWidget($baseChanLabel);
+$controlPanelLayout->addWidget($baseChan);
+$controlPanelLayout->addWidget($baselineGroupbox);
 $controlPanelLayout->addStretch();
 $controlPanelLayout->addWidget($distanceLabel);
 $controlPanelLayout->addWidget($xDistance);
@@ -378,8 +412,10 @@ $boxDisplay->connect( $boxDisplay, SIGNAL 'horz_baseline_changed(double)', $horz
 $boxDisplay->connect( $startTrial, SIGNAL 'pressed()', $boxDisplay, SLOT 'start_trial()' );
 $boxDisplay->connect( $boxDisplay, SIGNAL 'x_average_changed(double)', $xAverage, SLOT 'setNum(double)' );
 $boxDisplay->connect( $boxDisplay, SIGNAL 'y_average_changed(double)', $yAverage, SLOT 'setNum(double)' );
-$boxDisplay->connect( $useAveragesButton, SIGNAL 'pressed()', $boxDisplay, SLOT 'use_current_average()' );
-$boxDisplay->connect( $useAveragesCheckbox, SIGNAL 'toggled(bool)', $boxDisplay, SLOT 'use_running_average(bool)' );
+$boxDisplay->connect( $boxDisplay, SIGNAL 'base_chan_changed(double)', $baseChan, SLOT 'setNum(double)' );
+$boxDisplay->connect( $useAveragesRadio, SIGNAL 'clicked(bool)', $boxDisplay, SLOT 'set_baseline_running_average()' );
+$boxDisplay->connect( $useBaselineChanRadio, SIGNAL 'clicked(bool)', $boxDisplay, SLOT 'set_baseline_current_base_chan()' );
+$boxDisplay->connect( $useManualRadio, SIGNAL 'clicked(bool)', $boxDisplay, SLOT 'set_baseline_manual()' );
 $boxDisplay->connect( $boxDisplay, SIGNAL 'x_distance_changed(int)', $xDistance, SLOT 'setNum(int)' );
 $boxDisplay->connect( $boxDisplay, SIGNAL 'y_distance_changed(int)', $yDistance, SLOT 'setNum(int)' );
 $boxDisplay->connect( $boxDisplay, SIGNAL 'time_remaining_changed(int)', $timeRemaining, SLOT 'setNum(int)' );

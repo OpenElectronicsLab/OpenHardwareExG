@@ -5,16 +5,28 @@ use warnings;
 use Getopt::Long;
 
 my $shuffle = 0;
+my $lacks_basechan = 0;
 
 GetOptions("shuffle" => \$shuffle);
+GetOptions("lacks_basechan" => \$lacks_basechan);
 
-our $valid_row_regex = qr/
+our $without_basechan = qr/
    (?<chan1>-?[0-9]+(?:\.[0-9]*)),\s*
    (?<chan2>-?[0-9]+(?:\.[0-9]*)),\s*
    (?<_x>[0-9]*),\s*(?<x_target>[0-9]*),\s*
    (?<_y>[0-9]*),\s*(?<y_target>[0-9]*),\s*
    (?<time>-?[0-9]*).*
 /x;
+our $with_basechan = qr/
+   (?<chan1>-?[0-9]+(?:\.[0-9]*)),\s*
+   (?<chan2>-?[0-9]+(?:\.[0-9]*)),\s*
+   (?<chan3>-?[0-9]+(?:\.[0-9]*)),\s*
+   (?<_x>[0-9]*),\s*(?<x_target>[0-9]*),\s*
+   (?<_y>[0-9]*),\s*(?<y_target>[0-9]*),\s*
+   (?<time>-?[0-9]*).*
+/x;
+
+our $valid_row_regex = $lacks_basechan ? $without_basechan : $with_basechan;
 
 our $default_targets = {
     '75_475'  => { x => 75,  y => 475 },
