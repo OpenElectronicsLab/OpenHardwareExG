@@ -33,6 +33,13 @@ smooth_filter = signal.iirdesign(
     gpass=3, ftype='ellip'
 )
 
+# 30 Hz low-pass filter
+broad_lowpass_filter = signal.iirdesign(
+    wp = 30.0/nyquest_freq,
+    ws = 40.0/nyquest_freq,
+    gstop=40, gpass=3, ftype='butterworth'
+)
+
 
 fig = plt.figure()
 for filter in [x_filter, y_filter, baseline_filter, smooth_filter]:
@@ -56,4 +63,7 @@ with open('filter_coefs.yaml','wt') as f:
     f.write('smooth_filter:\n');
     f.write('    in_coef: ' + str(smooth_filter[0].tolist()) + '\n');
     f.write('    out_coef: ' + str(smooth_filter[1][1:].tolist()) + '\n');
+    f.write('broad_lowpass_filter:\n');
+    f.write('    in_coef: ' + str(broad_lowpass_filter[0].tolist()) + '\n');
+    f.write('    out_coef: ' + str(broad_lowpass_filter[1][1:].tolist()) + '\n');
 
