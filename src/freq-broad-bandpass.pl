@@ -29,16 +29,16 @@ my $filter_coef = LoadFile('filter_coefs.yaml');
 
 # old input and output values for each filter
 my @old_filter_in_vals = (
-    [ map { 0.0 } @{ $filter_coef->{broad_lowpass_filter}->{in_coef} } ],
-    [ map { 0.0 } @{ $filter_coef->{broad_lowpass_filter}->{in_coef} } ],
+    [ map { 0.0 } @{ $filter_coef->{broad_bandpass_filter}->{in_coef} } ],
+    [ map { 0.0 } @{ $filter_coef->{broad_bandpass_filter}->{in_coef} } ],
     [ map { 0.0 } @{ $filter_coef->{baseline_filter}->{in_coef} } ],
     [ map { 0.0 } @{ $filter_coef->{smooth_filter}->{in_coef} } ],
     [ map { 0.0 } @{ $filter_coef->{smooth_filter}->{in_coef} } ],
     [ map { 0.0 } @{ $filter_coef->{smooth_filter}->{in_coef} } ],
 );
 my @old_filter_out_vals = (
-    [ map { 0.0 } @{ $filter_coef->{broad_lowpass_filter}->{out_coef} } ],
-    [ map { 0.0 } @{ $filter_coef->{broad_lowpass_filter}->{out_coef} } ],
+    [ map { 0.0 } @{ $filter_coef->{broad_bandpass_filter}->{out_coef} } ],
+    [ map { 0.0 } @{ $filter_coef->{broad_bandpass_filter}->{out_coef} } ],
     [ map { 0.0 } @{ $filter_coef->{baseline_filter}->{out_coef} } ],
     [ map { 0.0 } @{ $filter_coef->{smooth_filter}->{out_coef} } ],
     [ map { 0.0 } @{ $filter_coef->{smooth_filter}->{out_coef} } ],
@@ -100,8 +100,8 @@ while (<STDIN>) {
         my $val1 = $+{val1};
         my $val2 = $+{val2};
         print join( ", ",
-            smooth( 0, 'broad_lowpass_filter', $val1 ),
-            smooth( 1, 'broad_lowpass_filter', $val2 ),
+            smooth( 0, 'broad_bandpass_filter', $val1 ),
+            smooth( 1, 'broad_bandpass_filter', $val2 ),
             "0.0",
         ), "\n";
     }
