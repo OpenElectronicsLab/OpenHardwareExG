@@ -6,7 +6,6 @@
 #include "eeg-mouse.h"
 #include "ads1298.h"
 #include "util.h"
-#include "serial.h"
 
 // actual size today is 64, but a few extra will not hurt
 #define DATA_BUF_SIZE 80
