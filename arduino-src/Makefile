@@ -98,19 +98,19 @@ ARDUINO_SPI_SOURCES= SPI.o
 # see above.
 
 clean:
-	rm -f *.o *.a *.hex $(APPNAME)
+	rm -f *.o *.a *.hex $(APPNAME).bin
 
 upload: $(APPNAME).hex
 	stty -F $(PORT) hupcl # e.g. reset the arduino
 	avrdude -v -c $(AVRDUDE_STK) -p $(AVRDUDE_MCU) \
 		-b $(AVRDUDE_BAUD) -P $(PORT) -U flash:w:$(APPNAME).hex
 
-%.hex : %
+%.hex : %.bin
 	avr-objcopy -O ihex -R .eeprom $< $@
 
 libarduinocore.a: $(ARDUINO_SOURCES) $(ARDUINO_SPI_SOURCES)
 	ar rc $@ $^
 
-$(APPNAME) : $(SOURCES) libarduinocore.a
+$(APPNAME).bin : $(SOURCES) libarduinocore.a
 	$(CXX) $(CXXFLAGS) $(NOISYFLAGS) $^ -o $@ -L. -larduinocore
 
