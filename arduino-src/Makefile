@@ -1,6 +1,6 @@
 
 # the name of the main file and sources to be used
-APPNAME=eeg-mouse
+APPNAME=eeg-mouse-firmware
 SOURCES=$(APPNAME).o util.o
 
 # default target

@@ -3,7 +3,7 @@
 #include <Arduino.h>
 #include <SPI.h>
 
-#include "eeg-mouse.h"
+#include "eeg-mouse-firmware.h"
 #include "ads1298.h"
 #include "util.h"
 
