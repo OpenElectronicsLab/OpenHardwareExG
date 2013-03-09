@@ -1,0 +1,7 @@
+If you are distributing a modified version of the project, please send a copy
+of the modified version to the contributors listed below (as described in
+section 3.3d of the CERN open hardware license).
+
+Ace Medlock <ace.medlock@gmail.com>
+Kendrick Shaw <kms15@case.edu>
+Eric Herman <eric@freesa.org>
