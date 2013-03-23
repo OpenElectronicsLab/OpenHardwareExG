@@ -1,4 +1,4 @@
-EESchema Schematic File Version 2  date Sat 09 Mar 2013 04:16:58 PM CET
+EESchema Schematic File Version 2  date Sat 23 Mar 2013 02:35:12 PM CET
 LIBS:power
 LIBS:device
 LIBS:transistors
@@ -30,13 +30,14 @@ LIBS:atmel
 LIBS:contrib
 LIBS:valves
 LIBS:ads1299
-EELAYER 43  0
+LIBS:arduino-ads129x-cache
+EELAYER 25  0
 EELAYER END
 $Descr A3 16535 11700
 encoding utf-8
 Sheet 1 1
 Title ""
-Date "9 mar 2013"
+Date "23 mar 2013"
 Rev ""
 Comp ""
 Comment1 ""
@@ -44,19 +45,18 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
-Connection ~ 2950 5550
 Wire Wire Line
-	3000 5550 2200 5550
+	2350 4300 2350 4350
 Wire Wire Line
-	3000 5550 3000 5400
+	2350 4350 2200 4350
 Wire Wire Line
-	3000 4500 3000 4400
+	3000 6150 3000 5400
+Wire Wire Line
+	3000 4500 3000 4200
 Wire Wire Line
 	2950 4250 2950 4200
 Wire Wire Line
-	2950 4200 2200 4200
-Wire Wire Line
-	2200 4200 2200 4500
+	2200 4350 2200 4500
 Wire Wire Line
 	2200 5300 2100 5300
 Wire Wire Line
@@ -542,23 +542,22 @@ Wire Wire Line
 Wire Wire Line
 	4000 8550 4650 8550
 Wire Wire Line
-	3000 4400 2750 4400
+	2200 6150 2200 5400
 Wire Wire Line
-	2750 4400 2750 4200
-Connection ~ 2750 4200
-Wire Wire Line
-	2200 5550 2200 5400
-Wire Wire Line
-	2950 5550 2950 5600
+	2950 4200 3000 4200
 $Comp
-L AGND #PWR?
-U 1 1 513B51C2
-P 2950 5600
-F 0 "#PWR?" H 2950 5600 40  0001 C CNN
-F 1 "AGND" H 2950 5530 50  0000 C CNN
-	1    2950 5600
+L +5VA #PWR?
+U 1 1 514DAF24
+P 2350 4300
+F 0 "#PWR?" H 2350 4430 20  0001 C CNN
+F 1 "+5VA" H 2350 4400 30  0000 C CNN
+	1    2350 4300
 	1    0    0    -1  
 $EndComp
+Text Label 3000 6150 1    60   ~ 0
+VIRTUALGND
+Text Label 2200 6150 1    60   ~ 0
+BIASOUT
 $Comp
 L AGND #PWR?
 U 1 1 513B51AD
