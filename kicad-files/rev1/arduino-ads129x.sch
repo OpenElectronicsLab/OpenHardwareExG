@@ -1,4 +1,4 @@
-EESchema Schematic File Version 2  date Sat 23 Mar 2013 02:35:12 PM CET
+EESchema Schematic File Version 2  date Sat 23 Mar 2013 02:44:13 PM CET
 LIBS:power
 LIBS:device
 LIBS:transistors
@@ -45,6 +45,20 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
+Connection ~ 1250 1300
+Wire Wire Line
+	1250 1300 1550 1300
+Wire Wire Line
+	1550 1300 1550 1250
+Connection ~ 1250 950 
+Wire Wire Line
+	1250 950  1550 950 
+Wire Wire Line
+	1550 950  1550 900 
+Wire Wire Line
+	1250 1400 1250 1150
+Wire Wire Line
+	1000 1400 1000 1150
 Wire Wire Line
 	2350 4300 2350 4350
 Wire Wire Line
@@ -545,6 +559,92 @@ Wire Wire Line
 	2200 6150 2200 5400
 Wire Wire Line
 	2950 4200 3000 4200
+Wire Wire Line
+	1000 850  1000 1000
+Wire Wire Line
+	1250 850  1250 1000
+Wire Wire Line
+	700  900  700  950 
+Wire Wire Line
+	700  950  1000 950 
+Connection ~ 1000 950 
+Wire Wire Line
+	700  1250 700  1300
+Wire Wire Line
+	700  1300 1000 1300
+Connection ~ 1000 1300
+$Comp
+L PWR_FLAG #FLG?
+U 1 1 514DB18D
+P 1550 1250
+F 0 "#FLG?" H 1550 1345 30  0001 C CNN
+F 1 "PWR_FLAG" H 1550 1430 30  0000 C CNN
+	1    1550 1250
+	1    0    0    -1  
+$EndComp
+$Comp
+L PWR_FLAG #FLG?
+U 1 1 514DB17F
+P 700 1250
+F 0 "#FLG?" H 700 1345 30  0001 C CNN
+F 1 "PWR_FLAG" H 700 1430 30  0000 C CNN
+	1    700  1250
+	1    0    0    -1  
+$EndComp
+$Comp
+L PWR_FLAG #FLG?
+U 1 1 514DB15F
+P 1550 900
+F 0 "#FLG?" H 1550 995 30  0001 C CNN
+F 1 "PWR_FLAG" H 1550 1080 30  0000 C CNN
+	1    1550 900 
+	1    0    0    -1  
+$EndComp
+$Comp
+L PWR_FLAG #FLG?
+U 1 1 514DB14C
+P 700 900
+F 0 "#FLG?" H 700 995 30  0001 C CNN
+F 1 "PWR_FLAG" H 700 1080 30  0000 C CNN
+	1    700  900 
+	1    0    0    -1  
+$EndComp
+$Comp
+L DGND #PWR?
+U 1 1 514DB135
+P 1250 1400
+F 0 "#PWR?" H 1250 1400 40  0001 C CNN
+F 1 "DGND" H 1250 1330 40  0000 C CNN
+	1    1250 1400
+	1    0    0    -1  
+$EndComp
+$Comp
+L +3.3V #PWR?
+U 1 1 514DB11B
+P 1250 850
+F 0 "#PWR?" H 1250 810 30  0001 C CNN
+F 1 "+3.3V" H 1250 960 30  0000 C CNN
+	1    1250 850 
+	1    0    0    -1  
+$EndComp
+$Comp
+L AGND #PWR?
+U 1 1 514DB0E5
+P 1000 1400
+F 0 "#PWR?" H 1000 1400 40  0001 C CNN
+F 1 "AGND" H 1000 1330 50  0000 C CNN
+	1    1000 1400
+	1    0    0    -1  
+$EndComp
+$Comp
+L +5VA #PWR?
+U 1 1 514DB0AB
+P 1000 850
+F 0 "#PWR?" H 1000 980 20  0001 C CNN
+F 1 "+5VA" H 1000 950 30  0000 C CNN
+	1    1000 850 
+	1    0    0    -1  
+$EndComp
 $Comp
 L +5VA #PWR?
 U 1 1 514DAF24
