@@ -1,4 +1,4 @@
-EESchema Schematic File Version 2  date Sat 30 Mar 2013 02:51:41 PM CET
+EESchema Schematic File Version 2  date Sat 30 Mar 2013 04:07:15 PM CET
 LIBS:power
 LIBS:device
 LIBS:transistors
@@ -30,10 +30,11 @@ LIBS:atmel
 LIBS:contrib
 LIBS:valves
 LIBS:ads1299
+LIBS:sam3x8e
 LIBS:arduino-ads129x-cache
 EELAYER 25  0
 EELAYER END
-$Descr A2 23400 16535
+$Descr A1 33070 23400
 encoding utf-8
 Sheet 1 1
 Title ""
@@ -45,6 +46,65 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
+Connection ~ 17900 8100
+Wire Wire Line
+	17900 7950 17900 8100
+Connection ~ 18850 8100
+Wire Wire Line
+	18850 7950 18850 8100
+Connection ~ 19650 8100
+Wire Wire Line
+	19650 7950 19650 8100
+Connection ~ 20650 8100
+Wire Wire Line
+	20650 7950 20650 8100
+Connection ~ 21650 8100
+Wire Wire Line
+	21650 7950 21650 8100
+Wire Wire Line
+	22750 7950 22750 8100
+Wire Wire Line
+	22750 8100 17700 8100
+Wire Wire Line
+	17700 8100 17700 8300
+Connection ~ 18850 6650
+Connection ~ 20100 7450
+Wire Wire Line
+	20100 7050 20650 7050
+Wire Wire Line
+	20100 7050 20100 7450
+Wire Wire Line
+	20400 7450 18850 7450
+Connection ~ 18300 7450
+Wire Wire Line
+	18650 7450 17900 7450
+Wire Wire Line
+	22350 6800 22350 6650
+Connection ~ 22350 7450
+Wire Wire Line
+	22750 7550 22750 7450
+Wire Wire Line
+	22350 7550 22350 7400
+Wire Wire Line
+	21250 7550 21250 7400
+Wire Wire Line
+	21650 7550 21650 7450
+Connection ~ 21250 7450
+Connection ~ 21250 6650
+Wire Wire Line
+	21250 6650 21250 6800
+Wire Wire Line
+	18850 7550 18850 7400
+Wire Wire Line
+	17900 6800 17900 6650
+Connection ~ 19250 7450
+Wire Wire Line
+	19250 7550 19250 7450
+Connection ~ 20050 7450
+Connection ~ 17900 6650
+Connection ~ 17900 7450
+Wire Wire Line
+	18300 7450 18300 7550
 Connection ~ 12550 4900
 Wire Wire Line
 	12550 4900 12800 4900
@@ -834,7 +894,7 @@ Wire Wire Line
 	11100 2600 11100 1900
 Connection ~ 14650 2050
 Wire Wire Line
-	11000 2600 11000 1200
+	11000 1200 11000 2600
 Wire Wire Line
 	11500 1600 11200 1600
 Wire Wire Line
@@ -846,6 +906,218 @@ Connection ~ 11800 1700
 Wire Wire Line
 	8900 2250 8900 1500
 Connection ~ 8900 1600
+Wire Wire Line
+	17700 6600 17700 6650
+Connection ~ 18850 7450
+Wire Wire Line
+	19650 7450 19650 7550
+Connection ~ 19650 7450
+Wire Wire Line
+	18850 6650 18850 6800
+Wire Wire Line
+	17900 7550 17900 7400
+Wire Wire Line
+	21250 7450 22100 7450
+Connection ~ 21650 7450
+Wire Wire Line
+	22350 7450 23100 7450
+Connection ~ 22750 7450
+Wire Wire Line
+	20050 7450 20050 7550
+Wire Wire Line
+	20650 7050 20650 7550
+Connection ~ 20650 7450
+Wire Wire Line
+	20950 7450 20650 7450
+Wire Wire Line
+	17700 6650 22350 6650
+Wire Wire Line
+	22350 7950 22350 8100
+Connection ~ 22350 8100
+Wire Wire Line
+	21250 7950 21250 8100
+Connection ~ 21250 8100
+Wire Wire Line
+	20050 7950 20050 8100
+Connection ~ 20050 8100
+Wire Wire Line
+	19250 7950 19250 8100
+Connection ~ 19250 8100
+Wire Wire Line
+	18300 7950 18300 8100
+Connection ~ 18300 8100
+$Comp
+L DGND #PWR?
+U 1 1 5156FF3F
+P 17700 8300
+F 0 "#PWR?" H 17700 8300 40  0001 C CNN
+F 1 "DGND" H 17700 8230 40  0000 C CNN
+	1    17700 8300
+	1    0    0    -1  
+$EndComp
+Text Label 20950 7450 2    60   ~ 0
+VDDBU
+Text Label 20400 7450 2    60   ~ 0
+VDDIO
+Text Label 18650 7450 2    60   ~ 0
+VDDIN
+Text Label 23100 7450 2    60   ~ 0
+VDDANA
+Text Label 22100 7450 2    60   ~ 0
+VDDUTMI
+$Comp
+L INDUCTOR L?
+U 1 1 5156FC18
+P 22350 7100
+F 0 "L?" V 22300 7100 40  0000 C CNN
+F 1 "INDUCTOR" V 22450 7100 40  0000 C CNN
+	1    22350 7100
+	1    0    0    -1  
+$EndComp
+$Comp
+L C C?
+U 1 1 5156FC17
+P 22750 7750
+F 0 "C?" H 22800 7850 50  0000 L CNN
+F 1 "100nF" H 22800 7650 50  0000 L CNN
+	1    22750 7750
+	1    0    0    -1  
+$EndComp
+$Comp
+L CP C?
+U 1 1 5156FC16
+P 22350 7750
+F 0 "C?" H 22400 7850 50  0000 L CNN
+F 1 "10uF" H 22400 7650 50  0000 L CNN
+	1    22350 7750
+	1    0    0    -1  
+$EndComp
+$Comp
+L CP C?
+U 1 1 5156FBCC
+P 21250 7750
+F 0 "C?" H 21300 7850 50  0000 L CNN
+F 1 "10uF" H 21300 7650 50  0000 L CNN
+	1    21250 7750
+	1    0    0    -1  
+$EndComp
+$Comp
+L C C?
+U 1 1 5156FBCB
+P 21650 7750
+F 0 "C?" H 21700 7850 50  0000 L CNN
+F 1 "100nF" H 21700 7650 50  0000 L CNN
+	1    21650 7750
+	1    0    0    -1  
+$EndComp
+$Comp
+L INDUCTOR L?
+U 1 1 5156FBCA
+P 21250 7100
+F 0 "L?" V 21200 7100 40  0000 C CNN
+F 1 "INDUCTOR" V 21350 7100 40  0000 C CNN
+	1    21250 7100
+	1    0    0    -1  
+$EndComp
+$Comp
+L INDUCTOR L?
+U 1 1 5156FB80
+P 18850 7100
+F 0 "L?" V 18800 7100 40  0000 C CNN
+F 1 "INDUCTOR" V 18950 7100 40  0000 C CNN
+	1    18850 7100
+	1    0    0    -1  
+$EndComp
+$Comp
+L INDUCTOR L?
+U 1 1 5156FB79
+P 17900 7100
+F 0 "L?" V 17850 7100 40  0000 C CNN
+F 1 "INDUCTOR" V 18000 7100 40  0000 C CNN
+	1    17900 7100
+	1    0    0    -1  
+$EndComp
+$Comp
+L C C?
+U 1 1 5156FA3A
+P 20650 7750
+F 0 "C?" H 20700 7850 50  0000 L CNN
+F 1 "100nF" H 20700 7650 50  0000 L CNN
+	1    20650 7750
+	1    0    0    -1  
+$EndComp
+$Comp
+L C C?
+U 1 1 5156FA28
+P 19650 7750
+F 0 "C?" H 19700 7850 50  0000 L CNN
+F 1 "100nF" H 19700 7650 50  0000 L CNN
+	1    19650 7750
+	1    0    0    -1  
+$EndComp
+$Comp
+L C C?
+U 1 1 5156FA27
+P 20050 7750
+F 0 "C?" H 20100 7850 50  0000 L CNN
+F 1 "100nF" H 20100 7650 50  0000 L CNN
+	1    20050 7750
+	1    0    0    -1  
+$EndComp
+$Comp
+L C C?
+U 1 1 5156F9E9
+P 19250 7750
+F 0 "C?" H 19300 7850 50  0000 L CNN
+F 1 "100nF" H 19300 7650 50  0000 L CNN
+	1    19250 7750
+	1    0    0    -1  
+$EndComp
+$Comp
+L C C?
+U 1 1 5156F9DB
+P 18850 7750
+F 0 "C?" H 18900 7850 50  0000 L CNN
+F 1 "100nF" H 18900 7650 50  0000 L CNN
+	1    18850 7750
+	1    0    0    -1  
+$EndComp
+$Comp
+L C C?
+U 1 1 5156F9AA
+P 18300 7750
+F 0 "C?" H 18350 7850 50  0000 L CNN
+F 1 "100nF" H 18350 7650 50  0000 L CNN
+	1    18300 7750
+	1    0    0    -1  
+$EndComp
+$Comp
+L CP C?
+U 1 1 5156F9A3
+P 17900 7750
+F 0 "C?" H 17950 7850 50  0000 L CNN
+F 1 "10uF" H 17950 7650 50  0000 L CNN
+	1    17900 7750
+	1    0    0    -1  
+$EndComp
+$Comp
+L +3.3V #PWR?
+U 1 1 5156F98A
+P 17700 6600
+F 0 "#PWR?" H 17700 6560 30  0001 C CNN
+F 1 "+3.3V" H 17700 6710 30  0000 C CNN
+	1    17700 6600
+	1    0    0    -1  
+$EndComp
+$Comp
+L SAM3X8E U?
+U 1 1 5156EEFB
+P 21300 14050
+F 0 "U?" H 21300 14050 60  0000 C CNN
+F 1 "SAM3X8E" H 21300 14050 60  0000 C CNN
+	1    21300 14050
+	1    0    0    -1  
+$EndComp
 Text Label 11300 2450 1    60   ~ 0
 AVDD1
 Text Label 14950 2050 0    60   ~ 0
