@@ -1,4 +1,4 @@
-update=Sat 30 Mar 2013 02:56:03 PM CET
+update=Sat 06 Apr 2013 02:34:08 PM CEST
 version=1
 last_client=eeschema
 [cvpcb]
@@ -102,3 +102,4 @@ LibName29=contrib
 LibName30=valves
 LibName31=ads1299
 LibName32=sam3x8e
+LibName33=isolators
