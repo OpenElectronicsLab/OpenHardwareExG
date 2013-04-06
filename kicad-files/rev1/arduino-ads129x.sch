@@ -1,4 +1,4 @@
-EESchema Schematic File Version 2  date Sat 06 Apr 2013 02:49:54 PM CEST
+EESchema Schematic File Version 2  date Sat 06 Apr 2013 03:00:41 PM CEST
 LIBS:power
 LIBS:device
 LIBS:transistors
@@ -70,9 +70,7 @@ Wire Wire Line
 Wire Wire Line
 	28250 2550 28950 2550
 Wire Wire Line
-	28950 2550 28950 2100
-Wire Wire Line
-	28950 2100 30450 2100
+	28950 2550 30450 2550
 Connection ~ 31750 3200
 Wire Wire Line
 	31750 3400 31750 3200
@@ -81,7 +79,7 @@ Wire Wire Line
 Wire Wire Line
 	31400 2650 31400 2300
 Wire Wire Line
-	30950 2100 31050 2100
+	30950 2550 31050 2550
 Wire Wire Line
 	31250 1350 31050 1350
 Wire Wire Line
@@ -1301,10 +1299,10 @@ Wire Wire Line
 Wire Wire Line
 	32000 1500 32400 1500
 Wire Wire Line
-	31050 1350 31050 2100
+	31050 1350 31050 2550
 Wire Wire Line
-	31050 2100 31050 2650
-Connection ~ 31050 2100
+	31050 2550 31050 3100
+Connection ~ 31050 2550
 Wire Wire Line
 	31750 2500 31750 2650
 Wire Wire Line
@@ -1321,7 +1319,7 @@ Wire Wire Line
 	24300 2550 24400 2550
 Wire Notes Line
 	25800 2250 25800 2050
-Connection ~ 27600 3050
+Connection ~ 27600 3200
 Connection ~ 24000 3050
 Connection ~ 24300 3050
 Wire Wire Line
@@ -1334,16 +1332,16 @@ Wire Wire Line
 Wire Wire Line
 	27300 2550 27300 2600
 Wire Wire Line
-	27600 3050 27600 3000
+	27600 3200 27600 3000
 Wire Wire Line
-	26500 2750 26500 3050
+	26500 2750 26500 3200
 Wire Wire Line
 	26600 2550 26550 2550
 Wire Wire Line
 	26550 2550 26500 2550
 Wire Wire Line
-	27300 3000 27300 3050
-Connection ~ 27300 3050
+	27300 3000 27300 3200
+Connection ~ 27300 3200
 Wire Wire Line
 	27600 2600 27600 2550
 Connection ~ 27300 2550
@@ -1379,13 +1377,13 @@ Wire Wire Line
 	23250 2500 23250 2550
 Connection ~ 23250 2550
 Wire Wire Line
-	28950 3200 28950 3050
+	28950 3200 28950 3200
 Wire Wire Line
-	28950 3050 27600 3050
+	28950 3200 27600 3200
 Wire Wire Line
-	27600 3050 27300 3050
+	27600 3200 27300 3200
 Wire Wire Line
-	27300 3050 26500 3050
+	27300 3200 26500 3200
 Wire Wire Line
 	31050 3050 31050 3200
 Connection ~ 31050 3200
@@ -1487,7 +1485,7 @@ Text Label 23078 3050 2    60   ~ 0
 GND_ISO
 Text Label 23002 2550 2    60   ~ 0
 9V_ISO
-Text Label 28480 3050 0    60   ~ 0
+Text Label 28550 3200 0    60   ~ 0
 GND_IN
 Text Label 28554 2550 0    60   ~ 0
 5V_IN
@@ -1546,10 +1544,10 @@ Text Label 23880 2550 0    30   ~ 0
 $Comp
 L THERMISTOR TH?
 U 1 1 51600DE4
-P 30700 2100
-F 0 "TH?" V 30800 2150 50  0000 C CNN
-F 1 "THERMISTOR" V 30600 2100 50  0000 C CNN
-	1    30700 2100
+P 30700 2550
+F 0 "TH?" V 30800 2600 50  0000 C CNN
+F 1 "THERMISTOR" V 30600 2550 50  0000 C CNN
+	1    30700 2550
 	0    1    1    0   
 $EndComp
 $Comp
