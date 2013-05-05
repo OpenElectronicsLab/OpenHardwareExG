@@ -1,4 +1,4 @@
-EESchema Schematic File Version 2  date Sun 05 May 2013 05:47:21 PM CEST
+EESchema Schematic File Version 2  date Sun 05 May 2013 06:03:52 PM CEST
 LIBS:power
 LIBS:device
 LIBS:transistors
@@ -2757,7 +2757,7 @@ L SAM3X8E U?
 U 1 1 5156EEFB
 P 21300 14050
 F 0 "U?" H 21300 14050 60  0000 C CNN
-F 1 "SAM3X8E" H 21300 14050 60  0000 C CNN
+F 1 "SAM3X8E" H 21300 13800 60  0000 C CNN
 	1    21300 14050
 	1    0    0    -1  
 $EndComp
