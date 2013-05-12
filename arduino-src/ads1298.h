@@ -102,6 +102,12 @@ namespace ADS1298 {
 		HIGH_RES_2k_SPS = (HR | DR2),
 		HIGH_RES_1k_SPS = (HR | DR2 | DR0),
 		HIGH_RES_500_SPS = (HR | DR2 | DR1),
+		LOW_POWR_16k_SPS = 0x00,
+		LOW_POWR_8k_SPS = DR0,
+		LOW_POWR_4k_SPS = DR1,
+		LOW_POWR_2k_SPS = (DR1 | DR0),
+		LOW_POWR_1k_SPS = DR2,
+		LOW_POWR_500_SPS = (DR2 | DR0),
 		LOW_POWR_250_SPS = (DR2 | DR1)
 	};
 
