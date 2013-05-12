@@ -162,7 +162,7 @@ int main(void)
 	}
 	// Set all remaining channels to shorted inputs
 	for (; i <= 8; ++i) {
-		adc_wreg(CHnSET + i, SHORTED | GAIN_12X);
+		adc_wreg(CHnSET + i, SHORTED | PDn);
 	}
 
 	digitalWrite(PIN_START, HIGH);
