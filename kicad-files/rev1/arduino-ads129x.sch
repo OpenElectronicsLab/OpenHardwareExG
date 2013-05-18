@@ -1,4 +1,4 @@
-EESchema Schematic File Version 2  date Sat 18 May 2013 03:09:57 PM CEST
+EESchema Schematic File Version 2  date Sat 18 May 2013 03:14:03 PM CEST
 LIBS:power
 LIBS:device
 LIBS:transistors
@@ -48,6 +48,18 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
+Text Notes 13000 11950 0    60   ~ 0
+DTR
+Text Notes 13000 11850 0    60   ~ 0
+RXI
+Text Notes 13000 11750 0    60   ~ 0
+TXO
+Text Notes 13000 11650 0    60   ~ 0
+VCC
+Text Notes 13000 11550 0    60   ~ 0
+CTS
+Text Notes 13000 11450 0    60   ~ 0
+GND
 Text Label 13650 12750 2    60   ~ 0
 TX
 Text Label 13650 12650 2    60   ~ 0
@@ -1660,8 +1672,6 @@ Text Notes 13000 12550 0    60   ~ 0
 GND
 Text Notes 13000 12450 0    60   ~ 0
 VCC
-Text Label 13000 11450 0    60   ~ 0
-GND
 $Comp
 L CONN_4 P?
 U 1 1 51977BF4
@@ -1694,16 +1704,6 @@ TX
 Text Label 13650 11750 2    60   ~ 0
 RX
 NoConn ~ 13650 11950
-Text Label 13000 11950 0    60   ~ 0
-DTR
-Text Label 13000 11850 0    60   ~ 0
-RXI
-Text Label 13000 11750 0    60   ~ 0
-TXO
-Text Label 13000 11650 0    60   ~ 0
-VCC
-Text Label 13000 11550 0    60   ~ 0
-CTS
 Text Label 17000 14450 0    60   ~ 0
 RX
 Text Label 17200 10700 0    60   ~ 0
