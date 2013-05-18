@@ -1,4 +1,4 @@
-EESchema Schematic File Version 2  date Sat 18 May 2013 03:01:05 PM CEST
+EESchema Schematic File Version 2  date Sat 18 May 2013 03:09:57 PM CEST
 LIBS:power
 LIBS:device
 LIBS:transistors
@@ -48,6 +48,18 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
+Text Label 13650 12750 2    60   ~ 0
+TX
+Text Label 13650 12650 2    60   ~ 0
+RX
+Wire Wire Line
+	13850 12450 13850 12300
+Wire Wire Line
+	13000 12450 13850 12450
+Wire Wire Line
+	13850 12600 13850 12550
+Wire Wire Line
+	13000 12750 13650 12750
 Connection ~ 13650 11450
 Wire Wire Line
 	13650 11450 13650 11550
@@ -1618,6 +1630,47 @@ Wire Wire Line
 	14100 11400 14100 11350
 Wire Wire Line
 	14100 11450 13000 11450
+Wire Wire Line
+	13000 12650 13650 12650
+Wire Wire Line
+	13850 12550 13000 12550
+$Comp
+L DGND #PWR?
+U 1 1 51977D41
+P 13850 12600
+F 0 "#PWR?" H 13850 12600 40  0001 C CNN
+F 1 "DGND" H 13850 12530 40  0000 C CNN
+	1    13850 12600
+	1    0    0    -1  
+$EndComp
+$Comp
+L +3.3V #PWR?
+U 1 1 51977D37
+P 13850 12300
+F 0 "#PWR?" H 13850 12260 30  0001 C CNN
+F 1 "+3.3V" H 13850 12410 30  0000 C CNN
+	1    13850 12300
+	1    0    0    -1  
+$EndComp
+Text Notes 13000 12750 0    60   ~ 0
+RXD
+Text Notes 13000 12650 0    60   ~ 0
+TXD
+Text Notes 13000 12550 0    60   ~ 0
+GND
+Text Notes 13000 12450 0    60   ~ 0
+VCC
+Text Label 13000 11450 0    60   ~ 0
+GND
+$Comp
+L CONN_4 P?
+U 1 1 51977BF4
+P 12650 12600
+F 0 "P?" V 12600 12600 50  0000 C CNN
+F 1 "CONN_4" V 12700 12600 50  0000 C CNN
+	1    12650 12600
+	-1   0    0    -1  
+$EndComp
 $Comp
 L DGND #PWR?
 U 1 1 51977B33
@@ -1651,8 +1704,6 @@ Text Label 13000 11650 0    60   ~ 0
 VCC
 Text Label 13000 11550 0    60   ~ 0
 CTS
-Text Label 13000 11450 0    60   ~ 0
-GND
 Text Label 17000 14450 0    60   ~ 0
 RX
 Text Label 17200 10700 0    60   ~ 0
