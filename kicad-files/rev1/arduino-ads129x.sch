@@ -1,4 +1,4 @@
-EESchema Schematic File Version 2  date Sat 18 May 2013 03:14:03 PM CEST
+EESchema Schematic File Version 2  date Sat 18 May 2013 04:09:35 PM CEST
 LIBS:power
 LIBS:device
 LIBS:transistors
@@ -48,26 +48,42 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
-Text Notes 13000 11950 0    60   ~ 0
-DTR
-Text Notes 13000 11850 0    60   ~ 0
-RXI
-Text Notes 13000 11750 0    60   ~ 0
-TXO
-Text Notes 13000 11650 0    60   ~ 0
-VCC
-Text Notes 13000 11550 0    60   ~ 0
-CTS
-Text Notes 13000 11450 0    60   ~ 0
-GND
-Text Label 13650 12750 2    60   ~ 0
-TX
-Text Label 13650 12650 2    60   ~ 0
-RX
 Wire Wire Line
-	13850 12450 13850 12300
+	13150 3650 14350 3650
 Wire Wire Line
-	13000 12450 13850 12450
+	13150 3350 14350 3350
+Wire Wire Line
+	12650 3650 12550 3650
+Wire Wire Line
+	12650 3350 12550 3350
+Wire Wire Line
+	22850 16250 22850 17050
+Wire Wire Line
+	22550 16250 22550 17050
+Wire Wire Line
+	24500 11750 25350 11750
+Wire Wire Line
+	24500 12350 25350 12350
+Wire Wire Line
+	19100 10000 19100 9400
+Wire Wire Line
+	12550 3950 13650 3950
+Wire Wire Line
+	24500 12050 25350 12050
+Wire Wire Line
+	24500 12200 25350 12200
+Wire Wire Line
+	23600 10000 23600 9500
+Wire Wire Line
+	24500 11900 25350 11900
+Wire Wire Line
+	23750 10000 23750 9500
+Wire Wire Line
+	12550 3550 13650 3550
+Wire Wire Line
+	13850 12300 13850 12450
+Wire Wire Line
+	13850 12450 13000 12450
 Wire Wire Line
 	13850 12600 13850 12550
 Wire Wire Line
@@ -93,7 +109,7 @@ Wire Wire Line
 	19850 16400 19850 16250
 Connection ~ 13350 13950
 Wire Wire Line
-	13350 14000 13350 13950
+	13350 13950 13350 14000
 Connection ~ 14050 13950
 Wire Wire Line
 	14050 14000 14050 13950
@@ -102,7 +118,7 @@ Wire Wire Line
 	13350 14500 13350 14800
 Connection ~ 14050 15000
 Wire Wire Line
-	14050 15000 14050 14500
+	14050 14500 14050 15000
 Wire Wire Line
 	13050 15100 15050 15100
 Wire Wire Line
@@ -1592,7 +1608,7 @@ Wire Wire Line
 Wire Wire Line
 	17850 17650 17350 17650
 Wire Wire Line
-	17450 17800 17450 17650
+	17450 17650 17450 17800
 Connection ~ 17450 17650
 Wire Wire Line
 	12250 14700 11750 14700
@@ -1608,10 +1624,10 @@ Wire Wire Line
 Wire Wire Line
 	13050 15000 15050 15000
 Wire Wire Line
-	14400 15100 14400 14500
+	14400 14500 14400 15100
 Connection ~ 14400 15100
 Wire Wire Line
-	13700 14800 13700 14500
+	13700 14500 13700 14800
 Connection ~ 13700 14800
 Wire Wire Line
 	14400 14000 14400 13950
@@ -1619,10 +1635,10 @@ Wire Wire Line
 	14400 13950 11750 13950
 Connection ~ 11750 13950
 Wire Wire Line
-	13700 14000 13700 13950
+	13700 13950 13700 14000
 Connection ~ 13700 13950
 Wire Wire Line
-	17800 17650 17800 18650
+	17800 18650 17800 17650
 Connection ~ 17800 17650
 Wire Wire Line
 	17700 14600 17000 14600
@@ -1646,6 +1662,144 @@ Wire Wire Line
 	13000 12650 13650 12650
 Wire Wire Line
 	13850 12550 13000 12550
+Wire Wire Line
+	12550 4450 13650 4450
+Wire Wire Line
+	24500 10550 25050 10550
+Wire Wire Line
+	11500 2600 11500 1750
+Wire Wire Line
+	12550 3850 13650 3850
+Wire Wire Line
+	12550 4350 13650 4350
+Wire Wire Line
+	12550 4250 13650 4250
+Wire Wire Line
+	12550 4150 13650 4150
+Wire Wire Line
+	12550 4050 13650 4050
+Wire Wire Line
+	12550 3150 13650 3150
+Wire Wire Line
+	22700 16250 22700 17050
+Wire Wire Line
+	23000 16250 23000 17050
+Wire Wire Line
+	12650 3250 12550 3250
+Wire Wire Line
+	12650 3450 12550 3450
+Wire Wire Line
+	13150 3250 14350 3250
+Wire Wire Line
+	13150 3450 14350 3450
+$Comp
+L R R?
+U 1 1 51978B7B
+P 12900 3250
+F 0 "R?" V 12850 3050 50  0000 C CNN
+F 1 "10k" V 12900 3250 50  0000 C CNN
+	1    12900 3250
+	0    -1   -1   0   
+$EndComp
+$Comp
+L R R?
+U 1 1 51978B70
+P 12900 3350
+F 0 "R?" V 12850 3150 50  0000 C CNN
+F 1 "10k" V 12900 3350 50  0000 C CNN
+	1    12900 3350
+	0    -1   -1   0   
+$EndComp
+$Comp
+L R R?
+U 1 1 51978B65
+P 12900 3450
+F 0 "R?" V 12850 3250 50  0000 C CNN
+F 1 "10k" V 12900 3450 50  0000 C CNN
+	1    12900 3450
+	0    -1   -1   0   
+$EndComp
+$Comp
+L R R?
+U 1 1 51978B35
+P 12900 3650
+F 0 "R?" V 12850 3450 50  0000 C CNN
+F 1 "10k" V 12900 3650 50  0000 C CNN
+	1    12900 3650
+	0    -1   -1   0   
+$EndComp
+Text Label 23000 17050 1    60   ~ 0
+ADS129x_GPIO4
+Text Label 22850 17050 1    60   ~ 0
+ADS129x_GPIO3
+Text Label 22700 17050 1    60   ~ 0
+ADS129x_GPIO2
+Text Label 22550 17050 1    60   ~ 0
+ADS129x_GPIO1
+Text Label 14350 3650 2    60   ~ 0
+ADS129x_GPIO1
+Text Label 14350 3450 2    60   ~ 0
+ADS129x_GPIO2
+Text Label 14350 3350 2    60   ~ 0
+ADS129x_GPIO3
+Text Label 14350 3250 2    60   ~ 0
+ADS129x_GPIO4
+Text Label 25350 11750 2    60   ~ 0
+ADS129x_DRDY
+Text Label 13650 3150 2    60   ~ 0
+ADS129x_DRDY
+Text Notes 16000 4150 2    60   ~ 0
+TODO: How do we get the clock divided correctly?
+Text Label 25350 12350 2    60   ~ 0
+ADS129x_CLKSEL
+Text Label 13650 4050 2    60   ~ 0
+ADS129x_START
+Text Label 19100 9400 3    60   ~ 0
+ADS129x_CS
+Text Label 13650 3950 2    60   ~ 0
+ADS129x_CS
+Text Label 13650 4150 2    60   ~ 0
+ADS129x_CLK
+Text Label 25350 12050 2    60   ~ 0
+ADS129x_RESET
+Text Label 13650 4250 2    60   ~ 0
+ADS129x_RESET
+Text Label 13650 4350 2    60   ~ 0
+ADS129x_PWDN
+Text Label 25350 12200 2    60   ~ 0
+ADS129x_PWDN
+Text Label 23600 9500 3    60   ~ 0
+SPCK
+Text Label 13650 3850 2    60   ~ 0
+SPCK
+Text Label 11500 1750 3    60   ~ 0
+ADS129x_CLKSEL
+Text Label 25350 11900 2    60   ~ 0
+ADS129x_START
+Text Label 23750 9500 3    60   ~ 0
+MOSI
+Text Label 25050 10550 2    60   ~ 0
+MISO
+Text Label 13650 3550 2    60   ~ 0
+MISO
+Text Label 13650 4450 2    60   ~ 0
+MOSI
+Text Notes 13000 11950 0    60   ~ 0
+DTR
+Text Notes 13000 11850 0    60   ~ 0
+RXI
+Text Notes 13000 11750 0    60   ~ 0
+TXO
+Text Notes 13000 11650 0    60   ~ 0
+VCC
+Text Notes 13000 11550 0    60   ~ 0
+CTS
+Text Notes 13000 11450 0    60   ~ 0
+GND
+Text Label 13650 12750 2    60   ~ 0
+TX
+Text Label 13650 12650 2    60   ~ 0
+RX
 $Comp
 L DGND #PWR?
 U 1 1 51977D41
