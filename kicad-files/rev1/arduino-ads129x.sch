@@ -1,4 +1,4 @@
-EESchema Schematic File Version 2  date Sat 18 May 2013 02:24:49 PM CEST
+EESchema Schematic File Version 2  date Sat 18 May 2013 03:01:05 PM CEST
 LIBS:power
 LIBS:device
 LIBS:transistors
@@ -48,8 +48,19 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
-Text Label 17000 15050 0    60   ~ 0
-JTAG_TMS
+Connection ~ 13650 11450
+Wire Wire Line
+	13650 11450 13650 11550
+Wire Wire Line
+	14100 11500 14100 11450
+Wire Wire Line
+	13000 11950 13650 11950
+Wire Wire Line
+	13000 11750 13650 11750
+Wire Wire Line
+	13650 11550 13000 11550
+Wire Wire Line
+	17700 14450 17000 14450
 Wire Wire Line
 	17700 15050 17000 15050
 Wire Wire Line
@@ -1593,6 +1604,70 @@ Wire Wire Line
 	17700 14600 17000 14600
 Wire Wire Line
 	17700 14900 17000 14900
+Wire Wire Line
+	17700 10700 17200 10700
+Wire Wire Line
+	13000 11850 13650 11850
+Wire Wire Line
+	13000 11650 14350 11650
+Wire Wire Line
+	14350 11650 14350 11400
+Wire Wire Line
+	14350 11400 14100 11400
+Wire Wire Line
+	14100 11400 14100 11350
+Wire Wire Line
+	14100 11450 13000 11450
+$Comp
+L DGND #PWR?
+U 1 1 51977B33
+P 14100 11500
+F 0 "#PWR?" H 14100 11500 40  0001 C CNN
+F 1 "DGND" H 14100 11430 40  0000 C CNN
+	1    14100 11500
+	1    0    0    -1  
+$EndComp
+$Comp
+L +3.3V #PWR?
+U 1 1 51977B17
+P 14100 11350
+F 0 "#PWR?" H 14100 11310 30  0001 C CNN
+F 1 "+3.3V" H 14100 11460 30  0000 C CNN
+	1    14100 11350
+	1    0    0    -1  
+$EndComp
+Text Label 13650 11850 2    60   ~ 0
+TX
+Text Label 13650 11750 2    60   ~ 0
+RX
+NoConn ~ 13650 11950
+Text Label 13000 11950 0    60   ~ 0
+DTR
+Text Label 13000 11850 0    60   ~ 0
+RXI
+Text Label 13000 11750 0    60   ~ 0
+TXO
+Text Label 13000 11650 0    60   ~ 0
+VCC
+Text Label 13000 11550 0    60   ~ 0
+CTS
+Text Label 13000 11450 0    60   ~ 0
+GND
+Text Label 17000 14450 0    60   ~ 0
+RX
+Text Label 17200 10700 0    60   ~ 0
+TX
+$Comp
+L CONN_6 P?
+U 1 1 5197789B
+P 12650 11700
+F 0 "P?" V 12600 11700 60  0000 C CNN
+F 1 "SERIAL" V 12700 11700 60  0000 C CNN
+	1    12650 11700
+	-1   0    0    -1  
+$EndComp
+Text Label 17000 15050 0    60   ~ 0
+JTAG_TMS
 Text Label 17000 14900 0    60   ~ 0
 JTAG_TDO
 Text Label 17000 14750 0    60   ~ 0
