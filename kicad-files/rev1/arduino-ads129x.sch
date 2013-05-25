@@ -1,4 +1,4 @@
-EESchema Schematic File Version 2  date Sun 19 May 2013 10:32:49 AM CEST
+EESchema Schematic File Version 2  date Sat 25 May 2013 01:05:47 PM CEST
 LIBS:power
 LIBS:device
 LIBS:transistors
@@ -40,7 +40,7 @@ $Descr A0 46800 33070
 encoding utf-8
 Sheet 1 1
 Title ""
-Date "19 may 2013"
+Date "25 may 2013"
 Rev ""
 Comp ""
 Comment1 ""
@@ -48,6 +48,8 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
+Text Notes 700  4400 0    60   ~ 0
+MAYBE double the\nconnectors to \nallow ground lines\ninbetween\nthe signal lines
 Text Label 22400 16750 1    60   ~ 0
 GREEN_8
 Wire Wire Line
