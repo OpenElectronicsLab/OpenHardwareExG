@@ -1,4 +1,4 @@
-EESchema Schematic File Version 2  date Sat 25 May 2013 05:38:00 PM CEST
+EESchema Schematic File Version 2  date Sat 25 May 2013 06:06:03 PM CEST
 LIBS:power
 LIBS:device
 LIBS:transistors
@@ -44,6 +44,14 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
+Text Notes 5300 6500 0    60   ~ 0
+Power Indicator
+Wire Wire Line
+	6650 6800 6650 6600
+Wire Wire Line
+	5200 6600 5000 6600
+Wire Wire Line
+	6000 6600 5700 6600
 Connection ~ 6300 6000
 Wire Wire Line
 	6300 6000 6050 6000
@@ -279,7 +287,7 @@ Wire Wire Line
 	5000 1250 5250 1250
 Connection ~ 5250 1250
 Wire Wire Line
-	5750 3750 5750 3400
+	5750 3400 5750 3750
 Wire Wire Line
 	5350 3100 3850 3100
 Wire Wire Line
@@ -642,6 +650,46 @@ Wire Wire Line
 Wire Wire Line
 	5050 5200 5300 5200
 Connection ~ 5300 5200
+Wire Wire Line
+	6650 6600 6400 6600
+Wire Wire Line
+	5000 6600 5000 6450
+$Comp
+L DGND #PWR?
+U 1 1 51A0E103
+P 6650 6800
+F 0 "#PWR?" H 6650 6800 40  0001 C CNN
+F 1 "DGND" H 6650 6730 40  0000 C CNN
+	1    6650 6800
+	1    0    0    -1  
+$EndComp
+$Comp
+L +3.3V #PWR?
+U 1 1 51A0E0F7
+P 5000 6450
+F 0 "#PWR?" H 5000 6410 30  0001 C CNN
+F 1 "+3.3V" H 5000 6560 30  0000 C CNN
+	1    5000 6450
+	1    0    0    -1  
+$EndComp
+$Comp
+L R R?
+U 1 1 51A0E0BF
+P 5450 6600
+F 0 "R?" V 5530 6600 50  0000 C CNN
+F 1 "560" V 5450 6600 50  0000 C CNN
+	1    5450 6600
+	0    -1   1    0   
+$EndComp
+$Comp
+L LED D?
+U 1 1 51A0E0BE
+P 6200 6600
+F 0 "D?" H 6200 6700 50  0000 C CNN
+F 1 "LED" H 6200 6500 50  0000 C CNN
+	1    6200 6600
+	1    0    0    1   
+$EndComp
 $Comp
 L PWR_FLAG #FLG?
 U 1 1 51A0DA93
