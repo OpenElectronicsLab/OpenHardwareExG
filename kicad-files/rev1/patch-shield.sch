@@ -1,4 +1,4 @@
-EESchema Schematic File Version 2  date Sat 25 May 2013 02:52:07 PM CEST
+EESchema Schematic File Version 2  date Sat 25 May 2013 03:01:28 PM CEST
 LIBS:power
 LIBS:device
 LIBS:transistors
@@ -44,38 +44,216 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
-Text Label 6900 3050 2    60   ~ 0
-IN7P
-Text Label 6900 3250 2    60   ~ 0
-IN6P
-Text Label 6900 3450 2    60   ~ 0
-IN5P
-Text Label 6900 3650 2    60   ~ 0
-IN4P
-Text Label 6900 3850 2    60   ~ 0
-IN3P
-Text Label 6900 4050 2    60   ~ 0
-IN2P
-Text Label 6900 4250 2    60   ~ 0
-IN1P
-Text Label 4600 4250 0    60   ~ 0
-IN1N
-Text Label 4600 4050 0    60   ~ 0
-IN2N
-Text Label 4600 3850 0    60   ~ 0
-IN3N
-Text Label 4600 3650 0    60   ~ 0
-IN4N
-Text Label 4600 3450 0    60   ~ 0
-IN5N
-Text Label 4600 3250 0    60   ~ 0
-IN6N
-Text Label 4600 3050 0    60   ~ 0
-IN7N
-Text Label 6900 2850 2    60   ~ 0
-IN8P
-Text Label 4600 2850 0    60   ~ 0
-IN8N
+Connection ~ 5100 4300
+Connection ~ 5100 4100
+Connection ~ 5100 3900
+Connection ~ 5100 3700
+Connection ~ 5100 3500
+Connection ~ 5100 3300
+Connection ~ 5100 3100
+Connection ~ 5100 2900
+$Comp
+L CONN_1 P?
+U 1 1 51A0B540
+P 4050 2850
+F 0 "P?" H 4130 2850 40  0000 L CNN
+F 1 "CONN_1" H 4050 2905 30  0001 C CNN
+	1    4050 2850
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	4200 2900 5100 2900
+Wire Wire Line
+	4200 2850 4200 2900
+Wire Wire Line
+	4200 3050 4200 3100
+Wire Wire Line
+	4200 3100 5100 3100
+$Comp
+L CONN_1 P?
+U 1 1 51A0B53F
+P 4050 3050
+F 0 "P?" H 4130 3050 40  0000 L CNN
+F 1 "CONN_1" H 4050 3105 30  0001 C CNN
+	1    4050 3050
+	-1   0    0    -1  
+$EndComp
+$Comp
+L CONN_1 P?
+U 1 1 51A0B53E
+P 4050 3450
+F 0 "P?" H 4130 3450 40  0000 L CNN
+F 1 "CONN_1" H 4050 3505 30  0001 C CNN
+	1    4050 3450
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	4200 3500 5100 3500
+Wire Wire Line
+	4200 3450 4200 3500
+Wire Wire Line
+	4200 3250 4200 3300
+Wire Wire Line
+	4200 3300 5100 3300
+$Comp
+L CONN_1 P?
+U 1 1 51A0B53D
+P 4050 3250
+F 0 "P?" H 4130 3250 40  0000 L CNN
+F 1 "CONN_1" H 4050 3305 30  0001 C CNN
+	1    4050 3250
+	-1   0    0    -1  
+$EndComp
+$Comp
+L CONN_1 P?
+U 1 1 51A0B53C
+P 4050 4050
+F 0 "P?" H 4130 4050 40  0000 L CNN
+F 1 "CONN_1" H 4050 4105 30  0001 C CNN
+	1    4050 4050
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	4200 4100 5100 4100
+Wire Wire Line
+	4200 4050 4200 4100
+Wire Wire Line
+	4200 4250 4200 4300
+Wire Wire Line
+	4200 4300 5100 4300
+$Comp
+L CONN_1 P?
+U 1 1 51A0B53B
+P 4050 4250
+F 0 "P?" H 4130 4250 40  0000 L CNN
+F 1 "CONN_1" H 4050 4305 30  0001 C CNN
+	1    4050 4250
+	-1   0    0    -1  
+$EndComp
+$Comp
+L CONN_1 P?
+U 1 1 51A0B53A
+P 4050 3850
+F 0 "P?" H 4130 3850 40  0000 L CNN
+F 1 "CONN_1" H 4050 3905 30  0001 C CNN
+	1    4050 3850
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	4200 3900 5100 3900
+Wire Wire Line
+	4200 3850 4200 3900
+Wire Wire Line
+	4200 3650 4200 3700
+Wire Wire Line
+	4200 3700 5100 3700
+$Comp
+L CONN_1 P?
+U 1 1 51A0B539
+P 4050 3650
+F 0 "P?" H 4130 3650 40  0000 L CNN
+F 1 "CONN_1" H 4050 3705 30  0001 C CNN
+	1    4050 3650
+	-1   0    0    -1  
+$EndComp
+Connection ~ 6400 4300
+Connection ~ 6400 4100
+Connection ~ 6400 3900
+Connection ~ 6400 3700
+Connection ~ 6400 3500
+Connection ~ 6400 3300
+Connection ~ 6400 3100
+$Comp
+L CONN_1 P?
+U 1 1 51A0B512
+P 7450 3650
+F 0 "P?" H 7530 3650 40  0000 L CNN
+F 1 "CONN_1" H 7450 3705 30  0001 C CNN
+	1    7450 3650
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7300 3700 6400 3700
+Wire Wire Line
+	7300 3650 7300 3700
+Wire Wire Line
+	7300 3850 7300 3900
+Wire Wire Line
+	7300 3900 6400 3900
+$Comp
+L CONN_1 P?
+U 1 1 51A0B511
+P 7450 3850
+F 0 "P?" H 7530 3850 40  0000 L CNN
+F 1 "CONN_1" H 7450 3905 30  0001 C CNN
+	1    7450 3850
+	1    0    0    -1  
+$EndComp
+$Comp
+L CONN_1 P?
+U 1 1 51A0B510
+P 7450 4250
+F 0 "P?" H 7530 4250 40  0000 L CNN
+F 1 "CONN_1" H 7450 4305 30  0001 C CNN
+	1    7450 4250
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7300 4300 6400 4300
+Wire Wire Line
+	7300 4250 7300 4300
+Wire Wire Line
+	7300 4050 7300 4100
+Wire Wire Line
+	7300 4100 6400 4100
+$Comp
+L CONN_1 P?
+U 1 1 51A0B50F
+P 7450 4050
+F 0 "P?" H 7530 4050 40  0000 L CNN
+F 1 "CONN_1" H 7450 4105 30  0001 C CNN
+	1    7450 4050
+	1    0    0    -1  
+$EndComp
+$Comp
+L CONN_1 P?
+U 1 1 51A0B508
+P 7450 3250
+F 0 "P?" H 7530 3250 40  0000 L CNN
+F 1 "CONN_1" H 7450 3305 30  0001 C CNN
+	1    7450 3250
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7300 3300 6400 3300
+Wire Wire Line
+	7300 3250 7300 3300
+Wire Wire Line
+	7300 3450 7300 3500
+Wire Wire Line
+	7300 3500 6400 3500
+$Comp
+L CONN_1 P?
+U 1 1 51A0B507
+P 7450 3450
+F 0 "P?" H 7530 3450 40  0000 L CNN
+F 1 "CONN_1" H 7450 3505 30  0001 C CNN
+	1    7450 3450
+	1    0    0    -1  
+$EndComp
+$Comp
+L CONN_1 P?
+U 1 1 51A0B4FC
+P 7450 3050
+F 0 "P?" H 7530 3050 40  0000 L CNN
+F 1 "CONN_1" H 7450 3105 30  0001 C CNN
+	1    7450 3050
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7300 3100 6400 3100
+Wire Wire Line
+	7300 3050 7300 3100
 Connection ~ 6400 4450
 Wire Wire Line
 	6150 4450 6400 4450
@@ -197,6 +375,52 @@ Connection ~ 5750 5050
 Wire Wire Line
 	5350 4550 5100 4550
 Connection ~ 5100 4550
+Wire Wire Line
+	7300 2850 7300 2900
+Wire Wire Line
+	7300 2900 6400 2900
+Connection ~ 6400 2900
+$Comp
+L CONN_1 P?
+U 1 1 51A0B4B7
+P 7450 2850
+F 0 "P?" H 7530 2850 40  0000 L CNN
+F 1 "CONN_1" H 7450 2905 30  0001 C CNN
+	1    7450 2850
+	1    0    0    -1  
+$EndComp
+Text Label 6900 3050 2    60   ~ 0
+IN7P
+Text Label 6900 3250 2    60   ~ 0
+IN6P
+Text Label 6900 3450 2    60   ~ 0
+IN5P
+Text Label 6900 3650 2    60   ~ 0
+IN4P
+Text Label 6900 3850 2    60   ~ 0
+IN3P
+Text Label 6900 4050 2    60   ~ 0
+IN2P
+Text Label 6900 4250 2    60   ~ 0
+IN1P
+Text Label 4600 4250 0    60   ~ 0
+IN1N
+Text Label 4600 4050 0    60   ~ 0
+IN2N
+Text Label 4600 3850 0    60   ~ 0
+IN3N
+Text Label 4600 3650 0    60   ~ 0
+IN4N
+Text Label 4600 3450 0    60   ~ 0
+IN5N
+Text Label 4600 3250 0    60   ~ 0
+IN6N
+Text Label 4600 3050 0    60   ~ 0
+IN7N
+Text Label 6900 2850 2    60   ~ 0
+IN8P
+Text Label 4600 2850 0    60   ~ 0
+IN8N
 Text Label 3850 4450 0    60   ~ 0
 BIASOUT
 $Comp
