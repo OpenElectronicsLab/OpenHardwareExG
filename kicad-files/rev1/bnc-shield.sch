@@ -1,4 +1,4 @@
-EESchema Schematic File Version 2  date Mon 27 May 2013 04:02:44 AM UTC
+EESchema Schematic File Version 2  date Mon 27 May 2013 01:39:56 PM UTC
 LIBS:power
 LIBS:device
 LIBS:transistors
@@ -2123,7 +2123,7 @@ L R R?
 U 1 1 51A2C647
 P 6150 8950
 F 0 "R?" V 6230 8950 50  0000 C CNN
-F 1 "124k" V 6150 8950 50  0000 C CNN
+F 1 "43.2k" V 6150 8950 50  0000 C CNN
 F 2 "SM0603" H 6150 8950 60  0001 C CNN
 	1    6150 8950
 	1    0    0    -1  
