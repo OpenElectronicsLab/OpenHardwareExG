@@ -1,4 +1,4 @@
-EESchema Schematic File Version 2  date Sat 01 Jun 2013 01:19:04 AM UTC
+EESchema Schematic File Version 2  date Sat 01 Jun 2013 01:45:50 AM UTC
 LIBS:power
 LIBS:device
 LIBS:transistors
@@ -33,6 +33,7 @@ LIBS:ads1299
 LIBS:sam3x8e
 LIBS:isolators
 LIBS:regulators
+LIBS:arduino-ads129x-cache
 EELAYER 25  0
 EELAYER END
 $Descr A0 46800 33070
@@ -47,6 +48,8 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
+Text Notes 27650 8000 0    40   ~ 0
+resistor pulls sync low for startup
 Text Label 27400 6850 0    60   ~ 0
 BUCK_SWITCHING
 Connection ~ 28250 7750
@@ -2542,7 +2545,7 @@ L INDUCTOR L?
 U 1 1 51A9361C
 P 26800 6850
 F 0 "L?" V 26750 6850 40  0000 C CNN
-F 1 "INDUCTOR" V 26900 6850 40  0000 C CNN
+F 1 "1.5 uH" V 26900 6850 40  0000 C CNN
 	1    26800 6850
 	0    -1   -1   0   
 $EndComp
