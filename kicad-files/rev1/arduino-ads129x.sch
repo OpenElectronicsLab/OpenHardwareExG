@@ -1,4 +1,4 @@
-EESchema Schematic File Version 2  date Sun 02 Jun 2013 11:51:31 AM CEST
+EESchema Schematic File Version 2  date Sun 02 Jun 2013 12:07:28 PM CEST
 LIBS:power
 LIBS:device
 LIBS:transistors
@@ -50,6 +50,7 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
+NoConn ~ 43100 18800
 Wire Wire Line
 	24500 11600 26100 11600
 Wire Wire Line
@@ -2888,7 +2889,6 @@ F 1 "TS5A4624" H 42610 18930 60  0000 C CNN
 	1    42600 18650
 	1    0    0    -1  
 $EndComp
-NoConn ~ 43100 18700
 Text Label 41500 18500 0    60   ~ 0
 5V_IN
 $Comp
