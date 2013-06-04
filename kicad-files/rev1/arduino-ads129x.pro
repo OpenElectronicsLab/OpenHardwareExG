@@ -1,4 +1,4 @@
-update=Sat 01 Jun 2013 05:25:02 PM CEST
+update=Tue 04 Jun 2013 01:34:08 AM UTC
 version=1
 last_client=eeschema
 [cvpcb]
@@ -106,3 +106,4 @@ LibName33=isolators
 LibName34=regulators
 LibName35=rs485
 LibName36=analog-switches
+LibName37=additional-logic
