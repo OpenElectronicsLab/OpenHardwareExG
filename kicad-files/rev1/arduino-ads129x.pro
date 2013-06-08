@@ -1,4 +1,4 @@
-update=Sat 08 Jun 2013 03:37:02 PM CEST
+update=Sat 08 Jun 2013 05:57:02 PM CEST
 version=1
 last_client=eeschema
 [cvpcb]
@@ -108,3 +108,4 @@ LibName35=rs485
 LibName36=analog-switches
 LibName37=additional-logic
 LibName38=arduino-shield
+LibName39=esd
