@@ -1,4 +1,4 @@
-EESchema Schematic File Version 2  date Sat 08 Jun 2013 04:38:25 PM CEST
+EESchema Schematic File Version 2  date Sat 08 Jun 2013 04:46:11 PM CEST
 LIBS:power
 LIBS:device
 LIBS:transistors
@@ -52,6 +52,31 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
+Wire Wire Line
+	16750 23150 18350 23150
+Text Label 16750 23150 0    60   ~ 0
+ADS129x_GPIO1
+Text Label 16750 23250 0    60   ~ 0
+ADS129x_GPIO2
+Wire Wire Line
+	16750 23250 18350 23250
+Wire Wire Line
+	16750 23350 18350 23350
+Text Label 16750 23350 0    60   ~ 0
+ADS129x_GPIO3
+Text Label 16750 23450 0    60   ~ 0
+ADS129x_GPIO4
+Wire Wire Line
+	16750 23450 18350 23450
+$Comp
+L CONN_4 P?
+U 1 1 51B342FB
+P 18700 23300
+F 0 "P?" V 18650 23300 50  0000 C CNN
+F 1 "CONN_4" V 18750 23300 50  0000 C CNN
+	1    18700 23300
+	1    0    0    -1  
+$EndComp
 Text Label 33400 21000 3    60   ~ 0
 PA27
 Text Label 33550 21000 3    60   ~ 0
