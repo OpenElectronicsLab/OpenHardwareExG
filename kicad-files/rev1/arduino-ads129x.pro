@@ -1,6 +1,6 @@
-update=Tue 04 Jun 2013 10:00:59 PM CEST
+update=Sat 08 Jun 2013 03:37:02 PM CEST
 version=1
-last_client=kicad
+last_client=eeschema
 [cvpcb]
 version=1
 NetIExt=net
@@ -36,6 +36,8 @@ LibName8=led
 LibName9=dip_sockets
 LibName10=pga_sockets
 LibName11=valves
+[general]
+version=1
 [eeschema]
 version=1
 LibDir=
@@ -105,5 +107,4 @@ LibName34=regulators
 LibName35=rs485
 LibName36=analog-switches
 LibName37=additional-logic
-[general]
-version=1
+LibName38=arduino-shield
