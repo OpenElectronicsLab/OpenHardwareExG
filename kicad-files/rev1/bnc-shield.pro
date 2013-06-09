@@ -1,4 +1,4 @@
-update=Mon 27 May 2013 02:33:08 AM UTC
+update=Sun 09 Jun 2013 09:34:54 AM CEST
 last_client=eeschema
 [eeschema]
 version=1
@@ -64,3 +64,5 @@ LibName29=contrib
 LibName30=valves
 LibName31=analog-switches
 LibName32=regulators
+LibName33=rs485
+LibName34=arduino-shield
