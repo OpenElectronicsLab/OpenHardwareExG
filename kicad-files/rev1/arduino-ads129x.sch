@@ -1,4 +1,4 @@
-EESchema Schematic File Version 2  date Sun 09 Jun 2013 11:01:03 AM CEST
+EESchema Schematic File Version 2  date Sun 09 Jun 2013 11:05:45 AM CEST
 LIBS:power
 LIBS:device
 LIBS:transistors
@@ -53,6 +53,8 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
+Text Notes 25100 6250 0    40   ~ 0
+(PA27_SCLK == SPCK)
 Connection ~ 45200 3200
 Wire Wire Line
 	45200 3850 42800 3850
@@ -90,8 +92,6 @@ Wire Wire Line
 Connection ~ 12700 26950
 Wire Wire Line
 	12650 26950 12700 26950
-Wire Wire Line
-	33550 21000 33550 21300
 Wire Wire Line
 	27500 22650 26250 22650
 Wire Wire Line
@@ -2827,9 +2827,6 @@ Wire Wire Line
 Wire Wire Line
 	27500 26400 26250 26400
 Wire Wire Line
-	33550 21300 33400 21300
-Connection ~ 33400 21300
-Wire Wire Line
 	33400 21000 33400 21300
 Wire Wire Line
 	33400 21300 33400 21950
@@ -2941,8 +2938,6 @@ F 1 "CONN_4" V 18750 23300 50  0000 C CNN
 $EndComp
 Text Label 33400 21000 3    60   ~ 0
 PA27_SCLK
-Text Label 33550 21000 3    60   ~ 0
-SPCK
 Text Label 26250 26400 0    60   ~ 0
 PA8_RX
 Text Label 26250 22650 0    60   ~ 0
@@ -3818,7 +3813,7 @@ PA25_MISO
 Text Label 26750 6400 2    60   ~ 0
 ADS129x_~CS~
 Text Label 26350 6300 2    60   ~ 0
-SPCK
+PA27_SCLK
 Text Label 26350 6500 2    60   ~ 0
 ADS129x_CLK
 Text Label 26350 6600 2    60   ~ 0
