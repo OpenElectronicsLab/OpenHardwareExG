@@ -1,4 +1,4 @@
-EESchema Schematic File Version 2  date Sun 09 Jun 2013 10:51:02 AM CEST
+EESchema Schematic File Version 2  date Sun 09 Jun 2013 10:54:50 AM CEST
 LIBS:power
 LIBS:device
 LIBS:transistors
@@ -86,11 +86,6 @@ Wire Wire Line
 	12650 26950 12700 26950
 Wire Wire Line
 	33550 21000 33550 21300
-Connection ~ 34600 22500
-Wire Wire Line
-	34850 22350 34600 22350
-Wire Wire Line
-	34600 22350 34600 22500
 Wire Wire Line
 	27500 22650 26250 22650
 Wire Wire Line
@@ -2274,11 +2269,6 @@ Wire Wire Line
 Wire Wire Line
 	27500 26400 26250 26400
 Wire Wire Line
-	33550 21700 33700 21700
-Connection ~ 33550 21700
-Wire Wire Line
-	33700 21700 33700 21450
-Wire Wire Line
 	33550 21300 33400 21300
 Connection ~ 33400 21300
 Wire Wire Line
@@ -2387,10 +2377,6 @@ Text Label 33400 21000 3    60   ~ 0
 PA27_SCLK
 Text Label 33550 21000 3    60   ~ 0
 SPCK
-Text Label 33700 21450 3    60   ~ 0
-MOSI
-Text Label 34850 22350 2    60   ~ 0
-MISO
 Text Label 26250 26400 0    60   ~ 0
 PA8_RX
 Text Label 26250 22650 0    60   ~ 0
@@ -3262,7 +3248,7 @@ ADS129x_~PWDN~
 Text Label 26350 6800 2    60   ~ 0
 ADS129x_~DRDY~
 Text Label 28250 6650 2    60   ~ 0
-MISO
+PA25_MISO
 Text Label 26750 6400 2    60   ~ 0
 ADS129x_~CS~
 Text Label 26350 6300 2    60   ~ 0
@@ -3270,7 +3256,7 @@ SPCK
 Text Label 26350 6500 2    60   ~ 0
 ADS129x_CLK
 Text Label 26350 6600 2    60   ~ 0
-MOSI
+PA26_MOSI
 Text Label 26350 4700 2    60   ~ 0
 ADS129x_START
 Text Label 22050 8500 0    60   ~ 0
