@@ -1,4 +1,4 @@
-EESchema Schematic File Version 2  date Sun 09 Jun 2013 12:42:22 PM CEST
+EESchema Schematic File Version 2  date Sun 09 Jun 2013 12:49:46 PM CEST
 LIBS:power
 LIBS:device
 LIBS:transistors
@@ -2882,8 +2882,6 @@ Connection ~ 45200 3200
 Wire Wire Line
 	23550 5000 23650 5000
 Connection ~ 23350 6700
-Text Notes 25100 6250 0    40   ~ 0
-(PA27_SCLK == SPCK)
 $Comp
 L USBLC6 U?
 U 1 1 51B35466
@@ -3826,15 +3824,15 @@ ADS129x_~PWDN~_ISO
 Text Label 22050 8400 0    60   ~ 0
 ADS129x_~RESET~_ISO
 Text Label 22050 6600 0    60   ~ 0
-MOSI_ISO
+ADS192x_MOSI_ISO
 Text Label 22050 6500 0    60   ~ 0
 ADS129x_CLK_ISO
 Text Label 22050 6300 0    60   ~ 0
-SPCK_ISO
+ADS192x_SCLK_ISO
 Text Label 22050 6400 0    60   ~ 0
 ADS129x_~CS~_ISO
 Text Label 22050 6700 0    60   ~ 0
-MISO_ISO
+ADS192x_MISO_ISO
 $Comp
 L R R?
 U 1 1 51ABF28E
@@ -4580,7 +4578,7 @@ ADS129x_~PWDN~_ISO
 Text Label 35150 24150 2    60   ~ 0
 ADS129x_~PWDN~
 Text Label 13650 4450 2    60   ~ 0
-SPCK_ISO
+ADS192x_SCLK_ISO
 Text Label 11500 2350 3    60   ~ 0
 ADS129x_CLKSEL_ISO
 Text Label 35150 23850 2    60   ~ 0
@@ -4590,9 +4588,9 @@ PA26_MOSI
 Text Label 34850 22500 2    60   ~ 0
 PA25_MISO
 Text Label 13650 4150 2    60   ~ 0
-MISO_ISO
+ADS192x_MISO_ISO
 Text Label 13650 5050 2    60   ~ 0
-MOSI_ISO
+ADS192x_MOSI_ISO
 Text Notes 11800 21200 0    60   ~ 0
 DTR
 Text Notes 11800 21100 0    60   ~ 0
