@@ -1,4 +1,4 @@
-EESchema Schematic File Version 2  date Sun 09 Jun 2013 11:05:45 AM CEST
+EESchema Schematic File Version 2  date Sun 09 Jun 2013 11:09:05 AM CEST
 LIBS:power
 LIBS:device
 LIBS:transistors
@@ -103,7 +103,7 @@ Wire Wire Line
 Wire Wire Line
 	26700 25500 27500 25500
 Wire Wire Line
-	34300 23400 34750 23400
+	34300 23400 35050 23400
 Wire Wire Line
 	29950 21150 29950 21950
 Wire Wire Line
@@ -2827,9 +2827,7 @@ Wire Wire Line
 Wire Wire Line
 	27500 26400 26250 26400
 Wire Wire Line
-	33400 21000 33400 21300
-Wire Wire Line
-	33400 21300 33400 21950
+	33400 21450 33400 21950
 Wire Wire Line
 	16750 23450 18350 23450
 Wire Wire Line
@@ -2936,7 +2934,7 @@ F 1 "CONN_4" V 18750 23300 50  0000 C CNN
 	1    18700 23300
 	1    0    0    -1  
 $EndComp
-Text Label 33400 21000 3    60   ~ 0
+Text Label 33400 21450 3    60   ~ 0
 PA27_SCLK
 Text Label 26250 26400 0    60   ~ 0
 PA8_RX
@@ -2956,15 +2954,15 @@ Text Label 33250 21450 3    60   ~ 0
 PA28_SS0
 Text Label 32950 29000 1    60   ~ 0
 PB27_PWM13
-Text Label 29500 21384 1    60   ~ 0
+Text Label 29500 21150 3    60   ~ 0
 PC25_PWM5
-Text Label 29800 21384 1    60   ~ 0
+Text Label 29800 21150 3    60   ~ 0
 PC23_PWM7
-Text Label 29950 21384 1    60   ~ 0
+Text Label 29950 21150 3    60   ~ 0
 PC22_PWM8
-Text Label 30100 21384 1    60   ~ 0
+Text Label 30100 21150 3    60   ~ 0
 PC21_PWM9
-Text Label 34750 23400 2    60   ~ 0
+Text Label 35050 23400 2    60   ~ 0
 PC29_PWM10
 Text Label 26700 25350 0    60   ~ 0
 PD7_PWM11
