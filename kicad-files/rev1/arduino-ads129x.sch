@@ -1,4 +1,4 @@
-EESchema Schematic File Version 2  date Sun 09 Jun 2013 01:03:53 PM CEST
+EESchema Schematic File Version 2  date Sun 09 Jun 2013 01:11:04 PM CEST
 LIBS:power
 LIBS:device
 LIBS:transistors
@@ -5438,7 +5438,7 @@ F 1 "SAM3X8E" H 31100 25750 60  0000 C CNN
 $EndComp
 Text Label 11300 2500 3    60   ~ 0
 AVDD1
-Text Label 16900 3650 0    60   ~ 0
+Text Label 17200 3650 2    60   ~ 0
 AVDD1
 $Comp
 L +5VA #PWR?
