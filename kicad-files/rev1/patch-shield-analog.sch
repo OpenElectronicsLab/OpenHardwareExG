@@ -1,4 +1,4 @@
-EESchema Schematic File Version 2  date Sat 08 Jun 2013 07:26:01 PM CEST
+EESchema Schematic File Version 2  date Sun 09 Jun 2013 09:26:44 AM CEST
 LIBS:power
 LIBS:device
 LIBS:transistors
@@ -32,13 +32,14 @@ LIBS:valves
 LIBS:rs485
 LIBS:analog-switches
 LIBS:arduino-shield
+LIBS:patch-shield-analog-cache
 EELAYER 25  0
 EELAYER END
 $Descr A4 11700 8267
 encoding utf-8
 Sheet 1 1
 Title "noname.sch"
-Date "8 jun 2013"
+Date "9 jun 2013"
 Rev ""
 Comp ""
 Comment1 ""
@@ -46,6 +47,31 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
+$Comp
+L CONN_4 P?
+U 1 1 51B42E2E
+P 7250 1000
+F 0 "P?" V 7200 1000 50  0000 C CNN
+F 1 "CONN_4" V 7300 1000 50  0000 C CNN
+	1    7250 1000
+	1    0    0    -1  
+$EndComp
+Text Label 5300 1150 0    60   ~ 0
+ADS129x_GPIO4
+Text Label 5300 1050 0    60   ~ 0
+ADS129x_GPIO3
+Text Label 5300 950  0    60   ~ 0
+ADS129x_GPIO2
+Text Label 5300 850  0    60   ~ 0
+ADS129x_GPIO1
+Wire Wire Line
+	5300 850  6900 850 
+Wire Wire Line
+	5300 950  6900 950 
+Wire Wire Line
+	5300 1050 6900 1050
+Wire Wire Line
+	5300 1150 6900 1150
 $Comp
 L AGND #PWR?
 U 1 1 51B368C7
