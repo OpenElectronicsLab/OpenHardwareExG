@@ -1,4 +1,4 @@
-EESchema Schematic File Version 2  date Sun 09 Jun 2013 11:09:05 AM CEST
+EESchema Schematic File Version 2  date Sun 09 Jun 2013 11:54:09 AM CEST
 LIBS:power
 LIBS:device
 LIBS:transistors
@@ -2970,7 +2970,7 @@ Text Label 26700 25500 0    60   ~ 0
 PD8_PWM12
 Text Label 33250 29000 1    60   ~ 0
 PA18_SCL1
-Text Label 26924 23700 2    60   ~ 0
+Text Label 26700 23700 0    60   ~ 0
 PA17_SDA1
 Text Label 35000 27000 2    60   ~ 0
 PA16_A0
