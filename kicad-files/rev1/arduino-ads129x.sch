@@ -2394,7 +2394,7 @@ F 1 "CONN_4" V 18750 23300 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 Text Label 33400 21000 3    60   ~ 0
-PA27
+PA27_SCLK
 Text Label 33550 21000 3    60   ~ 0
 SPCK
 Text Label 33700 21450 3    60   ~ 0
@@ -2404,63 +2404,63 @@ MISO
 Text Label 26250 26250 0    60   ~ 0
 RX
 Text Label 26250 26400 0    60   ~ 0
-PA8
+PA8_RX
 Text Label 26250 22650 0    60   ~ 0
-PA9
+PA9_TX
 Text Label 26250 22500 0    60   ~ 0
 TX
 Text Label 28300 21200 3    60   ~ 0
-PB25
+PB25_PWM2
 Text Label 33100 21450 3    60   ~ 0
-PA29
+PA29_SS1
 Text Label 29050 21150 3    60   ~ 0
-PC28
+PC28_PWM3
 Text Label 29350 21150 3    60   ~ 0
-PC26
+PC26_PWM4
 Text Label 29650 21150 3    60   ~ 0
-PC24
+PC24_PWM6
 Text Label 33250 21450 3    60   ~ 0
-PA28
+PA28_SS0
 Text Label 32950 29000 1    60   ~ 0
-PB27
+PB27_PWM13
 Text Label 29500 21384 1    60   ~ 0
-PC25
+PC25_PWM5
 Text Label 29800 21384 1    60   ~ 0
-PC23
+PC23_PWM7
 Text Label 29950 21384 1    60   ~ 0
-PC22
+PC22_PWM8
 Text Label 30100 21384 1    60   ~ 0
-PC21
+PC21_PWM9
 Text Label 34750 23400 2    60   ~ 0
-PC29
+PC29_PWM10
 Text Label 26876 25350 2    60   ~ 0
-PD7
+PD7_PWM11
 Text Label 26876 25500 2    60   ~ 0
-PD8
+PD8_PWM12
 Text Label 33250 29000 1    60   ~ 0
-PA18
+PA18_SCL1
 Text Label 26924 23700 2    60   ~ 0
-PA17
+PA17_SDA1
 Text Label 34776 27000 0    60   ~ 0
-PA16
+PA16_A0
 Text Label 34776 26850 0    60   ~ 0
-PA24
+PA24_A1
 Text Label 34776 26700 0    60   ~ 0
-PA23
+PA23_A2
 Text Label 34776 26550 0    60   ~ 0
-PA22
+PA22_A3
 Text Label 34832 26400 0    60   ~ 0
-PA6
+PA6_A4
 Text Label 34832 26250 0    60   ~ 0
-PA4
+PA4_A5
 Text Label 18500 26900 0    60   ~ 0
 RESET
 Text Label 18500 26800 0    60   ~ 0
-PA27
+PA27_SCLK
 Text Label 18500 26700 0    60   ~ 0
-PA25
+PA25_MISO
 Text Label 21500 26800 2    60   ~ 0
-PA26
+PA26_MOSI
 $Comp
 L GND #PWR?
 U 1 1 51B33A70
@@ -2481,9 +2481,9 @@ F 1 "+5V" H 21100 26590 30  0000 C CNN
 $EndComp
 NoConn ~ 22100 24550
 Text Label 22100 24350 2    60   ~ 0
-PA18
+PA18_SCL1
 Text Label 22100 24450 2    60   ~ 0
-PA17
+PA17_SDA1
 $Comp
 L GND #PWR?
 U 1 1 51B339FC
@@ -2494,7 +2494,7 @@ F 1 "GND" H 22600 24630 30  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Text Label 24000 24350 3    60   ~ 0
-PB27
+PB27_PWM13
 $Comp
 L GND #PWR?
 U 1 1 51B339BF
@@ -2523,49 +2523,49 @@ F 1 "LED" H 24000 24800 50  0000 C CNN
 	0    1    1    0   
 $EndComp
 Text Label 22100 24750 2    60   ~ 0
-PB27
+PB27_PWM13
 Text Label 22100 24850 2    60   ~ 0
-PD8
+PD8_PWM12
 Text Label 22100 24950 2    60   ~ 0
-PD7
+PD7_PWM11
 Text Label 22600 24950 2    60   ~ 0
-PC29
+PC29_PWM10
 Text Label 22600 25050 2    60   ~ 0
-PA28
+PA28_SS0
 Text Label 22100 25150 2    60   ~ 0
-PC21
+PC21_PWM9
 Text Label 22100 25250 2    60   ~ 0
-PC22
+PC22_PWM8
 Text Label 22100 25450 2    60   ~ 0
-PC23
+PC23_PWM7
 Text Label 22100 25550 2    60   ~ 0
-PC24
+PC24_PWM6
 Text Label 22100 25650 2    60   ~ 0
-PC25
+PC25_PWM5
 Text Label 22600 25650 2    60   ~ 0
-PC26
+PC26_PWM4
 Text Label 22600 25750 2    60   ~ 0
-PA29
+PA29_SS1
 Text Label 22100 25850 2    60   ~ 0
-PC28
+PC28_PWM3
 Text Label 22100 25950 2    60   ~ 0
-PB25
+PB25_PWM2
 Text Label 22100 26050 2    60   ~ 0
-PA9
+PA9_TX
 Text Label 22100 26150 2    60   ~ 0
-PA8
+PA8_RX
 Text Label 18000 26150 0    60   ~ 0
-PA4
+PA4_A5
 Text Label 18000 26050 0    60   ~ 0
-PA6
+PA6_A4
 Text Label 18000 25950 0    60   ~ 0
-PA22
+PA22_A3
 Text Label 18000 25850 0    60   ~ 0
-PA23
+PA23_A2
 Text Label 18000 25750 0    60   ~ 0
-PA24
+PA24_A1
 Text Label 18000 25650 0    60   ~ 0
-PA16
+PA16_A0
 $Comp
 L GND #PWR?
 U 1 1 51B33726
@@ -4052,9 +4052,9 @@ ADS129x_CLKSEL_ISO
 Text Label 35150 23850 2    60   ~ 0
 ADS129x_START
 Text Label 33550 21450 3    60   ~ 0
-PA27
+PA27_SCLK
 Text Label 34850 22500 2    60   ~ 0
-PA25
+PA25_MISO
 Text Label 13650 4150 2    60   ~ 0
 MISO_ISO
 Text Label 13650 5050 2    60   ~ 0

@@ -149,11 +149,11 @@ Wire Wire Line
 Text Label 26000 5400 0    60   ~ 0
 RESET
 Text Label 26000 5300 0    60   ~ 0
-PA27
+PA27_SCLK
 Text Label 26000 5200 0    60   ~ 0
-PA25
+PA25_MISO
 Text Label 29000 5300 2    60   ~ 0
-PA26
+PA26_MOSI
 $Comp
 L GND #PWR?
 U 1 1 51B42FE6
@@ -174,9 +174,9 @@ F 1 "+5V" H 28600 5090 30  0000 C CNN
 $EndComp
 NoConn ~ 29600 3050
 Text Label 29600 2850 2    60   ~ 0
-PA18
+PA18_SCL1
 Text Label 29600 2950 2    60   ~ 0
-PA17
+PA17_SDA1
 $Comp
 L GND #PWR?
 U 1 1 51B42FE4
@@ -187,49 +187,49 @@ F 1 "GND" H 30100 3130 30  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Text Label 29600 3250 2    60   ~ 0
-PB27
+PB27_PWM13
 Text Label 29600 3350 2    60   ~ 0
-PD8
+PD8_PWM12
 Text Label 29600 3450 2    60   ~ 0
-PD7
+PD7_PWM11
 Text Label 30100 3450 2    60   ~ 0
-PC29
+PC29_PWM10
 Text Label 30100 3550 2    60   ~ 0
-PA28
+PA28_SS0
 Text Label 29600 3650 2    60   ~ 0
-PC21
+PC21_PWM9
 Text Label 29600 3750 2    60   ~ 0
-PC22
+PC22_PWM8
 Text Label 29600 3950 2    60   ~ 0
-PC23
+PC23_PWM7
 Text Label 29600 4050 2    60   ~ 0
-PC24
+PC24_PWM6
 Text Label 29600 4150 2    60   ~ 0
-PC25
+PC25_PWM5
 Text Label 30100 4150 2    60   ~ 0
-PC26
+PC26_PWM4
 Text Label 30100 4250 2    60   ~ 0
-PA29
+PA29_SS1
 Text Label 29600 4350 2    60   ~ 0
-PC28
+PC28_PWM3
 Text Label 29600 4450 2    60   ~ 0
-PB25
+PB25_PWM2
 Text Label 29600 4550 2    60   ~ 0
-PA9
+PA9_TX
 Text Label 29600 4650 2    60   ~ 0
-PA8
+PA8_RX
 Text Label 25500 4650 0    60   ~ 0
-PA4
+PA4_A5
 Text Label 25500 4550 0    60   ~ 0
-PA6
+PA6_A4
 Text Label 25500 4450 0    60   ~ 0
-PA22
+PA22_A3
 Text Label 25500 4350 0    60   ~ 0
-PA23
+PA23_A2
 Text Label 25500 4250 0    60   ~ 0
-PA24
+PA24_A1
 Text Label 25500 4150 0    60   ~ 0
-PA16
+PA16_A0
 $Comp
 L GND #PWR?
 U 1 1 51B42FE3
