@@ -1,4 +1,4 @@
-EESchema Schematic File Version 2  date Sun 09 Jun 2013 10:46:15 AM CEST
+EESchema Schematic File Version 2  date Sun 09 Jun 2013 10:51:02 AM CEST
 LIBS:power
 LIBS:device
 LIBS:transistors
@@ -2272,16 +2272,6 @@ Wire Wire Line
 Wire Wire Line
 	28300 21950 28300 21200
 Wire Wire Line
-	26600 22650 26600 22500
-Wire Wire Line
-	26600 22500 26250 22500
-Connection ~ 26600 22650
-Connection ~ 26600 26400
-Wire Wire Line
-	26250 26250 26600 26250
-Wire Wire Line
-	26600 26250 26600 26400
-Wire Wire Line
 	27500 26400 26250 26400
 Wire Wire Line
 	33550 21700 33700 21700
@@ -2401,14 +2391,10 @@ Text Label 33700 21450 3    60   ~ 0
 MOSI
 Text Label 34850 22350 2    60   ~ 0
 MISO
-Text Label 26250 26250 0    60   ~ 0
-RX
 Text Label 26250 26400 0    60   ~ 0
 PA8_RX
 Text Label 26250 22650 0    60   ~ 0
 PA9_TX
-Text Label 26250 22500 0    60   ~ 0
-TX
 Text Label 28300 21200 3    60   ~ 0
 PB25_PWM2
 Text Label 33100 21450 3    60   ~ 0
@@ -4072,9 +4058,9 @@ CTS
 Text Notes 11800 20700 0    60   ~ 0
 GND
 Text Label 12450 22000 2    60   ~ 0
-TX
+PA9_TX
 Text Label 12450 21900 2    60   ~ 0
-RX
+PA8_RX
 $Comp
 L +3.3V #PWR?
 U 1 1 51977D37
@@ -4111,9 +4097,9 @@ F 1 "+3.3V" H 12900 20710 30  0000 C CNN
 	1    0    0    -1  
 $EndComp
 Text Label 12450 21100 2    60   ~ 0
-TX
+PA9_TX
 Text Label 12450 21000 2    60   ~ 0
-RX
+PA8_RX
 NoConn ~ 12450 21200
 $Comp
 L CONN_6 P?
