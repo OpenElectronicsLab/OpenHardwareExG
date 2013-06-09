@@ -1,4 +1,4 @@
-EESchema Schematic File Version 2  date Sat 08 Jun 2013 06:05:40 PM CEST
+EESchema Schematic File Version 2  date Sun 09 Jun 2013 10:46:15 AM CEST
 LIBS:power
 LIBS:device
 LIBS:transistors
@@ -45,7 +45,7 @@ $Descr A0 46800 33070
 encoding utf-8
 Sheet 1 1
 Title ""
-Date "8 jun 2013"
+Date "9 jun 2013"
 Rev ""
 Comp ""
 Comment1 ""
@@ -4052,7 +4052,7 @@ ADS129x_CLKSEL_ISO
 Text Label 35150 23850 2    60   ~ 0
 ADS129x_START
 Text Label 33550 21450 3    60   ~ 0
-PA27_SCLK
+PA26_MOSI
 Text Label 34850 22500 2    60   ~ 0
 PA25_MISO
 Text Label 13650 4150 2    60   ~ 0
