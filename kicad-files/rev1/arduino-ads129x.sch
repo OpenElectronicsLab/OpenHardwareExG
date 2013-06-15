@@ -1,4 +1,4 @@
-EESchema Schematic File Version 2  date Sat 15 Jun 2013 03:02:53 PM CEST
+EESchema Schematic File Version 2  date Sat 15 Jun 2013 03:21:35 PM CEST
 LIBS:power
 LIBS:device
 LIBS:transistors
@@ -56,7 +56,7 @@ $EndDescr
 Text Notes 11300 21650 3    60   ~ 0
 bluetooth
 Wire Wire Line
-	27250 6750 25400 6750
+	25400 6750 27250 6750
 Wire Wire Line
 	27250 6750 27250 6600
 Connection ~ 24000 6750
@@ -2483,10 +2483,10 @@ F 1 "10.0k" V 16100 6450 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L R 10k1
+L R R65
 U 1 1 51BBCCA3
 P 16100 7150
-F 0 "10k1" V 16180 7150 50  0000 C CNN
+F 0 "R65" V 16180 7150 50  0000 C CNN
 F 1 "19.6k" V 16100 7150 50  0000 C CNN
 	1    16100 7150
 	1    0    0    -1  
