@@ -1,4 +1,4 @@
-EESchema Schematic File Version 2  date Sat 15 Jun 2013 02:25:31 PM CEST
+EESchema Schematic File Version 2  date Sat 15 Jun 2013 02:31:29 PM CEST
 LIBS:power
 LIBS:device
 LIBS:transistors
@@ -2503,7 +2503,7 @@ L C C60
 U 1 1 51BBCCA1
 P 15200 6800
 F 0 "C60" H 15250 6900 50  0000 L CNN
-F 1 "100nF" H 15250 6700 50  0000 L CNN
+F 1 "10uF" H 15250 6700 50  0000 L CNN
 	1    15200 6800
 	-1   0    0    -1  
 $EndComp
@@ -2547,7 +2547,7 @@ L C C61
 U 1 1 51BBC1E0
 P 15200 9750
 F 0 "C61" H 15250 9850 50  0000 L CNN
-F 1 "100nF" H 15250 9650 50  0000 L CNN
+F 1 "10uF" H 15250 9650 50  0000 L CNN
 	1    15200 9750
 	-1   0    0    -1  
 $EndComp
