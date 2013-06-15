@@ -1,4 +1,4 @@
-EESchema Schematic File Version 2  date Sat 15 Jun 2013 02:46:34 PM CEST
+EESchema Schematic File Version 2  date Sat 15 Jun 2013 03:02:53 PM CEST
 LIBS:power
 LIBS:device
 LIBS:transistors
@@ -53,6 +53,8 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
+Text Notes 11300 21650 3    60   ~ 0
+bluetooth
 Wire Wire Line
 	27250 6750 25400 6750
 Wire Wire Line
@@ -4521,7 +4523,7 @@ L CONN_4 P7
 U 1 1 51977BF4
 P 11450 21850
 F 0 "P7" V 11400 21850 50  0000 C CNN
-F 1 "CONN_4" V 11500 21850 50  0000 C CNN
+F 1 "JY-MCU" V 11500 21850 50  0000 C CNN
 	1    11450 21850
 	-1   0    0    -1  
 $EndComp
@@ -4544,7 +4546,7 @@ L CONN_6 P6
 U 1 1 5197789B
 P 11450 20950
 F 0 "P6" V 11400 20950 60  0000 C CNN
-F 1 "SERIAL" V 11500 20950 60  0000 C CNN
+F 1 "FTDI" V 11500 20950 60  0000 C CNN
 	1    11450 20950
 	-1   0    0    -1  
 $EndComp
