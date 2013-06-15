@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by CvPcb (2012-apr-16-27)-stable date = Sat 15 Jun 2013 05:19:35 PM CEST
+Cmp-Mod V01 Created by CvPcb (2012-apr-16-27)-stable date = Sat 15 Jun 2013 05:42:19 PM CEST
 
 BeginCmp
 TimeStamp = /513B4D15;
@@ -865,7 +865,7 @@ BeginCmp
 TimeStamp = /516008AA;
 Reference = J1;
 ValeurCmp = USB_1;
-IdModule  = ;
+IdModule  = USB_B;
 EndCmp
 
 BeginCmp
@@ -1019,42 +1019,42 @@ BeginCmp
 TimeStamp = /51A0B888;
 Reference = P1;
 ValeurCmp = CONN_20X2;
-IdModule  = ;
+IdModule  = PIN_ARRAY_20X2;
 EndCmp
 
 BeginCmp
 TimeStamp = /513B4982;
 Reference = P2;
 ValeurCmp = CONN_8X2;
-IdModule  = ;
+IdModule  = pin_array_8x2;
 EndCmp
 
 BeginCmp
 TimeStamp = /513B499D;
 Reference = P3;
 ValeurCmp = CONN_8X2;
-IdModule  = ;
+IdModule  = pin_array_8x2;
 EndCmp
 
 BeginCmp
 TimeStamp = /51BC70C8;
 Reference = P4;
 ValeurCmp = CONN_5X2;
-IdModule  = ;
+IdModule  = PIN_ARRAY_5x2;
 EndCmp
 
 BeginCmp
 TimeStamp = /5197789B;
 Reference = P6;
 ValeurCmp = FTDI;
-IdModule  = ;
+IdModule  = PIN_ARRAY-6X1;
 EndCmp
 
 BeginCmp
 TimeStamp = /51977BF4;
 Reference = P7;
 ValeurCmp = JY-MCU;
-IdModule  = ;
+IdModule  = PIN_ARRAY_4x1;
 EndCmp
 
 BeginCmp
@@ -1068,14 +1068,14 @@ BeginCmp
 TimeStamp = /51B345AA;
 Reference = P9;
 ValeurCmp = CONN_8X2;
-IdModule  = ;
+IdModule  = pin_array_8x2;
 EndCmp
 
 BeginCmp
 TimeStamp = /51B342FB;
 Reference = P10;
 ValeurCmp = CONN_4;
-IdModule  = ;
+IdModule  = PIN_ARRAY_4x1;
 EndCmp
 
 BeginCmp
@@ -1089,14 +1089,14 @@ BeginCmp
 TimeStamp = /51600FC2;
 Reference = P12;
 ValeurCmp = CONN_2;
-IdModule  = SIL-2;
+IdModule  = PIN_ARRAY_2X2;
 EndCmp
 
 BeginCmp
 TimeStamp = /51600FC3;
 Reference = P13;
 ValeurCmp = CONN_2;
-IdModule  = SIL-2;
+IdModule  = PIN_ARRAY_2X1;
 EndCmp
 
 BeginCmp

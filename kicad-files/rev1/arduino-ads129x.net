@@ -1,4 +1,4 @@
-# EESchema Netlist Version 1.1 created  Sat 15 Jun 2013 05:19:35 PM CEST
+# EESchema Netlist Version 1.1 created  Sat 15 Jun 2013 05:42:19 PM CEST
 (
  ( /513B4D15 SM0603 C1 47pF
   ( 1 N-000258 )
@@ -492,7 +492,7 @@
   ( 1 +3.3V )
   ( 2 N-000190 )
  )
- ( /516008AA $noname$ J1 USB_1
+ ( /516008AA USB_B J1 USB_1
   ( 1 N-000261 )
   ( 2 N-000186 )
   ( 3 N-000187 )
@@ -584,7 +584,7 @@
   ( 1 N-000261 )
   ( 2 N-000183 )
  )
- ( /51A0B888 $noname$ P1 CONN_20X2
+ ( /51A0B888 PIN_ARRAY_20X2 P1 CONN_20X2
   ( 1 +5VA )
   ( 2 AGND )
   ( 3 AGND )
@@ -626,7 +626,7 @@
   ( 39 AGND )
   ( 40 AGND )
  )
- ( /513B4982 $noname$ P2 CONN_8X2
+ ( /513B4982 pin_array_8x2 P2 CONN_8X2
   ( 1 N-000257 )
   ( 2 N-000144 )
   ( 3 N-000141 )
@@ -644,7 +644,7 @@
   ( 15 N-000136 )
   ( 16 N-000137 )
  )
- ( /513B499D $noname$ P3 CONN_8X2
+ ( /513B499D pin_array_8x2 P3 CONN_8X2
   ( 1 N-000122 )
   ( 2 N-000169 )
   ( 3 N-000170 )
@@ -662,7 +662,7 @@
   ( 15 N-000143 )
   ( 16 N-000152 )
  )
- ( /51BC70C8 $noname$ P4 CONN_5X2
+ ( /51BC70C8 PIN_ARRAY_5x2 P4 CONN_5X2
   ( 1 /SRB1 )
   ( 2 N-000244 )
   ( 3 /SRB2 )
@@ -674,7 +674,7 @@
   ( 9 /BIASOUT )
   ( 10 N-000273 )
  )
- ( /5197789B $noname$ P6 FTDI
+ ( /5197789B PIN_ARRAY-6X1 P6 FTDI
   ( 1 GND )
   ( 2 GND )
   ( 3 +3.3V )
@@ -682,7 +682,7 @@
   ( 5 /PA9_TX )
   ( 6 ? )
  )
- ( /51977BF4 $noname$ P7 JY-MCU
+ ( /51977BF4 PIN_ARRAY_4x1 P7 JY-MCU
   ( 1 +3.3V )
   ( 2 GND )
   ( 3 /PA8_RX )
@@ -700,7 +700,7 @@
   ( 9 GND )
   ( 10 /JTAG_RESET )
  )
- ( /51B345AA $noname$ P9 CONN_8X2
+ ( /51B345AA pin_array_8x2 P9 CONN_8X2
   ( 1 +3.3V )
   ( 2 /LED_LATCH_CLK )
   ( 3 /LED_SERIAL )
@@ -718,7 +718,7 @@
   ( 15 /RTS2_RS485_DE )
   ( 16 GND )
  )
- ( /51B342FB $noname$ P10 CONN_4
+ ( /51B342FB PIN_ARRAY_4x1 P10 CONN_4
   ( 1 /ADS129x_GPIO1 )
   ( 2 /ADS129x_GPIO2 )
   ( 3 /ADS129x_GPIO3 )
@@ -764,13 +764,13 @@
   ( 98 ? )
   ( 99 GND )
  )
- ( /51600FC2 SIL-2 P12 CONN_2
+ ( /51600FC2 PIN_ARRAY_2X2 P12 CONN_2
   ( 1 N-000265 )
   ( 2 N-000177 )
   ( 3 N-000276 )
   ( 4 AGND )
  )
- ( /51600FC3 SIL-2 P13 CONN_2
+ ( /51600FC3 PIN_ARRAY_2X1 P13 CONN_2
   ( 1 +5V )
   ( 2 /5V_in_prefilter )
  )
