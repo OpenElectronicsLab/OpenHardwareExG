@@ -1,4 +1,4 @@
-# EESchema Netlist Version 1.1 created  Sat 15 Jun 2013 05:42:19 PM CEST
+# EESchema Netlist Version 1.1 created  Sat 15 Jun 2013 06:15:45 PM CEST
 (
  ( /513B4D15 SM0603 C1 47pF
   ( 1 N-000258 )
@@ -774,151 +774,151 @@
   ( 1 +5V )
   ( 2 /5V_in_prefilter )
  )
- ( /513B4D17 $noname$ R1 22.1k
+ ( /513B4D17 SM0603 R1 22.1k
   ( 1 /IN8N )
   ( 2 N-000258 )
  )
- ( /513B4D18 $noname$ R2 22.1k
+ ( /513B4D18 SM0603 R2 22.1k
   ( 1 /IN8P )
   ( 2 N-000163 )
  )
- ( /513B4CB7 $noname$ R3 22.1k
+ ( /513B4CB7 SM0603 R3 22.1k
   ( 1 /IN7N )
   ( 2 N-000174 )
  )
- ( /513B4BD9 $noname$ R4 22.1k
+ ( /513B4BD9 SM0603 R4 22.1k
   ( 1 /IN7P )
   ( 2 N-000254 )
  )
- ( /513B4D37 $noname$ R5 22.1k
+ ( /513B4D37 SM0603 R5 22.1k
   ( 1 /IN6N )
   ( 2 N-000165 )
  )
- ( /513B4D36 $noname$ R6 22.1k
+ ( /513B4D36 SM0603 R6 22.1k
   ( 1 /IN6P )
   ( 2 N-000256 )
  )
- ( /513B4D42 $noname$ R7 22.1k
+ ( /513B4D42 SM0603 R7 22.1k
   ( 1 /IN5N )
   ( 2 N-000250 )
  )
- ( /513B4D43 $noname$ R8 22.1k
+ ( /513B4D43 SM0603 R8 22.1k
   ( 1 /IN5P )
   ( 2 N-000124 )
  )
- ( /513B4D90 $noname$ R9 22.1k
+ ( /513B4D90 SM0603 R9 22.1k
   ( 1 /IN4N )
   ( 2 N-000123 )
  )
- ( /513B4D8F $noname$ R10 22.1k
+ ( /513B4D8F SM0603 R10 22.1k
   ( 1 /IN4P )
   ( 2 N-000253 )
  )
- ( /513B4D9B $noname$ R11 22.1k
+ ( /513B4D9B SM0603 R11 22.1k
   ( 1 /IN3N )
   ( 2 N-000252 )
  )
- ( /513B4D9C $noname$ R12 22.1k
+ ( /513B4D9C SM0603 R12 22.1k
   ( 1 /IN3P )
   ( 2 N-000135 )
  )
- ( /513B4D83 $noname$ R13 22.1k
+ ( /513B4D83 SM0603 R13 22.1k
   ( 1 /IN2N )
   ( 2 N-000248 )
  )
- ( /513B4D84 $noname$ R14 22.1k
+ ( /513B4D84 SM0603 R14 22.1k
   ( 1 /IN2P )
   ( 2 N-000120 )
  )
- ( /513B4D78 $noname$ R15 22.1k
+ ( /513B4D78 SM0603 R15 22.1k
   ( 1 /IN1N )
   ( 2 N-000126 )
  )
- ( /513B4D77 $noname$ R16 22.1k
+ ( /513B4D77 SM0603 R16 22.1k
   ( 1 /IN1P )
   ( 2 N-000246 )
  )
- ( /513B4D16 $noname$ R17 10k
+ ( /513B4D16 SM0603 R17 10k
   ( 1 N-000258 )
   ( 2 N-000257 )
  )
- ( /513B4D19 $noname$ R18 10k
+ ( /513B4D19 SM0603 R18 10k
   ( 1 N-000163 )
   ( 2 N-000141 )
  )
- ( /513B4CB8 $noname$ R19 10k
+ ( /513B4CB8 SM0603 R19 10k
   ( 1 N-000174 )
   ( 2 N-000173 )
  )
- ( /513B4BD8 $noname$ R20 10k
+ ( /513B4BD8 SM0603 R20 10k
   ( 1 N-000254 )
   ( 2 N-000278 )
  )
- ( /513B4D38 $noname$ R21 10k
+ ( /513B4D38 SM0603 R21 10k
   ( 1 N-000165 )
   ( 2 N-000255 )
  )
- ( /513B4D35 $noname$ R22 10k
+ ( /513B4D35 SM0603 R22 10k
   ( 1 N-000256 )
   ( 2 N-000149 )
  )
- ( /513B4D41 $noname$ R23 10k
+ ( /513B4D41 SM0603 R23 10k
   ( 1 N-000250 )
   ( 2 N-000249 )
  )
- ( /513B4D44 $noname$ R24 10k
+ ( /513B4D44 SM0603 R24 10k
   ( 1 N-000124 )
   ( 2 N-000136 )
  )
- ( /513B4D91 $noname$ R25 10k
+ ( /513B4D91 SM0603 R25 10k
   ( 1 N-000123 )
   ( 2 N-000122 )
  )
- ( /513B4D8E $noname$ R26 10k
+ ( /513B4D8E SM0603 R26 10k
   ( 1 N-000253 )
   ( 2 N-000170 )
  )
- ( /513B4D9A $noname$ R27 10k
+ ( /513B4D9A SM0603 R27 10k
   ( 1 N-000252 )
   ( 2 N-000251 )
  )
- ( /513B4D9D $noname$ R28 10k
+ ( /513B4D9D SM0603 R28 10k
   ( 1 N-000135 )
   ( 2 N-000134 )
  )
- ( /513B4D82 $noname$ R29 10k
+ ( /513B4D82 SM0603 R29 10k
   ( 1 N-000248 )
   ( 2 N-000247 )
  )
- ( /513B4D85 $noname$ R30 10k
+ ( /513B4D85 SM0603 R30 10k
   ( 1 N-000120 )
   ( 2 N-000142 )
  )
- ( /513B4D79 $noname$ R31 10k
+ ( /513B4D79 SM0603 R31 10k
   ( 1 N-000126 )
   ( 2 N-000127 )
  )
- ( /513B4D76 $noname$ R32 10k
+ ( /513B4D76 SM0603 R32 10k
   ( 1 N-000246 )
   ( 2 N-000143 )
  )
- ( /514DCB2E $noname$ R33 1M
+ ( /514DCB2E SM0805 R33 1M
   ( 1 N-000133 )
   ( 2 N-000275 )
  )
- ( /51976F3D $noname$ R34 100k
+ ( /51976F3D SM0603 R34 100k
   ( 1 +3.3V )
   ( 2 /JTAG_TCK )
  )
- ( /51976F52 $noname$ R35 100k
+ ( /51976F52 SM0603 R35 100k
   ( 1 +3.3V )
   ( 2 /JTAG_TCK )
  )
- ( /51976F59 $noname$ R36 100k
+ ( /51976F59 SM0603 R36 100k
   ( 1 +3.3V )
   ( 2 /JTAG_TDI )
  )
- ( /51976F5F $noname$ R37 100k
+ ( /51976F5F SM0603 R37 100k
   ( 1 +3.3V )
   ( 2 /JTAG_RESET )
  )
@@ -938,99 +938,99 @@
   ( 1 N-000108 )
   ( 2 AGND )
  )
- ( /51ABE5B7 $noname$ R42 10k
+ ( /51ABE5B7 SM0603 R42 10k
   ( 1 N-000105 )
   ( 2 /ADS129x_GPIO4_ISO )
  )
- ( /51ABEC6E $noname$ R43 10k
+ ( /51ABEC6E SM0603 R43 10k
   ( 1 N-000104 )
   ( 2 /ADS129x_GPIO2_ISO )
  )
- ( /51ABE5C1 $noname$ R44 10k
+ ( /51ABE5C1 SM0603 R44 10k
   ( 1 N-000105 )
   ( 2 /ADS129x_GPIO3_ISO )
  )
- ( /51ABF28E $noname$ R45 10k
+ ( /51ABF28E SM0603 R45 10k
   ( 1 N-000035 )
   ( 2 /ADS192x_MISO_ISO )
  )
- ( /51ABEC6F $noname$ R46 10k
+ ( /51ABEC6F SM0603 R46 10k
   ( 1 N-000104 )
   ( 2 /ADS129x_GPIO1_ISO )
  )
- ( /51B339AF $noname$ R47 1k
+ ( /51B339AF SM0603 R47 1k
   ( 1 N-000051 )
   ( 2 GND )
  )
- ( /51ABEB63 $noname$ R48 10k
+ ( /51ABEB63 SM0603 R48 10k
   ( 1 N-000279 )
   ( 2 /ADS129x_GPIO3 )
  )
- ( /51ABEC70 $noname$ R49 10k
+ ( /51ABEC70 SM0603 R49 10k
   ( 1 N-000036 )
   ( 2 /ADS129x_GPIO1 )
  )
- ( /51ABEB64 $noname$ R50 10k
+ ( /51ABEB64 SM0603 R50 10k
   ( 1 N-000279 )
   ( 2 /ADS129x_GPIO4 )
  )
- ( /51ABEC71 $noname$ R51 10k
+ ( /51ABEC71 SM0603 R51 10k
   ( 1 N-000036 )
   ( 2 /ADS129x_GPIO2 )
  )
- ( /51869471 $noname$ R52 6.8k
+ ( /51869471 SM0603 R52 6.8k
   ( 1 N-000280 )
   ( 2 GND )
  )
- ( /51868FE5 $noname$ R53 39
+ ( /51868FE5 SM0603 R53 39
   ( 1 N-000239 )
   ( 2 /USB_DATA_P )
  )
- ( /51868FFC $noname$ R54 39
+ ( /51868FFC SM0603 R54 39
   ( 1 N-000230 )
   ( 2 /USB_DATA_M )
  )
- ( /51A94223 $noname$ R55 430
+ ( /51A94223 SM0603 R55 430
   ( 1 N-000272 )
   ( 2 /BUCK_FEEDBACK )
  )
- ( /51A94230 $noname$ R56 187
+ ( /51A94230 SM0603 R56 187
   ( 1 /BUCK_FEEDBACK )
   ( 2 GND )
  )
- ( /51A9423E $noname$ R57 10k
+ ( /51A9423E SM0603 R57 10k
   ( 1 /ADS129x_CLK )
   ( 2 GND )
  )
- ( /51976086 $noname$ R58 560
+ ( /51976086 SM0603 R58 560
   ( 1 N-000190 )
   ( 2 GND )
  )
- ( /51BBA8CF $noname$ R59 R
+ ( /51BBA8CF SM0603 R59 100k
   ( 1 N-000231 )
   ( 2 +3.3V )
  )
- ( /51BBCCA2 $noname$ R60 68
+ ( /51BBCCA2 SM0603 R60 68
   ( 1 /3.3V_ISO )
   ( 2 N-000263 )
  )
- ( /51BBC1C9 $noname$ R61 68
+ ( /51BBC1C9 SM0603 R61 68
   ( 1 /5V_ISO )
   ( 2 N-000274 )
  )
- ( /51BBCCA4 $noname$ R62 10.0k
+ ( /51BBCCA4 SM0603 R62 10.0k
   ( 1 /3.3V_ISO )
   ( 2 N-000262 )
  )
- ( /51BBC162 $noname$ R63 10.0k
+ ( /51BBC162 SM0603 R63 10.0k
   ( 1 /5V_ISO )
   ( 2 N-000268 )
  )
- ( /51BBC178 $noname$ R64 8.45k
+ ( /51BBC178 SM0603 R64 8.45k
   ( 1 N-000268 )
   ( 2 AGND )
  )
- ( /51BBCCA3 $noname$ R65 19.6k
+ ( /51BBCCA3 SM0603 R65 19.6k
   ( 1 N-000262 )
   ( 2 AGND )
  )
@@ -1046,7 +1046,7 @@
   ( 1 N-000183 )
   ( 2 +5V )
  )
- ( /513B46BF $noname$ U1 ADS1299
+ ( /513B46BF TQFP_64 U1 ADS1299
   ( 1 N-000144 )
   ( 2 N-000145 )
   ( 3 N-000146 )
@@ -1146,7 +1146,7 @@
   ( 6 ? )
   ( 7 N-000185 )
  )
- ( /51ABD691 $noname$ U6 SI8606
+ ( /51ABD691 SO16W U6 SI8606
   ( 1 N-000279 )
   ( 2 ? )
   ( 3 /ADS129x_GPIO4 )
@@ -1164,7 +1164,7 @@
   ( 15 ? )
   ( 16 N-000105 )
  )
- ( /51ABD685 $noname$ U7 SI8662
+ ( /51ABD685 SO16W U7 SI8662
   ( 1 N-000099 )
   ( 2 /PA27_SCLK )
   ( 3 /ADS129x_~CS~ )
@@ -1182,7 +1182,7 @@
   ( 15 /ADS192x_SCLK_ISO )
   ( 16 N-000035 )
  )
- ( /51ABD69A $noname$ U8 SI8606
+ ( /51ABD69A SO16W U8 SI8606
   ( 1 N-000036 )
   ( 2 ? )
   ( 3 /ADS129x_GPIO2 )
@@ -1200,14 +1200,14 @@
   ( 15 ? )
   ( 16 N-000104 )
  )
- ( /51AD441B $noname$ U9 74AUP1G125GW
+ ( /51AD441B SOT353 U9 74AUP1G125GW
   ( 1 /ADS129x_~CS~ )
   ( 2 /ADS129x_MISO )
   ( 3 GND )
   ( 4 /PA25_MISO )
   ( 5 +3.3V )
  )
- ( /5156EEFB $noname$ U10 SAM3X8E
+ ( /5156EEFB TQFP144 U10 SAM3X8E
   ( 1 ? )
   ( 2 /PA9_TX )
   ( 3 ? )
@@ -1353,7 +1353,7 @@
   ( 143 ? )
   ( 144 /PB25_PWM2 )
  )
- ( /51A93530 $noname$ U11 LM27342
+ ( /51A93530 MSOP10-0.5 U11 LM27342
   ( 1 /BUCK_SWITCHING )
   ( 2 /BUCK_SWITCHING )
   ( 3 N-000050 )
@@ -1365,12 +1365,12 @@
   ( 9 +5V )
   ( 10 +5V )
  )
- ( /51AD3B58 $noname$ U12 NCP1117ST50T3G
+ ( /51AD3B58 SOT223 U12 NCP1117ST50T3G
   ( 1 GND )
   ( 2 +5V )
   ( 3 /V_IN )
  )
- ( /51B35466 $noname$ U13 USBLC6
+ ( /51B35466 SOT23_6 U13 USBLC6
   ( 1 /USB_DATA_M )
   ( 2 GND )
   ( 3 /USB_DATA_P )
@@ -1383,12 +1383,12 @@
   ( 2 AGND )
   ( 3 N-000274 )
  )
- ( /51BBCCA5 $noname$ U15 TL431BIDBZR
+ ( /51BBCCA5 SOT23 U15 TL431BIDBZR
   ( 1 N-000263 )
   ( 2 N-000262 )
   ( 3 AGND )
  )
- ( /51BBC14D $noname$ U16 TL431BIDBZR
+ ( /51BBC14D SOT23 U16 TL431BIDBZR
   ( 1 N-000274 )
   ( 2 N-000268 )
   ( 3 AGND )

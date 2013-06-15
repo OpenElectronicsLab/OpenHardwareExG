@@ -1,4 +1,4 @@
-EESchema Schematic File Version 2  date Sat 15 Jun 2013 05:42:26 PM CEST
+EESchema Schematic File Version 2  date Sat 15 Jun 2013 05:54:29 PM CEST
 LIBS:power
 LIBS:device
 LIBS:transistors
@@ -2646,7 +2646,7 @@ L R R59
 U 1 1 51BBA8CF
 P 30700 28550
 F 0 "R59" V 30780 28550 50  0000 C CNN
-F 1 "R" V 30700 28550 50  0000 C CNN
+F 1 "100k" V 30700 28550 50  0000 C CNN
 	1    30700 28550
 	1    0    0    -1  
 $EndComp
