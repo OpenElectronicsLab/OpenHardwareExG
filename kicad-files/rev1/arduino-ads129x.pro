@@ -1,6 +1,6 @@
-update=Sat 15 Jun 2013 05:19:38 PM CEST
+update=Sun 16 Jun 2013 06:04:41 PM UTC
 version=1
-last_client=kicad
+last_client=pcbnew
 [cvpcb]
 version=1
 NetIExt=net
@@ -36,6 +36,10 @@ LibName8=led
 LibName9=dip_sockets
 LibName10=pga_sockets
 LibName11=valves
+LibName12=/home/kms15/git/eeg-mouse/kicad-files/rev1/fiducial_mark
+LibName13=/home/kms15/git/eeg-mouse/kicad-files/rev1/MSOP8_PowerPad
+LibName14=/home/kms15/git/eeg-mouse/kicad-files/rev1/SIP7_ISOLATOR
+LibName15=/home/kms15/git/eeg-mouse/kicad-files/rev1/smt_inductors
 [eeschema]
 version=1
 LibDir=
