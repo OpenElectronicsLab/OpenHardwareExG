@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by CvPcb (2012-apr-16-27)-stable date = Sun 16 Jun 2013 06:03:15 PM UTC
+Cmp-Mod V01 Created by CvPcb (2012-apr-16-27)-stable date = Sun 16 Jun 2013 06:48:16 PM UTC
 
 BeginCmp
 TimeStamp = /513B4D15;
@@ -822,22 +822,22 @@ EndCmp
 BeginCmp
 TimeStamp = /51975BF8;
 Reference = D1;
-ValeurCmp = MMSZ27T1G;
-IdModule  = SOD-123;
+ValeurCmp = BZG03C27TR;
+IdModule  = SM2112L;
 EndCmp
 
 BeginCmp
 TimeStamp = /51BC8410;
 Reference = D2;
-ValeurCmp = DIODESCH;
-IdModule  = SM1812;
+ValeurCmp = CMS06;
+IdModule  = SM2010;
 EndCmp
 
 BeginCmp
 TimeStamp = /51BC83F3;
 Reference = D3;
-ValeurCmp = DIODESCH;
-IdModule  = SM1812;
+ValeurCmp = CMS06;
+IdModule  = SM2010;
 EndCmp
 
 BeginCmp
@@ -850,8 +850,8 @@ EndCmp
 BeginCmp
 TimeStamp = /51A9364A;
 Reference = D5;
-ValeurCmp = DIODESCH;
-IdModule  = SM1812;
+ValeurCmp = CMS06;
+IdModule  = SM2010;
 EndCmp
 
 BeginCmp

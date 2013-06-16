@@ -1,4 +1,4 @@
-EESchema Schematic File Version 2  date Sat 15 Jun 2013 05:54:29 PM CEST
+EESchema Schematic File Version 2  date Sun 16 Jun 2013 06:48:34 PM UTC
 LIBS:power
 LIBS:device
 LIBS:transistors
@@ -45,7 +45,7 @@ $Descr A0 46800 33070
 encoding utf-8
 Sheet 1 1
 Title ""
-Date "15 jun 2013"
+Date "16 jun 2013"
 Rev ""
 Comp ""
 Comment1 ""
@@ -53,12 +53,14 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
+Text Notes 19850 2200 1    40   ~ 0
+27V Zener
 $Comp
 L DIODESCH D2
 U 1 1 51BC8410
 P 20750 1850
 F 0 "D2" H 20750 1950 40  0000 C CNN
-F 1 "DIODESCH" H 20750 1750 40  0000 C CNN
+F 1 "CMS06" H 20750 1750 40  0000 C CNN
 	1    20750 1850
 	-1   0    0    1   
 $EndComp
@@ -67,7 +69,7 @@ L DIODESCH D3
 U 1 1 51BC83F3
 P 22650 1850
 F 0 "D3" H 22650 1950 40  0000 C CNN
-F 1 "DIODESCH" H 22650 1750 40  0000 C CNN
+F 1 "CMS06" H 22650 1750 40  0000 C CNN
 	1    22650 1850
 	-1   0    0    1   
 $EndComp
@@ -383,9 +385,9 @@ Connection ~ 19450 3600
 Connection ~ 17600 9650
 Wire Wire Line
 	17600 8850 17600 9750
-Connection ~ 19500 2250
+Connection ~ 19400 2250
 Wire Wire Line
-	19500 2150 19500 2250
+	19400 2150 19400 2250
 Connection ~ 17400 2100
 Wire Wire Line
 	17400 2000 17400 2100
@@ -665,12 +667,12 @@ Wire Wire Line
 	29800 28200 29800 28950
 Wire Wire Line
 	38750 2600 38750 2500
-Connection ~ 19750 1850
+Connection ~ 19650 1850
 Wire Wire Line
-	19950 1850 19000 1850
-Connection ~ 19750 2250
+	19950 1850 18900 1850
+Connection ~ 19650 2250
 Wire Wire Line
-	19000 2250 21250 2250
+	18900 2250 21250 2250
 Wire Wire Line
 	28750 29700 28750 28200
 Wire Wire Line
@@ -1626,8 +1628,8 @@ Connection ~ 26650 1850
 Wire Wire Line
 	26250 1850 27100 1850
 Wire Wire Line
-	19500 1850 19500 1750
-Connection ~ 19500 1850
+	19400 1850 19400 1750
+Connection ~ 19400 1850
 Wire Wire Line
 	44500 2300 44500 2400
 Wire Wire Line
@@ -3526,10 +3528,10 @@ $EndComp
 $Comp
 L PWR_FLAG #FLG063
 U 1 1 51AD2670
-P 19500 2150
-F 0 "#FLG063" H 19500 2245 30  0001 C CNN
-F 1 "PWR_FLAG" H 19500 2330 30  0000 C CNN
-	1    19500 2150
+P 19400 2150
+F 0 "#FLG063" H 19400 2245 30  0001 C CNN
+F 1 "PWR_FLAG" H 19400 2330 30  0000 C CNN
+	1    19400 2150
 	1    0    0    -1  
 $EndComp
 Text Label 14950 3650 0    60   ~ 0
@@ -4397,7 +4399,7 @@ L DIODESCH D5
 U 1 1 51A9364A
 P 34800 1850
 F 0 "D5" H 34800 1950 40  0000 C CNN
-F 1 "DIODESCH" H 34800 1750 40  0000 C CNN
+F 1 "CMS06" H 34800 1750 40  0000 C CNN
 	1    34800 1850
 	0    -1   -1   0   
 $EndComp
@@ -4705,11 +4707,11 @@ $EndComp
 $Comp
 L ZENER D1
 U 1 1 51975BF8
-P 19750 2050
-F 0 "D1" H 19750 2150 50  0000 C CNN
-F 1 "MMSZ27T1G" H 19750 1950 40  0000 C CNN
-F 2 "SOD-123" H 19750 2050 60  0001 C CNN
-	1    19750 2050
+P 19650 2050
+F 0 "D1" H 19650 2150 50  0000 C CNN
+F 1 "BZG03C27TR" H 19650 1950 40  0000 C CNN
+F 2 "SM2112" H 19650 2050 60  0001 C CNN
+	1    19650 2050
 	0    -1   -1   0   
 $EndComp
 $Comp
@@ -4911,7 +4913,7 @@ F 1 "+3.3V" H 38750 1410 30  0000 C CNN
 	1    38750 1300
 	1    0    0    -1  
 $EndComp
-Text Notes 19050 2400 0    40   ~ 0
+Text Notes 18950 2400 0    40   ~ 0
 (more like 7 to 9 volts in reality\n with diodes and depending on draw)
 Text Notes 24050 1300 0    40   ~ 0
 (Change to R05P209S/X2/R8 for medical compliance)
@@ -4986,9 +4988,9 @@ F 2 "SM0603" H 26350 2100 60  0001 C CNN
 	1    26350 2100
 	-1   0    0    -1  
 $EndComp
-Text Label 19000 2250 0    60   ~ 0
+Text Label 18900 2250 0    60   ~ 0
 GND_ISO
-Text Label 19000 1850 0    60   ~ 0
+Text Label 18900 1850 0    60   ~ 0
 9V_ISO
 Text Notes 25200 1200 2    60   ~ 0
 Power Isolation
@@ -5019,10 +5021,10 @@ Converter output jumper
 $Comp
 L PWR_FLAG #FLG091
 U 1 1 51600FC1
-P 19500 1750
-F 0 "#FLG091" H 19500 2020 30  0001 C CNN
-F 1 "PWR_FLAG" H 19500 1980 30  0000 C CNN
-	1    19500 1750
+P 19400 1750
+F 0 "#FLG091" H 19400 2020 30  0001 C CNN
+F 1 "PWR_FLAG" H 19400 1980 30  0000 C CNN
+	1    19400 1750
 	-1   0    0    -1  
 $EndComp
 $Comp
