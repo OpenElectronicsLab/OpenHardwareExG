@@ -1,4 +1,4 @@
-EESchema Schematic File Version 2  date Sun 16 Jun 2013 07:37:37 PM UTC
+EESchema Schematic File Version 2  date Mon 17 Jun 2013 10:53:57 PM UTC
 LIBS:power
 LIBS:device
 LIBS:transistors
@@ -45,7 +45,7 @@ $Descr A1 33070 23400
 encoding utf-8
 Sheet 1 1
 Title ""
-Date "16 jun 2013"
+Date "17 jun 2013"
 Rev ""
 Comp ""
 Comment1 ""
@@ -53,6 +53,8 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
+Text Notes 26150 14600 0    40   ~ 0
+1.5 uH
 Text Notes 6600 21150 0    60   ~ 0
 Microcontroller reset button
 Text Notes 26850 13600 0    80   ~ 0
@@ -4454,7 +4456,7 @@ L INDUCTOR L19
 U 1 1 51A9361C
 P 26050 14500
 F 0 "L19" V 26000 14500 40  0000 C CNN
-F 1 "1.5 uH" V 26150 14500 40  0000 C CNN
+F 1 "SRU1048-1R5Y" V 26150 14500 40  0000 C CNN
 	1    26050 14500
 	0    -1   -1   0   
 $EndComp
