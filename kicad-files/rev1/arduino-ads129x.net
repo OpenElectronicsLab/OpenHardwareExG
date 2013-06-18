@@ -1,4 +1,4 @@
-# EESchema Netlist Version 1.1 created  Tue 18 Jun 2013 12:36:20 AM UTC
+# EESchema Netlist Version 1.1 created  Tue 18 Jun 2013 01:18:18 AM UTC
 (
  ( /513B4D15 SM0603 C1 47pF
   ( 1 N-000258 )
@@ -1034,7 +1034,7 @@
   ( 1 N-000262 )
   ( 2 AGND )
  )
- ( /5197655F $noname$ SW1 SW_PUSH
+ ( /5197655F smt-tactile-button SW1 SW_PUSH
   ( 1 GND )
   ( 2 /JTAG_RESET )
  )

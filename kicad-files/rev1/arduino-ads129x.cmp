@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by CvPcb (2012-apr-16-27)-stable date = Tue 18 Jun 2013 12:36:20 AM UTC
+Cmp-Mod V01 Created by CvPcb (2012-apr-16-27)-stable date = Tue 18 Jun 2013 01:18:18 AM UTC
 
 BeginCmp
 TimeStamp = /513B4D15;
@@ -1558,7 +1558,7 @@ BeginCmp
 TimeStamp = /5197655F;
 Reference = SW1;
 ValeurCmp = SW_PUSH;
-IdModule  = ;
+IdModule  = smt-tactile-button;
 EndCmp
 
 BeginCmp

@@ -114,3 +114,4 @@ LibName13=MSOP8_PowerPad
 LibName14=SIP7_ISOLATOR
 LibName15=smt-inductors
 LibName16=smt-pin-array
+LibName17=smt-tactile-button
