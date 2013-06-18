@@ -1,4 +1,4 @@
-# EESchema Netlist Version 1.1 created  Mon 17 Jun 2013 10:50:17 PM UTC
+# EESchema Netlist Version 1.1 created  Tue 18 Jun 2013 12:36:20 AM UTC
 (
  ( /513B4D15 SM0603 C1 47pF
   ( 1 N-000258 )
@@ -688,7 +688,7 @@
   ( 3 /PA8_RX )
   ( 4 /PA9_TX )
  )
- ( /51976DEF $noname$ P8 JTAG
+ ( /51976DEF SMT_PIN_2x5 P8 JTAG
   ( 1 +3.3V )
   ( 2 /JTAG_TMS )
   ( 3 GND )
@@ -1134,7 +1134,7 @@
   ( 8 /9V_ISO )
   ( 9 AGND )
  )
- ( /51BBCCA0 $noname$ U4 BT1308W-600D
+ ( /51BBCCA0 SOT223 U4 BT1308W-600D
   ( 1 /3.3V_ISO )
   ( 2 AGND )
   ( 3 N-000263 )
@@ -1378,7 +1378,7 @@
   ( 5 +5V )
   ( 6 N-000186 )
  )
- ( /51BBC1F0 $noname$ U14 BT1308W-600D
+ ( /51BBC1F0 SOT223 U14 BT1308W-600D
   ( 1 /5V_ISO )
   ( 2 AGND )
   ( 3 N-000274 )

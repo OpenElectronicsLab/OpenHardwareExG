@@ -112,4 +112,5 @@ LibName11=valves
 LibName12=fiducial_mark
 LibName13=MSOP8_PowerPad
 LibName14=SIP7_ISOLATOR
-LibName15=smt_inductors
+LibName15=smt-inductors
+LibName16=smt-pin-array

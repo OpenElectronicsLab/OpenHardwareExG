@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by CvPcb (2012-apr-16-27)-stable date = Mon 17 Jun 2013 10:50:17 PM UTC
+Cmp-Mod V01 Created by CvPcb (2012-apr-16-27)-stable date = Tue 18 Jun 2013 12:36:20 AM UTC
 
 BeginCmp
 TimeStamp = /513B4D15;
@@ -1061,7 +1061,7 @@ BeginCmp
 TimeStamp = /51976DEF;
 Reference = P8;
 ValeurCmp = JTAG;
-IdModule  = ;
+IdModule  = SMT_PIN_2x5;
 EndCmp
 
 BeginCmp
@@ -1600,7 +1600,7 @@ BeginCmp
 TimeStamp = /51BBCCA0;
 Reference = U4;
 ValeurCmp = BT1308W-600D;
-IdModule  = ;
+IdModule  = SOT223;
 EndCmp
 
 BeginCmp
@@ -1670,7 +1670,7 @@ BeginCmp
 TimeStamp = /51BBC1F0;
 Reference = U14;
 ValeurCmp = BT1308W-600D;
-IdModule  = ;
+IdModule  = SOT223;
 EndCmp
 
 BeginCmp
