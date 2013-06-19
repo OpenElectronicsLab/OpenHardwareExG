@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by CvPcb (2012-apr-16-27)-stable date = Wed 19 Jun 2013 01:30:10 AM UTC
+Cmp-Mod V01 Created by CvPcb (2012-apr-16-27)-stable date = Wed 19 Jun 2013 03:10:34 AM UTC
 
 BeginCmp
 TimeStamp = /513B4D15;
@@ -1082,7 +1082,7 @@ BeginCmp
 TimeStamp = /51B3351B;
 Reference = P11;
 ValeurCmp = ARDUINO_SHIELD;
-IdModule  = ;
+IdModule  = arduino_shield;
 EndCmp
 
 BeginCmp

@@ -1,4 +1,4 @@
-# EESchema Netlist Version 1.1 created  Wed 19 Jun 2013 01:30:10 AM UTC
+# EESchema Netlist Version 1.1 created  Wed 19 Jun 2013 03:10:34 AM UTC
 (
  ( /513B4D15 SM0603 C1 47pF
   ( 1 N-000173 )
@@ -724,7 +724,7 @@
   ( 3 /ADS129x_GPIO3 )
   ( 4 /ADS129x_GPIO4 )
  )
- ( /51B3351B $noname$ P11 ARDUINO_SHIELD
+ ( /51B3351B arduino_shield P11 ARDUINO_SHIELD
   ( 0 /PA8_RX )
   ( 1 /PA9_TX )
   ( 2 /PB25_PWM2 )
