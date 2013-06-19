@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by CvPcb (2012-apr-16-27)-stable date = Tue 18 Jun 2013 01:18:18 AM UTC
+Cmp-Mod V01 Created by CvPcb (2012-apr-16-27)-stable date = Wed 19 Jun 2013 01:30:10 AM UTC
 
 BeginCmp
 TimeStamp = /513B4D15;
@@ -542,14 +542,14 @@ EndCmp
 BeginCmp
 TimeStamp = /51868581;
 Reference = C78;
-ValeurCmp = 20pF;
+ValeurCmp = 22pF;
 IdModule  = SM0603;
 EndCmp
 
 BeginCmp
 TimeStamp = /51868588;
 Reference = C79;
-ValeurCmp = 20pF;
+ValeurCmp = 22pF;
 IdModule  = SM0603;
 EndCmp
 
@@ -591,7 +591,7 @@ EndCmp
 BeginCmp
 TimeStamp = /51869469;
 Reference = C85;
-ValeurCmp = 20pF;
+ValeurCmp = 22pF;
 IdModule  = SM0603;
 EndCmp
 
@@ -626,7 +626,7 @@ EndCmp
 BeginCmp
 TimeStamp = /518685E6;
 Reference = C90;
-ValeurCmp = 20pF;
+ValeurCmp = 22pF;
 IdModule  = SM0603;
 EndCmp
 
@@ -661,7 +661,7 @@ EndCmp
 BeginCmp
 TimeStamp = /518685E5;
 Reference = C95;
-ValeurCmp = 20pF;
+ValeurCmp = 22pF;
 IdModule  = SM0603;
 EndCmp
 
@@ -997,7 +997,7 @@ EndCmp
 BeginCmp
 TimeStamp = /51A9361C;
 Reference = L19;
-ValeurCmp = 1.5_uH;
+ValeurCmp = SRU1048-1R5Y;
 IdModule  = SRU10xx;
 EndCmp
 
@@ -1688,17 +1688,17 @@ IdModule  = SOT23;
 EndCmp
 
 BeginCmp
-TimeStamp = /51868518;
+TimeStamp = /51C106BF;
 Reference = X1;
-ValeurCmp = 12MHz_20pF;
-IdModule  = ;
+ValeurCmp = ECS-120-20-33-CKM-TR;
+IdModule  = smt-crystal-3.2x2.5;
 EndCmp
 
 BeginCmp
 TimeStamp = /518685E7;
 Reference = X2;
-ValeurCmp = 32.768KHz_1.2pF;
-IdModule  = ;
+ValeurCmp = ABS07-32.768KHZ-T;
+IdModule  = ABS07;
 EndCmp
 
 EndListe
