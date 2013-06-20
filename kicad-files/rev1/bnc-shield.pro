@@ -1,4 +1,4 @@
-update=Sun 09 Jun 2013 09:34:54 AM CEST
+update=Wed 19 Jun 2013 11:27:22 PM UTC
 last_client=eeschema
 [eeschema]
 version=1
@@ -66,3 +66,4 @@ LibName31=analog-switches
 LibName32=regulators
 LibName33=rs485
 LibName34=arduino-shield
+LibName35=isolators
