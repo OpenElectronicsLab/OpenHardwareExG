@@ -1,13 +1,11 @@
-update=Wed 19 Jun 2013 01:50:07 AM UTC
+update=Fri 21 Jun 2013 03:30:39 AM UTC
 version=1
-last_client=pcbnew
+last_client=kicad
 [cvpcb]
 version=1
 NetIExt=net
 [cvpcb/libraries]
 EquName1=devcms
-[general]
-version=1
 [eeschema]
 version=1
 LibDir=
@@ -82,9 +80,9 @@ LibName39=esd
 LibName40=smt-crystals
 [pcbnew]
 version=1
-PadDrlX=320
-PadDimH=600
-PadDimV=600
+PadDrlX=0
+PadDimH=276
+PadDimV=591
 BoardThickness=630
 TxtPcbV=800
 TxtPcbH=600
@@ -118,3 +116,6 @@ LibName16=smt-pin-array
 LibName17=smt-tactile-button
 LibName18=smt-crystals
 LibName19=arduino-shield
+LibName20=SOIC
+[general]
+version=1

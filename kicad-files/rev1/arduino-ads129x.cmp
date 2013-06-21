@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by CvPcb (2012-apr-16-27)-stable date = Wed 19 Jun 2013 03:10:34 AM UTC
+Cmp-Mod V01 Created by CvPcb (2012-apr-16-27)-stable date = Fri 21 Jun 2013 03:30:24 AM UTC
 
 BeginCmp
 TimeStamp = /513B4D15;
@@ -820,6 +820,20 @@ IdModule  = SM0603;
 EndCmp
 
 BeginCmp
+TimeStamp = /51C3BB86;
+Reference = C118;
+ValeurCmp = 10uF;
+IdModule  = SM0805;
+EndCmp
+
+BeginCmp
+TimeStamp = /51C3BB88;
+Reference = C119;
+ValeurCmp = 100nF;
+IdModule  = SM0603;
+EndCmp
+
+BeginCmp
 TimeStamp = /51975BF8;
 Reference = D1;
 ValeurCmp = BZG03C27TR;
@@ -1011,6 +1025,13 @@ EndCmp
 BeginCmp
 TimeStamp = /51BC5BE0;
 Reference = L21;
+ValeurCmp = MH2029-221Y;
+IdModule  = SM0805;
+EndCmp
+
+BeginCmp
+TimeStamp = /51C3BB87;
+Reference = L22;
 ValeurCmp = MH2029-221Y;
 IdModule  = SM0805;
 EndCmp
@@ -1685,6 +1706,13 @@ TimeStamp = /51BBC14D;
 Reference = U16;
 ValeurCmp = TL431BIDBZR;
 IdModule  = SOT23;
+EndCmp
+
+BeginCmp
+TimeStamp = /51C3BAFC;
+Reference = U17;
+ValeurCmp = CAT24C128;
+IdModule  = SOIC8;
 EndCmp
 
 BeginCmp
