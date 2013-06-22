@@ -1,4 +1,4 @@
-EESchema Schematic File Version 2  date Fri 21 Jun 2013 09:55:02 PM UTC
+EESchema Schematic File Version 2  date Sat 22 Jun 2013 01:13:28 PM CEST
 LIBS:power
 LIBS:device
 LIBS:transistors
@@ -32,13 +32,14 @@ LIBS:valves
 LIBS:rs485
 LIBS:analog-switches
 LIBS:arduino-shield
+LIBS:patch-shield-analog-cache
 EELAYER 25  0
 EELAYER END
 $Descr A4 11700 8267
 encoding utf-8
 Sheet 1 1
 Title "noname.sch"
-Date "21 jun 2013"
+Date "22 jun 2013"
 Rev ""
 Comp ""
 Comment1 ""
@@ -46,8 +47,16 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
+$Comp
+L CONN_4X2 P37
+U 1 1 51C586AC
+P 7800 5450
+F 0 "P37" H 7800 5700 50  0000 C CNN
+F 1 "CONN_4X2" V 7800 5450 40  0000 C CNN
+	1    7800 5450
+	1    0    0    -1  
+$EndComp
 NoConn ~ 7400 5300
-NoConn ~ 7400 5700
 NoConn ~ 8200 5500
 NoConn ~ 8700 4150
 NoConn ~ 8700 3950
@@ -86,19 +95,12 @@ NoConn ~ 9000 2000
 NoConn ~ 9000 1800
 NoConn ~ 9000 1700
 NoConn ~ 9000 1600
-NoConn ~ 8200 6000
-NoConn ~ 8200 5900
-NoConn ~ 8200 5800
-NoConn ~ 8200 5700
 NoConn ~ 8200 5600
 NoConn ~ 8200 5400
 NoConn ~ 8200 5300
 NoConn ~ 7400 5400
 NoConn ~ 7400 5500
 NoConn ~ 7400 5600
-NoConn ~ 7400 5800
-NoConn ~ 7400 5900
-NoConn ~ 7400 6000
 NoConn ~ 6900 1150
 NoConn ~ 6900 1050
 NoConn ~ 6900 950 
@@ -114,10 +116,10 @@ F 1 "CONN_4" V 7300 1000 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L AGND #PWR01
+L AGND #PWR4
 U 1 1 51B368C7
 P 3600 1350
-F 0 "#PWR01" H 3600 1350 40  0001 C CNN
+F 0 "#PWR4" H 3600 1350 40  0001 C CNN
 F 1 "AGND" H 3600 1280 50  0000 C CNN
 	1    3600 1350
 	1    0    0    -1  
@@ -125,10 +127,10 @@ $EndComp
 Wire Wire Line
 	3600 1350 3600 1150
 $Comp
-L +5VA #PWR02
+L +5VA #PWR1
 U 1 1 51B368B6
 P 1950 900
-F 0 "#PWR02" H 1950 1030 20  0001 C CNN
+F 0 "#PWR1" H 1950 1030 20  0001 C CNN
 F 1 "+5VA" H 1950 1000 30  0000 C CNN
 	1    1950 900 
 	1    0    0    -1  
@@ -351,15 +353,6 @@ F 1 "ARDUINO_SHIELD" H 7700 2600 60  0000 C CNN
 	1    7700 2600
 	1    0    0    -1  
 $EndComp
-$Comp
-L CONN_8X2 P37
-U 1 1 51B34A08
-P 7800 5650
-F 0 "P37" H 7800 6100 60  0000 C CNN
-F 1 "CONN_8X2" V 7800 5650 50  0000 C CNN
-	1    7800 5650
-	1    0    0    -1  
-$EndComp
 Text Notes 2250 1050 0    60   ~ 0
 Power Indicator
 $Comp
@@ -568,28 +561,28 @@ F 1 "CONN_1" H 850 3605 30  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L PWR_FLAG #FLG03
+L PWR_FLAG #FLG2
 U 1 1 51A0AF7D
 P 2600 4100
-F 0 "#FLG03" H 2600 4195 30  0001 C CNN
+F 0 "#FLG2" H 2600 4195 30  0001 C CNN
 F 1 "PWR_FLAG" H 2600 4280 30  0000 C CNN
 	1    2600 4100
 	1    0    0    -1  
 $EndComp
 $Comp
-L PWR_FLAG #FLG04
+L PWR_FLAG #FLG1
 U 1 1 51A0AF32
 P 2150 1600
-F 0 "#FLG04" H 2150 1695 30  0001 C CNN
+F 0 "#FLG1" H 2150 1695 30  0001 C CNN
 F 1 "PWR_FLAG" H 2150 1780 30  0000 C CNN
 	1    2150 1600
 	1    0    0    -1  
 $EndComp
 $Comp
-L +5VA #PWR05
+L +5VA #PWR2
 U 1 1 51A0AEED
 P 2400 1500
-F 0 "#PWR05" H 2400 1630 20  0001 C CNN
+F 0 "#PWR2" H 2400 1630 20  0001 C CNN
 F 1 "+5VA" H 2400 1600 30  0000 C CNN
 	1    2400 1500
 	1    0    0    -1  
@@ -667,10 +660,10 @@ F 1 "CONN_1" H 1600 2805 30  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L AGND #PWR06
+L AGND #PWR3
 U 1 1 51A0AD37
 P 2900 4200
-F 0 "#PWR06" H 2900 4200 40  0001 C CNN
+F 0 "#PWR3" H 2900 4200 40  0001 C CNN
 F 1 "AGND" H 2900 4130 50  0000 C CNN
 	1    2900 4200
 	1    0    0    -1  
