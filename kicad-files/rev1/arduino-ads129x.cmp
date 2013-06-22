@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by CvPcb (2012-apr-16-27)-stable date = Fri 21 Jun 2013 03:30:24 AM UTC
+Cmp-Mod V01 Created by CvPcb (2012-apr-16-27)-stable date = Sat 22 Jun 2013 03:00:02 PM CEST
 
 BeginCmp
 TimeStamp = /513B4D15;
@@ -834,6 +834,20 @@ IdModule  = SM0603;
 EndCmp
 
 BeginCmp
+TimeStamp = /51C59A04;
+Reference = C120;
+ValeurCmp = 100nF;
+IdModule  = SM0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /51C59A03;
+Reference = C121;
+ValeurCmp = 10uF;
+IdModule  = SM0805;
+EndCmp
+
+BeginCmp
 TimeStamp = /51975BF8;
 Reference = D1;
 ValeurCmp = BZG03C27TR;
@@ -1037,6 +1051,20 @@ IdModule  = SM0805;
 EndCmp
 
 BeginCmp
+TimeStamp = /51C59A71;
+Reference = L23;
+ValeurCmp = 47uH;
+IdModule  = SRR4028;
+EndCmp
+
+BeginCmp
+TimeStamp = /51C59A02;
+Reference = L24;
+ValeurCmp = 47uH;
+IdModule  = SRR4028;
+EndCmp
+
+BeginCmp
 TimeStamp = /51A0B888;
 Reference = P1;
 ValeurCmp = CONN_20X2;
@@ -1065,6 +1093,13 @@ IdModule  = PIN_ARRAY_5x2;
 EndCmp
 
 BeginCmp
+TimeStamp = /51C585C7;
+Reference = P5;
+ValeurCmp = CONN_4X2;
+IdModule  = pin_array_4x2;
+EndCmp
+
+BeginCmp
 TimeStamp = /5197789B;
 Reference = P6;
 ValeurCmp = FTDI;
@@ -1083,13 +1118,6 @@ TimeStamp = /51976DEF;
 Reference = P8;
 ValeurCmp = JTAG;
 IdModule  = SMT_PIN_2x5;
-EndCmp
-
-BeginCmp
-TimeStamp = /51B345AA;
-Reference = P9;
-ValeurCmp = CONN_8X2;
-IdModule  = pin_array_8x2;
 EndCmp
 
 BeginCmp
@@ -1627,7 +1655,7 @@ EndCmp
 BeginCmp
 TimeStamp = /51600FCA;
 Reference = U5;
-ValeurCmp = 5V_to_9V;
+ValeurCmp = R05P209/R6;
 IdModule  = SIP7_ISOLATOR;
 EndCmp
 
@@ -1713,6 +1741,13 @@ TimeStamp = /51C3BAFC;
 Reference = U17;
 ValeurCmp = CAT24C128;
 IdModule  = SOIC8;
+EndCmp
+
+BeginCmp
+TimeStamp = /51C59A01;
+Reference = U18;
+ValeurCmp = R05P205/R6;
+IdModule  = SIP7_ISOLATOR;
 EndCmp
 
 BeginCmp
