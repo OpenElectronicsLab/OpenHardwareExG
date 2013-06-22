@@ -1,6 +1,6 @@
-update=Fri 21 Jun 2013 03:30:39 AM UTC
+update=Sat 22 Jun 2013 04:30:19 PM CEST
 version=1
-last_client=kicad
+last_client=pcbnew
 [cvpcb]
 version=1
 NetIExt=net
@@ -78,11 +78,13 @@ LibName37=additional-logic
 LibName38=arduino-shield
 LibName39=esd
 LibName40=smt-crystals
+[general]
+version=1
 [pcbnew]
 version=1
-PadDrlX=0
-PadDimH=276
-PadDimV=591
+PadDrlX=400
+PadDimH=600
+PadDimV=600
 BoardThickness=630
 TxtPcbV=800
 TxtPcbH=600
@@ -94,7 +96,7 @@ DrawLar=150
 EdgeLar=150
 TxtLar=120
 MSegLar=150
-LastNetListRead=
+LastNetListRead=arduino-ads129x.net
 [pcbnew/libraries]
 LibDir=../rev1
 LibName1=sockets
@@ -117,5 +119,4 @@ LibName17=smt-tactile-button
 LibName18=smt-crystals
 LibName19=arduino-shield
 LibName20=SOIC
-[general]
-version=1
+LibName21=Touchproof-socket
