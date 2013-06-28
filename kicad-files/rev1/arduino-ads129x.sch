@@ -1,4 +1,4 @@
-EESchema Schematic File Version 2  date Mon 24 Jun 2013 08:38:58 PM UTC
+EESchema Schematic File Version 2  date Fri 28 Jun 2013 03:03:51 AM UTC
 LIBS:power
 LIBS:device
 LIBS:transistors
@@ -46,7 +46,7 @@ $Descr A1 33070 23400
 encoding utf-8
 Sheet 1 1
 Title ""
-Date "24 jun 2013"
+Date "28 jun 2013"
 Rev ""
 Comp ""
 Comment1 ""
@@ -54,6 +54,16 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
+$Comp
+L INDUCTOR L23
+U 1 1 51C59A71
+P 27050 1850
+F 0 "L23" V 27000 1850 40  0000 C CNN
+F 1 "47uH" V 27150 1850 40  0000 C CNN
+F 2 "SRR4028" H 27050 1850 60  0001 C CNN
+	1    27050 1850
+	0    1    -1   0   
+$EndComp
 $Comp
 L R R68
 U 1 1 51C7AC95
@@ -2727,16 +2737,6 @@ F 0 "#PWR01" H 30950 2600 30  0001 C CNN
 F 1 "GND" H 30950 2530 30  0001 C CNN
 	1    30950 2600
 	1    0    0    -1  
-$EndComp
-$Comp
-L INDUCTOR L23
-U 1 1 51C59A71
-P 27050 1850
-F 0 "L23" V 27000 1850 40  0000 C CNN
-F 1 "47uH" V 27150 1850 40  0000 C CNN
-F 2 "SRR4028" H 27050 1850 60  0001 C CNN
-	1    27050 1850
-	0    1    -1   0   
 $EndComp
 Text Label 28554 1850 0    30   ~ 0
 5V_in_postfilter
@@ -5599,10 +5599,6 @@ F 1 "PWR_FLAG" H 25600 2030 30  0000 C CNN
 	1    25600 1800
 	-1   0    0    -1  
 $EndComp
-Text Label 26528 1850 0    30   ~ 0
-5V_in_prefilter
-Text Label 25254 1850 0    30   ~ 0
-5V_in_postfilter
 Text Label 23754 1850 0    30   ~ 0
 9V_iso_prefilter
 Text Label 22930 1850 0    30   ~ 0
