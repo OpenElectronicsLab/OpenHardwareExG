@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by CvPcb (2012-apr-16-27)-stable date = Mon 24 Jun 2013 02:22:09 AM UTC
+Cmp-Mod V01 Created by CvPcb (2012-apr-16-27)-stable date = Mon 01 Jul 2013 10:11:18 PM UTC
 
 BeginCmp
 TimeStamp = /513B4D15;
@@ -843,6 +843,20 @@ EndCmp
 BeginCmp
 TimeStamp = /51C59A03;
 Reference = C121;
+ValeurCmp = 10uF;
+IdModule  = SM0805;
+EndCmp
+
+BeginCmp
+TimeStamp = /51D1FB59;
+Reference = C122;
+ValeurCmp = 10uF;
+IdModule  = SM0805;
+EndCmp
+
+BeginCmp
+TimeStamp = /51D1FB58;
+Reference = C123;
 ValeurCmp = 10uF;
 IdModule  = SM0805;
 EndCmp
@@ -1888,6 +1902,13 @@ TimeStamp = /51C59A01;
 Reference = U18;
 ValeurCmp = R05P205/R6;
 IdModule  = SIP7_ISOLATOR;
+EndCmp
+
+BeginCmp
+TimeStamp = /51D1FB5A;
+Reference = U19;
+ValeurCmp = NCP1117LPST33T3G;
+IdModule  = SOT223;
 EndCmp
 
 BeginCmp
