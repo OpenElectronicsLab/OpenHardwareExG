@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by CvPcb (2012-apr-16-27)-stable date = Sat 22 Jun 2013 05:00:31 PM CEST
+Cmp-Mod V01 Created by CvPcb (2012-apr-16-27)-stable date = Sat 06 Jul 2013 08:29:33 PM UTC
 
 BeginCmp
 TimeStamp = /51A0E0BE;
@@ -246,10 +246,10 @@ IdModule  = Touchproof-socket;
 EndCmp
 
 BeginCmp
-TimeStamp = /51B42E2E;
+TimeStamp = /51D81450;
 Reference = P35;
-ValeurCmp = CONN_4;
-IdModule  = PIN_ARRAY_4x1;
+ValeurCmp = CONN_5X2;
+IdModule  = PIN_ARRAY_5x2;
 EndCmp
 
 BeginCmp
@@ -257,13 +257,6 @@ TimeStamp = /51B34D9B;
 Reference = P36;
 ValeurCmp = ARDUINO_SHIELD;
 IdModule  = arduino_shield;
-EndCmp
-
-BeginCmp
-TimeStamp = /51C586AC;
-Reference = P37;
-ValeurCmp = CONN_4X2;
-IdModule  = pin_array_4x2;
 EndCmp
 
 BeginCmp
