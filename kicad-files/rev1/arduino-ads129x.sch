@@ -1,4 +1,4 @@
-EESchema Schematic File Version 2  date Sat 06 Jul 2013 03:09:37 PM CEST
+EESchema Schematic File Version 2  date Sat 06 Jul 2013 05:30:54 PM CEST
 LIBS:power
 LIBS:device
 LIBS:transistors
@@ -55,6 +55,13 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 Wire Wire Line
+	25400 6650 27250 6650
+Wire Wire Line
+	27000 6750 26000 6750
+Connection ~ 23400 6650
+Wire Wire Line
+	27250 6650 27250 6600
+Wire Wire Line
 	9100 16350 7450 16350
 Wire Wire Line
 	30450 16850 30400 16850
@@ -74,12 +81,6 @@ Wire Wire Line
 	19950 15850 19850 15850
 Wire Wire Line
 	19950 15700 19850 15700
-Wire Wire Line
-	25400 6750 27250 6750
-Wire Wire Line
-	26000 6650 27000 6650
-Wire Wire Line
-	25400 6650 25500 6650
 Wire Wire Line
 	24300 4550 24200 4550
 Wire Wire Line
@@ -133,11 +134,6 @@ Wire Wire Line
 	8850 2000 8750 2000
 Wire Wire Line
 	10400 3200 10400 2850
-Wire Wire Line
-	27250 6750 27250 6600
-Connection ~ 23400 6750
-Wire Wire Line
-	23400 6050 23400 6750
 Wire Wire Line
 	28800 9700 28550 9700
 Wire Wire Line
@@ -349,15 +345,10 @@ Wire Wire Line
 	28600 5850 28900 5850
 Wire Wire Line
 	28900 5850 28900 5750
-Connection ~ 27250 6350
 Wire Wire Line
-	25400 6350 27400 6350
+	25400 6350 27000 6350
 Wire Wire Line
 	29750 6600 29200 6600
-Wire Wire Line
-	27250 6350 27250 6450
-Wire Wire Line
-	27250 6450 27500 6450
 Connection ~ 31500 14550
 Wire Wire Line
 	31500 14650 31500 14550
@@ -1842,8 +1833,6 @@ Connection ~ 26600 6050
 Wire Wire Line
 	27000 6550 25400 6550
 Wire Wire Line
-	25400 6450 27000 6450
-Wire Wire Line
 	22300 6750 24300 6750
 Wire Wire Line
 	24300 6650 22300 6650
@@ -2430,6 +2419,12 @@ Wire Wire Line
 	6650 16350 5000 16350
 Wire Wire Line
 	6650 16250 5000 16250
+Wire Wire Line
+	23400 6050 23400 6650
+Wire Wire Line
+	25500 6750 25400 6750
+Wire Wire Line
+	25400 6450 27500 6450
 $Comp
 L +3.3V #PWR01
 U 1 1 51A0DAED
@@ -2635,11 +2630,11 @@ $EndComp
 $Comp
 L R R84
 U 1 1 51C7AB6B
-P 25750 6650
-F 0 "R84" V 25800 6450 50  0000 C CNN
-F 1 "47" V 25750 6650 50  0000 C CNN
-F 2 "SM0603" V 25850 6650 50  0001 C CNN
-	1    25750 6650
+P 25750 6750
+F 0 "R84" V 25800 6550 50  0000 C CNN
+F 1 "47" V 25750 6750 50  0000 C CNN
+F 2 "SM0603" V 25850 6750 50  0001 C CNN
+	1    25750 6750
 	0    -1   -1   0   
 $EndComp
 $Comp
@@ -3638,7 +3633,7 @@ F 1 "GND" H 27500 6780 30  0001 C CNN
 	1    27500 6850
 	1    0    0    -1  
 $EndComp
-Text Label 27000 6750 2    60   ~ 0
+Text Label 27000 6650 2    60   ~ 0
 ADS129x_MISO
 $Comp
 L 74AUP1G125GW U9
@@ -4164,17 +4159,17 @@ Text Label 27000 8350 2    60   ~ 0
 ADS129x_~RESET~
 Text Label 27000 8450 2    60   ~ 0
 ADS129x_~PWDN~
-Text Label 27000 6650 2    60   ~ 0
+Text Label 27000 6750 2    60   ~ 0
 ADS129x_~DRDY~
 Text Label 29750 6600 2    60   ~ 0
 PA25_MISO
-Text Label 27400 6350 2    60   ~ 0
-ADS129x_~CS~
-Text Label 27000 6250 2    60   ~ 0
-PA27_SCLK
 Text Label 27000 6450 2    60   ~ 0
-ADS129x_CLK
+ADS129x_~CS~
 Text Label 27000 6550 2    60   ~ 0
+PA27_SCLK
+Text Label 27000 6350 2    60   ~ 0
+ADS129x_CLK
+Text Label 27000 6250 2    60   ~ 0
 PA26_MOSI
 Text Label 27000 4650 2    60   ~ 0
 ADS129x_START
@@ -4182,15 +4177,15 @@ Text Label 22300 8450 0    60   ~ 0
 ADS129x_~PWDN~_ISO
 Text Label 22300 8350 0    60   ~ 0
 ADS129x_~RESET~_ISO
-Text Label 22300 6550 0    60   ~ 0
-ADS192x_MOSI_ISO
-Text Label 22300 6450 0    60   ~ 0
-ADS129x_CLK_ISO
 Text Label 22300 6250 0    60   ~ 0
-ADS192x_SCLK_ISO
+ADS192x_MOSI_ISO
 Text Label 22300 6350 0    60   ~ 0
+ADS129x_CLK_ISO
+Text Label 22300 6550 0    60   ~ 0
+ADS192x_SCLK_ISO
+Text Label 22300 6450 0    60   ~ 0
 ADS129x_~CS~_ISO
-Text Label 22300 6750 0    60   ~ 0
+Text Label 22300 6650 0    60   ~ 0
 ADS192x_MISO_ISO
 $Comp
 L R R45
@@ -4202,7 +4197,7 @@ F 2 "SM0603" V 23500 5800 50  0001 C CNN
 	1    23400 5800
 	1    0    0    -1  
 $EndComp
-Text Label 22300 6650 0    60   ~ 0
+Text Label 22300 6750 0    60   ~ 0
 ADS129x_~DRDY~_ISO
 Text Label 22300 4650 0    60   ~ 0
 ADS129x_START_ISO
