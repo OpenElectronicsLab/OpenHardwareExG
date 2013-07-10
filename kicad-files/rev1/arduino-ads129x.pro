@@ -1,6 +1,6 @@
-update=Sat 06 Jul 2013 12:37:29 AM UTC
+update=Wed 10 Jul 2013 03:21:11 AM UTC
 version=1
-last_client=kicad
+last_client=pcbnew
 [cvpcb]
 version=1
 NetIExt=net
@@ -78,11 +78,13 @@ LibName37=additional-logic
 LibName38=arduino-shield
 LibName39=esd
 LibName40=smt-crystals
+[general]
+version=1
 [pcbnew]
 version=1
-PadDrlX=400
-PadDimH=600
-PadDimV=600
+PadDrlX=1418
+PadDimH=1457
+PadDimV=1457
 BoardThickness=630
 TxtPcbV=800
 TxtPcbH=600
@@ -118,5 +120,4 @@ LibName18=smt-crystals
 LibName19=arduino-shield
 LibName20=SOIC
 LibName21=Touchproof-socket
-[general]
-version=1
+LibName22=Hole_M3

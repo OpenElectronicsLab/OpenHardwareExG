@@ -1,4 +1,4 @@
-update=Sat 22 Jun 2013 05:05:04 PM CEST
+update=Wed 10 Jul 2013 03:22:43 AM UTC
 last_client=pcbnew
 [eeschema]
 version=1
@@ -72,9 +72,9 @@ NetIExt=net
 EquName1=devcms
 [pcbnew]
 version=1
-PadDrlX=320
-PadDimH=600
-PadDimV=600
+PadDrlX=551
+PadDimH=787
+PadDimV=787
 BoardThickness=630
 TxtPcbV=800
 TxtPcbH=600
@@ -103,3 +103,4 @@ LibName11=valves
 LibName12=arduino-shield
 LibName13=fiducial_mark
 LibName14=Touchproof-socket
+LibName15=Hole_M3
