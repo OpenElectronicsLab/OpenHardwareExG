@@ -1,4 +1,4 @@
-EESchema Schematic File Version 2  date Sat 13 Jul 2013 01:36:16 PM CEST
+EESchema Schematic File Version 2  date Sat 13 Jul 2013 02:35:26 PM CEST
 LIBS:power
 LIBS:device
 LIBS:transistors
@@ -4884,13 +4884,13 @@ Text Label 13650 4550 2    60   ~ 0
 ADS129x_~CS~_ISO
 Text Label 13650 4750 2    60   ~ 0
 ADS129x_CLK_ISO
-Text Label 21300 15850 2    60   ~ 0
+Text Label 21300 16000 2    60   ~ 0
 ADS129x_~RESET~
 Text Label 13650 4850 2    60   ~ 0
 ADS129x_~RESET~_ISO
 Text Label 13650 4950 2    60   ~ 0
 ADS129x_~PWDN~_ISO
-Text Label 21300 16000 2    60   ~ 0
+Text Label 21300 15850 2    60   ~ 0
 ADS129x_~PWDN~
 Text Label 13650 4450 2    60   ~ 0
 ADS129x_SCLK_ISO
