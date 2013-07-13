@@ -1,4 +1,4 @@
-EESchema Schematic File Version 2  date Mon 08 Jul 2013 11:35:33 PM UTC
+EESchema Schematic File Version 2  date Sat 13 Jul 2013 12:56:09 PM CEST
 LIBS:power
 LIBS:device
 LIBS:transistors
@@ -46,7 +46,7 @@ $Descr A1 33070 23400
 encoding utf-8
 Sheet 1 1
 Title ""
-Date "8 jul 2013"
+Date "13 jul 2013"
 Rev ""
 Comp ""
 Comment1 ""
@@ -4237,9 +4237,9 @@ F 1 "+5V" H 27550 12240 30  0000 C CNN
 	1    27550 12150
 	1    0    0    -1  
 $EndComp
-Text Label 27000 8350 2    60   ~ 0
-ADS129x_~RESET~
 Text Label 27000 8450 2    60   ~ 0
+ADS129x_~RESET~
+Text Label 27000 8350 2    60   ~ 0
 ADS129x_~PWDN~
 Text Label 27000 6750 2    60   ~ 0
 ADS129x_~DRDY~
@@ -4253,11 +4253,11 @@ Text Label 27000 6350 2    60   ~ 0
 ADS129x_CLK
 Text Label 27000 6250 2    60   ~ 0
 PA26_MOSI
-Text Label 27000 4650 2    60   ~ 0
+Text Label 27000 4550 2    60   ~ 0
 ADS129x_START
-Text Label 22300 8450 0    60   ~ 0
-ADS129x_~PWDN~_ISO
 Text Label 22300 8350 0    60   ~ 0
+ADS129x_~PWDN~_ISO
+Text Label 22300 8450 0    60   ~ 0
 ADS129x_~RESET~_ISO
 Text Label 22300 6250 0    60   ~ 0
 ADS129x_MOSI_ISO
@@ -4281,27 +4281,27 @@ F 2 "SM0603" V 23500 5800 50  0001 C CNN
 $EndComp
 Text Label 22300 6750 0    60   ~ 0
 ADS129x_~DRDY~_ISO
-Text Label 22300 4650 0    60   ~ 0
-ADS129x_START_ISO
-Text Label 27000 4550 2    60   ~ 0
-ADS129x_CLKSEL
 Text Label 22300 4550 0    60   ~ 0
+ADS129x_START_ISO
+Text Label 27000 4650 2    60   ~ 0
+ADS129x_CLKSEL
+Text Label 22300 4650 0    60   ~ 0
 ADS129x_CLKSEL_ISO
 Text Label 13650 3850 2    60   ~ 0
 ADS129x_GPIO4_ISO
-Text Label 27000 8550 2    60   ~ 0
-ADS129x_GPIO1
 Text Label 27000 8250 2    60   ~ 0
+ADS129x_GPIO1
+Text Label 27000 8550 2    60   ~ 0
 ADS129x_GPIO2
-Text Label 27000 4750 2    60   ~ 0
-ADS129x_GPIO3
 Text Label 27000 4450 2    60   ~ 0
+ADS129x_GPIO3
+Text Label 27000 4750 2    60   ~ 0
 ADS129x_GPIO4
-Text Label 22300 8550 0    60   ~ 0
-ADS129x_GPIO1_ISO
 Text Label 22300 8250 0    60   ~ 0
+ADS129x_GPIO1_ISO
+Text Label 22300 8550 0    60   ~ 0
 ADS129x_GPIO2_ISO
-Text Label 22300 4750 0    60   ~ 0
+Text Label 22300 4450 0    60   ~ 0
 ADS129x_GPIO3_ISO
 $Comp
 L GND #PWR072
@@ -4843,7 +4843,7 @@ Text Label 13650 4050 2    60   ~ 0
 ADS129x_GPIO2_ISO
 Text Label 13650 3950 2    60   ~ 0
 ADS129x_GPIO3_ISO
-Text Label 22300 4450 0    60   ~ 0
+Text Label 22300 4750 0    60   ~ 0
 ADS129x_GPIO4_ISO
 Text Label 20700 15550 2    60   ~ 0
 ADS129x_~DRDY~
