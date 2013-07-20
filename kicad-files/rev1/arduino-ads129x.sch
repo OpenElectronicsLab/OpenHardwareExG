@@ -1,4 +1,4 @@
-EESchema Schematic File Version 2  date Tue 16 Jul 2013 06:00:22 PM UTC
+EESchema Schematic File Version 2  date Sat 20 Jul 2013 04:05:32 PM CEST
 LIBS:power
 LIBS:device
 LIBS:transistors
@@ -46,7 +46,7 @@ $Descr A1 33070 23400
 encoding utf-8
 Sheet 1 1
 Title ""
-Date "16 jul 2013"
+Date "20 jul 2013"
 Rev ""
 Comp ""
 Comment1 ""
@@ -4906,9 +4906,9 @@ ADS129x_MOSI_ISO
 Text Notes 2250 15450 0    60   ~ 0
 DTR
 Text Notes 2250 15350 0    60   ~ 0
-RXI
+TX
 Text Notes 2250 15250 0    60   ~ 0
-TXO
+RX
 Text Notes 2250 15150 0    60   ~ 0
 VCC
 Text Notes 2250 15050 0    60   ~ 0
@@ -4929,9 +4929,9 @@ F 1 "+3.3V" H 3400 13510 30  0000 C CNN
 	1    0    0    -1  
 $EndComp
 Text Notes 2550 13850 0    60   ~ 0
-RXD
+TX
 Text Notes 2550 13750 0    60   ~ 0
-TXD
+RX
 Text Notes 2550 13650 0    60   ~ 0
 GND
 Text Notes 2550 13550 0    60   ~ 0
