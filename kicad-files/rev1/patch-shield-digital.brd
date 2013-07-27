@@ -1,4 +1,4 @@
-PCBNEW-BOARD Version 1 date Thu 25 Jul 2013 11:30:04 PM UTC
+PCBNEW-BOARD Version 1 date Sat 27 Jul 2013 01:46:53 AM UTC
 
 # Created by Pcbnew(2012-apr-16-27)-stable
 
@@ -9,8 +9,8 @@ Ly 1FFF8001
 EnabledLayers 1FFF8001
 Links 143
 NoConn 143
-Di 14842 6863 105662 76083
-Ndraw 0
+Di 14810 6863 105662 76083
+Ndraw 4
 Ntrack 0
 Nzone 0
 BoardThickness 630
@@ -21,7 +21,7 @@ $EndGENERAL
 $SHEETDESCR
 Sheet A4 11700 8267
 Title ""
-Date "25 jul 2013"
+Date "27 jul 2013"
 Rev ""
 Comp ""
 Comment1 ""
@@ -58,6 +58,7 @@ TextModWidth 120
 PadSize 600 600
 PadDrill 320
 Pad2MaskClearance 100
+Pad2PasteClearance -10
 AuxiliaryAxisOrg 0 0
 PcbPlotParams (pcbplotparams (layerselection 3178497) (usegerberextensions true) (excludeedgelayer true) (linewidth 60) (plotframeref false) (viasonmask false) (mode 1) (useauxorigin false) (hpglpennumber 1) (hpglpenspeed 20) (hpglpendiameter 15) (hpglpenoverlay 0) (pscolor true) (psnegative false) (psa4output false) (plotreference true) (plotvalue true) (plotothertext true) (plotinvisibletext false) (padsonsilk false) (subtractmaskfromsilk false) (outputformat 1) (mirror false) (drillshape 1) (scaleselection 1) (outputdirectory ""))
 $EndSETUP
@@ -3952,6 +3953,22 @@ Ne 0 ""
 Po -10000 -9000
 $EndPAD
 $EndMODULE  
+$DRAWSEGMENT
+Po 0 14961 47244 14961 19291 150
+De 28 0 900 0 0
+$EndDRAWSEGMENT
+$DRAWSEGMENT
+Po 0 92520 47244 14961 47244 150
+De 28 0 900 0 0
+$EndDRAWSEGMENT
+$DRAWSEGMENT
+Po 0 92520 19291 92520 47244 150
+De 28 0 900 0 0
+$EndDRAWSEGMENT
+$DRAWSEGMENT
+Po 0 14961 19291 92520 19291 150
+De 28 0 900 0 0
+$EndDRAWSEGMENT
 $TRACK
 $EndTRACK
 $ZONE
