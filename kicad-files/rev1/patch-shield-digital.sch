@@ -1,4 +1,4 @@
-EESchema Schematic File Version 2  date Sat 06 Jul 2013 03:03:50 PM CEST
+EESchema Schematic File Version 2  date Sat 03 Aug 2013 02:16:51 PM CEST
 LIBS:power
 LIBS:device
 LIBS:transistors
@@ -39,7 +39,7 @@ $Descr A2 23400 16535
 encoding utf-8
 Sheet 1 1
 Title "noname.sch"
-Date "6 jul 2013"
+Date "3 aug 2013"
 Rev ""
 Comp ""
 Comment1 ""
@@ -47,9 +47,21 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
+Text Label 20000 3900 2    60   ~ 0
+PA17_SDA1
+Text Label 20000 3800 2    60   ~ 0
+PA18_SCL1
+Wire Wire Line
+	20000 3800 19300 3800
+Wire Wire Line
+	19300 3900 20000 3900
+NoConn ~ 15950 7950
+NoConn ~ 15950 7850
+NoConn ~ 15950 7750
+NoConn ~ 15950 7650
 Connection ~ 16450 4900
 Wire Wire Line
-	16450 4900 16000 4900
+	16000 4900 16450 4900
 Wire Wire Line
 	16000 4900 16000 4700
 Wire Wire Line
@@ -76,14 +88,14 @@ Wire Wire Line
 	20050 7750 18400 7750
 Connection ~ 17500 10800
 Wire Wire Line
-	17500 10800 16700 10800
+	16700 10800 17500 10800
 Wire Wire Line
 	16700 10800 16700 11200
 Wire Wire Line
 	16700 12000 16700 11300
 Connection ~ 18400 12000
 Wire Wire Line
-	18400 12100 18400 12000
+	18400 12000 18400 12100
 Wire Wire Line
 	16700 12000 18800 12000
 Wire Wire Line
@@ -95,7 +107,7 @@ Wire Wire Line
 Wire Wire Line
 	16700 11300 16800 11300
 Wire Wire Line
-	18400 9800 17500 9800
+	17500 9800 18400 9800
 Wire Wire Line
 	17900 10300 17900 10500
 Connection ~ 17900 9800
@@ -127,7 +139,7 @@ Wire Wire Line
 Wire Wire Line
 	17500 12000 17500 11900
 Wire Wire Line
-	17500 9800 17500 10900
+	17500 10900 17500 9800
 Wire Wire Line
 	19300 4100 19500 4100
 Wire Wire Line
@@ -137,9 +149,9 @@ Wire Wire Line
 Wire Wire Line
 	16450 4700 16700 4700
 Wire Wire Line
-	16700 4500 16450 4500
+	16450 4500 16700 4500
 Wire Wire Line
-	16450 4500 16450 4100
+	16450 4100 16450 4500
 Wire Wire Line
 	16700 4300 16450 4300
 Connection ~ 16450 4300
@@ -163,12 +175,12 @@ Wire Wire Line
 Wire Wire Line
 	10050 8850 10150 8850
 Wire Wire Line
-	11150 1350 10750 1350
+	10750 1350 11150 1350
 Wire Wire Line
 	10750 1350 10750 1300
 Connection ~ 10550 850 
 Wire Wire Line
-	11150 900  11150 850 
+	11150 850  11150 900 
 Wire Wire Line
 	11150 850  10550 850 
 Wire Wire Line
@@ -206,7 +218,7 @@ Wire Wire Line
 	4850 2350 4100 2350
 Connection ~ 5400 2650
 Wire Wire Line
-	5400 2650 5400 2350
+	5400 2350 5400 2650
 Wire Wire Line
 	5400 2350 5250 2350
 Wire Wire Line
@@ -218,7 +230,7 @@ Wire Wire Line
 Wire Wire Line
 	4850 1250 4100 1250
 Wire Wire Line
-	6050 1250 6600 1250
+	6600 1250 6050 1250
 Wire Wire Line
 	5250 1250 5550 1250
 Wire Wire Line
@@ -232,7 +244,7 @@ Wire Wire Line
 	4850 1650 4100 1650
 Connection ~ 5400 1950
 Wire Wire Line
-	5400 1950 5400 1650
+	5400 1650 5400 1950
 Wire Wire Line
 	5400 1650 5250 1650
 Wire Wire Line
@@ -258,7 +270,7 @@ Wire Wire Line
 	4850 3750 4100 3750
 Connection ~ 5400 4050
 Wire Wire Line
-	5400 4050 5400 3750
+	5400 3750 5400 4050
 Wire Wire Line
 	5400 3750 5250 3750
 Wire Wire Line
@@ -284,7 +296,7 @@ Wire Wire Line
 	4850 5850 4100 5850
 Connection ~ 5400 6150
 Wire Wire Line
-	5400 6150 5400 5850
+	5400 5850 5400 6150
 Wire Wire Line
 	5400 5850 5250 5850
 Wire Wire Line
@@ -300,7 +312,7 @@ Connection ~ 6600 3350
 Connection ~ 6600 2650
 Connection ~ 6600 1950
 Wire Wire Line
-	6600 1250 6600 6650
+	6600 6650 6600 1250
 Connection ~ 6600 6150
 Connection ~ 750  6200
 Wire Wire Line
@@ -328,7 +340,7 @@ Wire Wire Line
 	3250 5200 2500 5200
 Connection ~ 1950 5500
 Wire Wire Line
-	1950 5500 1950 5200
+	1950 5200 1950 5500
 Wire Wire Line
 	1950 5200 2100 5200
 Wire Wire Line
@@ -354,7 +366,7 @@ Wire Wire Line
 	3250 4500 2500 4500
 Connection ~ 1950 4800
 Wire Wire Line
-	1950 4800 1950 4500
+	1950 4500 1950 4800
 Wire Wire Line
 	1950 4500 2100 4500
 Wire Wire Line
@@ -380,7 +392,7 @@ Wire Wire Line
 	3250 1000 2500 1000
 Connection ~ 1950 1300
 Wire Wire Line
-	1950 1300 1950 1000
+	1950 1000 1950 1300
 Wire Wire Line
 	1950 1000 2100 1000
 Wire Wire Line
@@ -406,7 +418,7 @@ Wire Wire Line
 	3250 3100 2500 3100
 Connection ~ 1950 3400
 Wire Wire Line
-	1950 3400 1950 3100
+	1950 3100 1950 3400
 Wire Wire Line
 	1950 3100 2100 3100
 Wire Wire Line
@@ -523,12 +535,12 @@ Wire Wire Line
 Wire Wire Line
 	10750 3750 11150 3750
 Wire Wire Line
-	11150 6150 10750 6150
+	10750 6150 11150 6150
 Wire Wire Line
 	10750 6150 10750 6100
 Connection ~ 10550 5650
 Wire Wire Line
-	11150 5700 11150 5650
+	11150 5650 11150 5700
 Wire Wire Line
 	11150 5650 10550 5650
 Wire Wire Line
@@ -747,8 +759,6 @@ NoConn ~ 19300 4400
 NoConn ~ 19300 4300
 NoConn ~ 19300 4200
 NoConn ~ 19300 4000
-NoConn ~ 19300 3900
-NoConn ~ 19300 3800
 $Comp
 L GND #PWR06
 U 1 1 51C4F610
@@ -1236,13 +1246,13 @@ F 1 "560" V 5800 3350 50  0000 C CNN
 	1    5800 3350
 	0    1    1    0   
 $EndComp
-Text Label 4600 3350 2    60   ~ 0
+Text Label 4100 3350 0    60   ~ 0
 YELLOW_5P
-Text Label 4556 3050 2    60   ~ 0
+Text Label 4100 3050 0    60   ~ 0
 GREEN_5P
-Text Label 4556 2350 2    60   ~ 0
+Text Label 4100 2350 0    60   ~ 0
 GREEN_6P
-Text Label 4600 2650 2    60   ~ 0
+Text Label 4100 2650 0    60   ~ 0
 YELLOW_6P
 $Comp
 L R R13
@@ -1298,13 +1308,13 @@ F 1 "560" V 5800 1250 50  0000 C CNN
 	1    5800 1250
 	0    1    1    0   
 $EndComp
-Text Label 4600 1250 2    60   ~ 0
+Text Label 4100 1250 0    60   ~ 0
 YELLOW_8P
-Text Label 4556 950  2    60   ~ 0
+Text Label 4100 950  0    60   ~ 0
 GREEN_8P
-Text Label 4556 1650 2    60   ~ 0
+Text Label 4100 1650 0    60   ~ 0
 GREEN_7P
-Text Label 4600 1950 2    60   ~ 0
+Text Label 4100 1950 0    60   ~ 0
 YELLOW_7P
 $Comp
 L R R12
@@ -1360,13 +1370,13 @@ F 1 "560" V 5800 4750 50  0000 C CNN
 	1    5800 4750
 	0    1    1    0   
 $EndComp
-Text Label 4600 4750 2    60   ~ 0
+Text Label 4100 4750 0    60   ~ 0
 YELLOW_3P
-Text Label 4556 4450 2    60   ~ 0
+Text Label 4100 4450 0    60   ~ 0
 GREEN_3P
-Text Label 4556 3750 2    60   ~ 0
+Text Label 4100 3750 0    60   ~ 0
 GREEN_4P
-Text Label 4600 4050 2    60   ~ 0
+Text Label 4100 4050 0    60   ~ 0
 YELLOW_4P
 $Comp
 L R R15
@@ -1422,13 +1432,13 @@ F 1 "560" V 5800 5450 50  0000 C CNN
 	1    5800 5450
 	0    1    1    0   
 $EndComp
-Text Label 4600 5450 2    60   ~ 0
+Text Label 4100 5450 0    60   ~ 0
 YELLOW_2P
-Text Label 4556 5150 2    60   ~ 0
+Text Label 4100 5150 0    60   ~ 0
 GREEN_2P
-Text Label 4556 5850 2    60   ~ 0
+Text Label 4100 5850 0    60   ~ 0
 GREEN_1P
-Text Label 4600 6150 2    60   ~ 0
+Text Label 4100 6150 0    60   ~ 0
 YELLOW_1P
 $Comp
 L R R18
