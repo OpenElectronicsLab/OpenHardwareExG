@@ -1,5 +1,5 @@
-update=Wed 31 Jul 2013 11:39:03 PM UTC
-last_client=eeschema
+update=Sat 03 Aug 2013 01:14:49 AM UTC
+last_client=cvpcb
 [eeschema]
 version=1
 LibDir=
@@ -69,3 +69,29 @@ LibName34=arduino-shield
 LibName35=isolators
 LibName36=voltage-translators
 LibName37=74hc595
+[pcbnew]
+[pcbnew/libraries]
+LibName1=sockets
+LibName2=connect
+LibName3=discret
+LibName4=pin_array
+LibName5=divers
+LibName6=libcms
+LibName7=display
+LibName8=led
+LibName9=dip_sockets
+LibName10=pga_sockets
+LibName11=valves
+LibName12=BNC-6x89mm
+LibName13=arduino-shield
+LibName14=fiducial_mark
+LibName15=Hole_M3
+LibName16=banana-jack
+LibName17=SC70-6
+LibName18=TSSOP20
+LibDir=
+[cvpcb]
+version=1
+NetIExt=net
+[cvpcb/libraries]
+EquName1=devcms
