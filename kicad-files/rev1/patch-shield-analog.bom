@@ -1,4 +1,4 @@
-ref,value,footprint
+ref,value,footprint,partnum
 D1,LED,SM0603,598-8070-107F
 P1,CONN_1,Touchproof-socket,TD-985XX
 P2,CONN_1,Touchproof-socket,TD-985XX
