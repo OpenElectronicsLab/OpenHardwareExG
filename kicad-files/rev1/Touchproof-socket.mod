@@ -1,4 +1,4 @@
-PCBNEW-LibModule-V1  Sat 22 Jun 2013 04:43:07 PM CEST
+PCBNEW-LibModule-V1  Mon 05 Aug 2013 03:18:09 AM UTC
 # encoding utf-8
 $INDEX
 Touchproof-socket
@@ -23,7 +23,7 @@ Po 0 0
 $EndPAD
 $EndMODULE  Touchproof-socket
 $MODULE Touchproof-socket-spacer
-Po 0 0 0 15 51C5B7F6 00000000 ~~
+Po 0 0 0 15 51FF1896 00000000 ~~
 Li Touchproof-socket-spacer
 Sc 00000000
 AR Touchproof-socket
@@ -32,5 +32,12 @@ T0 0 -2500 600 600 0 120 N V 21 N "Touchproof-socket"
 T1 0 2500 600 600 0 120 N V 21 N "VAL**"
 DC 0 0 1673 -394 63 21
 DC 0 0 1476 197 150 21
+$PAD
+Sh "" C 3122 3122 0 0 0
+Dr 3122 0 0
+At HOLE N 00E0FFFF
+Ne 0 ""
+Po 0 0
+$EndPAD
 $EndMODULE  Touchproof-socket-spacer
 $EndLIBRARY
