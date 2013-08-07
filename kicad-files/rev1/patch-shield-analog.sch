@@ -1,4 +1,4 @@
-EESchema Schematic File Version 2  date Sat 03 Aug 2013 02:02:22 PM CEST
+EESchema Schematic File Version 2  date Wed 07 Aug 2013 01:48:57 AM UTC
 LIBS:power
 LIBS:device
 LIBS:transistors
@@ -39,7 +39,7 @@ $Descr A4 11700 8267
 encoding utf-8
 Sheet 1 1
 Title "noname.sch"
-Date "6 jul 2013"
+Date "7 aug 2013"
 Rev ""
 Comp ""
 Comment1 ""
@@ -47,83 +47,14 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
-NoConn ~ 8200 5700
-NoConn ~ 7400 5700
-$Comp
-L CONN_5X2 P35
-U 1 1 51D81450
-P 7800 5500
-F 0 "P35" H 7800 5800 60  0000 C CNN
-F 1 "CONN_5X2" V 7800 5500 50  0000 C CNN
-F 2 "PIN_ARRAY_5x2" V 7900 5500 50  0001 C CNN
-	1    7800 5500
-	1    0    0    -1  
-$EndComp
-NoConn ~ 7400 5300
-NoConn ~ 8200 5500
-NoConn ~ 8700 4150
-NoConn ~ 8700 3950
-NoConn ~ 8700 4050
-NoConn ~ 6700 4150
-NoConn ~ 6700 4050
-NoConn ~ 6700 3950
-NoConn ~ 6400 2600
-NoConn ~ 6400 2500
-NoConn ~ 6400 2100
-NoConn ~ 6400 2200
-NoConn ~ 6400 2300
-NoConn ~ 9000 1900
-NoConn ~ 6400 2400
-NoConn ~ 6400 2700
-NoConn ~ 6400 2900
-NoConn ~ 6400 3000
-NoConn ~ 6400 3100
-NoConn ~ 6400 3200
-NoConn ~ 6400 3300
-NoConn ~ 6400 3400
-NoConn ~ 9000 3400
-NoConn ~ 9000 3300
-NoConn ~ 9000 3200
-NoConn ~ 9000 3100
-NoConn ~ 9000 3000
-NoConn ~ 9000 2900
-NoConn ~ 9000 2800
-NoConn ~ 9000 2700
-NoConn ~ 9000 2500
-NoConn ~ 9000 2400
-NoConn ~ 9000 2300
-NoConn ~ 9000 2200
-NoConn ~ 9000 2100
-NoConn ~ 9000 2000
-NoConn ~ 9000 1800
-NoConn ~ 9000 1700
-NoConn ~ 9000 1600
-NoConn ~ 8200 5600
-NoConn ~ 8200 5400
-NoConn ~ 8200 5300
-NoConn ~ 7400 5400
-NoConn ~ 7400 5500
-NoConn ~ 7400 5600
-$Comp
-L AGND #PWR01
-U 1 1 51B368C7
-P 3600 1350
-F 0 "#PWR01" H 3600 1350 40  0001 C CNN
-F 1 "AGND" H 3600 1280 50  0000 C CNN
-	1    3600 1350
-	1    0    0    -1  
-$EndComp
+Wire Wire Line
+	9150 1950 9150 1900
+Wire Wire Line
+	9150 1900 9000 1900
+Wire Wire Line
+	6250 2600 6400 2600
 Wire Wire Line
 	3600 1350 3600 1150
-$Comp
-L +5VA #PWR02
-U 1 1 51B368B6
-P 1950 900
-F 0 "#PWR02" H 1950 1030 20  0001 C CNN
-F 1 "+5VA" H 1950 1000 30  0000 C CNN
-	1    1950 900 
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	1950 900  1950 1150
 Wire Wire Line
@@ -333,6 +264,113 @@ Connection ~ 2250 3200
 Connection ~ 2250 3400
 Wire Wire Line
 	3600 1150 3350 1150
+Wire Wire Line
+	8750 4200 8750 4150
+Wire Wire Line
+	8750 4150 8700 4150
+Wire Wire Line
+	6400 2500 6250 2500
+Wire Wire Line
+	6250 2500 6250 2700
+Connection ~ 6250 2600
+$Comp
+L DGND #PWR?
+U 1 1 5201A76F
+P 8750 4200
+F 0 "#PWR?" H 8750 4200 40  0001 C CNN
+F 1 "DGND" H 8750 4130 40  0000 C CNN
+	1    8750 4200
+	1    0    0    -1  
+$EndComp
+$Comp
+L DGND #PWR?
+U 1 1 5201A769
+P 6250 2700
+F 0 "#PWR?" H 6250 2700 40  0001 C CNN
+F 1 "DGND" H 6250 2630 40  0000 C CNN
+	1    6250 2700
+	1    0    0    -1  
+$EndComp
+$Comp
+L DGND #PWR?
+U 1 1 5201A761
+P 9150 1950
+F 0 "#PWR?" H 9150 1950 40  0001 C CNN
+F 1 "DGND" H 9150 1880 40  0000 C CNN
+	1    9150 1950
+	1    0    0    -1  
+$EndComp
+NoConn ~ 8200 5700
+NoConn ~ 7400 5700
+$Comp
+L CONN_5X2 P35
+U 1 1 51D81450
+P 7800 5500
+F 0 "P35" H 7800 5800 60  0000 C CNN
+F 1 "CONN_5X2" V 7800 5500 50  0000 C CNN
+F 2 "PIN_ARRAY_5x2" V 7900 5500 50  0001 C CNN
+	1    7800 5500
+	1    0    0    -1  
+$EndComp
+NoConn ~ 7400 5300
+NoConn ~ 8200 5500
+NoConn ~ 8700 3950
+NoConn ~ 8700 4050
+NoConn ~ 6700 4150
+NoConn ~ 6700 4050
+NoConn ~ 6700 3950
+NoConn ~ 6400 2100
+NoConn ~ 6400 2200
+NoConn ~ 6400 2300
+NoConn ~ 6400 2400
+NoConn ~ 6400 2700
+NoConn ~ 6400 2900
+NoConn ~ 6400 3000
+NoConn ~ 6400 3100
+NoConn ~ 6400 3200
+NoConn ~ 6400 3300
+NoConn ~ 6400 3400
+NoConn ~ 9000 3400
+NoConn ~ 9000 3300
+NoConn ~ 9000 3200
+NoConn ~ 9000 3100
+NoConn ~ 9000 3000
+NoConn ~ 9000 2900
+NoConn ~ 9000 2800
+NoConn ~ 9000 2700
+NoConn ~ 9000 2500
+NoConn ~ 9000 2400
+NoConn ~ 9000 2300
+NoConn ~ 9000 2200
+NoConn ~ 9000 2100
+NoConn ~ 9000 2000
+NoConn ~ 9000 1800
+NoConn ~ 9000 1700
+NoConn ~ 9000 1600
+NoConn ~ 8200 5600
+NoConn ~ 8200 5400
+NoConn ~ 8200 5300
+NoConn ~ 7400 5400
+NoConn ~ 7400 5500
+NoConn ~ 7400 5600
+$Comp
+L AGND #PWR01
+U 1 1 51B368C7
+P 3600 1350
+F 0 "#PWR01" H 3600 1350 40  0001 C CNN
+F 1 "AGND" H 3600 1280 50  0000 C CNN
+	1    3600 1350
+	1    0    0    -1  
+$EndComp
+$Comp
+L +5VA #PWR02
+U 1 1 51B368B6
+P 1950 900
+F 0 "#PWR02" H 1950 1030 20  0001 C CNN
+F 1 "+5VA" H 1950 1000 30  0000 C CNN
+	1    1950 900 
+	1    0    0    -1  
+$EndComp
 $Comp
 L ARDUINO_SHIELD P36
 U 1 1 51B34D9B

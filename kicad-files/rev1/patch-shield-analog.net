@@ -1,6 +1,6 @@
-# EESchema Netlist Version 1.1 created  Sat 03 Aug 2013 02:01:01 PM CEST
+# EESchema Netlist Version 1.1 created  Wed 07 Aug 2013 01:49:05 AM UTC
 (
- ( /51D81450 $noname  P35 CONN_5X2 {Lib=CONN_5X2}
+ ( /51D81450 PIN_ARRAY_5x2  P35 CONN_5X2 {Lib=CONN_5X2}
   (    1 ? )
   (    2 ? )
   (    3 ? )
@@ -38,7 +38,7 @@
   (   74 ? )
   (   75 ? )
   (   76 ? )
-  (   87 ? )
+  (   87 DGND )
   (   88 ? )
   (   89 ? )
   (   90 ? )
@@ -46,18 +46,18 @@
   (   92 ? )
   (   93 ? )
   (   94 ? )
-  (   95 ? )
-  (   96 ? )
+  (   95 DGND )
+  (   96 DGND )
   (   97 ? )
   (   98 ? )
-  (   99 ? )
+  (   99 DGND )
  )
  ( /51A0E0BF SM0603  R1 1k {Lib=R}
   (    1 +5VA )
-  (    2 N-000023 )
+  (    2 N-000020 )
  )
  ( /51A0E0BE SM0603  D1 LED {Lib=LED}
-  (    1 N-000023 )
+  (    1 N-000020 )
   (    2 AGND )
  )
  ( /51A0B540 Touchproof-socket  P2 CONN_1 {Lib=CONN_1}
@@ -223,102 +223,107 @@ $endlist
 $endfootprintlist
 }
 { Pin List by Nets
-Net 23 "" ""
- R1 2
+Net 20 "" ""
  D1 1
-Net 40 "/IN8P" "IN8P"
- P18 6
- P19 1
-Net 41 "/BIASOUT" "BIASOUT"
- P1 1
- P18 37
-Net 42 "/IN4N" "IN4N"
- P14 1
- P18 21
-Net 43 "/IN7P" "IN7P"
- P18 10
- P20 1
-Net 44 "/IN5P" "IN5P"
- P18 18
- P22 1
-Net 45 "/IN6P" "IN6P"
- P21 1
- P18 14
-Net 46 "/IN2P" "IN2P"
- P18 30
- P25 1
-Net 47 "/IN1P" "IN1P"
- P18 34
- P26 1
-Net 48 "/IN3P" "IN3P"
- P18 26
- P24 1
-Net 49 "/IN4P" "IN4P"
- P23 1
- P18 22
-Net 50 "/IN3N" "IN3N"
- P15 1
- P18 25
-Net 51 "/IN1N" "IN1N"
- P17 1
- P18 33
-Net 52 "/IN2N" "IN2N"
- P16 1
- P18 29
-Net 53 "/IN6N" "IN6N"
- P12 1
- P18 13
-Net 54 "/IN5N" "IN5N"
- P13 1
- P18 17
-Net 55 "/IN7N" "IN7N"
- P11 1
- P18 9
-Net 56 "/IN8N" "IN8N"
- P18 5
- P10 1
-Net 67 "+5VA" "+5VA"
- R1 1
+ R1 2
+Net 21 "+5VA" "+5VA"
  P18 1
-Net 68 "AGND" "AGND"
- P9 1
- P18 28
- P18 23
- P18 8
- P18 7
- P18 4
- P18 3
- P18 2
- P18 36
- P18 39
- P18 19
- P18 38
- P18 20
- P18 27
+ R1 1
+Net 40 "AGND" "AGND"
+ P32 1
  P18 16
  P18 35
- P18 15
- P18 24
- P27 1
- P18 32
- P18 12
- P18 31
- P18 11
- P18 40
- P8 1
  D1 2
  P2 1
  P3 1
- P5 1
  P4 1
+ P28 1
+ P27 1
+ P8 1
+ P9 1
  P7 1
  P6 1
  P31 1
- P32 1
+ P18 36
  P34 1
- P33 1
- P29 1
+ P18 20
  P30 1
- P28 1
+ P5 1
+ P29 1
+ P33 1
+ P18 8
+ P18 7
+ P18 15
+ P18 2
+ P18 39
+ P18 23
+ P18 4
+ P18 24
+ P18 32
+ P18 19
+ P18 38
+ P18 12
+ P18 31
+ P18 28
+ P18 11
+ P18 40
+ P18 27
+ P18 3
+Net 44 "/IN8P" "IN8P"
+ P19 1
+ P18 6
+Net 45 "/IN7P" "IN7P"
+ P20 1
+ P18 10
+Net 46 "/BIASOUT" "BIASOUT"
+ P1 1
+ P18 37
+Net 47 "/IN3N" "IN3N"
+ P18 25
+ P15 1
+Net 48 "/IN5P" "IN5P"
+ P22 1
+ P18 18
+Net 49 "/IN6P" "IN6P"
+ P18 14
+ P21 1
+Net 50 "/IN2P" "IN2P"
+ P18 30
+ P25 1
+Net 51 "/IN1P" "IN1P"
+ P26 1
+ P18 34
+Net 52 "/IN3P" "IN3P"
+ P24 1
+ P18 26
+Net 53 "/IN4P" "IN4P"
+ P18 22
+ P23 1
+Net 54 "/IN4N" "IN4N"
+ P18 21
+ P14 1
+Net 55 "/IN1N" "IN1N"
+ P18 33
+ P17 1
+Net 56 "/IN2N" "IN2N"
+ P16 1
+ P18 29
+Net 57 "/IN6N" "IN6N"
+ P18 13
+ P12 1
+Net 58 "/IN5N" "IN5N"
+ P18 17
+ P13 1
+Net 59 "/IN7N" "IN7N"
+ P11 1
+ P18 9
+Net 60 "/IN8N" "IN8N"
+ P10 1
+ P18 5
+Net 64 "DGND" "DGND"
+ P36 87
+ P36 96
+ P36 95
+ P36 99
 }
 #End
