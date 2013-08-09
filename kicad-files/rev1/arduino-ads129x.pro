@@ -1,13 +1,11 @@
-update=Mon 22 Jul 2013 11:17:25 PM UTC
+update=Fri 09 Aug 2013 01:55:50 PM UTC
 version=1
-last_client=eeschema
+last_client=kicad
 [cvpcb]
 version=1
 NetIExt=net
 [cvpcb/libraries]
 EquName1=devcms
-[general]
-version=1
 [pcbnew]
 version=1
 PadDrlX=1418
@@ -121,3 +119,5 @@ LibName37=additional-logic
 LibName38=arduino-shield
 LibName39=esd
 LibName40=smt-crystals
+[general]
+version=1
