@@ -1,4 +1,4 @@
-PCBNEW-BOARD Version 1 date Wed 07 Aug 2013 11:20:41 PM UTC
+PCBNEW-BOARD Version 1 date Sat 10 Aug 2013 02:19:54 PM CEST
 
 # Created by Pcbnew(2012-apr-16-27)-stable
 
@@ -7,21 +7,21 @@ encoding utf-8
 LayerCount 2
 Ly 1FFF8001
 EnabledLayers 1FFF8001
-Links 143
+Links 0
 NoConn 143
 Di -21575 8088 119347 72651
 Ndraw 4
 Ntrack 0
 Nzone 0
 BoardThickness 630
-Nmodule 108
+Nmodule 109
 Nnets 61
 $EndGENERAL
 
 $SHEETDESCR
 Sheet A4 11700 8267
 Title ""
-Date "7 aug 2013"
+Date "10 aug 2013"
 Rev ""
 Comp ""
 Comment1 ""
@@ -4665,6 +4665,24 @@ Ne 0 ""
 Po 0 0
 $EndPAD
 $EndMODULE  Hole_M3
+$MODULE Touchproof-socket-spacer
+Po 68898 32480 0 15 51FF1896 52062FCF ~~
+Li Touchproof-socket-spacer
+Sc 52062FCF
+AR Touchproof-socket
+Op 0 0 0
+T0 0 -2500 600 600 0 120 N V 21 N "Touchproof-socket"
+T1 0 2500 600 600 0 120 N V 21 N "VAL**"
+DC 0 0 1673 -394 63 21
+DC 0 0 1476 197 150 21
+$PAD
+Sh "" C 3122 3122 0 0 0
+Dr 3122 0 0
+At HOLE N 00E0FFFF
+Ne 0 ""
+Po 0 0
+$EndPAD
+$EndMODULE  Touchproof-socket-spacer
 $DRAWSEGMENT
 Po 0 14961 47244 14961 19291 150
 De 28 0 900 0 0
