@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by CvPcb (2012-apr-16-27)-stable date = Sat 03 Aug 2013 02:35:09 PM CEST
+Cmp-Mod V01 Created by CvPcb (2012-apr-16-27)-stable date = Sat 10 Aug 2013 05:42:23 PM CEST
 
 BeginCmp
 TimeStamp = /51C591A7;
@@ -379,6 +379,13 @@ IdModule  = SM0603;
 EndCmp
 
 BeginCmp
+TimeStamp = /52065E44;
+Reference = R9;
+ValeurCmp = 47;
+IdModule  = SM0603;
+EndCmp
+
+BeginCmp
 TimeStamp = /51A0E0BF;
 Reference = R10;
 ValeurCmp = 560;
@@ -438,6 +445,55 @@ BeginCmp
 TimeStamp = /51A0C038;
 Reference = R18;
 ValeurCmp = 560;
+IdModule  = SM0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /52065E56;
+Reference = R19;
+ValeurCmp = 47;
+IdModule  = SM0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /52065E5A;
+Reference = R20;
+ValeurCmp = 47;
+IdModule  = SM0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /52065E59;
+Reference = R21;
+ValeurCmp = 47;
+IdModule  = SM0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /52065E64;
+Reference = R22;
+ValeurCmp = 47;
+IdModule  = SM0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /52065EE5;
+Reference = R23;
+ValeurCmp = 47;
+IdModule  = SM0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /52065EDE;
+Reference = R24;
+ValeurCmp = 47;
+IdModule  = SM0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /52065ED4;
+Reference = R25;
+ValeurCmp = 47;
 IdModule  = SM0603;
 EndCmp
 
