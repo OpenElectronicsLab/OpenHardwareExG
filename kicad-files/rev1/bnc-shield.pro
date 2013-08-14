@@ -1,4 +1,4 @@
-update=Tue 13 Aug 2013 01:27:11 AM UTC
+update=Wed 14 Aug 2013 02:12:11 AM UTC
 last_client=pcbnew
 [eeschema]
 version=1
@@ -110,3 +110,4 @@ LibName14=/home/kms15/git/eeg-mouse/kicad-files/rev1/BNC-6x89mm
 LibName15=/home/kms15/git/eeg-mouse/kicad-files/rev1/MSOP8_PowerPad
 LibName16=/home/kms15/git/eeg-mouse/kicad-files/rev1/TSSOP20
 LibName17=SC70-6
+LibName18=Hole_M3
