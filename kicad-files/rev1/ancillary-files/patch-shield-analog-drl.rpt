@@ -1,0 +1,20 @@
+Drill report for /home/eric/src/eeg-mouse/kicad-files/rev1/patch-shield-analog.brd
+Created on Sun 25 Aug 2013 09:27:21 PM CEST
+Selected Drill Unit: Imperial (")
+
+Drill report for through holes :
+T1  0.025"  0.64mm  (98 holes)
+T2  0.032"  0.81mm  (1 hole)
+T3  0.039"  1.00mm  (38 holes)
+T4  0.040"  1.02mm  (49 holes)
+T5  0.055"  1.40mm  (33 holes)
+
+total plated holes count 219
+
+
+Drill report for Not Plated through holes :
+T1  0.142"  3.60mm  (8 holes)
+
+total Not Plated holes count 8
+
+
