@@ -18,9 +18,10 @@ sub v {
         $intval = $intval - 2**24;
     }
 
+    my $gain = 12.0;         # PGA gain setting
     my $refvoltage = 4.0;    # volts
 
-    my $potential = $refvoltage * ( $intval / ( 2.0**23 - 1 ) );
+    my $potential = ( $refvoltage / $gain ) * ( $intval / ( 2.0**23 - 1 ) );
     return $potential;
 }
 
