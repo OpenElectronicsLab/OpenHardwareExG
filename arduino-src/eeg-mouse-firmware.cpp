@@ -10,6 +10,28 @@
 // actual size today is 64, but a few extra will not hurt
 #define DATA_BUF_SIZE 80
 
+#ifdef _VARIANT_ARDUINO_DUE_X_
+#if ARDUINO_DUE_USB_NATIVE == 1
+#define SERIAL_OBJ SerialUSB
+#endif
+#endif
+
+#ifndef SERIAL_OBJ
+#define SERIAL_OBJ Serial
+#endif
+
+// global variables
+char setup_2_run;
+char in_byte;
+int led_status;
+unsigned long last_blink;
+unsigned long blink_interval_millis;
+
+#define LED_PIN 13
+#define BLINK_INTERVAL_SETUP 100;
+#define BLINK_INTERVAL_WAITING 500;
+#define BLINK_INTERVAL_SENDING 1000;
+
 // if this becomes more flexible, we may need to pass in
 // the byte_buf size, but for now we are safe to skip it
 void fill_sample_frame(char *byte_buf)
@@ -46,9 +68,9 @@ void fill_sample_frame(char *byte_buf)
 
 void serial_print_error(const char *msg)
 {
-	Serial.print("[oh]");
-	Serial.print(msg);
-	Serial.print("[no]\n");
+	SERIAL_OBJ.print("[oh]");
+	SERIAL_OBJ.print(msg);
+	SERIAL_OBJ.print("[no]\n");
 }
 
 void wait_for_drdy(const char *msg, int interval)
@@ -83,17 +105,34 @@ void adc_wreg(int reg, int val)
 	digitalWrite(IPIN_CS, HIGH);
 }
 
-int main(void)
+void blink_led(void)
+{
+	unsigned long now = millis();
+
+	if ((now - last_blink) > blink_interval_millis) {
+		led_status = (led_status == HIGH) ? LOW : HIGH;
+		digitalWrite(LED_PIN, led_status);
+		last_blink = now;
+	}
+}
+
+void setup(void)
+{
+	setup_2_run = 0;
+	in_byte = 0;
+	led_status = HIGH;
+	last_blink = 0;
+	blink_interval_millis = BLINK_INTERVAL_SETUP;
+	pinMode(LED_PIN, OUTPUT);
+}
+
+void setup_2(void)
 {
 	using namespace ADS1298;
-	char in_byte;
 	int i;
-	char byte_buf[DATA_BUF_SIZE];
-
-	init();
 
 	// initialize the USB Serial connection
-	Serial.begin(230400);
+	SERIAL_OBJ.begin(230400);
 
 	// set the LED on
 	pinMode(13, OUTPUT);
@@ -113,8 +152,12 @@ int main(void)
 	SPI.begin();
 
 	SPI.setBitOrder(MSBFIRST);
+#ifdef  _VARIANT_ARDUINO_DUE_X_
+	SPI.setClockDivider(21);
+#else
 	// SPI.setClockDivider(SPI_CLOCK_DIV4);
 	SPI.setClockDivider(SPI_CLOCK_DIV8);
+#endif
 	SPI.setDataMode(SPI_MODE1);
 
 	//digitalWrite(IPIN_CS, LOW);
@@ -146,7 +189,8 @@ int main(void)
 	adc_wreg(GPIO, 0);
 
 	// Power up the internal reference and wait for it to settle
-	adc_wreg(CONFIG3, RLDREF_INT | PD_RLD | PD_REFBUF | VREF_4V | CONFIG3_const);
+	adc_wreg(CONFIG3,
+		 RLDREF_INT | PD_RLD | PD_REFBUF | VREF_4V | CONFIG3_const);
 	delay(150);
 
 	adc_wreg(RLD_SENSP, 0x01);	// only use channel IN1P and IN1N
@@ -168,22 +212,43 @@ int main(void)
 	digitalWrite(PIN_START, HIGH);
 	wait_for_drdy("waiting for DRDY in setup", 1000);
 
+	blink_interval_millis = BLINK_INTERVAL_WAITING;
+}
+
+void check_for_ping_from_serial()
+{
+	using namespace ADS1298;
+
+	if (SERIAL_OBJ.available() == 0) {
+		return;
+	}
+	// read an available byte:
+	in_byte = SERIAL_OBJ.read();
+
+	if (in_byte != 0) {
+		// Put the Device Back in Read DATA Continuous Mode
+		adc_send_command(RDATAC);
+		blink_interval_millis = BLINK_INTERVAL_SENDING;
+	}
+}
+
+void loop(void)
+{
+	char byte_buf[DATA_BUF_SIZE];
+
+	blink_led();
+
+	if (!setup_2_run) {
+		setup_2();
+		setup_2_run = 1;
+	}
 	// wait for a non-zero byte as a ping from the computer
-	do {
-		// loop until data available
-		if (Serial.available() == 0) {
-			continue;
-		}
-		// read an available byte:
-		in_byte = Serial.read();
-	} while (in_byte == 0);
-
-	// Put the Device Back in Read DATA Continuous Mode
-	adc_send_command(RDATAC);
-
-	while (1) {
+	// loop until data available
+	if (in_byte == 0) {
+		check_for_ping_from_serial();
+	} else {
 		wait_for_drdy("no data", 5000);
 		fill_sample_frame(byte_buf);
-		Serial.print(byte_buf);
+		SERIAL_OBJ.print(byte_buf);
 	}
 }
