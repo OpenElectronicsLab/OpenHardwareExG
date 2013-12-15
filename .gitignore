@@ -20,6 +20,7 @@ $*
 *.hex
 *.list
 *.srec
+*.map
 
 ####################
 # R temporary files
