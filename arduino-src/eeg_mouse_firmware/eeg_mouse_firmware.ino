@@ -152,9 +152,11 @@ void setup_2(void)
 	digitalWrite(13, HIGH);
 
 	pinMode(IPIN_CS, OUTPUT);
+#if EEG_MOUSE_HARDWARE_VERSION == 0
 	pinMode(PIN_SCLK, OUTPUT);
 	pinMode(PIN_DIN, OUTPUT);
 	pinMode(PIN_DOUT, INPUT);
+#endif
 
 	pinMode(PIN_CLKSEL, OUTPUT);
 	pinMode(PIN_START, OUTPUT);
