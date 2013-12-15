@@ -10,6 +10,10 @@
 // actual size today is 64, but a few extra will not hurt
 #define DATA_BUF_SIZE 80
 
+#ifndef LIVE_CHANNELS_NUM
+#define LIVE_CHANNELS_NUM 8
+#endif
+
 #ifdef  _VARIANT_ARDUINO_DUE_X_
 #define SPI_CLOCK_DIVIDER_VAL 21
 #else
@@ -204,8 +208,8 @@ void setup_2(void)
 	// Set Device in HR Mode and DR = fMOD/1024
 	adc_wreg(CONFIG1, LOW_POWR_250_SPS);
 	adc_wreg(CONFIG2, INT_TEST);	// generate internal test signals
-	// Set the first two channels to input signal
-	for (i = 1; i <= 2; ++i) {
+	// Set the first LIVE_CHANNELS_NUM channels to input signal
+	for (i = 1; i <= LIVE_CHANNELS_NUM; ++i) {
 		adc_wreg(CHnSET + i, ELECTRODE_INPUT | GAIN_12X);
 	}
 	// Set all remaining channels to shorted inputs
