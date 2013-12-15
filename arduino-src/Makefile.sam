@@ -16,9 +16,12 @@ SRC_DIR=$(APPNAME)
 # manual dependencies
 APP_OBJS=$(APPNAME).o util.o
 
-# set this flag if you plan to communicate to the firmware running on
-# the ardiuno DUE using the "programming" (not the "native") port
-APP_FLAGS=-DARDUINO_DUE_USB_PROGRAMMING=0
+# set ARDUINO_DUE_USB_PROGRAMMING=1 if you plan to communicate to the
+# firmware running on the ardiuno DUE using the "programming" port
+# (not the "native" port)
+#
+# set EEG_MOUSE_HARDWARE_VERSION=0 for the eeg-mouse rev0 board
+APP_FLAGS=-DARDUINO_DUE_USB_PROGRAMMING=0 -DEEG_MOUSE_HARDWARE_VERSION=1
 
 # port the arduino is connected to while flashing new firmware
 PORT=ttyACM0
@@ -148,7 +151,7 @@ all: $(APPNAME).bin
 	echo YAY
 
 clean:
-	rm -f *.o *.a *.elf *.bin *.map
+	rm -f *.o *.a *.elf *.bin *.map $(APPNAME).cpp
 
 upload: $(APPNAME).bin
 	./reset-device.rb $(PORT)
