@@ -1,15 +1,11 @@
 
 # the name of the main file and sources to be used
-APPNAME=eeg-mouse-firmware
+APPNAME=eeg_mouse_firmware
 SOURCES=$(APPNAME).o util.o
 
 # default target
 all: $(APPNAME).hex
 	echo YAY
-
-# manual dependencies
-util.o : util.cpp util.h
-eeg-mouse.o : eeg-mouse.cpp eeg-mouse.h util.h ads1298.h
 
 ARDUINO_SOURCES_DIR=/usr/share/arduino/hardware/arduino/cores/arduino
 ARDUINO_VARIANT_DIR=/usr/share/arduino/hardware/arduino/variants/mega
@@ -46,6 +42,7 @@ CXX=avr-g++
 SHAREDFLAGS= -gstabs -Os \
 		-funsigned-char -funsigned-bitfields -fpack-struct \
 		-fshort-enums \
+		-I$(APPNAME) \
 		-I$(ARDUINO_SOURCES_DIR) \
 		-I$(ARDUINO_VARIANT_DIR) \
 		-I$(ARDUINO_SPI_LIB_DIR) \
@@ -58,7 +55,7 @@ NOISYFLAGS=-Wall -Wextra -pedantic -Werror
 #NOISYFLAGS=
 CXX_WORKAROUND_FLAGS=-Wno-variadic-macros -Wno-ignored-qualifiers
 
-ARDUINO_SOURCES=	CDC.o \
+ARDUINO_OBJECTS=	CDC.o \
 			HardwareSerial.o \
 			HID.o \
 			IPAddress.o \
@@ -77,12 +74,18 @@ ARDUINO_SOURCES=	CDC.o \
 			WMath.o \
 			WString.o
 
-ARDUINO_SPI_SOURCES= SPI.o
+ARDUINO_SPI_OBJECTS= SPI.o
 
-%.o : %.c
+%.o : $(APPNAME)/%.ino
+	ln -sv $^ $(basename $(notdir $^)).cpp
+	$(CXX) $(NOISYFLAGS) $(CXXFLAGS) $(CXX_WORKAROUND_FLAGS) \
+		-c $(basename $(notdir $^)).cpp -o $@
+	rm -v $(basename $(notdir $^)).cpp
+
+%.o : $(APPNAME)/%.c
 	$(CC) $(CFLAGS) $(NOISYFLAGS) -c $< -o $@
 
-%.o : %.cpp $(HEADERS)
+%.o : $(APPNAME)/%.cpp
 	$(CXX) $(NOISYFLAGS) $(CXXFLAGS) $(CXX_WORKAROUND_FLAGS) -c $< -o $@
 
 %.o : $(ARDUINO_SOURCES_DIR)/%.c
@@ -108,7 +111,7 @@ upload: $(APPNAME).hex
 %.hex : %.bin
 	avr-objcopy -O ihex -R .eeprom $< $@
 
-libarduinocore.a: $(ARDUINO_SOURCES) $(ARDUINO_SPI_SOURCES)
+libarduinocore.a: $(ARDUINO_OBJECTS) $(ARDUINO_SPI_OBJECTS)
 	ar rc $@ $^
 
 $(APPNAME).bin : $(SOURCES) libarduinocore.a
