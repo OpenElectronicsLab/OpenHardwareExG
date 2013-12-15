@@ -10,8 +10,17 @@
 // actual size today is 64, but a few extra will not hurt
 #define DATA_BUF_SIZE 80
 
+#ifdef  _VARIANT_ARDUINO_DUE_X_
+#define SPI_CLOCK_DIVIDER_VAL 21
+#else
+// #define SPI_CLOCK_DIVIDER_VAL SPI_CLOCK_DIV4
+#define SPI_CLOCK_DIVIDER_VAL SPI_CLOCK_DIV8
+#endif
+
 #ifdef _VARIANT_ARDUINO_DUE_X_
-#if ARDUINO_DUE_USB_NATIVE == 1
+#if ARDUINO_DUE_USB_PROGRAMMING == 1
+#define SERIAL_OBJ Serial
+#else // default to the NATIVE port
 #define SERIAL_OBJ SerialUSB
 #endif
 #endif
@@ -30,7 +39,7 @@ unsigned long blink_interval_millis;
 #define LED_PIN 13
 #define BLINK_INTERVAL_SETUP 100;
 #define BLINK_INTERVAL_WAITING 500;
-#define BLINK_INTERVAL_SENDING 1000;
+#define BLINK_INTERVAL_SENDING 2000;
 
 // if this becomes more flexible, we may need to pass in
 // the byte_buf size, but for now we are safe to skip it
@@ -152,12 +161,7 @@ void setup_2(void)
 	SPI.begin();
 
 	SPI.setBitOrder(MSBFIRST);
-#ifdef  _VARIANT_ARDUINO_DUE_X_
-	SPI.setClockDivider(21);
-#else
-	// SPI.setClockDivider(SPI_CLOCK_DIV4);
-	SPI.setClockDivider(SPI_CLOCK_DIV8);
-#endif
+	SPI.setClockDivider(SPI_CLOCK_DIVIDER_VAL);
 	SPI.setDataMode(SPI_MODE1);
 
 	//digitalWrite(IPIN_CS, LOW);
