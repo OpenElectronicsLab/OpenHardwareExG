@@ -1,6 +1,6 @@
-update=Fri 09 Aug 2013 01:55:50 PM UTC
+update=Sat 21 Dec 2013 03:33:56 PM CET
 version=1
-last_client=kicad
+last_client=eeschema
 [cvpcb]
 version=1
 NetIExt=net
@@ -47,6 +47,8 @@ LibName19=arduino-shield
 LibName20=SOIC
 LibName21=Touchproof-socket
 LibName22=Hole_M3
+[general]
+version=1
 [eeschema]
 version=1
 LibDir=
@@ -119,5 +121,3 @@ LibName37=additional-logic
 LibName38=arduino-shield
 LibName39=esd
 LibName40=smt-crystals
-[general]
-version=1

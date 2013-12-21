@@ -1,16 +1,16 @@
-Drill report for /home/kms15social/git/eeg-mouse/kicad-files/rev1/arduino-ads129x.brd
-Created on Tue 23 Jul 2013 11:20:53 PM UTC
+Drill report for /home/eric/src/eeg-mouse/kicad-files/rev1/arduino-ads129x.brd
+Created on Sat 21 Dec 2013 03:24:26 PM CET
 Selected Drill Unit: Imperial (")
 
 Drill report for through holes :
 T1  0.020"  0.51mm  (10 holes)
-T2  0.025"  0.64mm  (296 holes)
+T2  0.025"  0.64mm  (302 holes)
 T3  0.032"  0.81mm  (5 holes)
 T4  0.039"  1.00mm  (48 holes)
 T5  0.040"  1.02mm  (107 holes)
 T6  0.091"  2.30mm  (2 holes)
 
-total plated holes count 468
+total plated holes count 474
 
 
 Drill report for buried and blind vias :
