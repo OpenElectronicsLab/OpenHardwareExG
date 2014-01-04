@@ -77,10 +77,8 @@ ARDUINO_OBJECTS=	CDC.o \
 ARDUINO_SPI_OBJECTS= SPI.o
 
 %.o : $(APPNAME)/%.ino
-	ln -sv $^ $(basename $(notdir $^)).cpp
 	$(CXX) $(NOISYFLAGS) $(CXXFLAGS) $(CXX_WORKAROUND_FLAGS) \
-		-c $(basename $(notdir $^)).cpp -o $@
-	rm -v $(basename $(notdir $^)).cpp
+		-c -x c++ $^ -o $@
 
 %.o : $(APPNAME)/%.c
 	$(CC) $(CFLAGS) $(NOISYFLAGS) -c $< -o $@
