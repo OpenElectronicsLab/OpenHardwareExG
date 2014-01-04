@@ -118,10 +118,8 @@ ARDUINO_CORE_OBJS=itoa.o \
 		variant.o
 
 %.o : $(SRC_DIR)/%.ino
-	ln -sv $^ $(basename $(notdir $^)).cpp
 	$(CXX) $(NOISYFLAGS) $(CXXFLAGS) $(APP_FLAGS) \
-		-c $(basename $(notdir $^)).cpp -o $@
-	rm -v $(basename $(notdir $^)).cpp
+		-c -x c++ $^ -o $@
 
 %.o : $(SRC_DIR)/%.c
 	$(CC) $(NOISYFLAGS) $(CFLAGS) $(APP_FLAGS) -c $< -o $@
