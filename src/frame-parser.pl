@@ -65,7 +65,7 @@ while (<STDIN>) {
     if ( $_ =~ m/$valid_frame_regex/ ) {
         my $status = status($1);
         my $statstr = join ', ', map { $status->{$_} } @ordered_status_keys;
-        printf "%s,%11.7f,%11.7f,%11.7f,%11.7f,%11.7f,%11.7f,%11.7f,%11.7f\n",
+        printf "%s,%13.9f,%13.9f,%13.9f,%13.9f,%13.9f,%13.9f,%13.9f,%13.9f\n",
           $statstr, v($2), v($3), v($4), v($5), v($6), v($7), v($8), v($9);
     }
 }

@@ -79,12 +79,12 @@ sub smooth {
     my ( $buffer_number, $coef_name, $in_val ) = @_;
     my $rough_val = linear_filter( $buffer_number, $coef_name, $in_val );
     if ($skipsmooth) {
-        return sprintf( "%10f", $rough_val );
+        return sprintf( "%13.9f", $rough_val );
     }
     my $rectified = abs($rough_val);
     my $bufoffset = $buffer_number + (( scalar @old_filter_in_vals ) / 2);
     my $out_val = linear_filter( $bufoffset, 'smooth_filter', $rectified );
-    return sprintf( "%10f", $out_val );
+    return sprintf( "%13.9f", $out_val );
 }
 
 my $valid_row_regex = qr/
