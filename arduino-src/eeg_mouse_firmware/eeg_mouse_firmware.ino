@@ -203,8 +203,9 @@ void setup_2(void)
 		 RLDREF_INT | PD_RLD | PD_REFBUF | VREF_4V | CONFIG3_const);
 	delay(150);
 
-	adc_wreg(RLD_SENSP, 0x01);	// only use channel IN1P and IN1N
-	adc_wreg(RLD_SENSN, 0x01);	// for the RLD Measurement
+	//adc_wreg(RLD_SENSP, 0xFF);	// use all postive channels and
+	adc_wreg(RLD_SENSP, 0x01);	// only use channel IN1P and
+	adc_wreg(RLD_SENSN, 0x01);	// IN1N for the RLD Measurement
 
 	// Write Certain Registers, Including Input Short
 	// Set Device in HR Mode and DR = fMOD/1024
