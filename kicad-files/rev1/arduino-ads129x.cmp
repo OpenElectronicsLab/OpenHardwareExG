@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by CvPcb (2012-apr-16-27)-stable date = Sat 13 Jul 2013 01:29:00 PM CEST
+Cmp-Mod V01 Created by CvPcb (2012-apr-16-27)-stable date = Sat 25 Jan 2014 02:29:15 PM CET
 
 BeginCmp
 TimeStamp = /513B4D15;
@@ -823,7 +823,7 @@ BeginCmp
 TimeStamp = /51975BF8;
 Reference = D1;
 ValeurCmp = BZG03C27TR;
-IdModule  = SM2112L;
+IdModule  = DO214;
 EndCmp
 
 BeginCmp
@@ -852,13 +852,6 @@ TimeStamp = /51976061;
 Reference = D6;
 ValeurCmp = LED;
 IdModule  = LED-0603;
-EndCmp
-
-BeginCmp
-TimeStamp = /51E13921;
-Reference = GS1;
-ValeurCmp = GS2;
-IdModule  = GS2;
 EndCmp
 
 BeginCmp
@@ -1704,6 +1697,13 @@ EndCmp
 BeginCmp
 TimeStamp = /5197655F;
 Reference = SW1;
+ValeurCmp = SW_PUSH;
+IdModule  = smt-tactile-button;
+EndCmp
+
+BeginCmp
+TimeStamp = /52B58DF8;
+Reference = SW2;
 ValeurCmp = SW_PUSH;
 IdModule  = smt-tactile-button;
 EndCmp

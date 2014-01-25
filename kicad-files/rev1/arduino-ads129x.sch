@@ -1,4 +1,4 @@
-EESchema Schematic File Version 2  date Sat 21 Dec 2013 02:05:40 PM CET
+EESchema Schematic File Version 2  date Sat 25 Jan 2014 02:30:20 PM CET
 LIBS:power
 LIBS:device
 LIBS:transistors
@@ -5124,7 +5124,7 @@ U 1 1 51975BF8
 P 19650 2050
 F 0 "D1" H 19650 2150 50  0000 C CNN
 F 1 "BZG03C27TR" H 19650 1950 40  0000 C CNN
-F 2 "SM2112L" H 19650 2050 60  0001 C CNN
+F 2 "DO214" H 19650 2050 60  0001 C CNN
 	1    19650 2050
 	0    -1   -1   0   
 $EndComp
