@@ -106,6 +106,22 @@ void adc_send_command(int cmd)
 	digitalWrite(IPIN_CS, HIGH);
 }
 
+byte adc_rreg(int reg)
+{
+	byte val;
+
+	digitalWrite(IPIN_CS, LOW);
+
+	SPI.transfer(ADS1298::RREG | reg);
+	SPI.transfer(0);	// number of registers to be read/written – 1
+	val = SPI.transfer(0);
+
+	delayMicroseconds(1);
+	digitalWrite(IPIN_CS, HIGH);
+
+	return val;
+}
+
 void adc_wreg(int reg, int val)
 {
 	digitalWrite(IPIN_CS, LOW);
@@ -196,14 +212,14 @@ void setup_2(void)
 
 	// All GPIO set to output 0x0000
 	// (floating CMOS inputs can flicker on and off, creating noise)
-	adc_wreg(GPIO, 0);
+	adc_wreg(GPIO, 0x00);
 
 	// Power up the internal reference and wait for it to settle
 	adc_wreg(CONFIG3,
 		 RLDREF_INT | PD_RLD | PD_REFBUF | VREF_4V | CONFIG3_const);
 	delay(150);
 
-	//adc_wreg(RLD_SENSP, 0xFF);	// use all postive channels and
+	//adc_wreg(RLD_SENSP, 0xFF);    // use all postive channels and
 	adc_wreg(RLD_SENSP, 0x01);	// only use channel IN1P and
 	adc_wreg(RLD_SENSN, 0x01);	// IN1N for the RLD Measurement
 
@@ -214,6 +230,7 @@ void setup_2(void)
 	// Set the first LIVE_CHANNELS_NUM channels to input signal
 	for (i = 1; i <= LIVE_CHANNELS_NUM; ++i) {
 		adc_wreg(CHnSET + i, ELECTRODE_INPUT | GAIN_12X);
+		// adc_wreg(CHnSET + i, TEST_SIGNAL | GAIN_12X);
 	}
 	// Set all remaining channels to shorted inputs
 	for (; i <= 8; ++i) {
@@ -229,6 +246,9 @@ void setup_2(void)
 void check_for_ping_from_serial()
 {
 	using namespace ADS1298;
+	byte version;
+	int i = 0;
+	char msg[40];
 
 	if (SERIAL_OBJ.available() == 0) {
 		return;
@@ -237,6 +257,25 @@ void check_for_ping_from_serial()
 	in_byte = SERIAL_OBJ.read();
 
 	if (in_byte != 0) {
+
+		version = adc_rreg(ADS1298::ID);
+		msg[i++] = 'c';
+		msg[i++] = 'h';
+		msg[i++] = 'i';
+		msg[i++] = 'p';
+		msg[i++] = ' ';
+		msg[i++] = 'i';
+		msg[i++] = 'd';
+		msg[i++] = ':';
+		msg[i++] = ' ';
+		msg[i++] = '0';
+		msg[i++] = 'x';
+		msg[i++] = to_hex(version, 1);
+		msg[i++] = to_hex(version, 0);
+		msg[i++] = '\n';
+		msg[i++] = '\0';
+		SERIAL_OBJ.print(msg);
+
 		// Put the Device Back in Read DATA Continuous Mode
 		adc_send_command(RDATAC);
 		blink_interval_millis = BLINK_INTERVAL_SENDING;
