@@ -257,6 +257,10 @@ void check_for_ping_from_serial()
 	in_byte = SERIAL_OBJ.read();
 
 	if (in_byte != 0) {
+		msg[i++] = '[';
+		msg[i++] = 'i';
+		msg[i++] = 't';
+		msg[i++] = ']';
 
 		version = adc_rreg(ADS1298::ID);
 		msg[i++] = 'c';
@@ -273,6 +277,10 @@ void check_for_ping_from_serial()
 		to_hex(version, msg + i);
 		i += 2;
 
+		msg[i++] = '[';
+		msg[i++] = 'i';
+		msg[i++] = 's';
+		msg[i++] = ']';
 		msg[i++] = '\n';
 		msg[i++] = '\0';
 		SERIAL_OBJ.print(msg);
