@@ -64,8 +64,8 @@ void fill_sample_frame(char *byte_buf)
 	for (i = 0; i <= 8; ++i) {
 		for (j = 0; j < 3; ++j) {
 			in_byte = SPI.transfer(0);
-			byte_buf[pos++] = to_hex(in_byte, 1);
-			byte_buf[pos++] = to_hex(in_byte, 0);
+			to_hex(in_byte, byte_buf + pos);
+			pos += 2;
 		}
 	}
 
@@ -270,8 +270,9 @@ void check_for_ping_from_serial()
 		msg[i++] = ' ';
 		msg[i++] = '0';
 		msg[i++] = 'x';
-		msg[i++] = to_hex(version, 1);
-		msg[i++] = to_hex(version, 0);
+		to_hex(version, msg + i);
+		i += 2;
+
 		msg[i++] = '\n';
 		msg[i++] = '\0';
 		SERIAL_OBJ.print(msg);

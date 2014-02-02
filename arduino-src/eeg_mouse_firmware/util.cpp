@@ -1,17 +1,19 @@
 #include "util.h"
 
-char to_hex(char byte, char high)
+void to_hex(char byte, char *buf)
 {
-	char nibble;
+	int i;
+	char nibbles[2];
 
-	if (high) {
-		nibble = (byte & 0xF0) >> 4;
-	} else {
-		nibble = (byte & 0x0F);
-	}
+	nibbles[0] = (byte & 0xF0) >> 4;
+	nibbles[1] = (byte & 0x0F);
 
-	if (nibble < 10) {
-		return '0' + nibble;
+	for (i = 0; i < 2; i++) {
+		if (nibbles[i] < 10) {
+			buf[i] = '0' + nibbles[i];
+		} else {
+			buf[i] = 'A' + nibbles[i] - 10;
+		}
 	}
-	return 'A' + nibble - 10;
+	buf[2] = '\0';
 }
