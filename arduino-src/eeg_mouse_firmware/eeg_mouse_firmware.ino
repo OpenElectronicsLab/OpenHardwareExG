@@ -219,13 +219,19 @@ void setup_2(void)
 		 RLDREF_INT | PD_RLD | PD_REFBUF | VREF_4V | CONFIG3_const);
 	delay(150);
 
-	//adc_wreg(RLD_SENSP, 0xFF);    // use all postive channels and
+	//adc_wreg(RLD_SENSP, 0xFF);	// use all postive channels and
 	adc_wreg(RLD_SENSP, 0x01);	// only use channel IN1P and
 	adc_wreg(RLD_SENSN, 0x01);	// IN1N for the RLD Measurement
 
+	// Use lead-off sensing in all channels
+	adc_wreg(CONFIG4, PD_LOFF_COMP);
+	adc_wreg(LOFF_SENSP, 0xFF);
+	adc_wreg(LOFF_SENSN, 0xFF);
+
 	// Write Certain Registers, Including Input Short
 	// Set Device in HR Mode and DR = fMOD/1024
-	adc_wreg(CONFIG1, LOW_POWR_250_SPS);
+	//adc_wreg(CONFIG1, HR | LOW_POWR_500_SPS);
+	adc_wreg(CONFIG1, HR | LOW_POWR_250_SPS);
 	adc_wreg(CONFIG2, INT_TEST);	// generate internal test signals
 	// Set the first LIVE_CHANNELS_NUM channels to input signal
 	for (i = 1; i <= LIVE_CHANNELS_NUM; ++i) {
