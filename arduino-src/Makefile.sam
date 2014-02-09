@@ -155,7 +155,7 @@ clean:
 
 upload: $(APPNAME).bin
 	$(RESET_PORT)
-	$(BOSSAC) -i -d --port=$(PORT) -U $(BOSSAC_USB_NATIVE) -e -w -v -b $(APPNAME).bin -R
+	$(BOSSAC) -i --port=$(PORT) -U $(BOSSAC_USB_NATIVE) -e -w -v -b $(APPNAME).bin -R
 
 %.bin : %.elf
 	$(OBJCOPY) -O binary $< $@
