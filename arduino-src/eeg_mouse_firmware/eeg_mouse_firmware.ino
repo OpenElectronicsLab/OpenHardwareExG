@@ -180,6 +180,8 @@ void setup_2(void)
 	pinMode(IPIN_PWDN, OUTPUT);
 	pinMode(IPIN_DRDY, INPUT);
 
+	delay(300);		// wait a moment for the isolated side of the board to power up
+
 	SPI.begin();
 
 	SPI.setBitOrder(MSBFIRST);
