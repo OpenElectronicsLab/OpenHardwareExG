@@ -31,4 +31,19 @@
 // DRDY (data ready) is PC18, PIN 45
 #define IPIN_DRDY 45
 
+// LED_ENABLE is PD6, PIN 29
+#define IPIN_LED_ENABLE 29
+
+// LED_LATCH is PD3, PIN 28
+#define PIN_LED_LATCH 28
+
+// LED_CLEAR is PD2, PIN 27
+#define IPIN_LED_CLEAR 27
+
+// LED_CLK (LED clock) is PD1, PIN 26
+#define PIN_LED_CLK 26
+
+// LED_SERIAL is PD0, PIN 25
+#define PIN_LED_SERIAL 25
+
 #endif /* _EEG_MOUSE_FIRMWARE_REV_1_H_ */
