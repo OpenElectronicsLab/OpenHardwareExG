@@ -27,6 +27,13 @@ module top() {
   ]);
 }
 
+module drilled_slot(x, y, x_len, y_len)
+{
+    z = -(fudge/2);
+    translate([ x, y, z ])
+        cube([ x_len, y_len, acrylic_thickness+fudge ]);
+}
+
 module drilled_hole(radius, x, y)
 {
     z = -(fudge/2);
@@ -63,8 +70,31 @@ module screw_holes()
             screw_hole(_x, _y);
 }
 
+module modified_android_shield_slots()
+{
+    x1=air_gap + 132;
+    y1=air_gap + 5;
+    x1_len=48;
+    y1_len=4;
+
+    x2=air_gap + 140;
+    y2=air_gap + 54;
+    x2_len=40;
+    y2_len=4;
+
+    x3=air_gap + 176;
+    y3=air_gap + 17;
+    x3_len=8;
+    y3_len=25;
+
+    drilled_slot(x1, y1, x1_len, y1_len);
+    drilled_slot(x2, y2, x2_len, y2_len);
+    drilled_slot(x3, y3, x3_len, y3_len);
+}
+
 difference() {
     top();
     screw_holes();
     touch_proof_holes();
+    modified_android_shield_slots();
 }
