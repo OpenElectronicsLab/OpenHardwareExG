@@ -31,11 +31,10 @@ screw_hole_centers_y = [ 3.5, 63.5 ];
 screw_hole_radius = 1.5;
 
 module top() {
-    cube([
-        air_gap + board_length + air_gap,
-        air_gap + board_height + air_gap,
-        acrylic_thickness,
-     ]);
+    x = air_gap + board_length + air_gap;
+    y = air_gap + board_height + air_gap;
+    z = acrylic_thickness;
+    cube([ x, y, z ]);
 }
 
 module drilled_slot(x, y, x_len, y_len)
@@ -54,8 +53,8 @@ module drilled_hole(radius, x, y)
 
 module touch_proof_hole(_x, _y)
 {
-    x = (air_gap + in1p_center_x + (_x * distance_to_next_center ));
-    y = (air_gap + in1p_center_y + (_y * distance_to_next_center ));
+    x = (air_gap + in1p_center_x + (_x * distance_to_next_center));
+    y = (air_gap + in1p_center_y + (_y * distance_to_next_center));
     drilled_hole(in1p_radius, x, y);
 }
 
