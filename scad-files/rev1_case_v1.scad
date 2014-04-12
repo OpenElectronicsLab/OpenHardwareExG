@@ -23,18 +23,19 @@ module top() {
   ]);
 }
 
+module touch_proof_hole(i,j)
+{
+    x = (air_gap + in1p_center_x + (i*distance_to_next_center));
+    y = (air_gap + in1p_center_y + (j*distance_to_next_center));
+    z = -(fudge/2);
+    translate([ x, y, z ])
+        cylinder(r=in1p_radius,h=(acrylic_thickness+fudge));
+}
+
 difference() {
-  top();
-  for( i = [ 0 : 1 : 7 ] )
-  {
-    for( j = [ 0 : 1 : 3 ] )
-    {
-      translate([
-        (air_gap + in1p_center_x + (i*distance_to_next_center)),
-        (air_gap + in1p_center_y + (j*distance_to_next_center)),
-        -(fudge/2)
-      ])
-      cylinder(r=in1p_radius,h=(acrylic_thickness+fudge));
-    }
-  }
+    top();
+    for( i = [ 0 : 1 : 7 ] )
+        for( j = [ 0 : 1 : 3 ] )
+            touch_proof_hole(i, j);
+    touch_proof_hole(8, 1.5);
 }
