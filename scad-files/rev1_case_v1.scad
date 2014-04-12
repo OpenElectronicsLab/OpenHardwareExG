@@ -92,9 +92,17 @@ module modified_android_shield_slots()
     drilled_slot(x3, y3, x3_len, y3_len);
 }
 
+// the top
 difference() {
     top();
     screw_holes();
     touch_proof_holes();
     modified_android_shield_slots();
 }
+
+// the bottom (modified top)
+translate([ 0, board_height + (air_gap*3), 0 ])
+    difference() {
+        top();
+        screw_holes();
+    }
