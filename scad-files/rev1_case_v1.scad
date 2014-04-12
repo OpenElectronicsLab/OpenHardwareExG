@@ -101,7 +101,7 @@ difference() {
 }
 
 // the bottom (modified top)
-translate([ 0, board_height + (air_gap*3), 0 ])
+translate([ 0, 0, 40 ])
     difference() {
         top();
         screw_holes();
