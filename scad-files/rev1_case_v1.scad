@@ -6,11 +6,7 @@ acrylic_thickness = 3;
 fudge = 0.2;
 air_gap = 5;
 
-// origin = corner_of_the_top_sheet (i.e. use "air_gap" everywhere)
-// alternatively, we could have the origin be the corner of the PCB,
-// and then we would extend into negative values in order to extend
-// past the edge of the PCB. This may make placement constants easier
-// to reason about, but will be quite some work to change.
+// origin = top_left_corner_of_the_board
 
 board_length = 197;
 board_height = 71;
@@ -33,7 +29,7 @@ screw_hole_radius = 0.1495 * 25.4 / 2;
 module top_blank() {
     x = air_gap + board_length + air_gap;
     y = air_gap + board_height + air_gap;
-    square([ x, y ]);
+    translate([-air_gap, -air_gap]) square([ x, y ]);
 }
 
 module drilled_slot(x, y, x_len, y_len)
@@ -50,8 +46,8 @@ module drilled_hole(radius, x, y)
 
 module touch_proof_hole(_x, _y)
 {
-    x = (air_gap + in1p_center_x + (_x * distance_to_next_center));
-    y = (air_gap + in1p_center_y + (_y * distance_to_next_center));
+    x = ( in1p_center_x + (_x * distance_to_next_center));
+    y = ( in1p_center_y + (_y * distance_to_next_center));
     drilled_hole(in1p_radius + in1p_clearance/2, x, y);
 }
 
@@ -65,8 +61,8 @@ module touch_proof_holes()
 
 module screw_hole(_x,_y)
 {
-    x = (air_gap + screw_hole_centers_x[_x]);
-    y = (air_gap + screw_hole_centers_y[_y]);
+    x = ( screw_hole_centers_x[_x]);
+    y = ( screw_hole_centers_y[_y]);
     drilled_hole(screw_hole_radius, x, y);
 }
 
@@ -99,30 +95,30 @@ module modified_android_shield_slots()
     x1_pin1 = 134.72;
     y1_pin1 = 6.88;
     x1_first_to_last_pin = 44.4754;
-    x1 = air_gap + x1_pin1 - (header_width + header_clearance) / 2;
-    y1 = air_gap + y1_pin1 - (header_width + header_clearance) / 2;
+    x1 =  x1_pin1 - (header_width + header_clearance) / 2;
+    y1 =  y1_pin1 - (header_width + header_clearance) / 2;
     x1_len = x1_first_to_last_pin + header_width + header_clearance;
     y1_len = header_width + header_clearance;
 
     x2_pin1 = 143.5846;
     y2_pin1 = 55.3432;
     x2_first_to_last_pin = 35.5346;
-    x2 = air_gap + x2_pin1 - (header_width + header_clearance) / 2;
-    y2 = air_gap + y2_pin1 - (header_width + header_clearance) / 2;
+    x2 =  x2_pin1 - (header_width + header_clearance) / 2;
+    y2 =  y2_pin1 - (header_width + header_clearance) / 2;
     x2_len = x2_first_to_last_pin + header_width + header_clearance;
     y2_len = header_width + header_clearance;
 
     // center of the connector
     x3_center = 180.4654;
     y3_center = 24.406;
-    x3 = air_gap + x3_center - (cap_width + cap_clearance)/2;
-    y3 = air_gap + y3_center - (cap_height + cap_clearance)/2;
+    x3 =  x3_center - (cap_width + cap_clearance)/2;
+    y3 =  y3_center - (cap_height + cap_clearance)/2;
     x3_len = cap_width + cap_clearance;
     y3_len = cap_height + cap_clearance;
 
     // tab
-    x3t = air_gap + x3_center - cap_width/2 - tab_width - cap_clearance / 2;
-    y3t = air_gap + y3_center - (tab_height + cap_clearance) / 2;
+    x3t =  x3_center - cap_width/2 - tab_width - cap_clearance / 2;
+    y3t =  y3_center - (tab_height + cap_clearance) / 2;
     x3t_len = tab_width + cap_clearance;
     y3t_len = tab_height + cap_clearance;
 
