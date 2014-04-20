@@ -30,25 +30,23 @@ screw_hole_centers_y = [ 3.5, 63.5 ];
 // TODO: is 3mm a good size for a screw hole diameter?
 screw_hole_radius = 1.5;
 
-module top() {
+// the top/bottom without any holes
+module top_blank() {
     x = air_gap + board_length + air_gap;
     y = air_gap + board_height + air_gap;
-    z = acrylic_thickness;
-    cube([ x, y, z ]);
+    square([ x, y ]);
 }
 
 module drilled_slot(x, y, x_len, y_len)
 {
-    z = -(fudge/2);
-    translate([ x, y, z ])
-        cube([ x_len, y_len, acrylic_thickness + fudge ]);
+    translate([ x, y ])
+        square([x_len, y_len]);
 }
 
 module drilled_hole(radius, x, y)
 {
-    z = -(fudge/2);
-    translate([ x, y, z ])
-        cylinder(r=radius, h=(acrylic_thickness + fudge));
+    translate([ x, y ])
+        circle(r=radius);
 }
 
 module touch_proof_hole(_x, _y)
@@ -104,19 +102,30 @@ module modified_android_shield_slots()
 }
 
 // the top
-difference() {
-    top();
-    screw_holes();
-    touch_proof_holes();
-    modified_android_shield_slots();
+module top() {
+    difference() {
+        top_blank();
+        screw_holes();
+        touch_proof_holes();
+        modified_android_shield_slots();
+    }
 }
 
-// the bottom (modified top)
-translate([ 0, 0, 40 ])
+// the bottom
+module bottom() {
     difference() {
-        top();
+        top_blank();
         screw_holes();
     }
+}
+
+// cut the given 2D design out of a sheet of material
+module lasercut(thickness = acrylic_thickness) {
+	 linear_extrude(height = thickness) child();
+}
+
+lasercut() top();
+translate([ 0, 0, 40 ]) lasercut() bottom();
 
 // TODO: sides
 // TODO: figure out how sides will fit together
