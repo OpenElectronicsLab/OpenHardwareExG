@@ -25,17 +25,26 @@ screw_hole_centers_y = [ 3.5, 63.5 ];
 // should also work for an M3 screw (but the fit will be looser).
 screw_hole_radius = 0.1495 * 25.4 / 2;
 
+// a rectangle with rounded corners of radius r
+module rounded_rectangle(size = [1, 1], r = 0.1) {
+    translate([r,r])
+    minkowski() {
+        square(size - 2*[r,r]);
+        circle(r);
+    }
+}
+
 // the top/bottom without any holes
 module top_blank() {
     x = air_gap + board_length + air_gap;
     y = air_gap + board_height + air_gap;
-    translate([-air_gap, -air_gap]) square([ x, y ]);
+    translate([-air_gap, -air_gap]) rounded_rectangle([ x, y ], 4);
 }
 
-module drilled_slot(x, y, x_len, y_len)
+module drilled_slot(x, y, x_len, y_len, r=1)
 {
     translate([ x, y ])
-        square([x_len, y_len]);
+        rounded_rectangle([x_len, y_len], r=r);
 }
 
 module drilled_hole(radius, x, y)
@@ -122,10 +131,10 @@ module modified_android_shield_slots()
     x3t_len = tab_width + cap_clearance;
     y3t_len = tab_height + cap_clearance;
 
-    drilled_slot(x1, y1, x1_len, y1_len);
-    drilled_slot(x2, y2, x2_len, y2_len);
-    drilled_slot(x3, y3, x3_len, y3_len);
-    drilled_slot(x3t, y3t, x3t_len, y3t_len);
+    drilled_slot(x1, y1, x1_len, y1_len, r=header_clearance/2);
+    drilled_slot(x2, y2, x2_len, y2_len, r=header_clearance/2);
+    drilled_slot(x3, y3, x3_len, y3_len, r=cap_clearance/2);
+    drilled_slot(x3t, y3t, x3t_len, y3t_len, r=cap_clearance/2);
 }
 
 // the top
