@@ -166,8 +166,8 @@ module top_board_3D() {
         color([0.1,0.1,0.1]) touch_proof_connector(_x, 1);
         color([0.1,0.1,0.1]) touch_proof_connector(_x, 2);
         color([0.9,0.9,0.9]) touch_proof_connector(_x, 3);
-	}
-   color([0.2,0.5,0.2]) touch_proof_connector(8, 1.5);
+    }
+    color([0.2,0.5,0.2]) touch_proof_connector(8, 1.5);
 }
 
 // the bottom
@@ -193,13 +193,15 @@ module lasercut(thickness = acrylic_thickness) {
     linear_extrude(height = thickness) child();
 }
 
-translate([ 0, 0, 5 ]) top_board_3D();
-translate([ 0, 0, 5 + 12.5 + board_thickness ]) color([0.2,0.2,0.2]) lasercut(board_thickness) board();
-translate([ 0, 0, 5 + 2*12.5 + 2*board_thickness ]) color([0.2,0.2,0.2]) lasercut(board_thickness) board();
+translate([-board_length/2, board_height/2, 25]) rotate(a=[180,0,0]) {
+    translate([ 0, 0, 5 ]) top_board_3D();
+    translate([ 0, 0, 5 + 12.5 + board_thickness ]) color([0.2,0.2,0.2]) lasercut(board_thickness) board();
+    translate([ 0, 0, 5 + 2*12.5 + 2*board_thickness ]) color([0.2,0.2,0.2]) lasercut(board_thickness) board();
 
-//top();
-translate([ 0, 0, 0 ]) color([0.7,0.7,0.7],0.3) lasercut() top();
-translate([ 0, 0, 40 ]) color([0.7,0.7,0.7],0.3) lasercut() bottom();
+    //top();
+    translate([ 0, 0, 0 ]) color([0.7,0.7,0.7],0.5) lasercut() top();
+    translate([ 0, 0, 40 ]) color([0.7,0.7,0.7],0.5) lasercut() bottom();
+}
 
 // TODO: sides
 // TODO: figure out how sides will fit together
