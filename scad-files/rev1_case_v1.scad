@@ -12,7 +12,10 @@ board_length = 197;
 board_height = 71;
 board_thickness = 1.5;
 
+in1p_height = 16;
+in1p_projection = 4.54;
 in1p_radius = (9.6/2);
+in1p_inner_radius = 4.8/2;
 in1p_clearance = 2;
 in1p_center_x = 17;
 in1p_center_y = 11;
@@ -137,14 +140,34 @@ module modified_android_shield_slots()
     drilled_slot(x3t, y3t, x3t_len, y3t_len, r=cap_clearance/2);
 }
 
-// the top
-module top() {
+// one of the PCBs
+module board() {
     difference() {
-        top_blank();
+        square([board_length, board_height]);
         screw_holes();
-        touch_proof_holes();
-        modified_android_shield_slots();
     }
+}
+
+// a touch-proof connector
+module touch_proof_connector(_x, _y) {
+    x = ( in1p_center_x + (_x * distance_to_next_center));
+    y = ( in1p_center_y + (_y * distance_to_next_center));
+    translate([x,y,-in1p_projection]) difference() {
+        cylinder(r=in1p_radius, h=in1p_height);
+        translate([0,0,-fudge]) cylinder(r=in1p_inner_radius, h=in1p_height+2*fudge);
+    }
+}
+
+// the top-most PCBs
+module top_board_3D() {
+    color([0.2,0.2,0.2]) lasercut(board_thickness) board();
+    for( _x = [ 0 : 1 : 7 ] ) {
+        color([1,0.2,0.2]) touch_proof_connector(_x, 0);
+        color([0.1,0.1,0.1]) touch_proof_connector(_x, 1);
+        color([0.1,0.1,0.1]) touch_proof_connector(_x, 2);
+        color([0.9,0.9,0.9]) touch_proof_connector(_x, 3);
+	}
+   color([0.2,0.5,0.2]) touch_proof_connector(8, 1.5);
 }
 
 // the bottom
@@ -155,14 +178,28 @@ module bottom() {
     }
 }
 
+// the top
+module top() {
+    difference() {
+        top_blank();
+        screw_holes();
+        touch_proof_holes();
+        modified_android_shield_slots();
+    }
+}
+
 // cut the given 2D design out of a sheet of material
 module lasercut(thickness = acrylic_thickness) {
     linear_extrude(height = thickness) child();
 }
 
+translate([ 0, 0, 5 ]) top_board_3D();
+translate([ 0, 0, 5 + 12.5 + board_thickness ]) color([0.2,0.2,0.2]) lasercut(board_thickness) board();
+translate([ 0, 0, 5 + 2*12.5 + 2*board_thickness ]) color([0.2,0.2,0.2]) lasercut(board_thickness) board();
+
 //top();
-lasercut() top();
-translate([ 0, 0, 40 ]) lasercut() bottom();
+translate([ 0, 0, 0 ]) color([0.7,0.7,0.7],0.3) lasercut() top();
+translate([ 0, 0, 40 ]) color([0.7,0.7,0.7],0.3) lasercut() bottom();
 
 // TODO: sides
 // TODO: figure out how sides will fit together
