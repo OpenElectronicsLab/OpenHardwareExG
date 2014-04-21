@@ -10,7 +10,22 @@ air_gap = 5;
 
 board_length = 197;
 board_height = 71;
-board_thickness = 1.5;
+board_thickness = 0.062 * 25.4;
+
+spacer_outer_radius = 0.25 * 25.4/2;
+spacer_inner_radius = 0.14 * 25.4/2;
+spacer_height = 0.5 * 25.4;
+
+washer_outer_radius = 0.32 * 25.4/2;
+washer_inner_radius = 0.14 * 25.4/2;
+washer_height = 0.06 * 25.4;
+
+// Socket-headed cap screw, 6-32 thread, 1-3/4"  
+cap_screw_cap_height = 0.138 * 25.4;
+cap_screw_cap_radius = 0.226 * 25.4/2;
+cap_screw_hex_key = 7/64 * 25.4;
+cap_screw_body_length = 1.75 * 25.4;
+cap_screw_body_radius = 0.138 * 25.4/2;
 
 in1p_height = 16;
 in1p_projection = 4.54;
@@ -148,14 +163,41 @@ module board() {
     }
 }
 
+// a hollow cylinder
+module pipe(rout, rin, h) {
+    difference() {
+        cylinder(r=rout, h=h);
+        translate([0, 0, -fudge]) cylinder(r=rin, h=h+2*fudge);
+    }
+}
+
+// a plastic spacer between boards
+module spacer() {
+    color([0.1,0.1,0.1])
+    pipe(spacer_outer_radius, spacer_inner_radius, spacer_height);
+}
+
+// a washer
+module washer() {
+    color([0.1,0.1,0.1])
+    pipe(washer_outer_radius, washer_inner_radius, washer_height);
+}
+
+// a socket-headed cap screw
+module cap_screw() {
+    color([0.1,0.1,0.1]) {
+        translate([0, 0, -cap_screw_cap_height])
+            cylinder(r=cap_screw_cap_radius, h=cap_screw_cap_height);
+        cylinder(r=cap_screw_body_radius, h=cap_screw_body_length);
+    }
+}
+
 // a touch-proof connector
 module touch_proof_connector(_x, _y) {
     x = ( in1p_center_x + (_x * distance_to_next_center));
     y = ( in1p_center_y + (_y * distance_to_next_center));
-    translate([x,y,-in1p_projection]) difference() {
-        cylinder(r=in1p_radius, h=in1p_height);
-        translate([0,0,-fudge]) cylinder(r=in1p_inner_radius, h=in1p_height+2*fudge);
-    }
+    translate([x,y,-in1p_projection])
+        pipe(rout=in1p_radius, rin=in1p_inner_radius, h=in1p_height);
 }
 
 // the top-most PCBs
@@ -193,12 +235,33 @@ module lasercut(thickness = acrylic_thickness) {
     linear_extrude(height = thickness) child();
 }
 
-translate([-board_length/2, board_height/2, 25]) rotate(a=[180,0,0]) {
-    translate([ 0, 0, 5 ]) top_board_3D();
-    translate([ 0, 0, 5 + 12.5 + board_thickness ]) color([0.2,0.2,0.2]) lasercut(board_thickness) board();
-    translate([ 0, 0, 5 + 2*12.5 + 2*board_thickness ]) color([0.2,0.2,0.2]) lasercut(board_thickness) board();
+module fastener_stack(_x, _y) {
+    x = ( screw_hole_centers_x[_x]);
+    y = ( screw_hole_centers_y[_y]);
+    translate([x,y,-washer_height]) cap_screw();
+    translate([x,y,-washer_height]) washer();
+    translate([x,y,acrylic_thickness]) washer();
+    translate([x,y,acrylic_thickness + washer_height + board_thickness]) spacer();
+    translate([x,y,acrylic_thickness + washer_height + 2*board_thickness + spacer_height])
+        spacer();
+    translate([x,y,acrylic_thickness + washer_height + 3*board_thickness + 2*spacer_height])
+        washer();
+}
 
-    //top();
+translate([-board_length/2, board_height/2, 25]) rotate(a=[180,0,0]) {
+    // the boards
+    translate([ 0, 0, acrylic_thickness + washer_height]) top_board_3D();
+    translate([ 0, 0, acrylic_thickness + washer_height + board_thickness + spacer_height])
+        color([0.2,0.2,0.2]) lasercut(board_thickness) board();
+    translate([ 0, 0, acrylic_thickness + washer_height + 2*board_thickness + 2*spacer_height])
+        color([0.2,0.2,0.2]) lasercut(board_thickness) board();
+
+    // the fasteners
+    for( _y = [ 0 : 1 : 1 ] )
+        for( _x = [ 0 : 1 : 3 ] )
+            fastener_stack(_x, _y);
+
+    // the case
     translate([ 0, 0, 0 ]) color([0.7,0.7,0.7],0.5) lasercut() top();
     translate([ 0, 0, 40 ]) color([0.7,0.7,0.7],0.5) lasercut() bottom();
 }
