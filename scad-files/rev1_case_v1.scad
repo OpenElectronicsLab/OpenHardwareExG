@@ -20,7 +20,11 @@ washer_outer_radius = 0.32 * 25.4/2;
 washer_inner_radius = 0.14 * 25.4/2;
 washer_height = 0.06 * 25.4;
 
-// Socket-headed cap screw, 6-32 thread, 1-3/4"  
+nut_width = 5/16 * 25.4;
+nut_inner_radius = 0.14 * 25.4/2;
+nut_height = 1/8 * 25.4;
+
+// Socket-headed cap screw, 6-32 thread, 1-3/4"
 cap_screw_cap_height = 0.138 * 25.4;
 cap_screw_cap_radius = 0.226 * 25.4/2;
 cap_screw_hex_key = 7/64 * 25.4;
@@ -155,12 +159,36 @@ module modified_android_shield_slots()
     drilled_slot(x3t, y3t, x3t_len, y3t_len, r=cap_clearance/2);
 }
 
+// color of the PCBs
+module boardcolor() {
+    color([0.3,0.3,0.3]) child();
+}
+
+// color of the black plastic components
+module blackplasticcolor() {
+    for (i = [0 : $children-1])
+        color([0.2,0.2,0.2]) child(i);
+}
+
+// color of the case
+module casecolor() {
+    for (i = [0 : $children-1])
+        color([0.5,0.5,0.5],0.5) child(i);
+}
+
+
 // one of the PCBs
 module board() {
     difference() {
         square([board_length, board_height]);
         screw_holes();
     }
+}
+
+// a hexagonal prism with a distance d between sides
+module hexprism(d=1, h=1) {
+    $fn=6;
+    cylinder(r=d/cos(30)/2, h=h);
 }
 
 // a hollow cylinder
@@ -173,21 +201,34 @@ module pipe(rout, rin, h) {
 
 // a plastic spacer between boards
 module spacer() {
-    color([0.1,0.1,0.1])
+    blackplasticcolor()
     pipe(spacer_outer_radius, spacer_inner_radius, spacer_height);
 }
 
 // a washer
 module washer() {
-    color([0.1,0.1,0.1])
+    blackplasticcolor()
     pipe(washer_outer_radius, washer_inner_radius, washer_height);
+}
+
+// a nut
+module nut() {
+    blackplasticcolor()
+    difference() {
+        hexprism(d=nut_width, h=nut_height);
+        translate([0, 0, -fudge])
+            cylinder(r=nut_inner_radius, h=nut_height+2*fudge);
+    }
 }
 
 // a socket-headed cap screw
 module cap_screw() {
-    color([0.1,0.1,0.1]) {
-        translate([0, 0, -cap_screw_cap_height])
+    blackplasticcolor() {
+        translate([0, 0, -cap_screw_cap_height]) difference() {
             cylinder(r=cap_screw_cap_radius, h=cap_screw_cap_height);
+            translate([0, 0, -1/3 * cap_screw_cap_height])
+                hexprism(d=cap_screw_hex_key, h=cap_screw_cap_height);
+        }
         cylinder(r=cap_screw_body_radius, h=cap_screw_body_length);
     }
 }
@@ -202,11 +243,11 @@ module touch_proof_connector(_x, _y) {
 
 // the top-most PCBs
 module top_board_3D() {
-    color([0.2,0.2,0.2]) lasercut(board_thickness) board();
+    boardcolor() lasercut(board_thickness) board();
     for( _x = [ 0 : 1 : 7 ] ) {
         color([1,0.2,0.2]) touch_proof_connector(_x, 0);
-        color([0.1,0.1,0.1]) touch_proof_connector(_x, 1);
-        color([0.1,0.1,0.1]) touch_proof_connector(_x, 2);
+        blackplasticcolor() touch_proof_connector(_x, 1);
+        blackplasticcolor() touch_proof_connector(_x, 2);
         color([0.9,0.9,0.9]) touch_proof_connector(_x, 3);
     }
     color([0.2,0.5,0.2]) touch_proof_connector(8, 1.5);
@@ -246,15 +287,17 @@ module fastener_stack(_x, _y) {
         spacer();
     translate([x,y,acrylic_thickness + washer_height + 3*board_thickness + 2*spacer_height])
         washer();
+    translate([x,y,acrylic_thickness + 2*washer_height + 3*board_thickness + 2*spacer_height])
+        nut();
 }
 
 translate([-board_length/2, board_height/2, 25]) rotate(a=[180,0,0]) {
     // the boards
     translate([ 0, 0, acrylic_thickness + washer_height]) top_board_3D();
     translate([ 0, 0, acrylic_thickness + washer_height + board_thickness + spacer_height])
-        color([0.2,0.2,0.2]) lasercut(board_thickness) board();
+        boardcolor() lasercut(board_thickness) board();
     translate([ 0, 0, acrylic_thickness + washer_height + 2*board_thickness + 2*spacer_height])
-        color([0.2,0.2,0.2]) lasercut(board_thickness) board();
+        boardcolor() lasercut(board_thickness) board();
 
     // the fasteners
     for( _y = [ 0 : 1 : 1 ] )
@@ -262,8 +305,8 @@ translate([-board_length/2, board_height/2, 25]) rotate(a=[180,0,0]) {
             fastener_stack(_x, _y);
 
     // the case
-    translate([ 0, 0, 0 ]) color([0.7,0.7,0.7],0.5) lasercut() top();
-    translate([ 0, 0, 40 ]) color([0.7,0.7,0.7],0.5) lasercut() bottom();
+    translate([ 0, 0, 0 ]) casecolor() lasercut() top();
+    translate([ 0, 0, 40 ]) casecolor() lasercut() bottom();
 }
 
 // TODO: sides
