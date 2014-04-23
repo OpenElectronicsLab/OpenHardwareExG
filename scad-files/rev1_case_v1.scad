@@ -6,12 +6,6 @@ acrylic_thickness = 3;
 fudge = 0.2;
 air_gap = 5;
 
-// origin = top_left_corner_of_the_board
-
-board_length = 197;
-board_height = 71;
-board_thickness = 0.062 * 25.4;
-
 spacer_outer_radius = 0.25 * 25.4/2;
 spacer_inner_radius = 0.14 * 25.4/2;
 spacer_height = 0.5 * 25.4;
@@ -31,6 +25,12 @@ cap_screw_hex_key = 7/64 * 25.4;
 cap_screw_body_length = 1.75 * 25.4;
 cap_screw_body_radius = 0.138 * 25.4/2;
 
+// origin = top_left_corner_of_the_board
+
+board_length = 197;
+board_height = 71;
+board_thickness = 0.062 * 25.4;
+
 in1p_height = 16;
 in1p_projection = 4.54;
 in1p_radius = (9.6/2);
@@ -46,6 +46,30 @@ screw_hole_centers_y = [ 3.5, 63.5 ];
 // size 6 screw (i.e. the larger common screw size used on computer cases).  It
 // should also work for an M3 screw (but the fit will be looser).
 screw_hole_radius = 0.1495 * 25.4 / 2;
+
+top_arduino_header_x = 133.45;
+top_arduino_header_y = 5.61;
+top_arduino_header_length = 47.015;
+top_arduino_header_breadth = 2.54;
+top_arduino_header_height = 9;
+
+bottom_arduino_header_x = 142.3146;
+bottom_arduino_header_y = 54.0732;
+bottom_arduino_header_length = 38.0746;
+bottom_arduino_header_breadth = 2.54;
+bottom_arduino_header_height = 9;
+
+spi_cap_x = 177.4654;
+spi_cap_y = 11.906;
+spi_cap_length = 6;
+spi_cap_breadth = 25;
+spi_cap_height = 10.8;
+spi_cap_tab_x = 176.4654;
+spi_cap_tab_y = 22.406;
+spi_cap_tab_length = 1;
+spi_cap_tab_breadth = 4;
+spi_cap_tab_height = 5.3;
+
 
 // a rectangle with rounded corners of radius r
 module rounded_rectangle(size = [1, 1], r = 0.1) {
@@ -177,14 +201,6 @@ module casecolor() {
 }
 
 
-// one of the PCBs
-module board() {
-    difference() {
-        square([board_length, board_height]);
-        screw_holes();
-    }
-}
-
 // a hexagonal prism with a distance d between sides
 module hexprism(d=1, h=1) {
     $fn=6;
@@ -241,16 +257,45 @@ module touch_proof_connector(_x, _y) {
         pipe(rout=in1p_radius, rin=in1p_inner_radius, h=in1p_height);
 }
 
-// the top-most PCBs
-module top_board_3D() {
-    boardcolor() lasercut(board_thickness) board();
+// one of the PCBs
+module board() {
+    boardcolor() lasercut(board_thickness)
+    difference() {
+        square([board_length, board_height]);
+        screw_holes();
+    }
+
+    blackplasticcolor()
+        translate([top_arduino_header_x, top_arduino_header_y,
+            -top_arduino_header_height])
+        cube([top_arduino_header_length, top_arduino_header_breadth,
+            top_arduino_header_height]);
+
+    blackplasticcolor()
+        translate([bottom_arduino_header_x, bottom_arduino_header_y,
+            -bottom_arduino_header_height])
+        cube([bottom_arduino_header_length, bottom_arduino_header_breadth,
+            bottom_arduino_header_height]);
+}
+
+// the top-most PCB
+module top_board() {
+    board();
     for( _x = [ 0 : 1 : 7 ] ) {
         color([1,0.2,0.2]) touch_proof_connector(_x, 0);
         blackplasticcolor() touch_proof_connector(_x, 1);
         blackplasticcolor() touch_proof_connector(_x, 2);
         color([0.9,0.9,0.9]) touch_proof_connector(_x, 3);
     }
+
     color([0.2,0.5,0.2]) touch_proof_connector(8, 1.5);
+
+    color([0.7,0.7,0.7])
+        translate([spi_cap_x, spi_cap_y, -spi_cap_height])
+        cube([spi_cap_length, spi_cap_breadth, spi_cap_height]);
+    color([0.7,0.7,0.7])
+        translate([spi_cap_tab_x, spi_cap_tab_y, -spi_cap_tab_height])
+        cube([spi_cap_tab_length, spi_cap_tab_breadth, spi_cap_tab_height]);
 }
 
 // the bottom
@@ -293,11 +338,11 @@ module fastener_stack(_x, _y) {
 
 translate([-board_length/2, board_height/2, 25]) rotate(a=[180,0,0]) {
     // the boards
-    translate([ 0, 0, acrylic_thickness + washer_height]) top_board_3D();
+    translate([ 0, 0, acrylic_thickness + washer_height]) top_board();
     translate([ 0, 0, acrylic_thickness + washer_height + board_thickness + spacer_height])
-        boardcolor() lasercut(board_thickness) board();
+        board();
     translate([ 0, 0, acrylic_thickness + washer_height + 2*board_thickness + 2*spacer_height])
-        boardcolor() lasercut(board_thickness) board();
+        board();
 
     // the fasteners
     for( _y = [ 0 : 1 : 1 ] )
