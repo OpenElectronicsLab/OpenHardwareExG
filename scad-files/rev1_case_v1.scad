@@ -25,20 +25,21 @@ cap_screw_hex_key = 7/64 * 25.4;
 cap_screw_body_length = 1.75 * 25.4;
 cap_screw_body_radius = 0.138 * 25.4/2;
 
+touchproof_height = 16;
+touchproof_projection = 4.54;
+touchproof_outer_radius = (9.6/2);
+touchproof_inner_radius = 4.8/2;
+touchproof_clearance = 2;
+
 // origin = top_left_corner_of_the_board
 
 board_length = 197;
 board_height = 71;
 board_thickness = 0.062 * 25.4;
 
-in1p_height = 16;
-in1p_projection = 4.54;
-in1p_radius = (9.6/2);
-in1p_inner_radius = 4.8/2;
-in1p_clearance = 2;
 in1p_center_x = 17;
 in1p_center_y = 11;
-distance_to_next_center = 15;
+distance_between_touchproof_centers = 15;
 
 screw_hole_centers_x = [ 9.5, 69.5, 114.5, 189.5 ];
 screw_hole_centers_y = [ 3.5, 63.5 ];
@@ -101,9 +102,9 @@ module drilled_hole(radius, x, y)
 
 module touch_proof_hole(_x, _y)
 {
-    x = ( in1p_center_x + (_x * distance_to_next_center));
-    y = ( in1p_center_y + (_y * distance_to_next_center));
-    drilled_hole(in1p_radius + in1p_clearance/2, x, y);
+    x = ( in1p_center_x + (_x * distance_between_touchproof_centers));
+    y = ( in1p_center_y + (_y * distance_between_touchproof_centers));
+    drilled_hole(touchproof_outer_radius + touchproof_clearance/2, x, y);
 }
 
 module touch_proof_holes()
@@ -133,54 +134,27 @@ module modified_android_shield_slots()
     // Extra clearance so the headers do not have to be precisely placed,
     // e.g. the width of the slot minus the width of the header.
     header_clearance = 2;
-    cap_clearance = 2;
 
-    // the width of a header
-    header_width = 0.1 * 25.4;
-
-    // the dimensions of the cap (i.e. ribbon cable connector), not counting
-    // the tab on the cap.
-    cap_width = 6;
-    cap_height = 25;
-    // the tab dimensions
-    tab_width = 1;
-    tab_height = 4;
-
-    // center of the first pin for this connector
-    x1_pin1 = 134.72;
-    y1_pin1 = 6.88;
-    x1_first_to_last_pin = 44.4754;
-    x1 =  x1_pin1 - (header_width + header_clearance) / 2;
-    y1 =  y1_pin1 - (header_width + header_clearance) / 2;
-    x1_len = x1_first_to_last_pin + header_width + header_clearance;
-    y1_len = header_width + header_clearance;
-
-    x2_pin1 = 143.5846;
-    y2_pin1 = 55.3432;
-    x2_first_to_last_pin = 35.5346;
-    x2 =  x2_pin1 - (header_width + header_clearance) / 2;
-    y2 =  y2_pin1 - (header_width + header_clearance) / 2;
-    x2_len = x2_first_to_last_pin + header_width + header_clearance;
-    y2_len = header_width + header_clearance;
-
-    // center of the connector
-    x3_center = 180.4654;
-    y3_center = 24.406;
-    x3 =  x3_center - (cap_width + cap_clearance)/2;
-    y3 =  y3_center - (cap_height + cap_clearance)/2;
-    x3_len = cap_width + cap_clearance;
-    y3_len = cap_height + cap_clearance;
-
-    // tab
-    x3t =  x3_center - cap_width/2 - tab_width - cap_clearance / 2;
-    y3t =  y3_center - (tab_height + cap_clearance) / 2;
-    x3t_len = tab_width + cap_clearance;
-    y3t_len = tab_height + cap_clearance;
-
-    drilled_slot(x1, y1, x1_len, y1_len, r=header_clearance/2);
-    drilled_slot(x2, y2, x2_len, y2_len, r=header_clearance/2);
-    drilled_slot(x3, y3, x3_len, y3_len, r=cap_clearance/2);
-    drilled_slot(x3t, y3t, x3t_len, y3t_len, r=cap_clearance/2);
+    drilled_slot(top_arduino_header_x - header_clearance/2,
+        top_arduino_header_y - header_clearance/2,
+        top_arduino_header_length + header_clearance,
+        top_arduino_header_breadth + header_clearance,
+        r=header_clearance/2);
+    drilled_slot(bottom_arduino_header_x - header_clearance/2,
+        bottom_arduino_header_y - header_clearance/2,
+        bottom_arduino_header_length + header_clearance,
+        bottom_arduino_header_breadth + header_clearance,
+        r=header_clearance/2);
+    drilled_slot(spi_cap_x - header_clearance/2,
+        spi_cap_y - header_clearance/2,
+        spi_cap_length + header_clearance,
+        spi_cap_breadth + header_clearance,
+        r=header_clearance/2);
+    drilled_slot(spi_cap_tab_x - header_clearance/2,
+        spi_cap_tab_y - header_clearance/2,
+        spi_cap_tab_length + header_clearance,
+        spi_cap_tab_breadth + header_clearance,
+        r=header_clearance/2);
 }
 
 // color of the PCBs
@@ -251,10 +225,11 @@ module cap_screw() {
 
 // a touch-proof connector
 module touch_proof_connector(_x, _y) {
-    x = ( in1p_center_x + (_x * distance_to_next_center));
-    y = ( in1p_center_y + (_y * distance_to_next_center));
-    translate([x,y,-in1p_projection])
-        pipe(rout=in1p_radius, rin=in1p_inner_radius, h=in1p_height);
+    x = ( in1p_center_x + (_x * distance_between_touchproof_centers));
+    y = ( in1p_center_y + (_y * distance_between_touchproof_centers));
+    translate([x,y,-touchproof_projection])
+        pipe(rout=touchproof_outer_radius, rin=touchproof_inner_radius,
+            h=touchproof_height);
 }
 
 // one of the PCBs
@@ -298,6 +273,13 @@ module top_board() {
         cube([spi_cap_tab_length, spi_cap_tab_breadth, spi_cap_tab_height]);
 }
 
+// the stack of all three boards mounted together
+module boardstack() {
+    top_board();
+    translate([ 0, 0, board_thickness + spacer_height]) board();
+    translate([ 0, 0, 2*board_thickness + 2*spacer_height]) board();
+}
+
 // the bottom
 module bottom() {
     difference() {
@@ -338,11 +320,7 @@ module fastener_stack(_x, _y) {
 
 translate([-board_length/2, board_height/2, 25]) rotate(a=[180,0,0]) {
     // the boards
-    translate([ 0, 0, acrylic_thickness + washer_height]) top_board();
-    translate([ 0, 0, acrylic_thickness + washer_height + board_thickness + spacer_height])
-        board();
-    translate([ 0, 0, acrylic_thickness + washer_height + 2*board_thickness + 2*spacer_height])
-        board();
+    translate([ 0, 0, acrylic_thickness + washer_height]) boardstack();
 
     // the fasteners
     for( _y = [ 0 : 1 : 1 ] )
