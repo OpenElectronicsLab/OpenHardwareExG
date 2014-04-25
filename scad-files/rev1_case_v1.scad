@@ -318,6 +318,12 @@ module fastener_stack(_x, _y) {
         nut();
 }
 
+// the empty case (in 3D)
+module case() {
+    translate([ 0, 0, 0 ]) casecolor() lasercut() top();
+    translate([ 0, 0, 40 ]) casecolor() lasercut() bottom();
+}
+
 translate([-board_length/2, board_height/2, 25]) rotate(a=[180,0,0]) {
     // the boards
     translate([ 0, 0, acrylic_thickness + washer_height]) boardstack();
@@ -328,8 +334,10 @@ translate([-board_length/2, board_height/2, 25]) rotate(a=[180,0,0]) {
             fastener_stack(_x, _y);
 
     // the case
-    translate([ 0, 0, 0 ]) casecolor() lasercut() top();
-    translate([ 0, 0, 40 ]) casecolor() lasercut() bottom();
+    case();
+
+    // an empty case behind the one with the boards
+    translate([-250, 0, 0]) case();
 }
 
 // TODO: sides
