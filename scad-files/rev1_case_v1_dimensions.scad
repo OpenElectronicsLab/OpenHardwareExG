@@ -6,6 +6,8 @@ include <rev1_dimensions.scad>
 // all size constants are in mm
 
 // width of the cutting tool/laser
+// See this page for a brief introduction:
+// http://blog.ponoko.com/2008/09/11/how-much-material-does-the-laser-burn-away/
 // CAUTION: This value is overridden in rev1_case_v1_pattern.scad
 // and is left as zero here so that the 3D model will show the final
 // dimensions (without the extra material that will be destroyed in the
