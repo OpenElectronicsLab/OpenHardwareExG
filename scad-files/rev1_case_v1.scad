@@ -136,8 +136,8 @@ module fastener_stack(_x, _y) {
 
 // the empty case (in 3D)
 module case() {
-    translate([ 0, 0, 0 ]) case_color() laser_cut() top();
     translate([ 0, 0, 40 ]) case_color() laser_cut() bottom();
+    translate([ 0, 0, 0 ]) case_color() laser_cut() top();
 }
 
 // hack: to include this file without rendering the 3D model, set
