@@ -72,3 +72,31 @@ spi_cap_tab_y = 22.406;
 spi_cap_tab_length = 1;
 spi_cap_tab_width = 4;
 spi_cap_tab_height = 5.3;
+
+USB_x = 187.591;
+USB_y = 14.73;
+USB_length = 16;
+USB_width = 12.2;
+USB_height = 11;
+USB_hole_width = 8.45;
+USB_hole_height = 7.78;
+USB_post_width = 5.6;
+USB_post_height = 3.18;
+
+FTDI_x = 191.87;
+FTDI_y = 31.01;
+FTDI_length = 11;
+FTDI_pitch = 2.54;
+FTDI_pin_count = 6;
+FTDI_pin_width = 0.6;
+FTDI_width = FTDI_pin_count * FTDI_pitch;
+FTDI_height = FTDI_pitch;
+
+JYMCU_x = 191.87;
+JYMCU_y = 48.79;
+JYMCU_length = 11;
+JYMCU_pitch = 2.54;
+JYMCU_pin_count = 4;
+JYMCU_pin_width = 0.6;
+JYMCU_width = JYMCU_pin_count * JYMCU_pitch;
+JYMCU_height = JYMCU_pitch;

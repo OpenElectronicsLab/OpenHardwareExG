@@ -17,7 +17,7 @@ module rounded_rectangle(size = [1, 1], r = 0.1) {
 // color of the case
 module case_color() {
     for (i = [0 : $children-1])
-        color([0.5,0.5,0.5],0.5) child(i);
+        color([0.5,0.5,0.7],0.5) child(i);
 }
 
 // the top/bottom without any holes

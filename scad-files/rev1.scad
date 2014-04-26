@@ -21,19 +21,19 @@ module pipe(rout, rin, h) {
 
 // a plastic spacer between boards
 module spacer() {
-    blackplasticcolor()
+    black_plastic_color()
     pipe(spacer_outer_radius, spacer_inner_radius, spacer_height);
 }
 
 // a washer
 module washer() {
-    blackplasticcolor()
+    black_plastic_color()
     pipe(washer_outer_radius, washer_inner_radius, washer_height);
 }
 
 // a nut
 module nut() {
-    blackplasticcolor()
+    black_plastic_color()
     difference() {
         hexprism(d=nut_width, h=nut_height);
         translate([0, 0, -fudge])
@@ -43,7 +43,7 @@ module nut() {
 
 // a socket-headed cap screw
 module cap_screw() {
-    blackplasticcolor() {
+    black_plastic_color() {
         translate([0, 0, -cap_screw_cap_height]) difference() {
             cylinder(r=cap_screw_cap_radius, h=cap_screw_cap_height);
             translate([0, 0, -1/3 * cap_screw_cap_height])
@@ -68,7 +68,7 @@ module boardcolor() {
 }
 
 // color of the black plastic components
-module blackplasticcolor() {
+module black_plastic_color() {
     for (i = [0 : $children-1])
         color([0.2,0.2,0.2]) child(i);
 }
@@ -102,14 +102,14 @@ module board() {
     }
 
     // far Arduino headers
-    blackplasticcolor()
+    black_plastic_color()
         translate([top_arduino_header_x, top_arduino_header_y,
             -top_arduino_header_height])
         cube([top_arduino_header_length, top_arduino_header_width,
             top_arduino_header_height]);
 
     // near Arduino headers
-    blackplasticcolor()
+    black_plastic_color()
         translate([bottom_arduino_header_x, bottom_arduino_header_y,
             -bottom_arduino_header_height])
         cube([bottom_arduino_header_length, bottom_arduino_header_width,
@@ -123,8 +123,8 @@ module top_board() {
     // the touch-proof connectors
     for( _x = [ 0 : 1 : 7 ] ) {
         color([1,0.2,0.2]) touch_proof_connector(_x, 0);
-        blackplasticcolor() touch_proof_connector(_x, 1);
-        blackplasticcolor() touch_proof_connector(_x, 2);
+        black_plastic_color() touch_proof_connector(_x, 1);
+        black_plastic_color() touch_proof_connector(_x, 2);
         color([0.9,0.9,0.9]) touch_proof_connector(_x, 3);
     }
     color([0.2,0.5,0.2]) touch_proof_connector(8, 1.5);
@@ -138,11 +138,50 @@ module top_board() {
         cube([spi_cap_tab_length, spi_cap_tab_width, spi_cap_tab_height]);
 }
 
+module right_angle_header(pin_count, pitch, length, pin_width) {
+    for( i = [ 1 : 1 : pin_count ] ) {
+        color([0.9,0.9,0])
+            translate([0, (i - 0.5) * pitch - pin_width/2, -pitch/2])
+            cube([length, pin_width, pin_width]);
+    }
+    black_plastic_color() translate([x, y, 0])
+        translate([pitch/2, 0, -pitch])
+        cube([pitch, pin_count * pitch, pitch]);
+}
+
+// the bottom-most PCB
+module bottom_board() {
+    board();
+
+    // USB connector
+    color([0.7,0.7,0.7]) translate([USB_x, USB_y, -USB_height])
+        difference() {
+            cube([USB_length, USB_width, USB_height]);
+            translate([USB_length/3, (USB_width - USB_hole_width)/2,
+                (USB_height - USB_hole_height)/2])
+                cube([USB_length, USB_hole_width, USB_hole_height]);
+        }
+    color([0.9,0.9,0.9]) translate([USB_x, USB_y, -USB_height])
+        translate([USB_length/3, (USB_width - USB_post_width)/2,
+            (USB_height - USB_post_height)/2])
+            cube([2/3*USB_length, USB_post_width, USB_post_height]);
+
+    // FTDI header
+    translate([FTDI_x, FTDI_y, 0])
+        right_angle_header(FTDI_pin_count, FTDI_pitch, FTDI_length,
+            FTDI_pin_width);
+
+    // JYMCU header
+    translate([JYMCU_x, JYMCU_y, 0])
+        right_angle_header(JYMCU_pin_count, JYMCU_pitch, JYMCU_length,
+            JYMCU_pin_width);
+}
+
 // the stack of all three boards mounted together
 module boardstack() {
     top_board();
     translate([ 0, 0, board_thickness + spacer_height]) board();
-    translate([ 0, 0, 2*board_thickness + 2*spacer_height]) board();
+    translate([ 0, 0, 2*board_thickness + 2*spacer_height]) bottom_board();
 }
 
 module fastener_stack(_x, _y) {
