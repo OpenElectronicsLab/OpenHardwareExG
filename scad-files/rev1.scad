@@ -144,8 +144,7 @@ module right_angle_header(pin_count, pitch, length, pin_width) {
             translate([0, (i - 0.5) * pitch - pin_width/2, -pitch/2])
             cube([length, pin_width, pin_width]);
     }
-    black_plastic_color() translate([x, y, 0])
-        translate([pitch/2, 0, -pitch])
+    black_plastic_color() translate([pitch/2, 0, -pitch])
         cube([pitch, pin_count * pitch, pitch]);
 }
 
