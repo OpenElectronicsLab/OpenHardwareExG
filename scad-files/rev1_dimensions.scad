@@ -31,7 +31,6 @@ touchproof_height = 16;
 touchproof_projection = 4.54;
 touchproof_outer_radius = (9.6/2);
 touchproof_inner_radius = 4.8/2;
-touchproof_clearance = 2;
 
 // origin = top_left_corner_of_the_board
 

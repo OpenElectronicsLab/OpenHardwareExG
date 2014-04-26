@@ -27,5 +27,10 @@ case_top_bounding_y = -air_gap - kerf/2;
 case_top_bounding_length = case_top_length + kerf;
 case_top_bounding_width = case_top_width + kerf;
 
+// Extra allowance so the parts do not have to be precisely aligned,
+// e.g. the width of the slot minus the width of the header.
+header_allowance = 1;
+touchproof_allowance = 1;
+
 // minimum gap between parts on the lasercut sheet
 part_gap = 2 + kerf;
