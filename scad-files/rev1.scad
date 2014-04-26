@@ -141,7 +141,8 @@ module top_board() {
 module right_angle_header(pin_count, pitch, length, pin_width) {
     for( i = [ 1 : 1 : pin_count ] ) {
         color([0.9,0.9,0])
-            translate([0, (i - 0.5) * pitch - pin_width/2, -pitch/2])
+            translate([0, (i - 0.5) * pitch - pin_width/2,
+                -pitch/2 - pin_width/2])
             cube([length, pin_width, pin_width]);
     }
     black_plastic_color() translate([pitch/2, 0, -pitch])
@@ -160,7 +161,7 @@ module bottom_board() {
                 (USB_height - USB_hole_height)/2])
                 cube([USB_length, USB_hole_width, USB_hole_height]);
         }
-    color([0.9,0.9,0.9]) translate([USB_x, USB_y, -USB_height])
+    black_plastic_color() translate([USB_x, USB_y, -USB_height])
         translate([USB_length/3, (USB_width - USB_post_width)/2,
             (USB_height - USB_post_height)/2])
             cube([2/3*USB_length, USB_post_width, USB_post_height]);
@@ -177,7 +178,7 @@ module bottom_board() {
 }
 
 // the stack of all three boards mounted together
-module boardstack() {
+module board_stack() {
     top_board();
     translate([ 0, 0, board_thickness + spacer_height]) board();
     translate([ 0, 0, 2*board_thickness + 2*spacer_height]) bottom_board();
@@ -196,7 +197,7 @@ module fastener_stack(_x, _y) {
 
 translate([-board_length/2, board_width/2, 25]) rotate(a=[180,0,0]) {
     // the boards
-    boardstack();
+    board_stack();
 
     // the fasteners
     for( _y = [ 0 : 1 : 1 ] )

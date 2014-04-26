@@ -146,7 +146,7 @@ render_case_model = 1;
 if (render_case_model == 1) {
     translate([-board_length/2, board_width/2, 25]) rotate(a=[180,0,0]) {
         // the boards
-        translate([ 0, 0, acrylic_thickness + washer_height]) boardstack();
+        translate([ 0, 0, acrylic_thickness + washer_height]) board_stack();
 
         // the fasteners
         for( _y = [ 0 : 1 : 1 ] )
