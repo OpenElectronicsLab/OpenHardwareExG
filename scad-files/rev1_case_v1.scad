@@ -22,21 +22,21 @@ module case_color() {
 
 // the top/bottom without any holes
 module top_blank() {
-    translate([-air_gap, -air_gap])
-        rounded_rectangle([ case_top_length, case_top_width ],
-            case_top_corner_radius);
+    translate([-air_gap - kerf/2, -air_gap - kerf/2])
+        rounded_rectangle([ case_top_length + kerf, case_top_width + kerf ],
+            case_top_corner_radius + kerf/2);
 }
 
 module drilled_slot(x, y, x_len, y_len, r=1)
 {
-    translate([ x, y ])
-        rounded_rectangle([x_len, y_len], r=r);
+    translate([ x + kerf/2, y + kerf/2 ])
+        rounded_rectangle([x_len - kerf, y_len - kerf], r=max(0.01, r-kerf));
 }
 
 module drilled_hole(radius, x, y)
 {
     translate([ x, y ])
-        circle(r=radius);
+        circle(r=radius - kerf/2);
 }
 
 module touch_proof_hole(_x, _y)
@@ -140,20 +140,25 @@ module case() {
     translate([ 0, 0, 40 ]) case_color() laser_cut() bottom();
 }
 
-translate([-board_length/2, board_width/2, 25]) rotate(a=[180,0,0]) {
-    // the boards
-    translate([ 0, 0, acrylic_thickness + washer_height]) boardstack();
+// hack: to include this file without rendering the 3D model, set
+// render_case_model=0 in the file after the include statement.
+render_case_model = 1;
+if (render_case_model == 1) {
+    translate([-board_length/2, board_width/2, 25]) rotate(a=[180,0,0]) {
+        // the boards
+        translate([ 0, 0, acrylic_thickness + washer_height]) boardstack();
 
-    // the fasteners
-    for( _y = [ 0 : 1 : 1 ] )
-        for( _x = [ 0 : 1 : 3 ] )
-            fastener_stack(_x, _y);
+        // the fasteners
+        for( _y = [ 0 : 1 : 1 ] )
+            for( _x = [ 0 : 1 : 3 ] )
+                fastener_stack(_x, _y);
 
-    // the case
-    case();
+        // the case
+        case();
 
-    // an empty case behind the one with the boards
-    translate([-250, 0, 0]) case();
+        // an empty case behind the one with the boards
+        translate([-250, 0, 0]) case();
+    }
 }
 
 // TODO: sides
