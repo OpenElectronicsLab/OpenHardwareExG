@@ -6,7 +6,7 @@ $fa = 6;
 $fs = 0.01;
 
 // all size constants are in mm
-fudge = 0.2;
+fudge = 1;
 
 spacer_outer_radius = 0.25 * 25.4/2;
 spacer_inner_radius = 0.14 * 25.4/2;
