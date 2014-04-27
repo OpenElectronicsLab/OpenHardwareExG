@@ -6,6 +6,7 @@
 include <rev1_dimensions.scad>
 
 // a hexagonal prism with a distance d between sides
+// handy for hex nuts
 module hexprism(d=1, h=1) {
     $fn=6;
     cylinder(r=d/cos(30)/2, h=h);
@@ -31,7 +32,7 @@ module washer() {
     pipe(washer_outer_radius, washer_inner_radius, washer_height);
 }
 
-// a nut
+// a hex nut
 module nut() {
     black_plastic_color()
     difference() {
@@ -44,7 +45,8 @@ module nut() {
 // a socket-headed cap screw
 module cap_screw() {
     black_plastic_color() {
-        translate([0, 0, -cap_screw_cap_height]) difference() {
+        translate([0, 0, -cap_screw_cap_height])
+        difference() {
             cylinder(r=cap_screw_cap_radius, h=cap_screw_cap_height);
             translate([0, 0, -1/3 * cap_screw_cap_height])
                 hexprism(d=cap_screw_hex_key, h=cap_screw_cap_height);
