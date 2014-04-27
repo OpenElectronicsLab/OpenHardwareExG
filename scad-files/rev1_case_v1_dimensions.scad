@@ -15,11 +15,13 @@ include <rev1_dimensions.scad>
 kerf = 0;
 
 acrylic_thickness = 3;
+
+// we want a gap between the edge of the PCB and the edge of the acrylic case
 air_gap = 5;
 
 case_top_length = air_gap + board_length + air_gap;
 case_top_width = air_gap + board_width + air_gap;
-case_top_corner_radius = 4;
+case_top_corner_radius = 2;
 
 // bounding rectangle (used for laying out the parts on the pattern)
 case_top_bounding_x = -air_gap - kerf/2;
@@ -30,7 +32,7 @@ case_top_bounding_width = case_top_width + kerf;
 // Extra allowance so the parts do not have to be precisely aligned,
 // e.g. the width of the slot minus the width of the header.
 header_allowance = 1;
-touchproof_allowance = 1;
+touchproof_allowance = 1.75;
 
 // minimum gap between parts on the lasercut sheet
 part_gap = 2 + kerf;
