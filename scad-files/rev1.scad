@@ -43,7 +43,7 @@ module nut() {
 }
 
 // a socket-headed cap screw
-module cap_screw() {
+module cap_screw(length = cap_screw_body_length) {
     black_plastic_color() {
         translate([0, 0, -cap_screw_cap_height])
         difference() {
@@ -51,7 +51,7 @@ module cap_screw() {
             translate([0, 0, -1/3 * cap_screw_cap_height])
                 hexprism(d=cap_screw_hex_key, h=cap_screw_cap_height);
         }
-        cylinder(r=cap_screw_body_radius, h=cap_screw_body_length);
+        cylinder(r=cap_screw_body_radius, h=length);
     }
 }
 
@@ -143,11 +143,12 @@ module top_board() {
 module right_angle_header(pin_count, pitch, length, pin_width) {
     for( i = [ 1 : 1 : pin_count ] ) {
         color([0.9,0.9,0])
-            translate([0, (i - 0.5) * pitch - pin_width/2,
+            translate([pitch/3,
+                (i - 0.5) * pitch - pin_width/2,
                 -pitch/2 - pin_width/2])
-            cube([length, pin_width, pin_width]);
+            cube([length - pitch/3, pin_width, pin_width]);
     }
-    black_plastic_color() translate([pitch/2, 0, -pitch])
+    black_plastic_color() translate([pitch, 0, -pitch])
         cube([pitch, pin_count * pitch, pitch]);
 }
 

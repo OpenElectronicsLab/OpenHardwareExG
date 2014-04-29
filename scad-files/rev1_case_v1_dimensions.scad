@@ -16,8 +16,11 @@ kerf = 0;
 
 acrylic_thickness = 3;
 
-// we want a gap between the edge of the PCB and the edge of the acrylic case
+// we want a gap between the edge of the PCB and the sides of the acrylic case
 air_gap = 5;
+
+// we also want a gap between the bottom board and the bottom of the case
+air_gap_bottom = 1 + washer_height + nut_height;
 
 case_top_length = air_gap + board_length + air_gap;
 case_top_width = air_gap + board_width + air_gap;
@@ -36,3 +39,13 @@ touchproof_allowance = 1.75;
 
 // minimum gap between parts on the lasercut sheet
 part_gap = 2 + kerf;
+
+// length of cap screw to use for the case
+cap_screw_body_length = (2 + 1/4) * 25.4;
+
+// position of the various layers of assembled case and boards
+case_top_z = 0;
+board_1_z = acrylic_thickness + washer_height;
+board_2_z = board_1_z + board_thickness + spacer_height;
+board_3_z = board_2_z + board_thickness + spacer_height;
+case_bottom_z = board_3_z + board_thickness + air_gap_bottom;

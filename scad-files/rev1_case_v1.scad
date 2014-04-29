@@ -120,22 +120,22 @@ module laser_cut(thickness = acrylic_thickness) {
 module fastener_stack(_x, _y) {
     x = ( screw_hole_centers_x[_x]);
     y = ( screw_hole_centers_y[_y]);
-    translate([x,y,-washer_height]) cap_screw();
-    translate([x,y,-washer_height]) washer();
-    translate([x,y,acrylic_thickness]) washer();
-    translate([x,y,acrylic_thickness + washer_height + board_thickness]) spacer();
-    translate([x,y,acrylic_thickness + washer_height + 2*board_thickness + spacer_height])
-        spacer();
-    translate([x,y,acrylic_thickness + washer_height + 3*board_thickness + 2*spacer_height])
-        washer();
-    translate([x,y,acrylic_thickness + 2*washer_height + 3*board_thickness + 2*spacer_height])
-        nut();
+    translate([x,y,case_top_z - washer_height])
+        cap_screw(cap_screw_body_length);
+    translate([x,y,case_top_z - washer_height]) washer();
+    translate([x,y,board_1_z - washer_height]) washer();
+    translate([x,y,board_2_z - spacer_height]) spacer();
+    translate([x,y,board_3_z - spacer_height]) spacer();
+    translate([x,y,board_3_z + board_thickness]) washer();
+    translate([x,y,board_3_z + board_thickness + washer_height]) nut();
+    translate([x,y,case_bottom_z + acrylic_thickness]) washer();
+    translate([x,y,case_bottom_z + acrylic_thickness + washer_height]) nut();
 }
 
 // the empty case (in 3D)
 module case() {
-    translate([ 0, 0, 40 ]) case_color() laser_cut() bottom();
-    translate([ 0, 0, 0 ]) case_color() laser_cut() top();
+    translate([ 0, 0, case_bottom_z ]) case_color() laser_cut() bottom();
+    translate([ 0, 0, case_top_z ]) case_color() laser_cut() top();
 }
 
 // hack: to include this file without rendering the 3D model, set
