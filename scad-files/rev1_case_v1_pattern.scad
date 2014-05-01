@@ -16,3 +16,12 @@ translate([-case_top_bounding_x, -case_top_bounding_y]) top();
 translate([-case_top_bounding_x,
     -case_top_bounding_y + case_top_bounding_width + part_gap])
     bottom();
+
+// add the front and back
+translate([-case_front_bounding_x,
+    -case_front_bounding_y + 2*case_top_bounding_width + 2*part_gap])
+    front();
+translate([-case_front_bounding_x,
+    -case_front_bounding_y + 2*case_top_bounding_width + 3*part_gap
+        + case_front_bounding_width])
+    front();

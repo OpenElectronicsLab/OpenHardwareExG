@@ -14,7 +14,10 @@ include <rev1_dimensions.scad>
 // cutting process).
 kerf = 0;
 
+// the thickness of the case material and the maximum thickness (taking into
+// account the expected variation in thickness from manufacturing the material)
 acrylic_thickness = 3;
+acrylic_maximum_thickness = acrylic_thickness * 1.15;
 
 // we want a gap between the edge of the PCB and the sides of the acrylic case
 air_gap = 5;
@@ -22,15 +25,38 @@ air_gap = 5;
 // we also want a gap between the bottom board and the bottom of the case
 air_gap_bottom = 1 + washer_height + nut_height;
 
-case_top_length = air_gap + board_length + air_gap;
-case_top_width = air_gap + board_width + air_gap;
+// slots should be wide enough to reliably fit the tabs
+slot_width = acrylic_maximum_thickness + 0.1;
+
+// we want a border on the outside of the slot to hold the tabs in place
+retaining_margin_width = acrylic_thickness;
+
+// position of the various layers of assembled case and boards
+case_top_z = 0;
+board_1_z = acrylic_thickness + washer_height;
+board_2_z = board_1_z + board_thickness + spacer_height;
+board_3_z = board_2_z + board_thickness + spacer_height;
+case_bottom_z = board_3_z + board_thickness + air_gap_bottom;
+
+case_top_margin = retaining_margin_width + slot_width + air_gap;
+case_top_length = case_top_margin + board_length + case_top_margin;
+case_top_width = case_top_margin + board_width + case_top_margin;
 case_top_corner_radius = 2;
 
-// bounding rectangle (used for laying out the parts on the pattern)
-case_top_bounding_x = -air_gap - kerf/2;
-case_top_bounding_y = -air_gap - kerf/2;
+case_front_length = 2 * air_gap + board_length;
+case_front_width = case_bottom_z - case_top_z - acrylic_thickness;
+case_front_corner_radius = 2;
+
+// bounding rectangles (used for laying out the parts on the pattern)
+case_top_bounding_x = -case_top_margin - kerf/2;
+case_top_bounding_y = -case_top_margin - kerf/2;
 case_top_bounding_length = case_top_length + kerf;
 case_top_bounding_width = case_top_width + kerf;
+
+case_front_bounding_x = -air_gap - kerf/2;
+case_front_bounding_y = - kerf/2;
+case_front_bounding_length = case_front_length + kerf;
+case_front_bounding_width = case_front_width + kerf;
 
 // Extra allowance so the parts do not have to be precisely aligned,
 // e.g. the width of the slot minus the width of the header.
@@ -42,10 +68,3 @@ part_gap = 2 + kerf;
 
 // length of cap screw to use for the case
 cap_screw_body_length = (2 + 1/4) * 25.4;
-
-// position of the various layers of assembled case and boards
-case_top_z = 0;
-board_1_z = acrylic_thickness + washer_height;
-board_2_z = board_1_z + board_thickness + spacer_height;
-board_3_z = board_2_z + board_thickness + spacer_height;
-case_bottom_z = board_3_z + board_thickness + air_gap_bottom;

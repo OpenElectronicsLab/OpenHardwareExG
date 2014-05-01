@@ -24,7 +24,7 @@ module case_color() {
 
 // the top/bottom without any holes
 module top_blank() {
-    translate([-air_gap - kerf/2, -air_gap - kerf/2])
+    translate([-case_top_margin - kerf/2, -case_top_margin - kerf/2])
         rounded_rectangle([ case_top_length + kerf, case_top_width + kerf ],
             case_top_corner_radius + kerf/2);
 }
@@ -112,6 +112,12 @@ module top() {
     }
 }
 
+module front() {
+    translate([ -air_gap - kerf/2, - kerf/2])
+        rounded_rectangle([ case_front_length + kerf, case_front_width + kerf ],
+            case_front_corner_radius + kerf/2);
+}
+
 // cut the given 2D design out of a sheet of material
 module laser_cut(thickness = acrylic_thickness) {
     linear_extrude(height = thickness) child();
@@ -135,7 +141,14 @@ module fastener_stack(_x, _y) {
 // the empty case (in 3D)
 module case() {
     translate([ 0, 0, case_bottom_z ]) case_color() laser_cut() bottom();
+    translate([ 0, -air_gap, case_top_z + acrylic_thickness])
+        rotate(a=[90,0,0]) case_color() laser_cut()
+        front();
     translate([ 0, 0, case_top_z ]) case_color() laser_cut() top();
+    translate([ 0, board_width + air_gap + acrylic_thickness,
+        case_top_z + acrylic_thickness])
+        rotate(a=[90,0,0]) case_color() laser_cut()
+        front();
 }
 
 // hack: to include this file without rendering the 3D model, set
@@ -155,7 +168,7 @@ if (render_case_model == 1) {
         case();
 
         // an empty case behind the one with the boards
-        translate([-250, 0, 0]) case();
+        translate([-300, 0, 0]) case();
     }
 }
 
