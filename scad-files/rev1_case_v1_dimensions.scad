@@ -20,7 +20,7 @@ acrylic_thickness = 3;
 acrylic_maximum_thickness = acrylic_thickness * 1.15;
 
 // we want a gap between the edge of the PCB and the sides of the acrylic case
-air_gap = 5;
+air_gap = 1;
 
 // we also want a gap between the bottom board and the bottom of the case
 air_gap_bottom = 1 + washer_height + nut_height;
@@ -45,7 +45,11 @@ case_top_corner_radius = 2;
 
 case_front_length = 2 * air_gap + board_length;
 case_front_width = case_bottom_z - case_top_z - acrylic_thickness;
-case_front_corner_radius = 2;
+case_front_corner_radius = 0.5;
+
+case_side_length = 2 * case_top_margin + board_width;
+case_side_width = case_bottom_z - case_top_z - acrylic_thickness;
+case_side_corner_radius = 0.5;
 
 // bounding rectangles (used for laying out the parts on the pattern)
 case_top_bounding_x = -case_top_margin - kerf/2;
@@ -58,10 +62,18 @@ case_front_bounding_y = - kerf/2;
 case_front_bounding_length = case_front_length + kerf;
 case_front_bounding_width = case_front_width + kerf;
 
+case_side_bounding_x = -case_top_margin - kerf/2;
+case_side_bounding_y = - kerf/2;
+case_side_bounding_length = case_side_length + kerf;
+case_side_bounding_width = case_side_width + kerf;
+
 // Extra allowance so the parts do not have to be precisely aligned,
 // e.g. the width of the slot minus the width of the header.
-header_allowance = 1;
+header_allowance = 1.75;
 touchproof_allowance = 1.75;
+USB_allowance = 1.75;
+FTDI_allowance = header_allowance;
+JYMCU_allowance = header_allowance;
 
 // minimum gap between parts on the lasercut sheet
 part_gap = 2 + kerf;

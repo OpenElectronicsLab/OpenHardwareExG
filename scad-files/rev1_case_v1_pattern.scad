@@ -25,3 +25,13 @@ translate([-case_front_bounding_x,
     -case_front_bounding_y + 2*case_top_bounding_width + 3*part_gap
         + case_front_bounding_width])
     front();
+
+// add the sides
+translate([-case_side_bounding_x,
+    -case_side_bounding_y + 2*case_top_bounding_width + 4*part_gap
+        + 2*case_front_bounding_width])
+    left_side();
+translate([-case_side_bounding_x + case_side_bounding_length + part_gap,
+    -case_side_bounding_y + 2*case_top_bounding_width + 4*part_gap
+        + 2*case_front_bounding_width])
+    right_side();

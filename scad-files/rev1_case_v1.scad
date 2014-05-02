@@ -118,6 +118,43 @@ module front() {
             case_front_corner_radius + kerf/2);
 }
 
+module side_blank() {
+    translate([ -case_top_margin - kerf/2, - kerf/2])
+        rounded_rectangle([ case_side_length + kerf, case_side_width + kerf ],
+            case_side_corner_radius + kerf/2);
+}
+
+module left_side() {
+    side_blank();
+}
+
+module right_side() {
+    difference() {
+        side_blank();
+        drilled_slot(
+            board_width - USB_y - USB_width - USB_allowance/2,
+            board_3_z - case_top_z - acrylic_thickness - USB_height
+                - USB_allowance/2,
+            USB_width + USB_allowance,
+            USB_height + USB_allowance,
+            r=USB_allowance/2);
+        drilled_slot(
+            board_width - FTDI_y - FTDI_width - FTDI_allowance/2,
+            board_3_z - case_top_z - acrylic_thickness - FTDI_height
+                - FTDI_allowance/2,
+            FTDI_width + FTDI_allowance,
+            FTDI_height + FTDI_allowance,
+            r=FTDI_allowance/2);
+        drilled_slot(
+            board_width - JYMCU_y - JYMCU_width - JYMCU_allowance/2,
+            board_3_z - case_top_z - acrylic_thickness - JYMCU_height
+                - JYMCU_allowance/2,
+            JYMCU_width + JYMCU_allowance,
+            JYMCU_height + JYMCU_allowance,
+            r=JYMCU_allowance/2);
+    }
+}
+
 // cut the given 2D design out of a sheet of material
 module laser_cut(thickness = acrylic_thickness) {
     linear_extrude(height = thickness) child();
@@ -140,15 +177,37 @@ module fastener_stack(_x, _y) {
 
 // the empty case (in 3D)
 module case() {
+    // draw the case roughly back to front to work around the absence of
+    // z-sorting in the 2013 version of OpenSCAD
+
+    // bottom
     translate([ 0, 0, case_bottom_z ]) case_color() laser_cut() bottom();
+
+    // back
     translate([ 0, -air_gap, case_top_z + acrylic_thickness])
         rotate(a=[90,0,0]) case_color() laser_cut()
         front();
-    translate([ 0, 0, case_top_z ]) case_color() laser_cut() top();
+
+    // left side
+    translate([-air_gap - acrylic_thickness, 0,
+        case_top_z + acrylic_thickness])
+        rotate(a=[90,0,90]) case_color() laser_cut()
+        left_side();
+
+    // front
     translate([ 0, board_width + air_gap + acrylic_thickness,
         case_top_z + acrylic_thickness])
         rotate(a=[90,0,0]) case_color() laser_cut()
         front();
+
+    // right side
+    translate([ board_length + air_gap + acrylic_thickness, board_width,
+        case_top_z + acrylic_thickness])
+        rotate(a=[90,0,-90]) case_color() laser_cut()
+        right_side();
+
+    // top
+    translate([ 0, 0, case_top_z ]) case_color() laser_cut() top();
 }
 
 // hack: to include this file without rendering the 3D model, set
@@ -156,6 +215,9 @@ module case() {
 render_case_model = 1;
 if (render_case_model == 1) {
     translate([-board_length/2, board_width/2, 25]) rotate(a=[180,0,0]) {
+        // an empty case behind the one with the boards
+        translate([-300, 0, 0]) case();
+
         // the boards
         translate([ 0, 0, acrylic_thickness + washer_height]) board_stack();
 
@@ -166,9 +228,6 @@ if (render_case_model == 1) {
 
         // the case
         case();
-
-        // an empty case behind the one with the boards
-        translate([-300, 0, 0]) case();
     }
 }
 
