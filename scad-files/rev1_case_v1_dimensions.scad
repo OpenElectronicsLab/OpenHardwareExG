@@ -26,10 +26,10 @@ air_gap = 1;
 air_gap_bottom = 1 + washer_height + nut_height;
 
 // slots should be wide enough to reliably fit the tabs
-slot_width = acrylic_maximum_thickness + 0.1;
+tab_slot_width = acrylic_maximum_thickness + 0.1;
 
 // we want a border on the outside of the slot to hold the tabs in place
-retaining_margin_width = acrylic_thickness;
+retaining_margin_width = acrylic_thickness/2;
 
 // position of the various layers of assembled case and boards
 case_top_z = 0;
@@ -38,7 +38,7 @@ board_2_z = board_1_z + board_thickness + spacer_height;
 board_3_z = board_2_z + board_thickness + spacer_height;
 case_bottom_z = board_3_z + board_thickness + air_gap_bottom;
 
-case_top_margin = retaining_margin_width + slot_width + air_gap;
+case_top_margin = retaining_margin_width + tab_slot_width + air_gap;
 case_top_length = case_top_margin + board_length + case_top_margin;
 case_top_width = case_top_margin + board_width + case_top_margin;
 case_top_corner_radius = 2;
@@ -80,3 +80,5 @@ part_gap = 2 + kerf;
 
 // length of cap screw to use for the case
 cap_screw_body_length = (2 + 1/4) * 25.4;
+
+tab_width = 2 * acrylic_thickness;

@@ -22,11 +22,35 @@ module case_color() {
         color([0.5,0.5,0.7], transparency) child(i);
 }
 
-// the top/bottom without any holes
+// the top/bottom with their shared holes
 module top_blank() {
-    translate([-case_top_margin - kerf/2, -case_top_margin - kerf/2])
-        rounded_rectangle([ case_top_length + kerf, case_top_width + kerf ],
-            case_top_corner_radius + kerf/2);
+    difference() {
+        translate([-case_top_margin - kerf/2, -case_top_margin - kerf/2])
+            rounded_rectangle([ case_top_length + kerf, case_top_width + kerf ],
+                case_top_corner_radius + kerf/2);
+        screw_holes();
+
+        // top row of tab slots
+        translate([-air_gap, -air_gap - acrylic_thickness/2])
+            at_tab_centers(board_length + 2 * air_gap, [1,0])
+            tab_slot(tab_width,tab_slot_width,tab_slot_width/6);
+
+        // bottom row of tab slots
+        translate([-air_gap, board_width + air_gap + acrylic_thickness/2])
+            at_tab_centers(board_length + 2 * air_gap, [1,0])
+            tab_slot(tab_width,tab_slot_width,tab_slot_width/6);
+
+        // left row of tab slots
+        translate([-air_gap - acrylic_thickness/2, -case_top_margin])
+            at_tab_centers(case_top_width, [0,1])
+            rotate(90) tab_slot(tab_width,tab_slot_width,tab_slot_width/6);
+
+        // right row of tab slots
+        translate([ board_length + air_gap + acrylic_thickness/2,
+            -case_top_margin])
+            at_tab_centers(case_top_width, [0,1])
+            rotate(90) tab_slot(tab_width,tab_slot_width,tab_slot_width/6);
+    }
 }
 
 module drilled_slot(x, y, x_len, y_len, r=1)
@@ -39,6 +63,23 @@ module drilled_hole(radius, x, y)
 {
     translate([ x, y ])
         circle(r=radius - kerf/2);
+}
+
+// A slot for a tab, with semicircular cutouts for strain relief in the
+// corners.
+// note: x and y are for the center of the slot (easier to reason about
+// for slots with different orientations)
+module tab_slot(length, width, r_relief) {
+    translate([-length/2 + kerf/2, -width/2 + kerf/2])
+        square([length - kerf, width - kerf]);
+    translate([-length/2, width/2 - r_relief])
+        circle(r_relief - kerf/2);
+    translate([-length/2, -width/2 + r_relief])
+        circle(r_relief - kerf/2);
+    translate([length/2, width/2 - r_relief])
+        circle(r_relief - kerf/2);
+    translate([length/2, -width/2 + r_relief])
+        circle(r_relief - kerf/2);
 }
 
 module touch_proof_hole(_x, _y)
@@ -94,19 +135,32 @@ module modified_android_shield_slots()
         r=header_allowance/2);
 }
 
+// Places children and the centers of a line of tabs starting from [0,0] and
+// extending to a distance of length in direction direction.
+module at_tab_centers(length, direction=[1,0]) {
+    // fit as many tabs as possible (assuming a gap on each side of the tabs)
+    num_tabs = floor((length - tab_width) / (2*tab_width));
+    // subtract out the tab widths to find the gap width.
+    gap_width = (length - tab_width * num_tabs) / (num_tabs + 1);
+    for (j = [0 : num_tabs-1]) {
+        translate(direction*(gap_width + tab_width/2 + j*(tab_width + gap_width))) {
+        //translate(direction*j) {
+            for (i = [0 : $children-1]) {
+                child(i);
+            }
+        }
+    }
+}
+
 // the bottom
 module bottom() {
-    difference() {
-        top_blank();
-        screw_holes();
-    }
+    top_blank();
 }
 
 // the top
 module top() {
     difference() {
         top_blank();
-        screw_holes();
         touch_proof_holes();
         modified_android_shield_slots();
     }
@@ -119,9 +173,21 @@ module front() {
 }
 
 module side_blank() {
-    translate([ -case_top_margin - kerf/2, - kerf/2])
-        rounded_rectangle([ case_side_length + kerf, case_side_width + kerf ],
-            case_side_corner_radius + kerf/2);
+    difference() {
+        translate([ -case_top_margin - kerf/2, - kerf/2])
+            rounded_rectangle([ case_side_length + kerf, case_side_width + kerf ],
+                case_side_corner_radius + kerf/2);
+
+        // left row of tab slots
+        translate([-air_gap - acrylic_thickness/2, 0])
+            at_tab_centers(case_side_width, [0,1])
+            rotate(90) tab_slot(tab_width,tab_slot_width,tab_slot_width/6);
+
+        // right row of tab slots
+        translate([ board_width + air_gap + acrylic_thickness/2, 0])
+            at_tab_centers(case_side_width, [0,1])
+            rotate(90) tab_slot(tab_width,tab_slot_width,tab_slot_width/6);
+    }
 }
 
 module left_side() {
@@ -230,6 +296,3 @@ if (render_case_model == 1) {
         case();
     }
 }
-
-// TODO: sides
-// TODO: figure out how sides will fit together
