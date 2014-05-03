@@ -6,7 +6,7 @@ include <rev1_dimensions.scad>
 // all size constants are in mm
 
 // width of the cutting tool/laser
-// See this page for a brief introduction:
+// See thi page for a brief introduction:
 // http://blog.ponoko.com/2008/09/11/how-much-material-does-the-laser-burn-away/
 // CAUTION: This value is overridden in rev1_case_v1_pattern.scad
 // and is left as zero here so that the 3D model will show the final
@@ -42,10 +42,10 @@ tab_relief_radius = tab_slot_relief_radius;
 retaining_margin_width = acrylic_thickness/2;
 
 //
-vent_radius = 2;
-vent_spacing = 2;
-vent_sides_margin = 8;
-vent_bottom_margin = 12;
+vent_radius = 3;
+vent_spacing = 3;
+vent_sides_margin = 10;
+vent_bottom_margin = 20;
 
 // position of the various layers of assembled case and boards
 case_top_z = 0;
