@@ -14,6 +14,9 @@ include <rev1_dimensions.scad>
 // cutting process).
 kerf = 0;
 
+// offset the pieces slightly so that the screws will hold them together firmly
+compression_gap = 0.1;
+
 // the thickness of the case material and the maximum thickness (taking into
 // account the expected variation in thickness from manufacturing the material)
 acrylic_thickness = 3;
@@ -51,11 +54,11 @@ case_top_width = case_top_margin + board_width + case_top_margin;
 case_top_corner_radius = 2;
 
 case_front_length = 2 * air_gap + board_length;
-case_front_width = case_bottom_z - case_top_z - acrylic_thickness;
+case_front_width = case_bottom_z - case_top_z - acrylic_thickness - compression_gap;
 case_front_corner_radius = 0.5;
 
 case_side_length = 2 * case_top_margin + board_width;
-case_side_width = case_bottom_z - case_top_z - acrylic_thickness;
+case_side_width = case_bottom_z - case_top_z - acrylic_thickness - compression_gap;
 case_side_corner_radius = 0.5;
 
 // bounding rectangles (used for laying out the parts on the pattern)
@@ -65,14 +68,14 @@ case_top_bounding_length = case_top_length + kerf;
 case_top_bounding_width = case_top_width + kerf;
 
 case_front_bounding_x = -air_gap - tab_length - kerf/2;
-case_front_bounding_y = -tab_length - kerf/2;
+case_front_bounding_y = -tab_length -compression_gap - kerf/2;
 case_front_bounding_length = case_front_length + 2*tab_length + kerf;
-case_front_bounding_width = case_front_width + 2*tab_length + kerf;
+case_front_bounding_width = case_front_width + 2*tab_length + compression_gap + kerf;
 
 case_side_bounding_x = -case_top_margin - kerf/2;
 case_side_bounding_y = -tab_length - kerf/2;
 case_side_bounding_length = case_side_length + kerf;
-case_side_bounding_width = case_side_width + 2*tab_length + kerf;
+case_side_bounding_width = case_side_width + 2*tab_length + compression_gap + kerf;
 
 // Extra allowance so the parts do not have to be precisely aligned,
 // e.g. the width of the slot minus the width of the header.

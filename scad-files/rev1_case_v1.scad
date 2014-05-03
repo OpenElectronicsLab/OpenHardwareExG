@@ -207,7 +207,7 @@ module front() {
             // top tabs
             translate([-air_gap, 0])
                 at_tab_centers(board_length + 2 * air_gap, direction_x)
-                rotate(180) tab(tab_width);
+                rotate(180) tab(tab_width, tab_length+compression_gap);
 
             // bottom tabs
             translate([-air_gap, case_front_width])
@@ -215,12 +215,14 @@ module front() {
                 tab(tab_width);
 
             // left tabs
-            translate([-air_gap, 0])
+            translate([-air_gap,
+                       (-compression_gap/2)+(-tab_slot_length_allowance/4)])
                 at_tab_centers(case_front_width, direction_y)
                 rotate(90) tab(tab_width);
 
             // right tabs
-            translate([board_length + air_gap, 0])
+            translate([board_length + air_gap,
+                       (-compression_gap/2)+(-tab_slot_length_allowance/4)])
                 at_tab_centers(case_front_width, direction_y)
                 rotate(270) tab(tab_width);
         }
@@ -236,12 +238,14 @@ module front() {
             tab_relief(tab_width);
 
         // left tab relief
-        translate([-air_gap, 0])
+        translate([-air_gap,
+                   (-compression_gap/2)+(-tab_slot_length_allowance/4)])
             at_tab_centers(case_front_width, direction_y)
             rotate(90) tab_relief(tab_width);
 
         // right tab relief
-        translate([board_length + air_gap, 0])
+        translate([board_length + air_gap,
+                   (-compression_gap/2)+(-tab_slot_length_allowance/4)])
             at_tab_centers(case_front_width, direction_y)
             rotate(270) tab_relief(tab_width);
     }
@@ -264,7 +268,7 @@ module side_blank() {
             // bottom tabs
             translate([-case_top_margin, case_side_width])
                 at_tab_centers(case_top_width, direction_x)
-                tab(tab_width);
+                tab(tab_width, tab_length+compression_gap);
         }
 
         // top tab relief
@@ -278,13 +282,15 @@ module side_blank() {
             tab_relief(tab_width);
 
         // left row of tab slots
-        translate([-air_gap - acrylic_thickness/2, 0])
+        translate([-air_gap - acrylic_thickness/2,
+                   (compression_gap/2)+(tab_slot_length_allowance/4)])
             at_tab_centers(case_side_width, direction_y)
             rotate(90)
             tab_slot(tab_width,tab_slot_width,tab_slot_relief_radius);
 
         // right row of tab slots
-        translate([ board_width + air_gap + acrylic_thickness/2, 0])
+        translate([ board_width + air_gap + acrylic_thickness/2,
+                   (compression_gap/2)+(tab_slot_length_allowance/4)])
             at_tab_centers(case_side_width, direction_y)
             rotate(90)
             tab_slot(tab_width,tab_slot_width,tab_slot_relief_radius);
@@ -351,7 +357,7 @@ module case() {
     translate([ 0, 0, case_bottom_z ]) case_color() laser_cut() bottom();
 
     // back
-    translate([ 0, -air_gap, case_top_z + acrylic_thickness])
+    translate([ 0, -air_gap, case_top_z + acrylic_thickness + compression_gap])
         rotate(a=[90,0,0]) case_color() laser_cut()
         front();
 
@@ -363,7 +369,7 @@ module case() {
 
     // front
     translate([ 0, board_width + air_gap + acrylic_thickness,
-        case_top_z + acrylic_thickness])
+        case_top_z + acrylic_thickness + compression_gap])
         rotate(a=[90,0,0]) case_color() laser_cut()
         front();
 
