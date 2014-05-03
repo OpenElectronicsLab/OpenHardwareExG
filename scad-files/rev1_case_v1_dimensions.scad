@@ -20,18 +20,19 @@ acrylic_thickness = 3;
 acrylic_maximum_thickness = acrylic_thickness * 1.15;
 
 // we want a gap between the edge of the PCB and the sides of the acrylic case
-air_gap = 1;
+air_gap = 1.5;
 
 // we also want a gap between the bottom board and the bottom of the case
-air_gap_bottom = 1 + washer_height + nut_height;
+gap_between_nut_and_bottom_acrylic = 2;
+air_gap_bottom = washer_height + nut_height + gap_between_nut_and_bottom_acrylic;
 
 // slots should be wide enough to reliably fit the tabs
 tab_slot_width = acrylic_maximum_thickness + 0.1;
 tab_slot_relief_radius = tab_slot_width/6;
-tab_slot_length_allowance = 0.1;
+tab_slot_length_allowance = 0.2;
 
 tab_corner_radius = 0.5;
-tab_length = acrylic_thickness + 0.2;
+tab_length = acrylic_thickness + 0.2; //TODO: shorten tab, round out relief
 tab_relief_radius = tab_slot_relief_radius;
 
 // we want a border on the outside of the slot to hold the tabs in place
@@ -39,7 +40,7 @@ retaining_margin_width = acrylic_thickness/2;
 
 // position of the various layers of assembled case and boards
 case_top_z = 0;
-board_1_z = acrylic_thickness + washer_height;
+board_1_z = case_top_z + acrylic_thickness + washer_height;
 board_2_z = board_1_z + board_thickness + spacer_height;
 board_3_z = board_2_z + board_thickness + spacer_height;
 case_bottom_z = board_3_z + board_thickness + air_gap_bottom;
