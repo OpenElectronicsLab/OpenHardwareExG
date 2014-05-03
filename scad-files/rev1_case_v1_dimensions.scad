@@ -44,8 +44,8 @@ retaining_margin_width = acrylic_thickness/2;
 //
 vent_radius = 2;
 vent_spacing = 2;
-ventilation_sides_margin = 8;
-ventilation_bottom_margin = 12;
+vent_sides_margin = 8;
+vent_bottom_margin = 12;
 
 // position of the various layers of assembled case and boards
 case_top_z = 0;

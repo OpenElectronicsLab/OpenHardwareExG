@@ -144,7 +144,7 @@ module modified_android_shield_slots()
         r=header_allowance/2);
 }
 
-module ventilation_grid(length, width) {
+module vent_grid(length, width) {
     x_step = ((vent_radius*2) + vent_spacing);
     y_step = ((sqrt(3)/2) * ((vent_radius*2) + vent_spacing));
 
@@ -215,9 +215,9 @@ module top_blank() {
 module bottom() {
     difference() {
         top_blank();
-        translate([ventilation_bottom_margin,ventilation_bottom_margin])
-        ventilation_grid(board_length - (2*ventilation_bottom_margin),
-                         board_width - (2*ventilation_bottom_margin));
+        translate([vent_bottom_margin,vent_bottom_margin])
+        vent_grid(board_length - (2*vent_bottom_margin),
+                         board_width - (2*vent_bottom_margin));
     }
 }
 
@@ -284,10 +284,10 @@ module front() {
             at_tab_centers(case_front_width, direction_y)
             rotate(270) tab_relief(tab_width);
 
-        // ventilation
-        translate([ventilation_sides_margin,ventilation_sides_margin])
-        ventilation_grid(case_front_length - (2*ventilation_sides_margin),
-                         case_front_width - (2*ventilation_sides_margin));
+        // vent
+        translate([vent_sides_margin,vent_sides_margin])
+        vent_grid(case_front_length - (2*vent_sides_margin),
+                         case_front_width - (2*vent_sides_margin));
     }
 }
 
