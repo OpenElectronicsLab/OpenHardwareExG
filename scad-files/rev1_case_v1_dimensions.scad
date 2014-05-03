@@ -86,6 +86,7 @@ JYMCU_allowance = header_allowance;
 part_gap = 2 + kerf;
 
 // length of cap screw to use for the case
+// if 2 or 2.25 inch screws are hard to find, search for threaded nylon rod
 cap_screw_body_length = (2 + 1/4) * 25.4;
 
 tab_width = 2 * acrylic_thickness;
