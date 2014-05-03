@@ -130,9 +130,12 @@ module modified_android_shield_slots()
         r=header_allowance/2);
 }
 
+direction_x = [1,0];
+direction_y = [0,1];
+
 // Places children and the centers of a line of tabs starting from [0,0] and
 // extending to a distance of length in direction direction.
-module at_tab_centers(length, direction=[1,0]) {
+module at_tab_centers(length, direction=direction_x) {
     // fit as many tabs as possible (assuming a gap on each side of the tabs)
     num_tabs = floor((length - tab_width) / (2*tab_width));
     // subtract out the tab widths to find the gap width.
@@ -157,23 +160,23 @@ module top_blank() {
 
         // top row of tab slots
         translate([-air_gap, -air_gap - acrylic_thickness/2])
-            at_tab_centers(board_length + 2 * air_gap, [1,0])
+            at_tab_centers(board_length + 2 * air_gap, direction_x)
             tab_slot(tab_width,tab_slot_width,tab_slot_relief_radius);
 
         // bottom row of tab slots
         translate([-air_gap, board_width + air_gap + acrylic_thickness/2])
-            at_tab_centers(board_length + 2 * air_gap, [1,0])
+            at_tab_centers(board_length + 2 * air_gap, direction_x)
             tab_slot(tab_width,tab_slot_width,tab_slot_relief_radius);
 
         // left row of tab slots
         translate([-air_gap - acrylic_thickness/2, -case_top_margin])
-            at_tab_centers(case_top_width, [0,1])
+            at_tab_centers(case_top_width, direction_y)
             rotate(90) tab_slot(tab_width,tab_slot_width,tab_slot_relief_radius);
 
         // right row of tab slots
         translate([ board_length + air_gap + acrylic_thickness/2,
             -case_top_margin])
-            at_tab_centers(case_top_width, [0,1])
+            at_tab_centers(case_top_width, direction_y)
             rotate(90) tab_slot(tab_width,tab_slot_width,tab_slot_relief_radius);
     }
 }
@@ -203,43 +206,43 @@ module front() {
 
             // top tabs
             translate([-air_gap, 0])
-                at_tab_centers(board_length + 2 * air_gap, [1,0])
+                at_tab_centers(board_length + 2 * air_gap, direction_x)
                 rotate(180) tab(tab_width);
 
             // bottom tabs
             translate([-air_gap, case_front_width])
-                at_tab_centers(board_length + 2 * air_gap, [1,0])
+                at_tab_centers(board_length + 2 * air_gap, direction_x)
                 tab(tab_width);
 
             // left tabs
             translate([-air_gap, 0])
-                at_tab_centers(case_front_width, [0,1])
+                at_tab_centers(case_front_width, direction_y)
                 rotate(90) tab(tab_width);
 
             // right tabs
             translate([board_length + air_gap, 0])
-                at_tab_centers(case_front_width, [0,1])
+                at_tab_centers(case_front_width, direction_y)
                 rotate(270) tab(tab_width);
         }
 
         // top tab relief
         translate([-air_gap, 0])
-            at_tab_centers(board_length + 2 * air_gap, [1,0])
+            at_tab_centers(board_length + 2 * air_gap, direction_x)
             rotate(180) tab_relief(tab_width);
 
         // bottom tab relief
         translate([-air_gap, case_front_width])
-            at_tab_centers(board_length + 2 * air_gap, [1,0])
+            at_tab_centers(board_length + 2 * air_gap, direction_x)
             tab_relief(tab_width);
 
         // left tab relief
         translate([-air_gap, 0])
-            at_tab_centers(case_front_width, [0,1])
+            at_tab_centers(case_front_width, direction_y)
             rotate(90) tab_relief(tab_width);
 
         // right tab relief
         translate([board_length + air_gap, 0])
-            at_tab_centers(case_front_width, [0,1])
+            at_tab_centers(case_front_width, direction_y)
             rotate(270) tab_relief(tab_width);
     }
 }
@@ -255,34 +258,34 @@ module side_blank() {
 
             // top tabs
             translate([-case_top_margin, 0])
-                at_tab_centers(case_top_width, [1,0])
+                at_tab_centers(case_top_width, direction_x)
                 rotate(180) tab(tab_width);
 
             // bottom tabs
             translate([-case_top_margin, case_side_width])
-                at_tab_centers(case_top_width, [1,0])
+                at_tab_centers(case_top_width, direction_x)
                 tab(tab_width);
         }
 
         // top tab relief
         translate([-case_top_margin, 0])
-            at_tab_centers(case_top_width, [1,0])
+            at_tab_centers(case_top_width, direction_x)
             rotate(180) tab_relief(tab_width);
 
         // bottom tab relief
         translate([-case_top_margin, case_side_width])
-            at_tab_centers(case_top_width, [1,0])
+            at_tab_centers(case_top_width, direction_x)
             tab_relief(tab_width);
 
         // left row of tab slots
         translate([-air_gap - acrylic_thickness/2, 0])
-            at_tab_centers(case_side_width, [0,1])
+            at_tab_centers(case_side_width, direction_y)
             rotate(90)
             tab_slot(tab_width,tab_slot_width,tab_slot_relief_radius);
 
         // right row of tab slots
         translate([ board_width + air_gap + acrylic_thickness/2, 0])
-            at_tab_centers(case_side_width, [0,1])
+            at_tab_centers(case_side_width, direction_y)
             rotate(90)
             tab_slot(tab_width,tab_slot_width,tab_slot_relief_radius);
     }
