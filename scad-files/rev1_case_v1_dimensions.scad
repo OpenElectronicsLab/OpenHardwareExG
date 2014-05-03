@@ -31,11 +31,11 @@ air_gap_bottom = washer_height + nut_height + gap_between_nut_and_bottom_acrylic
 
 // slots should be wide enough to reliably fit the tabs
 tab_slot_width = acrylic_maximum_thickness + 0.1;
-tab_slot_relief_radius = tab_slot_width/6;
+tab_slot_relief_radius = 0.35;
 tab_slot_length_allowance = 0.2;
 
 tab_corner_radius = 0.5;
-tab_length = acrylic_thickness + 0.2; //TODO: shorten tab, round out relief
+tab_length = acrylic_thickness - 0.2;
 tab_relief_radius = tab_slot_relief_radius;
 
 // we want a border on the outside of the slot to hold the tabs in place

@@ -42,14 +42,14 @@ module tab_slot(length, width, r_relief) {
     _length = length + tab_slot_length_allowance;
     translate([-_length/2 + kerf/2, -width/2 + kerf/2])
         square([_length - kerf, width - kerf]);
-    translate([-_length/2, width/2 - r_relief])
-        circle(r_relief - kerf/2);
-    translate([-_length/2, -width/2 + r_relief])
-        circle(r_relief - kerf/2);
-    translate([_length/2, width/2 - r_relief])
-        circle(r_relief - kerf/2);
-    translate([_length/2, -width/2 + r_relief])
-        circle(r_relief - kerf/2);
+    translate([-_length/2, width/2])
+        scale([1,-1]) rotate(90) tab_relief_notch();
+    translate([-_length/2, -width/2])
+        rotate(90) tab_relief_notch();
+    translate([_length/2, width/2])
+        rotate(270) tab_relief_notch();
+    translate([_length/2, -width/2])
+        scale([1,-1]) rotate(270) tab_relief_notch();
 }
 
 // A tab
