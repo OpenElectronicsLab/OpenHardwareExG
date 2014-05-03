@@ -70,10 +70,24 @@ module tab(length, width=tab_length, r_corner=tab_corner_radius) {
 // formation.
 module tab_relief(length) {
     union() {
-        translate([-length/2 - tab_relief_radius, 0])
-            circle(tab_relief_radius - kerf/2);
-        translate([length/2 + tab_relief_radius, 0])
-            circle(tab_relief_radius - kerf/2);
+        translate([-length/2, 0])
+            scale([-1,-1]) tab_relief_notch();
+        translate([length/2, 0])
+            scale([1,-1]) tab_relief_notch();
+    }
+}
+
+module tab_relief_notch() {
+    difference() {
+        union() {
+            translate([kerf/2, -kerf/2 - fudge])
+                square([(tab_relief_radius * 3) - kerf,
+                        tab_relief_radius + kerf/2 + fudge]);
+            translate([tab_relief_radius, tab_relief_radius])
+                circle(tab_relief_radius - kerf/2);
+        }
+        translate([tab_relief_radius * 3, tab_relief_radius])
+            circle(tab_relief_radius + kerf/2);
     }
 }
 
