@@ -27,6 +27,12 @@ air_gap_bottom = 1 + washer_height + nut_height;
 
 // slots should be wide enough to reliably fit the tabs
 tab_slot_width = acrylic_maximum_thickness + 0.1;
+tab_slot_relief_radius = tab_slot_width/6;
+tab_slot_length_allowance = 0.1;
+
+tab_corner_radius = 0.5;
+tab_length = acrylic_thickness + 0.2;
+tab_relief_radius = tab_slot_relief_radius;
 
 // we want a border on the outside of the slot to hold the tabs in place
 retaining_margin_width = acrylic_thickness/2;
@@ -57,15 +63,15 @@ case_top_bounding_y = -case_top_margin - kerf/2;
 case_top_bounding_length = case_top_length + kerf;
 case_top_bounding_width = case_top_width + kerf;
 
-case_front_bounding_x = -air_gap - kerf/2;
-case_front_bounding_y = - kerf/2;
-case_front_bounding_length = case_front_length + kerf;
-case_front_bounding_width = case_front_width + kerf;
+case_front_bounding_x = -air_gap - tab_length - kerf/2;
+case_front_bounding_y = -tab_length - kerf/2;
+case_front_bounding_length = case_front_length + 2*tab_length + kerf;
+case_front_bounding_width = case_front_width + 2*tab_length + kerf;
 
 case_side_bounding_x = -case_top_margin - kerf/2;
-case_side_bounding_y = - kerf/2;
+case_side_bounding_y = -tab_length - kerf/2;
 case_side_bounding_length = case_side_length + kerf;
-case_side_bounding_width = case_side_width + kerf;
+case_side_bounding_width = case_side_width + 2*tab_length + kerf;
 
 // Extra allowance so the parts do not have to be precisely aligned,
 // e.g. the width of the slot minus the width of the header.
