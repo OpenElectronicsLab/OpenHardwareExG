@@ -144,6 +144,23 @@ module modified_android_shield_slots()
         r=header_allowance/2);
 }
 
+module ventilation_grid(length, width) {
+    x_step = ((vent_radius*2) + vent_spacing);
+    y_step = ((sqrt(3)/2) * ((vent_radius*2) + vent_spacing));
+
+    num_x = 1 + floor((length - (vent_radius*2)) / x_step );
+    num_y = 1 + floor((width - (vent_radius*2)) / y_step );
+    translate([(length - (x_step * (num_x-1)))/2,
+               (width  - (y_step * (num_y-1)))/2 ])
+    for (j = [0 : num_y-1]) {
+        for (i = [0 : num_x - 1 - (j - 2*floor(j / 2))]) {
+            translate([(j - 2*floor(j / 2)) * (x_step/2), 0])
+                translate([i * x_step, j * y_step])
+                    circle(vent_radius - (kerf/2));
+        }
+    }
+}
+
 direction_x = [1,0];
 direction_y = [0,1];
 
@@ -156,7 +173,6 @@ module at_tab_centers(length, direction=direction_x) {
     gap_width = (length - tab_width * num_tabs) / (num_tabs + 1);
     for (j = [0 : num_tabs-1]) {
         translate(direction*(gap_width + tab_width/2 + j*(tab_width + gap_width))) {
-        //translate(direction*j) {
             for (i = [0 : $children-1]) {
                 child(i);
             }
@@ -197,7 +213,12 @@ module top_blank() {
 
 // the bottom
 module bottom() {
-    top_blank();
+    difference() {
+        top_blank();
+        translate([ventilation_bottom_margin,ventilation_bottom_margin])
+        ventilation_grid(board_length - (2*ventilation_bottom_margin),
+                         board_width - (2*ventilation_bottom_margin));
+    }
 }
 
 // the top
@@ -262,6 +283,11 @@ module front() {
                    (-compression_gap/2)+(-tab_slot_length_allowance/4)])
             at_tab_centers(case_front_width, direction_y)
             rotate(270) tab_relief(tab_width);
+
+        // ventilation
+        translate([ventilation_sides_margin,ventilation_sides_margin])
+        ventilation_grid(case_front_length - (2*ventilation_sides_margin),
+                         case_front_width - (2*ventilation_sides_margin));
     }
 }
 
