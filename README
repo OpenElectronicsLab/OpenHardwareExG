@@ -2,5 +2,7 @@ The eeg-mouse is a project to attempt to control an on-screen pointer with eeg s
 
 This has potential application for adaptive equipment.
 
+http://openelectronicslab.github.io/eeg-mouse/
+
 Notes and data can be found at:
-git@github.com:ericherman/eeg-mouse-notes.git
+https://github.com/OpenElectronicsLab/eeg-mouse-notes
