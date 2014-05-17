@@ -194,10 +194,14 @@ void setup_2(void)
 
 	// clear the LEDs to start
 	digitalWrite(IPIN_LED_CLEAR, LOW);
-	delayMicroseconds(10);
+	// This delay is to address what we believe is a hardware problem.
+	// Ideally a delayMicroseconds(10) should plenty.
+	// On one board, we notice that without the delay, not all LEDs
+	// work without this additional delay.
+	delay(2000);
 	digitalWrite(IPIN_LED_CLEAR, HIGH);
 
-	// delay for 640 ms to allow the isolated power to stabilize;
+	// delay for 960 ms to allow the isolated power to stabilize;
 	// while waiting, turn on the green LEDs one by one to show progress
 	for (i = 0; i < 16; ++i) {
 		digitalWrite(PIN_LED_CLK, LOW);
