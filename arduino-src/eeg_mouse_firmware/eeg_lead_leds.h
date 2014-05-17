@@ -7,12 +7,13 @@ class Eeg_lead_leds {
 	int step;
 
 public:
-	Eeg_lead_leds();
+	 Eeg_lead_leds();
 
 	void set_green_led(int led_num, bool on);
 	void set_yellow_led(int led_num, bool on);
 
 	void update_tick();
 	void update_all();
-}
+};
+
 #endif /* eeg_lead_leds.h */

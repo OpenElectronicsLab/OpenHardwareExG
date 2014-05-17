@@ -14,7 +14,7 @@ APPNAME=eeg_mouse_firmware
 SRC_DIR=$(APPNAME)
 
 # manual dependencies
-APP_OBJS=$(APPNAME).o util.o
+APP_OBJS=$(APPNAME).o util.o eeg_lead_leds.o
 
 # set ARDUINO_DUE_USB_PROGRAMMING=1 if you plan to communicate to the
 # firmware running on the ardiuno DUE using the "programming" port

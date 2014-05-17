@@ -4,6 +4,7 @@
 #include <SPI.h>
 
 #include "eeg_mouse_firmware.h"
+#include "eeg_lead_leds.h"
 #include "ads1298.h"
 #include "util.h"
 
@@ -181,45 +182,25 @@ void setup_2(void)
 	pinMode(IPIN_DRDY, INPUT);
 
 #if EEG_MOUSE_HARDWARE_VERSION != 0
-	// set up the pins for the LEDs
-	pinMode(IPIN_LED_ENABLE, OUTPUT);
-	pinMode(PIN_LED_LATCH, OUTPUT);
-	pinMode(IPIN_LED_CLEAR, OUTPUT);
-	pinMode(PIN_LED_CLK, OUTPUT);
-	pinMode(PIN_LED_SERIAL, OUTPUT);
+	Eeg_lead_leds leds;
 
-	digitalWrite(PIN_LED_LATCH, LOW);
-	digitalWrite(PIN_LED_CLK, LOW);
-	digitalWrite(IPIN_LED_ENABLE, LOW);
-
-	// clear the LEDs to start
-	digitalWrite(IPIN_LED_CLEAR, LOW);
-	// This delay is to address what we believe is a hardware problem.
-	// Ideally a delayMicroseconds(10) should plenty.
-	// On one board, we notice that without the delay, not all LEDs
-	// work without this additional delay.
-	delay(2000);
-	digitalWrite(IPIN_LED_CLEAR, HIGH);
-
-	// delay for 960 ms to allow the isolated power to stabilize;
-	// while waiting, turn on the green LEDs one by one to show progress
-	for (i = 0; i < 16; ++i) {
-		digitalWrite(PIN_LED_CLK, LOW);
-		digitalWrite(PIN_LED_LATCH, HIGH);
-		digitalWrite(PIN_LED_SERIAL, LOW);
-		delay(15);
-		digitalWrite(PIN_LED_LATCH, LOW);
-		digitalWrite(PIN_LED_CLK, HIGH);
-		delay(15);
-		digitalWrite(PIN_LED_CLK, LOW);
-		digitalWrite(PIN_LED_SERIAL, HIGH);
-		delay(15);
-		digitalWrite(PIN_LED_CLK, HIGH);
-		delay(15);
+	// while waiting for the device to power up, sequentially set the yellow
+	// LEDs and then the green ones.
+	for (i = 0; i < 8; ++i) {
+		leds.set_yellow_led(i, true);
+		leds.set_yellow_led(i + 8, true);
+		leds.update_all();
+		delay(50);
 	}
-	digitalWrite(PIN_LED_LATCH, HIGH);
-	delay(1);
-	digitalWrite(PIN_LED_LATCH, LOW);
+	for (i = 0; i < 8; ++i) {
+		leds.set_green_led(i, true);
+		leds.set_yellow_led(i, false);
+		leds.set_green_led(i + 8, true);
+		leds.set_yellow_led(i + 8, false);
+		leds.update_all();
+		delay(50);
+	}
+
 #endif
 
 	SPI.begin();
@@ -261,7 +242,7 @@ void setup_2(void)
 		 RLDREF_INT | PD_RLD | PD_REFBUF | VREF_4V | CONFIG3_const);
 	delay(150);
 
-	//adc_wreg(RLD_SENSP, 0xFF);	// use all postive channels and
+	//adc_wreg(RLD_SENSP, 0xFF);    // use all postive channels and
 	adc_wreg(RLD_SENSP, 0x01);	// only use channel IN1P and
 	adc_wreg(RLD_SENSN, 0x01);	// IN1N for the RLD Measurement
 
