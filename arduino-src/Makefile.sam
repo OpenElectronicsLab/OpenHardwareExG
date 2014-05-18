@@ -121,7 +121,7 @@ ARDUINO_CORE_OBJS=itoa.o \
 
 %.o : $(SRC_DIR)/%.ino
 	$(CXX) $(NOISYFLAGS) $(CXXFLAGS) $(APP_FLAGS) \
-		-c -x c++ $^ -o $@
+		-c -x c++ $< -o $@
 
 %.o : $(SRC_DIR)/%.c
 	$(CC) $(NOISYFLAGS) $(CFLAGS) $(APP_FLAGS) -c $< -o $@
@@ -176,3 +176,8 @@ $(APPNAME).elf : $(APP_OBJS) $(ARDUINO_MISC_OBJS) libarduinocore.a
 		$^ \
 		$(ARDUINO_VARIANT_DIR)/libsam_sam3x8e_gcc_rel.a \
 		-Wl,--end-group
+
+eeg_mouse_firmware.o : $(SRC_DIR)/eeg_mouse_firmware.h $(SRC_DIR)/eeg_lead_leds.h \
+	$(SRC_DIR)/ads1298.h $(SRC_DIR)/util.h
+eeg_leads_leds.o : $(SRC_DIR)/eeg_mouse_firmware.h $(SRC_DIR)/eeg_lead_leds.h
+util.o : $(SRC_DIR)/util.h
