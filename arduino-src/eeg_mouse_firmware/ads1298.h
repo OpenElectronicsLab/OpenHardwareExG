@@ -172,6 +172,7 @@ namespace ADS1298 {
 		GAINn2 = 0x40,
 		GAINn1 = 0x20,
 		GAINn0 = 0x10,
+		SRB2 = 0x08,
 		MUXn2 = 0x04,
 		MUXn1 = 0x02,
 		MUXn0 = 0x01,

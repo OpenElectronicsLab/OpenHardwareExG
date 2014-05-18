@@ -43,6 +43,7 @@ unsigned long blink_interval_millis;
 #if EEG_MOUSE_HARDWARE_VERSION != 0
 Eeg_lead_leds lead_leds;
 #endif
+bool shared_negative_electrode = true;
 
 #define LED_PIN 13
 #define BLINK_INTERVAL_SETUP 100;
@@ -66,9 +67,15 @@ void update_leadoff_led_data(const ADS1298::Data_frame & frame)
 		lead_leds.set_green_led(i, !leadoff_p);
 		lead_leds.set_yellow_led(i, leadoff_p);
 
-		bool leadoff_n = frame.loff_statn(i);
-		lead_leds.set_green_led(i + 8, !leadoff_n);
-		lead_leds.set_yellow_led(i + 8, leadoff_n);
+        // if the negative electrodes are shared, use only the first LED.
+        if (i == 0 || !shared_negative_electrode) {
+            bool leadoff_n = frame.loff_statn(i);
+            lead_leds.set_green_led(i + 8, !leadoff_n);
+            lead_leds.set_yellow_led(i + 8, leadoff_n);
+        } else {
+            lead_leds.set_green_led(i + 8, false);
+            lead_leds.set_yellow_led(i + 8, false);
+        }
 	}
 }
 
@@ -255,16 +262,22 @@ void setup_2(void)
 	// Use lead-off sensing in all channels
 	adc_wreg(CONFIG4, PD_LOFF_COMP);
 	adc_wreg(LOFF_SENSP, 0xFF);
-	adc_wreg(LOFF_SENSN, 0xFF);
+    adc_wreg(LOFF_SENSN, 0xFF);
 
 	// Write Certain Registers, Including Input Short
 	// Set Device in HR Mode and DR = fMOD/1024
 	//adc_wreg(CONFIG1, HR | LOW_POWR_500_SPS);
 	adc_wreg(CONFIG1, HR | LOW_POWR_250_SPS);
 	adc_wreg(CONFIG2, INT_TEST);	// generate internal test signals
+
+    // If we want to share a single negative electrode, tie the negative
+    // inputs together using the BIAS_IN line.
+    uint8_t mux = shared_negative_electrode ? RLD_DRN : ELECTRODE_INPUT;
+
+    // connect the negative channel to the (shared) BIAS_IN line
 	// Set the first LIVE_CHANNELS_NUM channels to input signal
 	for (i = 1; i <= LIVE_CHANNELS_NUM; ++i) {
-		adc_wreg(CHnSET + i, ELECTRODE_INPUT | GAIN_12X);
+		adc_wreg(CHnSET + i, mux | GAIN_12X);
 		// adc_wreg(CHnSET + i, TEST_SIGNAL | GAIN_12X);
 	}
 	// Set all remaining channels to shorted inputs
