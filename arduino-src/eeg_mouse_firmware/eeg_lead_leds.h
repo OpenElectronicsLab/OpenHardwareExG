@@ -8,6 +8,7 @@ class Eeg_lead_leds {
 
 public:
 	 Eeg_lead_leds();
+	void begin();
 
 	void set_green_led(int led_num, bool on);
 	void set_yellow_led(int led_num, bool on);

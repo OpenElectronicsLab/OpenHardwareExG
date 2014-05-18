@@ -14,7 +14,10 @@ Eeg_lead_leds::Eeg_lead_leds()
 {
 	leds_state = 0;
 	step = 0;
+}
 
+void Eeg_lead_leds::begin()
+{
 	// set up the pins for the LEDs
 	pinMode(IPIN_LED_ENABLE, OUTPUT);
 	pinMode(PIN_LED_LATCH, OUTPUT);
@@ -30,6 +33,8 @@ Eeg_lead_leds::Eeg_lead_leds()
 	digitalWrite(IPIN_LED_CLEAR, LOW);
 	delayMicroseconds(10);
 	digitalWrite(IPIN_LED_CLEAR, HIGH);
+
+	update_all();
 }
 
 void Eeg_lead_leds::set_green_led(int led_num, bool on)

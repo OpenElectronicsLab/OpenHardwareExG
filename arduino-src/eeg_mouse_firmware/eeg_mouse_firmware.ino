@@ -40,6 +40,9 @@ char in_byte;
 int led_status;
 unsigned long last_blink;
 unsigned long blink_interval_millis;
+#if EEG_MOUSE_HARDWARE_VERSION != 0
+Eeg_lead_leds lead_leds;
+#endif
 
 #define LED_PIN 13
 #define BLINK_INTERVAL_SETUP 100;
@@ -51,7 +54,7 @@ unsigned long blink_interval_millis;
 void fill_sample_frame(char *byte_buf)
 {
 	int i, j;
-	char in_byte;
+	uint8_t in_byte;
 
 	unsigned int pos = 0;
 
@@ -67,6 +70,51 @@ void fill_sample_frame(char *byte_buf)
 			in_byte = SPI.transfer(0);
 			to_hex(in_byte, byte_buf + pos);
 			pos += 2;
+
+			if (i == 0) {
+				if (j == 0) {
+					// IN8P-IN5P leadoff
+					for (int k = 4; k < 8; ++k) {
+						bool leadoff =
+						    ((in_byte >> (k - 4)) & 1);
+						lead_leds.set_green_led(k,
+									!leadoff);
+						lead_leds.set_yellow_led(k,
+									 leadoff);
+					}
+				} else if (j == 1) {
+					// IN5P-IN8P leadoff
+					for (int k = 0; k < 4; ++k) {
+						bool leadoff =
+						    ((in_byte >> (k + 4)) & 1);
+						lead_leds.set_green_led(k,
+									!leadoff);
+						lead_leds.set_yellow_led(k,
+									 leadoff);
+					}
+					// IN8N-IN5N leadoff
+					for (int k = 4; k < 8; ++k) {
+						bool leadoff =
+						    ((in_byte >> (k - 4)) & 1);
+						lead_leds.set_green_led(k + 8,
+									!leadoff);
+						lead_leds.set_yellow_led(k + 8,
+									 leadoff);
+					}
+				}
+				// IN1N leadoff
+				else if (j == 2) {
+					// IN5N-IN8N leadoff
+					for (int k = 0; k < 4; ++k) {
+						bool leadoff =
+						    ((in_byte >> (k + 4)) & 1);
+						lead_leds.set_green_led(k + 8,
+									!leadoff);
+						lead_leds.set_yellow_led(k + 8,
+									 leadoff);
+					}
+				}
+			}
 		}
 	}
 
@@ -182,25 +230,13 @@ void setup_2(void)
 	pinMode(IPIN_DRDY, INPUT);
 
 #if EEG_MOUSE_HARDWARE_VERSION != 0
-	Eeg_lead_leds leds;
-
-	// while waiting for the device to power up, sequentially set the yellow
-	// LEDs and then the green ones.
-	for (i = 0; i < 8; ++i) {
-		leds.set_yellow_led(i, true);
-		leds.set_yellow_led(i + 8, true);
-		leds.update_all();
+	lead_leds.begin();
+	// while waiting for the device to power up, sequentially light the green LEDs
+	for (i = 0; i < 16; ++i) {
+		lead_leds.set_green_led(i, true);
+		lead_leds.update_all();
 		delay(50);
 	}
-	for (i = 0; i < 8; ++i) {
-		leds.set_green_led(i, true);
-		leds.set_yellow_led(i, false);
-		leds.set_green_led(i + 8, true);
-		leds.set_yellow_led(i + 8, false);
-		leds.update_all();
-		delay(50);
-	}
-
 #endif
 
 	SPI.begin();
@@ -325,6 +361,7 @@ void loop(void)
 	char byte_buf[DATA_BUF_SIZE];
 
 	blink_led();
+	lead_leds.update_tick();
 
 	if (!setup_2_run) {
 		setup_2();
