@@ -514,8 +514,37 @@ namespace ADS1298 {
 		WCTC_CH4N = (WCTC2 | WCTC1 | WCTC0)
 	};
 
+	struct Data_frame {
+		enum { size = 3 + 3 * 8 };
+		uint8_t data[size];
+
+#ifdef __cplusplus
+		uint8_t loff_statp() const {
+			return ((data[0] << 4) | (data[1] >> 4));
+		} uint8_t loff_statn() const {
+			return ((data[1] << 4) | (data[2] >> 4));
+		} uint8_t loff_statp(int i)const {
+			return ((loff_statp() >> i) & 1);
+		} uint8_t loff_statn(int i)const {
+			return ((loff_statn() >> i) & 1);
+		}
+#endif
+		/*
+		   // format of the data frame:
+		   unsigned magic : 4;
+		   unsigned loff_statp : 8;
+		   unsigned loff_statn : 8;
+		   unsigned gpio : 4;
+		   unsigned ch1 : 24;
+		   unsigned ch2 : 24;
+		   unsigned ch3 : 24;
+		   unsigned ch4 : 24;
+		   unsigned ch5 : 24;
+		   unsigned ch6 : 24;
+		   unsigned ch7 : 24;
+		   unsigned ch8 : 24;
+		 */ };
 #ifdef __cplusplus
 }
-#endif /* namespace ADS1298 */
-
+#endif				/* namespace ADS1298 */
 #endif				/* ADS1298_H */

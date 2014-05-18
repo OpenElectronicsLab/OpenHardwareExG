@@ -49,73 +49,45 @@ Eeg_lead_leds lead_leds;
 #define BLINK_INTERVAL_WAITING 500;
 #define BLINK_INTERVAL_SENDING 2000;
 
+void read_data_frame(ADS1298::Data_frame * frame)
+{
+	digitalWrite(IPIN_CS, LOW);
+	for (int i = 0; i < frame->size; ++i) {
+		frame->data[i] = SPI.transfer(0);
+	}
+	delayMicroseconds(1);
+	digitalWrite(IPIN_CS, HIGH);
+}
+
+void update_leadoff_led_data(const ADS1298::Data_frame & frame)
+{
+	for (int i = 0; i < 8; ++i) {
+		bool leadoff_p = frame.loff_statp(i);
+		lead_leds.set_green_led(i, !leadoff_p);
+		lead_leds.set_yellow_led(i, leadoff_p);
+
+		bool leadoff_n = frame.loff_statn(i);
+		lead_leds.set_green_led(i + 8, !leadoff_n);
+		lead_leds.set_yellow_led(i + 8, leadoff_n);
+	}
+}
+
 // if this becomes more flexible, we may need to pass in
 // the byte_buf size, but for now we are safe to skip it
-void fill_sample_frame(char *byte_buf)
+void format_data_frame(const ADS1298::Data_frame & frame, char *byte_buf)
 {
-	int i, j;
 	uint8_t in_byte;
-
 	unsigned int pos = 0;
 
-	digitalWrite(IPIN_CS, LOW);
 	byte_buf[pos++] = '[';
 	byte_buf[pos++] = 'g';
 	byte_buf[pos++] = 'o';
 	byte_buf[pos++] = ']';
 
-	// read 24bits of status then 24bits for each channel
-	for (i = 0; i <= 8; ++i) {
-		for (j = 0; j < 3; ++j) {
-			in_byte = SPI.transfer(0);
-			to_hex(in_byte, byte_buf + pos);
-			pos += 2;
-
-			if (i == 0) {
-				if (j == 0) {
-					// IN8P-IN5P leadoff
-					for (int k = 4; k < 8; ++k) {
-						bool leadoff =
-						    ((in_byte >> (k - 4)) & 1);
-						lead_leds.set_green_led(k,
-									!leadoff);
-						lead_leds.set_yellow_led(k,
-									 leadoff);
-					}
-				} else if (j == 1) {
-					// IN5P-IN8P leadoff
-					for (int k = 0; k < 4; ++k) {
-						bool leadoff =
-						    ((in_byte >> (k + 4)) & 1);
-						lead_leds.set_green_led(k,
-									!leadoff);
-						lead_leds.set_yellow_led(k,
-									 leadoff);
-					}
-					// IN8N-IN5N leadoff
-					for (int k = 4; k < 8; ++k) {
-						bool leadoff =
-						    ((in_byte >> (k - 4)) & 1);
-						lead_leds.set_green_led(k + 8,
-									!leadoff);
-						lead_leds.set_yellow_led(k + 8,
-									 leadoff);
-					}
-				}
-				// IN1N leadoff
-				else if (j == 2) {
-					// IN5N-IN8N leadoff
-					for (int k = 0; k < 4; ++k) {
-						bool leadoff =
-						    ((in_byte >> (k + 4)) & 1);
-						lead_leds.set_green_led(k + 8,
-									!leadoff);
-						lead_leds.set_yellow_led(k + 8,
-									 leadoff);
-					}
-				}
-			}
-		}
+	for (int i = 0; i < frame.size; ++i) {
+		in_byte = frame.data[i];
+		to_hex(in_byte, byte_buf + pos);
+		pos += 2;
 	}
 
 	byte_buf[pos++] = '[';
@@ -124,8 +96,6 @@ void fill_sample_frame(char *byte_buf)
 	byte_buf[pos++] = ']';
 	byte_buf[pos++] = '\n';
 	byte_buf[pos++] = 0;
-	delayMicroseconds(1);
-	digitalWrite(IPIN_CS, HIGH);
 }
 
 void serial_print_error(const char *msg)
@@ -373,7 +343,10 @@ void loop(void)
 		check_for_ping_from_serial();
 	} else {
 		wait_for_drdy("no data", 5000);
-		fill_sample_frame(byte_buf);
+		ADS1298::Data_frame frame;
+		read_data_frame(&frame);
+		update_leadoff_led_data(frame);
+		format_data_frame(frame, byte_buf);
 		SERIAL_OBJ.print(byte_buf);
 	}
 }
