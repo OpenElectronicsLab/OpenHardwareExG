@@ -275,6 +275,7 @@ void setup_2(void)
 	digitalWrite(PIN_START, HIGH);
 	wait_for_drdy("waiting for DRDY in setup", 1000);
 
+	adc_send_command(RDATAC);
 	blink_interval_millis = BLINK_INTERVAL_WAITING;
 }
 
@@ -292,6 +293,9 @@ void check_for_ping_from_serial()
 	in_byte = SERIAL_OBJ.read();
 
 	if (in_byte != 0) {
+	// Send SDATAC Command (Stop Read Data Continuously mode)
+	adc_send_command(SDATAC);
+
 		msg[i++] = '[';
 		msg[i++] = 'i';
 		msg[i++] = 't';
@@ -337,16 +341,19 @@ void loop(void)
 		setup_2();
 		setup_2_run = 1;
 	}
-	// wait for a non-zero byte as a ping from the computer
+  // read the next frame, if available
+		ADS1298::Data_frame frame;
+	if (digitalRead(IPIN_DRDY) == LOW) {
+		read_data_frame(&frame);
+		update_leadoff_led_data(frame);
+        if (in_byte != 0) {
+		format_data_frame(frame, byte_buf);
+		SERIAL_OBJ.print(byte_buf);
+        }
+    }
+  // wait for a non-zero byte as a ping from the computer
 	// loop until data available
 	if (in_byte == 0) {
 		check_for_ping_from_serial();
-	} else {
-		wait_for_drdy("no data", 5000);
-		ADS1298::Data_frame frame;
-		read_data_frame(&frame);
-		update_leadoff_led_data(frame);
-		format_data_frame(frame, byte_buf);
-		SERIAL_OBJ.print(byte_buf);
 	}
 }
