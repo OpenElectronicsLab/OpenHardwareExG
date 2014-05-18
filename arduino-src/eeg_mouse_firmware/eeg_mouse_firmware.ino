@@ -50,6 +50,42 @@ bool shared_negative_electrode = true;
 #define BLINK_INTERVAL_WAITING 500;
 #define BLINK_INTERVAL_SENDING 2000;
 
+void adc_send_command(int cmd)
+{
+	digitalWrite(IPIN_CS, LOW);
+	SPI.transfer(cmd);
+	delayMicroseconds(1);
+	digitalWrite(IPIN_CS, HIGH);
+}
+
+byte adc_rreg(int reg)
+{
+	byte val;
+
+	digitalWrite(IPIN_CS, LOW);
+
+	SPI.transfer(ADS1298::RREG | reg);
+	SPI.transfer(0);	// number of registers to be read/written – 1
+	val = SPI.transfer(0);
+
+	delayMicroseconds(1);
+	digitalWrite(IPIN_CS, HIGH);
+
+	return val;
+}
+
+void adc_wreg(int reg, int val)
+{
+	digitalWrite(IPIN_CS, LOW);
+
+	SPI.transfer(ADS1298::WREG | reg);
+	SPI.transfer(0);	// number of registers to be read/written – 1
+	SPI.transfer(val);
+
+	delayMicroseconds(1);
+	digitalWrite(IPIN_CS, HIGH);
+}
+
 void read_data_frame(ADS1298::Data_frame * frame)
 {
 	digitalWrite(IPIN_CS, LOW);
@@ -67,15 +103,57 @@ void update_leadoff_led_data(const ADS1298::Data_frame & frame)
 		lead_leds.set_green_led(i, !leadoff_p);
 		lead_leds.set_yellow_led(i, leadoff_p);
 
-        // if the negative electrodes are shared, use only the first LED.
-        if (i == 0 || !shared_negative_electrode) {
-            bool leadoff_n = frame.loff_statn(i);
-            lead_leds.set_green_led(i + 8, !leadoff_n);
-            lead_leds.set_yellow_led(i + 8, leadoff_n);
-        } else {
-            lead_leds.set_green_led(i + 8, false);
-            lead_leds.set_yellow_led(i + 8, false);
-        }
+		// if the negative electrodes are shared, use only the first LED.
+		if (i == 0 || !shared_negative_electrode) {
+			bool leadoff_n = frame.loff_statn(i);
+			lead_leds.set_green_led(i + 8, !leadoff_n);
+			lead_leds.set_yellow_led(i + 8, leadoff_n);
+		} else {
+			lead_leds.set_green_led(i + 8, false);
+			lead_leds.set_yellow_led(i + 8, false);
+		}
+	}
+}
+
+void update_bias_ref(const ADS1298::Data_frame & frame)
+{
+	using namespace ADS1298;
+
+	static uint8_t last_loff_statp = 0xFF;
+	static uint8_t last_loff_statn = 0xFF;
+	static unsigned samples_since_last_bias_change = 0;
+	const unsigned min_samples_between_bias_changes = 100;
+
+	uint8_t loff_statp = frame.loff_statp();
+	uint8_t loff_statn = frame.loff_statn();
+
+	if (shared_negative_electrode) {
+		loff_statn |= 0x01;	// count only the single shared electrode
+	}
+	// if the lead-off status has changed...
+	if (samples_since_last_bias_change >= min_samples_between_bias_changes
+	    && (last_loff_statp != loff_statp
+		|| last_loff_statn != loff_statn)) {
+
+		// Send SDATAC Command (Stop Read Data Continuously mode)
+		// TODO: starting and stopping the data collection like this will
+		// create a glitch in all channels of the recording whenever the
+		// leadoff status of any channel changes.  This could be fixed by
+		// capturing all data in single-shot mode, triggered by an interrupt.
+		adc_send_command(SDATAC);
+
+		// Use only the leads that are connected to drive the bias electrode.
+		adc_wreg(RLD_SENSP, ~loff_statp);
+		adc_wreg(RLD_SENSN, ~loff_statn);
+
+		// Put the Device Back in Read DATA Continuous Mode
+		adc_send_command(RDATAC);
+
+		last_loff_statp = loff_statp;
+		last_loff_statn = loff_statn;
+		samples_since_last_bias_change = 0;
+	} else {
+		++samples_since_last_bias_change;
 	}
 }
 
@@ -122,42 +200,6 @@ void wait_for_drdy(const char *msg, int interval)
 		i = 0;
 		serial_print_error(msg);
 	}
-}
-
-void adc_send_command(int cmd)
-{
-	digitalWrite(IPIN_CS, LOW);
-	SPI.transfer(cmd);
-	delayMicroseconds(1);
-	digitalWrite(IPIN_CS, HIGH);
-}
-
-byte adc_rreg(int reg)
-{
-	byte val;
-
-	digitalWrite(IPIN_CS, LOW);
-
-	SPI.transfer(ADS1298::RREG | reg);
-	SPI.transfer(0);	// number of registers to be read/written – 1
-	val = SPI.transfer(0);
-
-	delayMicroseconds(1);
-	digitalWrite(IPIN_CS, HIGH);
-
-	return val;
-}
-
-void adc_wreg(int reg, int val)
-{
-	digitalWrite(IPIN_CS, LOW);
-
-	SPI.transfer(ADS1298::WREG | reg);
-	SPI.transfer(0);	// number of registers to be read/written – 1
-	SPI.transfer(val);
-
-	delayMicroseconds(1);
-	digitalWrite(IPIN_CS, HIGH);
 }
 
 void blink_led(void)
@@ -255,14 +297,12 @@ void setup_2(void)
 		 RLDREF_INT | PD_RLD | PD_REFBUF | VREF_4V | CONFIG3_const);
 	delay(150);
 
-	//adc_wreg(RLD_SENSP, 0xFF);    // use all postive channels and
-	adc_wreg(RLD_SENSP, 0x01);	// only use channel IN1P and
-	adc_wreg(RLD_SENSN, 0x01);	// IN1N for the RLD Measurement
-
-	// Use lead-off sensing in all channels
+	// Use lead-off sensing in all channels (but only drive one of the
+	// negative leads if all of them are connected to one electrode)
 	adc_wreg(CONFIG4, PD_LOFF_COMP);
+	adc_wreg(LOFF, COMP_TH_80 | ILEAD_OFF_12nA);
 	adc_wreg(LOFF_SENSP, 0xFF);
-    adc_wreg(LOFF_SENSN, 0xFF);
+	adc_wreg(LOFF_SENSN, shared_negative_electrode ? 0x01 : 0xFF);
 
 	// Write Certain Registers, Including Input Short
 	// Set Device in HR Mode and DR = fMOD/1024
@@ -270,11 +310,11 @@ void setup_2(void)
 	adc_wreg(CONFIG1, HR | LOW_POWR_250_SPS);
 	adc_wreg(CONFIG2, INT_TEST);	// generate internal test signals
 
-    // If we want to share a single negative electrode, tie the negative
-    // inputs together using the BIAS_IN line.
-    uint8_t mux = shared_negative_electrode ? RLD_DRN : ELECTRODE_INPUT;
+	// If we want to share a single negative electrode, tie the negative
+	// inputs together using the BIAS_IN line.
+	uint8_t mux = shared_negative_electrode ? RLD_DRN : ELECTRODE_INPUT;
 
-    // connect the negative channel to the (shared) BIAS_IN line
+	// connect the negative channel to the (shared) BIAS_IN line
 	// Set the first LIVE_CHANNELS_NUM channels to input signal
 	for (i = 1; i <= LIVE_CHANNELS_NUM; ++i) {
 		adc_wreg(CHnSET + i, mux | GAIN_12X);
@@ -306,8 +346,8 @@ void check_for_ping_from_serial()
 	in_byte = SERIAL_OBJ.read();
 
 	if (in_byte != 0) {
-	// Send SDATAC Command (Stop Read Data Continuously mode)
-	adc_send_command(SDATAC);
+		// Send SDATAC Command (Stop Read Data Continuously mode)
+		adc_send_command(SDATAC);
 
 		msg[i++] = '[';
 		msg[i++] = 'i';
@@ -354,17 +394,18 @@ void loop(void)
 		setup_2();
 		setup_2_run = 1;
 	}
-  // read the next frame, if available
-		ADS1298::Data_frame frame;
+	// read the next frame, if available
+	ADS1298::Data_frame frame;
 	if (digitalRead(IPIN_DRDY) == LOW) {
 		read_data_frame(&frame);
 		update_leadoff_led_data(frame);
-        if (in_byte != 0) {
-		format_data_frame(frame, byte_buf);
-		SERIAL_OBJ.print(byte_buf);
-        }
-    }
-  // wait for a non-zero byte as a ping from the computer
+		update_bias_ref(frame);
+		if (in_byte != 0) {
+			format_data_frame(frame, byte_buf);
+			SERIAL_OBJ.print(byte_buf);
+		}
+	}
+	// wait for a non-zero byte as a ping from the computer
 	// loop until data available
 	if (in_byte == 0) {
 		check_for_ping_from_serial();
