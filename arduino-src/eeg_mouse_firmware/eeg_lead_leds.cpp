@@ -2,10 +2,9 @@
 #include "eeg_mouse_firmware.h"
 #include "eeg_lead_leds.h"
 
-const int num_channels = 8;
 const int num_inputs_per_channel = 2;	// IN1N, IN1P
 const int num_leds =
-    num_channels * num_inputs_per_channel * Eeg_lead_leds::num_colors;
+    Eeg_lead_leds::num_channels * num_inputs_per_channel * Eeg_lead_leds::num_colors;
 const int states_per_led = 2;	// clock low and high
 
 enum states {
@@ -39,9 +38,10 @@ void Eeg_lead_leds::begin()
 	update_all();
 }
 
-void Eeg_lead_leds::set_led(led_color color, int led_num, bool on)
+void Eeg_lead_leds::set_led(led_color color, int channel, polarity pol, bool on)
 {
-	uint32_t mask = (1 << (num_colors * led_num + color));
+	int led_num = (num_colors * (channel + pol)) + color;
+	uint32_t mask = (1 << led_num);
 
 	leds_state = (leds_state & ~mask);
 	if (on) {
@@ -49,15 +49,26 @@ void Eeg_lead_leds::set_led(led_color color, int led_num, bool on)
 	}
 }
 
-void Eeg_lead_leds::set_green_led(int led_num, bool on)
+void Eeg_lead_leds::set_green_positive(int channel, bool on)
 {
-	set_led(green, led_num, on);
+	set_led(green, channel, positive, on);
 }
 
-void Eeg_lead_leds::set_yellow_led(int led_num, bool on)
+void Eeg_lead_leds::set_yellow_positive(int channel, bool on)
 {
-	set_led(yellow, led_num, on);
+	set_led(yellow, channel, positive, on);
 }
+
+void Eeg_lead_leds::set_green_negative(int channel, bool on)
+{
+	set_led(green, channel, negative, on);
+}
+
+void Eeg_lead_leds::set_yellow_negative(int channel, bool on)
+{
+	set_led(yellow, channel, negative, on);
+}
+
 
 void Eeg_lead_leds::update_tick()
 {

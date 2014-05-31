@@ -8,13 +8,17 @@ class Eeg_lead_leds {
 
       public:
 	enum led_color { yellow, green, num_colors };
+	enum { num_channels = 8 };
+	enum polarity { positive = 0, negative = num_channels};
 
 	 Eeg_lead_leds();
 	void begin();
 
-	void set_led(led_color color, int led_num, bool on);
-	void set_green_led(int led_num, bool on);
-	void set_yellow_led(int led_num, bool on);
+	void set_led(led_color color, int channel, polarity pol, bool on);
+	void set_green_positive(int channel, bool on);
+	void set_yellow_positive(int channel, bool on);
+	void set_green_negative(int channel, bool on);
+	void set_yellow_negative(int channel, bool on);
 
 	void update_tick();
 	void update_all();

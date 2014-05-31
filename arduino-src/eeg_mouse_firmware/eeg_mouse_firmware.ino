@@ -92,25 +92,25 @@ void read_data_frame(ADS1298::Data_frame * frame)
 	for (int i = 0; i < frame->size; ++i) {
 		frame->data[i] = SPI.transfer(0);
 	}
-	delayMicroseconds(1);
+	delayMicroseconds(1);	// is this needed?
 	digitalWrite(IPIN_CS, HIGH);
 }
 
 void update_leadoff_led_data(const ADS1298::Data_frame & frame)
 {
-	for (int i = 0; i < 8; ++i) {
-		bool leadoff_p = frame.loff_statp(i);
-		lead_leds.set_green_led(i, !leadoff_p);
-		lead_leds.set_yellow_led(i, leadoff_p);
+	for (int channel = 0; channel < LIVE_CHANNELS_NUM; ++channel) {
+		bool leadoff_p = frame.loff_statp(channel);
+		lead_leds.set_green_positive(channel, !leadoff_p);
+		lead_leds.set_yellow_positive(channel, leadoff_p);
 
 		// if the negative electrodes are shared, use only the first LED.
-		if (i == 0 || !shared_negative_electrode) {
-			bool leadoff_n = frame.loff_statn(i);
-			lead_leds.set_green_led(i + 8, !leadoff_n);
-			lead_leds.set_yellow_led(i + 8, leadoff_n);
+		if (channel == 0 || !shared_negative_electrode) {
+			bool leadoff_n = frame.loff_statn(channel);
+			lead_leds.set_green_negative(channel, !leadoff_n);
+			lead_leds.set_yellow_negative(channel, leadoff_n);
 		} else {
-			lead_leds.set_green_led(i + 8, false);
-			lead_leds.set_yellow_led(i + 8, false);
+			lead_leds.set_green_negative(channel, false);
+			lead_leds.set_yellow_negative(channel, false);
 		}
 	}
 }
@@ -125,7 +125,9 @@ void update_bias_ref(const ADS1298::Data_frame & frame)
 	const unsigned min_samples_between_bias_changes = 100;
 
 	uint8_t loff_statp = frame.loff_statp();
+	uint8_t leads_on_p = ~loff_statp;
 	uint8_t loff_statn = frame.loff_statn();
+	uint8_t leads_on_n = ~loff_statn;
 
 	if (shared_negative_electrode) {
 		loff_statn |= 0x01;	// count only the single shared electrode
@@ -143,8 +145,8 @@ void update_bias_ref(const ADS1298::Data_frame & frame)
 		adc_send_command(SDATAC);
 
 		// Use only the leads that are connected to drive the bias electrode.
-		adc_wreg(RLD_SENSP, ~loff_statp);
-		adc_wreg(RLD_SENSN, ~loff_statn);
+		adc_wreg(RLD_SENSP, leads_on_p);
+		adc_wreg(RLD_SENSN, leads_on_n);
 
 		// Put the Device Back in Read DATA Continuous Mode
 		adc_send_command(RDATAC);
@@ -250,9 +252,16 @@ void setup_2(void)
 
 #if EEG_MOUSE_HARDWARE_VERSION != 0
 	lead_leds.begin();
-	// while waiting for the device to power up, sequentially light the green LEDs
-	for (i = 0; i < 16; ++i) {
-		lead_leds.set_green_led(i, true);
+	// while waiting for the device to power up,
+	// sequentially light the green LEDs for IN1P through IN8P
+	for (i = 0; i < Eeg_lead_leds::num_channels; ++i) {
+		lead_leds.set_green_positive(i, true);
+		lead_leds.update_all();
+		delay(50);
+	}
+	// then IN1N through IN8N
+	for (i = 0; i < Eeg_lead_leds::num_channels; ++i) {
+		lead_leds.set_green_negative(i, true);
 		lead_leds.update_all();
 		delay(50);
 	}
