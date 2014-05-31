@@ -338,7 +338,12 @@ module side_blank() {
 }
 
 module left_side() {
-    side_blank();
+    difference() {
+        side_blank();
+        translate([vent_sides_margin - case_top_margin, vent_sides_margin])
+        vent_grid(case_side_length - (2*vent_sides_margin),
+                         case_side_width - (2*vent_sides_margin));
+    }
 }
 
 module right_side() {
