@@ -172,7 +172,7 @@ namespace ADS1298 {
 		GAINn2 = 0x40,
 		GAINn1 = 0x20,
 		GAINn0 = 0x10,
-		SRB2 = 0x08,
+		SRB2 = 0x08,	// actually ADS1299 specific
 		MUXn2 = 0x04,
 		MUXn1 = 0x02,
 		MUXn0 = 0x01,
@@ -516,20 +516,6 @@ namespace ADS1298 {
 	};
 
 	struct Data_frame {
-		enum { size = 3 + 3 * 8 };
-		uint8_t data[size];
-
-#ifdef __cplusplus
-		uint8_t loff_statp() const {
-			return ((data[0] << 4) | (data[1] >> 4));
-		} uint8_t loff_statn() const {
-			return ((data[1] << 4) | (data[2] >> 4));
-		} uint8_t loff_statp(int i)const {
-			return ((loff_statp() >> i) & 1);
-		} uint8_t loff_statn(int i)const {
-			return ((loff_statn() >> i) & 1);
-		}
-#endif
 		/*
 		   // format of the data frame:
 		   unsigned magic : 4;
@@ -544,7 +530,25 @@ namespace ADS1298 {
 		   unsigned ch6 : 24;
 		   unsigned ch7 : 24;
 		   unsigned ch8 : 24;
-		 */ };
+		 */
+		enum { size = 3 + 3 * 8 };
+		uint8_t data[size];
+
+#ifdef __cplusplus
+		uint8_t loff_statp() const {
+			return ((data[0] << 4) | (data[1] >> 4));
+		}
+		uint8_t loff_statn() const {
+			return ((data[1] << 4) | (data[2] >> 4));
+		}
+		uint8_t loff_statp(int i)const {
+			return ((loff_statp() >> i) & 1);
+		}
+		uint8_t loff_statn(int i)const {
+			return ((loff_statn() >> i) & 1);
+		}
+#endif
+	};
 #ifdef __cplusplus
 }
 #endif				/* namespace ADS1298 */
