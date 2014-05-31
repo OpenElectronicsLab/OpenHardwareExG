@@ -2,10 +2,16 @@
 #include "eeg_mouse_firmware.h"
 #include "eeg_lead_leds.h"
 
+const int num_channels = 8;
+const int num_inputs_per_channel = 2;	// IN1N, IN1P
+const int num_leds =
+    num_channels * num_inputs_per_channel * Eeg_lead_leds::num_colors;
+const int states_per_led = 2;	// clock low and high
+
 enum states {
 	first_data_state = 0,
-	last_data_state = 2 * 16 * 2,
-	latch_start,
+	last_data_state = (states_per_led * num_leds) - 1,
+	latch_start,		// no value is the same as previous element + 1
 	latch_end,
 	last_state = latch_end
 };
@@ -29,38 +35,34 @@ void Eeg_lead_leds::begin()
 	digitalWrite(PIN_LED_CLK, LOW);
 	digitalWrite(IPIN_LED_ENABLE, LOW);
 
-	// clear the LEDs to start
-	digitalWrite(IPIN_LED_CLEAR, LOW);
-	delayMicroseconds(10);
-	digitalWrite(IPIN_LED_CLEAR, HIGH);
-
+	// set LEDs to leds_state (probably 0, all off)
 	update_all();
+}
+
+void Eeg_lead_leds::set_led(led_color color, int led_num, bool on)
+{
+	uint32_t mask = (1 << (num_colors * led_num + color));
+
+	leds_state = (leds_state & ~mask);
+	if (on) {
+		leds_state |= mask;
+	}
 }
 
 void Eeg_lead_leds::set_green_led(int led_num, bool on)
 {
-	uint32_t mask = (1 << (2 * led_num + 1));
-
-	leds_state = (leds_state & ~mask);
-	if (on) {
-		leds_state |= mask;
-	}
+	set_led(green, led_num, on);
 }
 
 void Eeg_lead_leds::set_yellow_led(int led_num, bool on)
 {
-	uint32_t mask = (1 << (2 * led_num));
-
-	leds_state = (leds_state & ~mask);
-	if (on) {
-		leds_state |= mask;
-	}
+	set_led(yellow, led_num, on);
 }
 
 void Eeg_lead_leds::update_tick()
 {
 	switch (step) {
-	case latch_start:
+	case latch_start:	// this happens almost last (defaults are first)
 		// latch the data from the shift register to the LEDs
 		digitalWrite(PIN_LED_LATCH, HIGH);
 		++step;
@@ -73,12 +75,12 @@ void Eeg_lead_leds::update_tick()
 		break;
 
 	default:
-		if (step % 2 == 0) {
+		if (step % states_per_led == 0) {
 			// ready the clock and set the data
 			digitalWrite(PIN_LED_CLK, LOW);
-			digitalWrite(PIN_LED_SERIAL,
-				     ((leds_state >> (step / 2)) & 1) ? HIGH :
-				     LOW);
+			int bit_number_for_led = step / states_per_led;
+			int bit_val = (1 & (leds_state >> bit_number_for_led));
+			digitalWrite(PIN_LED_SERIAL, bit_val ? HIGH : LOW);
 		} else {
 			// clock out the data we set
 			digitalWrite(PIN_LED_CLK, HIGH);
