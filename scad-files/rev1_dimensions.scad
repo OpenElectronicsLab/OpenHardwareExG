@@ -3,7 +3,7 @@
 
 // smooth out circles
 $fa = 6;
-$fs = 0.01;
+$fs = 0.1;
 
 // all size constants are in mm
 fudge = 1;
