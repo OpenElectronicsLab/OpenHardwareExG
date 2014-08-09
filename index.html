@@ -175,38 +175,11 @@ https://github.com/OpenElectronicsLab/eeg-mouse
     The format of the output is: the letter &#39;C&#39; (magic), lead-off
     status Positive, lead-off status Negative, status GPIO1 to GPIO4,
     signal from channels 1 to 8 in volts. <!-- <pre>[example]</pre> --></li>
-    <li><a href="https://github.com/OpenElectronicsLab/OpenHardwareExG/blob/master/src/chan1-filter.pl">chan1-filter.pl</a>:
-    just passes the information from the first channel to the next stage.
-    </li>
-    <li><a href="https://github.com/OpenElectronicsLab/OpenHardwareExG/blob/master/src/freq-split-smooth.pl">freq-split-smooth.pl</a>:
-    splits the signal into three parts, alpha activity (7-14 Hz), beta
-    (20-26 Hz), and "baseline" (16.5-17.5 Hz)</li>
-    <li><a href="https://github.com/OpenElectronicsLab/OpenHardwareExG/blob/master/src/window.pl">window.pl</a>:
-    a GUI for moving a pointer around the screen driven by the input from
-    the EEG.</li>
     </ul>
-   <!--
-    <h3> Progress and Milestones </h3>
-    <p class=prog>
-    <em>Nov 2011</em>  The idea for the OpenHardwareExG was hatched.
-    </p><p class=prog>
-    <em>Jan 2012</em>  Built our first prototype boards (rev0). We decided to make a simple breakout board for the <a href="http://www.ti.com/product/ads1298">ADS1298</a>, using all through-hole parts except the ADS itself (because, at the time, only one of us had done any surface mount soldering), connected to an Arduino Mega.
-    <div class=wideimg><img src = "rev0_mega.JPG" />
-    The rev0 board connected to the Arduino through <a href="https://github.com/OpenElectronicsLab/level-shifter">a 5V to 3.3V level shifter</a> built on a breadboard.</div>
-    For the EEG cables we used:
-    <ul>
-    </p><p class=prog>
-    <em>Feb 2012</em>  Building software:
-    </p>
-    <p class=prog>
-    </p>
-    -->
-    <!-- /div --><!--about-->
 
     <h2> Notes </h2>
     <p> Notes, history, and data can be found at
-    <a href='https://github.com/OpenElectronicsLab/eeg-mouse-notes'>
-    eeg-mouse-notes</a></p>
+    <a href='https://github.com/OpenElectronicsLab/eeg-mouse-notes'>notes</a></p>
     <p><a href='https://raw.githubusercontent.com/OpenElectronicsLab/eeg-mouse-notes/master/log.txt'>our log</a></p>
 
       <h2>Software License</h2>
