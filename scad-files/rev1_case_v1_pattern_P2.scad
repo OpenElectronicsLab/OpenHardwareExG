@@ -1,5 +1,5 @@
 // This file generates a 2D pattern used for laser-cutting a case for a rev1
-// eeg-mouse board with the analog and digital patch shields.
+// OpenHardwareExG board with the analog and digital patch shields.
 
 include <rev1_case_v1_dimensions.scad>
 include <rev1_case_v1.scad>

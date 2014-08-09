@@ -1,4 +1,4 @@
-// This file describes a laser-cut case for a rev1 eeg-mouse board with the
+// This file describes a laser-cut case for a rev1 OpenHardwareExG board with the
 // analog and digital patch shields.  When run directly (vs included with
 // "use") it will render an empty case and a case containing the rev1 boards.
 

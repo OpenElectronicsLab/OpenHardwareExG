@@ -1,5 +1,5 @@
 // This file defines various measurements used for the laser-cut case for a
-// rev1 eeg-mouse board with the analog and digital patch shields.
+// rev1 OpenHardwareExG board with the analog and digital patch shields.
 
 include <rev1_dimensions.scad>
 

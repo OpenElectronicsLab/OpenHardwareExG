@@ -1,4 +1,4 @@
-// This file describes a rough 3d model of an eeg-mouse board with the
+// This file describes a rough 3d model of an OpenHardwareExG board with the
 // analog and digital patch shields, along with the plastic fasteners used to
 // hold the stack of boards together.  When run directly (vs included with
 // "use") it will render the stack of rev1 boards.

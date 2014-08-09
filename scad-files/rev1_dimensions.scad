@@ -1,4 +1,4 @@
-// This file defines various measurements used for the rev1 eeg-mouse board
+// This file defines various measurements used for the rev1 OpenHardwareExG board
 // with the analog and digital patch shields.
 
 // smooth out circles
