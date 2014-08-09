@@ -1,6 +1,6 @@
-/* eeg_mouse_firmware_rev1.h */
-#ifndef _EEG_MOUSE_FIRMWARE_REV1_H_
-#define _EEG_MOUSE_FIRMWARE_REV1_H_
+/* OpenHardwareExG_firmware_rev1.h */
+#ifndef _OPENHARDWAREEXG_FIRMWARE_REV1_H_
+#define _OPENHARDWAREEXG_FIRMWARE_REV1_H_
 
 // IPIN_ is for pins that are inverted
 
@@ -46,4 +46,4 @@
 // LED_SERIAL is PD0, PIN 25
 #define PIN_LED_SERIAL 25
 
-#endif /* _EEG_MOUSE_FIRMWARE_REV_1_H_ */
+#endif /* _OPENHARDWAREEXG_FIRMWARE_REV_1_H_ */

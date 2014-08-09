@@ -1,6 +1,6 @@
 #include <Arduino.h>
-#include "eeg_mouse_firmware.h"
-#include "eeg_lead_leds.h"
+#include "OpenHardwareExG_firmware.h"
+#include "exg_lead_leds.h"
 
 const int num_inputs_per_channel = 2;	// IN1N, IN1P
 const int num_leds =

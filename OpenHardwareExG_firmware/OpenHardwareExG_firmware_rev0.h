@@ -1,6 +1,6 @@
-/* eeg_mouse_firmware_rev0.h */
-#ifndef _EEG_MOUSE_FIRMWARE_REV0_H_
-#define _EEG_MOUSE_FIRMWARE_REV0_H_
+/* OpenHardwareExG_firmware_rev0.h */
+#ifndef _OPENHARDWAREEXG_FIRMWARE_REV0_H_
+#define _OPENHARDWAREEXG_FIRMWARE_REV0_H_
 
 // IPIN_ is for pins that are inverted
 
@@ -31,4 +31,4 @@
 // DRDY (data ready) is PL4 PIN 45 (direct)
 #define IPIN_DRDY 45
 
-#endif /* _EEG_MOUSE_FIMRWARE_REV0_H_ */
+#endif /* _OPENHARDWAREEXG_FIMRWARE_REV0_H_ */

@@ -1,8 +1,6 @@
-The eeg-mouse is a project to attempt to control an on-screen pointer with eeg signals.
+The OpenHardwareExG is a platform for ECG, EEG, EMG, ENG, EOG, and evoked potential applications.
 
-This has potential application for adaptive equipment.
+http://openelectronicslab.github.io/OpenHardwareExG/
 
-http://openelectronicslab.github.io/eeg-mouse/
-
-Notes and data can be found at:
-https://github.com/OpenElectronicsLab/eeg-mouse-notes
+The OpenHardwareExG platform was originally developed as part of the eeg-mouse project.
+https://github.com/OpenElectronicsLab/eeg-mouse

@@ -1,6 +1,6 @@
-/* eeg_lead_leds.h */
-#ifndef _EEG_LEAD_LEDS_
-#define _EEG_LEAD_LEDS_
+/* exg_lead_leds.h */
+#ifndef _EXG_LEAD_LEDS_
+#define _EXG_LEAD_LEDS_
 class Eeg_lead_leds {
 	// 32 bits of LED state;
 	uint32_t leds_state;
@@ -24,4 +24,4 @@ class Eeg_lead_leds {
 	void update_all();
 };
 
-#endif /* eeg_lead_leds.h */
+#endif /* exg_lead_leds.h */

@@ -3,8 +3,8 @@
 #include <Arduino.h>
 #include <SPI.h>
 
-#include "eeg_mouse_firmware.h"
-#include "eeg_lead_leds.h"
+#include "OpenHardwareExG_firmware.h"
+#include "exg_lead_leds.h"
 #include "ads1298.h"
 #include "util.h"
 
@@ -40,7 +40,7 @@ char in_byte;
 int led_status;
 unsigned long last_blink;
 unsigned long blink_interval_millis;
-#if EEG_MOUSE_HARDWARE_VERSION != 0
+#if OPENHARDWAREEXG_HARDWARE_VERSION != 0
 Eeg_lead_leds lead_leds;
 #endif
 bool shared_negative_electrode = true;
@@ -238,7 +238,7 @@ void setup_2(void)
 	digitalWrite(13, HIGH);
 
 	pinMode(IPIN_CS, OUTPUT);
-#if EEG_MOUSE_HARDWARE_VERSION == 0
+#if OPENHARDWAREEXG_HARDWARE_VERSION == 0
 	pinMode(PIN_SCLK, OUTPUT);
 	pinMode(PIN_DIN, OUTPUT);
 	pinMode(PIN_DOUT, INPUT);
@@ -250,7 +250,7 @@ void setup_2(void)
 	pinMode(IPIN_PWDN, OUTPUT);
 	pinMode(IPIN_DRDY, INPUT);
 
-#if EEG_MOUSE_HARDWARE_VERSION != 0
+#if OPENHARDWAREEXG_HARDWARE_VERSION != 0
 	lead_leds.begin();
 	// while waiting for the device to power up,
 	// sequentially light the green LEDs for IN1P through IN8P

@@ -9,19 +9,19 @@
 # (at your option) any later version.
 
 # the name of the main file and sources to be used
-APPNAME=eeg_mouse_firmware
+APPNAME=OpenHardwareExG_firmware
 
-SRC_DIR=$(APPNAME)
+SRC_DIR=.
 
 # manual dependencies
-APP_OBJS=$(APPNAME).o util.o eeg_lead_leds.o
+APP_OBJS=$(APPNAME).o util.o exg_lead_leds.o
 
 # set ARDUINO_DUE_USB_PROGRAMMING=1 if you plan to communicate to the
 # firmware running on the ardiuno DUE using the "programming" port
 # (not the "native" port)
 #
-# set EEG_MOUSE_HARDWARE_VERSION=0 for the eeg-mouse rev0 board
-APP_FLAGS=-DARDUINO_DUE_USB_PROGRAMMING=0 -DEEG_MOUSE_HARDWARE_VERSION=1
+# set OPENHARDWAREEXG_HARDWARE_VERSION=0 for the eeg-mouse rev0 board
+APP_FLAGS=-DARDUINO_DUE_USB_PROGRAMMING=0 -DOPENHARDWAREEXG_HARDWARE_VERSION=1
 
 # port the arduino is connected to while flashing new firmware
 PORT=ttyACM0
@@ -177,7 +177,7 @@ $(APPNAME).elf : $(APP_OBJS) $(ARDUINO_MISC_OBJS) libarduinocore.a
 		$(ARDUINO_VARIANT_DIR)/libsam_sam3x8e_gcc_rel.a \
 		-Wl,--end-group
 
-eeg_mouse_firmware.o : $(SRC_DIR)/eeg_mouse_firmware.h $(SRC_DIR)/eeg_lead_leds.h \
+OpenHardwareExG_firmware.o : $(SRC_DIR)/OpenHardwareExG_firmware.h $(SRC_DIR)/exg_lead_leds.h \
 	$(SRC_DIR)/ads1298.h $(SRC_DIR)/util.h
-eeg_leads_leds.o : $(SRC_DIR)/eeg_mouse_firmware.h $(SRC_DIR)/eeg_lead_leds.h
+exg_leads_leds.o : $(SRC_DIR)/OpenHardwareExG_firmware.h $(SRC_DIR)/exg_lead_leds.h
 util.o : $(SRC_DIR)/util.h
