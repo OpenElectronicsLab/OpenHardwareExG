@@ -1,4 +1,4 @@
-PCBNEW-BOARD Version 2 date Sun 25 May 2014 12:33:46 PM UTC
+PCBNEW-BOARD Version 2 date Sat 09 Aug 2014 03:45:52 PM CEST
 
 # Created by Pcbnew(2013-jul-07)-stable
 
@@ -7,6 +7,7 @@ encoding utf-8
 Units mm
 LayerCount 4
 EnabledLayers 1FFF8007
+VisibleLayers 00100000
 Links 673
 NoConn 0
 Di 37.2872 46.261867 241.693701 121.975033
@@ -21,7 +22,7 @@ $EndGENERAL
 $SHEETDESCR
 Sheet A4 11693 8268
 Title ""
-Date "25 may 2014"
+Date "9 aug 2014"
 Rev ""
 Comp ""
 Comment1 ""
@@ -67,7 +68,7 @@ Pad2MaskClearance 0
 SolderMaskMinWidth 0
 Pad2PasteClearance -0.0254
 AuxiliaryAxisOrg 0 0
-VisibleElements FFFFFFBF
+VisibleElements 7FFFFFFF
 PcbPlotParams (pcbplotparams (layerselection 284983303) (usegerberextensions true) (excludeedgelayer true) (linewidth 0.150000) (plotframeref false) (viasonmask false) (mode 1) (useauxorigin false) (hpglpennumber 1) (hpglpenspeed 20) (hpglpendiameter 15) (hpglpenoverlay 0) (psnegative false) (psa4output false) (plotreference true) (plotvalue true) (plotothertext true) (plotinvisibletext false) (padsonsilk false) (subtractmaskfromsilk true) (outputformat 1) (mirror false) (drillshape 1) (scaleselection 1) (outputdirectory ancillary-files/))
 $EndSETUP
 
@@ -14500,13 +14501,13 @@ Po 132.08 75.438 1.524 2.032 0.3048 0
 De 20 0 0 Normal
 $EndTEXTPCB
 $TEXTPCB
-Te "eeg-mouse rev 1.2"
+Te "OpenHardwareExG rev 1.2"
 Po 131.826 59.944 2.54 4.064 0.508 0
 De 20 0 0 Normal
 $EndTEXTPCB
 $TEXTPCB
-Te "https://github.com/OpenElectronicsLab/eeg-mouse"
-Po 110.998 102.108 3.048 4.064 0.635 0
+Te "https://github.com/OpenElectronicsLab/OpenHardwareExG"
+Po 113.03 100.7745 3.048 4.064 0.635 0
 De 20 0 0 Normal
 $EndTEXTPCB
 $TEXTPCB
@@ -14524,7 +14525,7 @@ $EndTEXTPCB
 $TEXTPCB
 Te "Licenced under"
 nl "CERN OHL v1.1"
-Po 189.992 98.806 2.54 2.032 0.508 0
+Po 200.152 99.1235 2.54 2.032 0.508 0
 De 20 0 0 Normal
 $EndTEXTPCB
 $DRAWSEGMENT
@@ -14777,7 +14778,7 @@ Po 0 215.392 85.09 215.392 81.026 0.381
 De 21 0 900 0 0
 $EndDRAWSEGMENT
 $TEXTPCB
-Te "eeg-mouse rev 1.2"
+Te "OpenHardwareExG rev 1.2"
 Po 122.809 52.451 1.27 2.032 0.254 0
 De 21 1 0 Normal
 $EndTEXTPCB
@@ -14802,8 +14803,8 @@ Po 0 133.731 103.251 133.223 103.759 0.381
 De 21 0 900 0 0
 $EndDRAWSEGMENT
 $TEXTPCB
-Te "https://github.com/OpenElectronicsLab/eeg-mouse"
-Po 148.082 105.41 1.524 2.032 0.3048 0
+Te "https://github.com/OpenElectronicsLab/OpenHardwareExG"
+Po 147.1295 105.6005 1.524 2.032 0.3048 0
 De 21 1 0 Normal
 $EndTEXTPCB
 $TEXTPCB

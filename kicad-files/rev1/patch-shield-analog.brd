@@ -2132,7 +2132,7 @@ Po 73819 45276 600 800 120 0
 De 21 1 0 Normal C
 $EndTEXTPCB
 $TEXTPCB
-Te "https://github.com/OpenElectronicsLab/eeg-mouse patch-shield-analog rev1.0"
+Te "https://github.com/OpenElectronicsLab/OpenHardwareExG patch-shield-analog rev1.0"
 Po 48228 46260 600 800 120 0
 De 21 1 0 Normal C
 $EndTEXTPCB

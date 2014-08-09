@@ -1,6 +1,6 @@
 (export (version D)
   (design
-    (source /home/kms15private/git/eeg-mouse/kicad-files/rev1/arduino-ads129x.sch)
+    (source /home/kms15private/git/OpenHardwareExG/kicad-files/rev1/arduino-ads129x.sch)
     (date "Sun 25 May 2014 11:59:40 AM UTC")
     (tool "eeschema (2013-jul-07)-stable"))
   (components

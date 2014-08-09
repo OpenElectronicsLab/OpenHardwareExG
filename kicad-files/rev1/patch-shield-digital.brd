@@ -5505,7 +5505,7 @@ De 21 1 0 Normal C
 $EndTEXTPCB
 $TEXTPCB
 Te "patch-shield-digital rev1.0"
-nl "https://github.com/OpenElectronicsLab/eeg-mouse"
+nl "https://github.com/OpenElectronicsLab/OpenHardwareExG"
 Po 75591 44980 600 800 120 0
 De 21 1 0 Normal C
 $EndTEXTPCB

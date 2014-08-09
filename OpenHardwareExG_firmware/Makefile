@@ -1,7 +1,8 @@
 # Makefile for building and flashing an Arduino Due
 
-# Copyright (C) 2013 Kendrick Shaw <kms15@case.edu>
-# Copyright (C) 2013 Eric Herman <eric@freesa.org>
+# Copyright (C) 2013, 2014 Kendrick Shaw <kms15@case.edu>
+# Copyright (C) 2013, 2014 Eric Herman <eric@freesa.org>
+# Copyright (C) 2013, 2014 Ace Medlock <ace.medlock@gmail.com>
 
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Lesser General Public License as published by
@@ -20,7 +21,8 @@ APP_OBJS=$(APPNAME).o util.o exg_lead_leds.o
 # firmware running on the ardiuno DUE using the "programming" port
 # (not the "native" port)
 #
-# set OPENHARDWAREEXG_HARDWARE_VERSION=0 for the eeg-mouse rev0 board
+# set OPENHARDWAREEXG_HARDWARE_VERSION=0 for the rev0 board
+# see: https://github.com/OpenElectronicsLab/ads1298-breakout
 APP_FLAGS=-DARDUINO_DUE_USB_PROGRAMMING=0 -DOPENHARDWAREEXG_HARDWARE_VERSION=1
 
 # port the arduino is connected to while flashing new firmware
