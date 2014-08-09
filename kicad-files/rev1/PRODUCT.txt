@@ -1,8 +1,0 @@
-If you are manufacturing a product using this design, you are invited to send
-a message listing the type, quantity, and dates of production of the product
-to the contributors listed below (as described in section 4.2d of the CERN
-open hardware license).
-
-Ace Medlock <ace.medlock@gmail.com>
-Kendrick Shaw <kms15@case.edu>
-Eric Herman <eric@freesa.org>
