@@ -1,7 +1,0 @@
-If you are distributing a modified version of the project, please use this file
-to describe the dates and details of your modifications (as described in
-section 3.3b of the CERN open hardware license).  If you are using a publicly
-available repository to track changes (which we encourage), you may simply list
-the URL of the repository here.
-
-https://github.com/ericherman/eeg-mouse
