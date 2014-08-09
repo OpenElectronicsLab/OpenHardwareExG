@@ -112,22 +112,23 @@ eeg-mouse</a> project.
 	<p>example video</p>
     </video>
 
-    <p> We are able to record EEG signals and extract alpha and beta
-    activity, and use these to control a cursor in two dimensions.  Our
-    tests allow the "mouse" to be moved with an average distance to target of
-    under 50 pixels, although there is a considerable amount of instability
-    in our control; we hope to improve this.</p>
-    <p>Here you can see a trial run:</p>
+    <p> We are also able to record EEG signals:</p>
     <!-- video poster="movie.jpg" controls -->
     <video controls>
 	<source
-         src="https://raw.githubusercontent.com/OpenElectronicsLab/eeg-mouse-notes/master/videos/2014-05-10_poor_run.webm"
+         src="https://raw.githubusercontent.com/OpenElectronicsLab/eeg-mouse-notes/master/videos/EEG-demo-kms-2014-08-09T1525Z.webm"
          type='video/webm; codecs="vp8.0, vorbis"'>
 	<source
-         src="https://raw.githubusercontent.com/OpenElectronicsLab/eeg-mouse-notes/master/videos/2014-05-10_poor_run.mp4"
+         src="https://raw.githubusercontent.com/OpenElectronicsLab/eeg-mouse-notes/master/videos/EEG-demo-kms-2014-08-09T1525Z.mp4"
          type='video/mp4; codecs="avc1.4D401E, mp4a.40.2"'>
 	<p>example video</p>
     </video>
+    <p>The big changes in signals are from the eye muscles opening, closing,
+    and blinking. When the eyes are closed, you can see what appears to be
+    an increase in alpha waves, particularly on channels 3 and 4
+    (positioned over the occipital lobes in this recording).
+    </p>
+
     <h4> Current Hardware </h4>
     <p>The Rev1 design integrates an Arduino Due compatible
     microcontroller, 5kV of reinforced isolation (for safety), and an
