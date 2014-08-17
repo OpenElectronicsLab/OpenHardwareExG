@@ -113,10 +113,22 @@ eeg-mouse</a> project.
     </video>
     <p>For this recording, the IN1N electrode was position on the right
     shoulder, the IN1P electrode on the left shoulder, and the BIAS OUT
-    was on the right hip.</p>
+    was on the right hip (lead II of a standard ECG).</p>
     <p>The graphing software used is OpenElectronicsLab's fork of
     <a href="https://github.com/OpenElectronicsLab/GDAQRec">GDAQRec</a>.
     </p>
+    <p>We can also record a full 12-lead ECG.</p>
+    <img src="https://raw.githubusercontent.com/OpenElectronicsLab/eeg-mouse-notes/master/sandbox/ecg.png" width="800">
+    <p>This example was recorded with IN1P-IN8P connected to electrodes at
+    <a href="https://en.wikipedia.org/wiki/Electrocardiography#Placement_of_electrodes">RA,
+    LA, and V1-V6</a> respectively, IN1N (tied to IN2N-IN8N) connected to 
+    <a href="https://en.wikipedia.org/wiki/Electrocardiography#Placement_of_electrodes">LL</a>,
+    and BIAS_OUT connected to
+    <a href="https://en.wikipedia.org/wiki/Electrocardiography#Placement_of_electrodes">RL</a>.
+    We then used
+    <a href="https://github.com/OpenElectronicsLab/eeg-mouse-notes/tree/master/sandbox/ecg-samples.R">this
+    R script</a> to do the appropriate processing and plotting to generate the
+    conventional plot of 12 leads on the standardized grid.</p>
 
     <p> We are also able to record EEG signals:</p>
     <!-- video poster="movie.jpg" controls -->
