@@ -1,7 +1,7 @@
 /* util.h */
-#ifndef _UTIL_H_
-#define _UTIL_H_
+#ifndef UTIL_H
+#define UTIL_H
 
 void to_hex(char byte, char *buf);
 
-#endif /* _UTIL_H_ */
+#endif /* UTIL_H */

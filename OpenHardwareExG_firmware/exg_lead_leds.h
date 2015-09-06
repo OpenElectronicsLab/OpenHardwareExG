@@ -1,6 +1,6 @@
 /* exg_lead_leds.h */
-#ifndef _EXG_LEAD_LEDS_
-#define _EXG_LEAD_LEDS_
+#ifndef EXG_LEAD_LEDS
+#define EXG_LEAD_LEDS
 class Eeg_lead_leds {
 	// 32 bits of LED state;
 	uint32_t leds_state;
