@@ -169,7 +169,7 @@ tidy:
 		-T FILE \
 		-T size_t \
 		-T uint8_t \
-		*.ino *.c*
+		*.ino *.c* *.h
 
 upload: $(APPNAME).bin
 	$(RESET_PORT)

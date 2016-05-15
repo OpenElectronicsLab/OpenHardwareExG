@@ -537,16 +537,16 @@ namespace ADS1298 {
 #ifdef __cplusplus
 		uint8_t loff_statp() const {
 			return ((data[0] << 4) | (data[1] >> 4));
-		}
+		};
 		uint8_t loff_statn() const {
 			return ((data[1] << 4) | (data[2] >> 4));
-		}
-		uint8_t loff_statp(int i)const {
+		};
+		uint8_t loff_statp(int i) const {
 			return ((loff_statp() >> i) & 1);
-		}
-		uint8_t loff_statn(int i)const {
+		};
+		uint8_t loff_statn(int i) const {
 			return ((loff_statn() >> i) & 1);
-		}
+		};
 #endif
 	};
 #ifdef __cplusplus

@@ -6,10 +6,10 @@ class Eeg_lead_leds {
 	uint32_t leds_state;
 	int step;
 
-      public:
+public:
 	enum led_color { yellow, green, num_colors };
 	enum { num_channels = 8 };
-	enum polarity { positive = 0, negative = num_channels};
+	enum polarity { positive = 0, negative = num_channels };
 
 	 Eeg_lead_leds();
 	void begin();
