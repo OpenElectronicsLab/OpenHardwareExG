@@ -25,6 +25,7 @@ else {
 }
 $port->databits(8);
 $port->baudrate(230400);
+#$port->baudrate(115200);
 $port->parity("none");
 $port->stopbits(1);
 

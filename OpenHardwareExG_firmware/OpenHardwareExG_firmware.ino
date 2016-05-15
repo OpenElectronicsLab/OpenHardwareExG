@@ -28,11 +28,12 @@
 #else // default to the NATIVE port
 #define SERIAL_OBJ SerialUSB
 #endif
-#endif
-
-#ifndef SERIAL_OBJ
+#else
 #define SERIAL_OBJ Serial
 #endif
+
+#define ASSTRING(X) #X
+// SERIAL_OBJ.print("at line " ASSTRING(__LINE__) "\n");
 
 // global variables
 char setup_2_run;
@@ -40,7 +41,7 @@ char in_byte;
 int led_status;
 unsigned long last_blink;
 unsigned long blink_interval_millis;
-#if OPENHARDWAREEXG_HARDWARE_VERSION != 0
+#if OPENHARDWAREEXG_HARDWARE_VERSION == 1
 Eeg_lead_leds lead_leds;
 #endif
 bool shared_negative_electrode = true;
@@ -52,6 +53,7 @@ bool shared_negative_electrode = true;
 
 void adc_send_command(int cmd)
 {
+	//IPIN_CS:
 	digitalWrite(IPIN_CS, LOW);
 	SPI.transfer(cmd);
 	delayMicroseconds(1);
@@ -76,8 +78,10 @@ byte adc_rreg(int reg)
 
 void adc_wreg(int reg, int val)
 {
+	// IPIN_CS
 	digitalWrite(IPIN_CS, LOW);
 
+	// ADS1298::WREG
 	SPI.transfer(ADS1298::WREG | reg);
 	SPI.transfer(0);	// number of registers to be read/written – 1
 	SPI.transfer(val);
@@ -88,6 +92,7 @@ void adc_wreg(int reg, int val)
 
 void read_data_frame(ADS1298::Data_frame * frame)
 {
+	// IPIN_CS
 	digitalWrite(IPIN_CS, LOW);
 	for (int i = 0; i < frame->size; ++i) {
 		frame->data[i] = SPI.transfer(0);
@@ -96,6 +101,7 @@ void read_data_frame(ADS1298::Data_frame * frame)
 	digitalWrite(IPIN_CS, HIGH);
 }
 
+#if OPENHARDWAREEXG_HARDWARE_VERSION == 1
 void update_leadoff_led_data(const ADS1298::Data_frame & frame)
 {
 	for (int channel = 0; channel < LIVE_CHANNELS_NUM; ++channel) {
@@ -114,6 +120,7 @@ void update_leadoff_led_data(const ADS1298::Data_frame & frame)
 		}
 	}
 }
+#endif
 
 void update_bias_ref(const ADS1298::Data_frame & frame)
 {
@@ -196,7 +203,7 @@ void wait_for_drdy(const char *msg, int interval)
 {
 	int i = 0;
 	while (digitalRead(IPIN_DRDY) == HIGH) {
-		if (i < interval) {
+		if (i++ < interval) {
 			continue;
 		}
 		i = 0;
@@ -214,6 +221,43 @@ void blink_led(void)
 		last_blink = now;
 	}
 }
+
+void print_chip_id()
+{
+	using namespace ADS1298;
+	byte version;
+	int i = 0;
+	char msg[40];
+
+	msg[i++] = '[';
+	msg[i++] = 'i';
+	msg[i++] = 't';
+	msg[i++] = ']';
+
+	version = adc_rreg(ADS1298::ID);
+	msg[i++] = 'c';
+	msg[i++] = 'h';
+	msg[i++] = 'i';
+	msg[i++] = 'p';
+	msg[i++] = ' ';
+	msg[i++] = 'i';
+	msg[i++] = 'd';
+	msg[i++] = ':';
+	msg[i++] = ' ';
+	msg[i++] = '0';
+	msg[i++] = 'x';
+	to_hex(version, msg + i);
+	i += 2;
+
+	msg[i++] = '[';
+	msg[i++] = 'i';
+	msg[i++] = 's';
+	msg[i++] = ']';
+	msg[i++] = '\n';
+	msg[i++] = '\0';
+	SERIAL_OBJ.print(msg);
+}
+
 
 void setup(void)
 {
@@ -233,6 +277,8 @@ void setup_2(void)
 	// initialize the USB Serial connection
 	SERIAL_OBJ.begin(230400);
 
+	SERIAL_OBJ.print("Hello, world!\n");
+
 	// set the LED on
 	pinMode(13, OUTPUT);
 	digitalWrite(13, HIGH);
@@ -250,7 +296,7 @@ void setup_2(void)
 	pinMode(IPIN_PWDN, OUTPUT);
 	pinMode(IPIN_DRDY, INPUT);
 
-#if OPENHARDWAREEXG_HARDWARE_VERSION != 0
+#if OPENHARDWAREEXG_HARDWARE_VERSION == 1
 	lead_leds.begin();
 	// while waiting for the device to power up,
 	// sequentially light the green LEDs for IN1P through IN8P
@@ -274,18 +320,23 @@ void setup_2(void)
 	SPI.setDataMode(SPI_MODE1);
 
 	//digitalWrite(IPIN_CS, LOW);
+
+	//PIN_CLKSEL
 	digitalWrite(PIN_CLKSEL, HIGH);
 
 	// Wait for 20 microseconds Oscillator to Wake Up
 	delay(1);		// we'll actually wait 1 millisecond
 
+#if OPENHARDWAREEXG_HARDWARE_VERSION <= 1
 	digitalWrite(IPIN_PWDN, HIGH);
 	digitalWrite(IPIN_RESET, HIGH);
+#endif
 
 	// Wait for 33 milliseconds (we will use 100 millis)
 	//  for Power-On Reset and Oscillator Start-Up
 	delay(100);
 
+#if OPENHARDWAREEXG_HARDWARE_VERSION <= 1
 	// Issue Reset Pulse,
 	digitalWrite(IPIN_RESET, LOW);
 	// actually only needs 1 microsecond, we'll go with milli
@@ -293,6 +344,10 @@ void setup_2(void)
 	digitalWrite(IPIN_RESET, HIGH);
 	// Wait for 18 tCLKs AKA 9 microseconds, we use 1 millisec
 	delay(1);
+#else
+	adc_send_command(RESET);
+	delay(1);
+#endif
 
 	// Send SDATAC Command (Stop Read Data Continuously mode)
 	adc_send_command(SDATAC);
@@ -334,8 +389,14 @@ void setup_2(void)
 		adc_wreg(CHnSET + i, SHORTED | PDn);
 	}
 
+	delay(3*1000);
+	print_chip_id();
+#if OPENHARDWAREEXG_HARDWARE_VERSION <= 1
 	digitalWrite(PIN_START, HIGH);
-	wait_for_drdy("waiting for DRDY in setup", 1000);
+#else
+	adc_send_command(START);
+#endif
+	wait_for_drdy("waiting for DRDY in setup", 1000000);
 
 	adc_send_command(RDATAC);
 	blink_interval_millis = BLINK_INTERVAL_WAITING;
@@ -344,9 +405,6 @@ void setup_2(void)
 void check_for_ping_from_serial()
 {
 	using namespace ADS1298;
-	byte version;
-	int i = 0;
-	char msg[40];
 
 	if (SERIAL_OBJ.available() == 0) {
 		return;
@@ -358,33 +416,7 @@ void check_for_ping_from_serial()
 		// Send SDATAC Command (Stop Read Data Continuously mode)
 		adc_send_command(SDATAC);
 
-		msg[i++] = '[';
-		msg[i++] = 'i';
-		msg[i++] = 't';
-		msg[i++] = ']';
-
-		version = adc_rreg(ADS1298::ID);
-		msg[i++] = 'c';
-		msg[i++] = 'h';
-		msg[i++] = 'i';
-		msg[i++] = 'p';
-		msg[i++] = ' ';
-		msg[i++] = 'i';
-		msg[i++] = 'd';
-		msg[i++] = ':';
-		msg[i++] = ' ';
-		msg[i++] = '0';
-		msg[i++] = 'x';
-		to_hex(version, msg + i);
-		i += 2;
-
-		msg[i++] = '[';
-		msg[i++] = 'i';
-		msg[i++] = 's';
-		msg[i++] = ']';
-		msg[i++] = '\n';
-		msg[i++] = '\0';
-		SERIAL_OBJ.print(msg);
+		print_chip_id();
 
 		// Put the Device Back in Read DATA Continuous Mode
 		adc_send_command(RDATAC);
@@ -397,17 +429,21 @@ void loop(void)
 	char byte_buf[DATA_BUF_SIZE];
 
 	blink_led();
+#if OPENHARDWAREEXG_HARDWARE_VERSION == 1
 	lead_leds.update_tick();
-
+#endif
 	if (!setup_2_run) {
 		setup_2();
 		setup_2_run = 1;
 	}
 	// read the next frame, if available
 	ADS1298::Data_frame frame;
+	// IPIN_DRDY
 	if (digitalRead(IPIN_DRDY) == LOW) {
 		read_data_frame(&frame);
+#if OPENHARDWAREEXG_HARDWARE_VERSION == 1
 		update_leadoff_led_data(frame);
+#endif
 		update_bias_ref(frame);
 		if (in_byte != 0) {
 			format_data_frame(frame, byte_buf);

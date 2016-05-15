@@ -23,7 +23,10 @@ APP_OBJS=$(APPNAME).o util.o exg_lead_leds.o
 #
 # set OPENHARDWAREEXG_HARDWARE_VERSION=0 for the rev0 board
 # see: https://github.com/OpenElectronicsLab/ads1298-breakout
-APP_FLAGS=-DARDUINO_DUE_USB_PROGRAMMING=0 -DOPENHARDWAREEXG_HARDWARE_VERSION=1
+# set -DOPENHARDWAREEXG_HARDWARE_VERSION=1 for the rev1 board
+# set OPENHARDWAREEXG_HARDWARE_VERSION=2 for the OpenHardwareExG_Shield
+#APP_FLAGS=-DARDUINO_DUE_USB_PROGRAMMING=0 -DOPENHARDWAREEXG_HARDWARE_VERSION=1
+APP_FLAGS=-DARDUINO_DUE_USB_PROGRAMMING=0
 
 # port the arduino is connected to while flashing new firmware
 PORT=ttyACM0
@@ -122,6 +125,8 @@ ARDUINO_CORE_OBJS=itoa.o \
 		variant.o
 
 %.o : $(SRC_DIR)/%.ino
+	$(CXX) $(NOISYFLAGS) $(CXXFLAGS) $(APP_FLAGS) \
+		-E -C -x c++ $< -o $@.FOO
 	$(CXX) $(NOISYFLAGS) $(CXXFLAGS) $(APP_FLAGS) \
 		-c -x c++ $< -o $@
 
