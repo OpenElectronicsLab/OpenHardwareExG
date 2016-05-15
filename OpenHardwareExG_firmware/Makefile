@@ -124,9 +124,12 @@ ARDUINO_CORE_OBJS=itoa.o \
 		wiring_pulse.o \
 		variant.o
 
+# extracted from https://github.com/torvalds/linux/blob/master/scripts/Lindent
+LINDENT=indent -npro -kr -i8 -ts8 -sob -l80 -ss -ncs -cp1 -il0
+
 %.o : $(SRC_DIR)/%.ino
 	$(CXX) $(NOISYFLAGS) $(CXXFLAGS) $(APP_FLAGS) \
-		-E -C -x c++ $< -o $@.FOO
+		-E -C -x c++ $< -o $<.macros_expanded
 	$(CXX) $(NOISYFLAGS) $(CXXFLAGS) $(APP_FLAGS) \
 		-c -x c++ $< -o $@
 
@@ -158,7 +161,15 @@ all: $(APPNAME).bin
 	echo YAY
 
 clean:
-	rm -f *.o *.a *.elf *.bin *.map $(APPNAME).cpp
+	rm -f *.o *.a *.elf *.bin *.map $(APPNAME).cpp *.macros_expanded
+
+tidy:
+	$(LINDENT) \
+		-T Data_frame \
+		-T FILE \
+		-T size_t \
+		-T uint8_t \
+		*.ino *.c*
 
 upload: $(APPNAME).bin
 	$(RESET_PORT)

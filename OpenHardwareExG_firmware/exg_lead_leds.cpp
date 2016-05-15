@@ -4,7 +4,8 @@
 
 const int num_inputs_per_channel = 2;	// IN1N, IN1P
 const int num_leds =
-    Eeg_lead_leds::num_channels * num_inputs_per_channel * Eeg_lead_leds::num_colors;
+    Eeg_lead_leds::num_channels * num_inputs_per_channel *
+    Eeg_lead_leds::num_colors;
 const int states_per_led = 2;	// clock low and high
 
 enum states {
@@ -68,7 +69,6 @@ void Eeg_lead_leds::set_yellow_negative(int channel, bool on)
 {
 	set_led(yellow, channel, negative, on);
 }
-
 
 void Eeg_lead_leds::update_tick()
 {

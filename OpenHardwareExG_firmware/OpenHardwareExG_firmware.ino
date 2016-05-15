@@ -90,7 +90,7 @@ void adc_wreg(int reg, int val)
 	digitalWrite(IPIN_CS, HIGH);
 }
 
-void read_data_frame(ADS1298::Data_frame * frame)
+void read_data_frame(ADS1298::Data_frame *frame)
 {
 	// IPIN_CS
 	digitalWrite(IPIN_CS, LOW);
@@ -102,7 +102,7 @@ void read_data_frame(ADS1298::Data_frame * frame)
 }
 
 #if OPENHARDWAREEXG_HARDWARE_VERSION == 1
-void update_leadoff_led_data(const ADS1298::Data_frame & frame)
+void update_leadoff_led_data(const ADS1298::Data_frame &frame)
 {
 	for (int channel = 0; channel < LIVE_CHANNELS_NUM; ++channel) {
 		bool leadoff_p = frame.loff_statp(channel);
@@ -122,7 +122,7 @@ void update_leadoff_led_data(const ADS1298::Data_frame & frame)
 }
 #endif
 
-void update_bias_ref(const ADS1298::Data_frame & frame)
+void update_bias_ref(const ADS1298::Data_frame &frame)
 {
 	using namespace ADS1298;
 
@@ -168,7 +168,7 @@ void update_bias_ref(const ADS1298::Data_frame & frame)
 
 // if this becomes more flexible, we may need to pass in
 // the byte_buf size, but for now we are safe to skip it
-void format_data_frame(const ADS1298::Data_frame & frame, char *byte_buf)
+void format_data_frame(const ADS1298::Data_frame &frame, char *byte_buf)
 {
 	uint8_t in_byte;
 	unsigned int pos = 0;
@@ -257,7 +257,6 @@ void print_chip_id()
 	msg[i++] = '\0';
 	SERIAL_OBJ.print(msg);
 }
-
 
 void setup(void)
 {
@@ -389,7 +388,7 @@ void setup_2(void)
 		adc_wreg(CHnSET + i, SHORTED | PDn);
 	}
 
-	delay(3*1000);
+	delay(3 * 1000);
 	print_chip_id();
 #if OPENHARDWAREEXG_HARDWARE_VERSION <= 1
 	digitalWrite(PIN_START, HIGH);

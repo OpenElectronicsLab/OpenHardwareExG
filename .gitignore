@@ -20,6 +20,7 @@ $*
 *.list
 *.srec
 *.map
+*.macros_expanded
 
 ####################
 # R temporary files
