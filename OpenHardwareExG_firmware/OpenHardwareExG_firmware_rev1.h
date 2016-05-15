@@ -5,8 +5,7 @@
 // IPIN_ is for pins that are inverted
 
 // CS (chip select) is PB14, CANTX1/IO, PIN53
-#define IPIN_CS 7 // shield?
-//#define IPIN_CS 53
+#define IPIN_CS 53
 
 //  SCLK (serial clock) is PA27, SPCK, SPI PIN 3
 // #define PIN_SCLK
@@ -30,8 +29,7 @@
 #define PIN_START 46
 
 // DRDY (data ready) is PC18, PIN 45
-#define IPIN_DRDY 5 // shield?
-// #define IPIN_DRDY 45
+#define IPIN_DRDY 45
 
 // LED_ENABLE is PD6, PIN 29
 #define IPIN_LED_ENABLE 29
