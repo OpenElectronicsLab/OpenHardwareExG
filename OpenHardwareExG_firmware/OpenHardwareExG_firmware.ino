@@ -67,7 +67,7 @@ byte adc_rreg(int reg)
 	digitalWrite(IPIN_MASTER_CS, LOW);
 
 	SPI.transfer(ADS1298::RREG | reg);
-	SPI.transfer(0);	// number of registers to be read/written – 1
+	SPI.transfer(0);	// number of registers to be read/written
 	val = SPI.transfer(0);
 
 	delayMicroseconds(1);
@@ -83,7 +83,7 @@ void adc_wreg(int reg, int val)
 
 	// ADS1298::WREG
 	SPI.transfer(ADS1298::WREG | reg);
-	SPI.transfer(0);	// number of registers to be read/written – 1
+	SPI.transfer(0);	// number of registers to be read/written
 	SPI.transfer(val);
 
 	delayMicroseconds(1);
