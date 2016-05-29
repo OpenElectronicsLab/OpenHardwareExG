@@ -354,9 +354,11 @@ void setup_2(void)
 	// Send SDATAC Command (Stop Read Data Continuously mode)
 	adc_send_command(SDATAC);
 
+#ifdef SET_GPIO_TO_OUTPUT
 	// All GPIO set to output 0x0000
 	// (floating CMOS inputs can flicker on and off, creating noise)
 	adc_wreg(GPIO, 0x00);
+#endif
 
 	// Power up the internal reference and wait for it to settle
 	adc_wreg(CONFIG3,
