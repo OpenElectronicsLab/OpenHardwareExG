@@ -14,4 +14,12 @@
 #include "OpenHardwareExG_firmware_shield.h"
 #endif
 
+#if !defined(IPIN_MASTER_CS) && defined(IPIN_CS)
+#define IPIN_MASTER_CS IPIN_CS
+#endif
+
+#if !defined(IPIN_MASTER_DRDY) && defined(IPIN_DRDY)
+#define IPIN_MASTER_DRDY IPIN_DRDY
+#endif
+
 #endif /* OPENHARDWAREEXG_FIRMWARE_H */

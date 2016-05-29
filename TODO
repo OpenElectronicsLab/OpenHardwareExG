@@ -1,0 +1,9 @@
+TODO:
+	* verify firmware still works with conditional compilation
+		* rev0, rev1 hardware not tested yet
+		* the nice LEDs only exist on rev1, test conditional compile
+		* the OpenHardwareExG_Shield does not use:
+			* PIN_CLKSEL
+			* PIN_START
+			* IPIN_RESET
+			* IPIN_PWDN

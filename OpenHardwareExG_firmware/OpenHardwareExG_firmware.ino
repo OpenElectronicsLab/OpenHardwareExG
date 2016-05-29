@@ -53,33 +53,33 @@ bool shared_negative_electrode = true;
 
 void adc_send_command(int cmd)
 {
-	//IPIN_CS:
-	digitalWrite(IPIN_CS, LOW);
+	//IPIN_MASTER_CS:
+	digitalWrite(IPIN_MASTER_CS, LOW);
 	SPI.transfer(cmd);
 	delayMicroseconds(1);
-	digitalWrite(IPIN_CS, HIGH);
+	digitalWrite(IPIN_MASTER_CS, HIGH);
 }
 
 byte adc_rreg(int reg)
 {
 	byte val;
 
-	digitalWrite(IPIN_CS, LOW);
+	digitalWrite(IPIN_MASTER_CS, LOW);
 
 	SPI.transfer(ADS1298::RREG | reg);
 	SPI.transfer(0);	// number of registers to be read/written – 1
 	val = SPI.transfer(0);
 
 	delayMicroseconds(1);
-	digitalWrite(IPIN_CS, HIGH);
+	digitalWrite(IPIN_MASTER_CS, HIGH);
 
 	return val;
 }
 
 void adc_wreg(int reg, int val)
 {
-	// IPIN_CS
-	digitalWrite(IPIN_CS, LOW);
+	// IPIN_MASTER_CS
+	digitalWrite(IPIN_MASTER_CS, LOW);
 
 	// ADS1298::WREG
 	SPI.transfer(ADS1298::WREG | reg);
@@ -87,18 +87,18 @@ void adc_wreg(int reg, int val)
 	SPI.transfer(val);
 
 	delayMicroseconds(1);
-	digitalWrite(IPIN_CS, HIGH);
+	digitalWrite(IPIN_MASTER_CS, HIGH);
 }
 
 void read_data_frame(ADS1298::Data_frame *frame)
 {
-	// IPIN_CS
-	digitalWrite(IPIN_CS, LOW);
+	// IPIN_MASTER_CS
+	digitalWrite(IPIN_MASTER_CS, LOW);
 	for (int i = 0; i < frame->size; ++i) {
 		frame->data[i] = SPI.transfer(0);
 	}
 	delayMicroseconds(1);	// is this needed?
-	digitalWrite(IPIN_CS, HIGH);
+	digitalWrite(IPIN_MASTER_CS, HIGH);
 }
 
 #if OPENHARDWAREEXG_HARDWARE_VERSION == 1
@@ -202,7 +202,7 @@ void serial_print_error(const char *msg)
 void wait_for_drdy(const char *msg, int interval)
 {
 	int i = 0;
-	while (digitalRead(IPIN_DRDY) == HIGH) {
+	while (digitalRead(IPIN_MASTER_DRDY) == HIGH) {
 		if (i++ < interval) {
 			continue;
 		}
@@ -282,18 +282,21 @@ void setup_2(void)
 	pinMode(13, OUTPUT);
 	digitalWrite(13, HIGH);
 
-	pinMode(IPIN_CS, OUTPUT);
+	pinMode(IPIN_MASTER_CS, OUTPUT);
+	pinMode(IPIN_MASTER_DRDY, INPUT);
+
 #if OPENHARDWAREEXG_HARDWARE_VERSION == 0
 	pinMode(PIN_SCLK, OUTPUT);
 	pinMode(PIN_DIN, OUTPUT);
 	pinMode(PIN_DOUT, INPUT);
 #endif
 
+#if OPENHARDWAREEXG_HARDWARE_VERSION < 2
 	pinMode(PIN_CLKSEL, OUTPUT);
 	pinMode(PIN_START, OUTPUT);
 	pinMode(IPIN_RESET, OUTPUT);
 	pinMode(IPIN_PWDN, OUTPUT);
-	pinMode(IPIN_DRDY, INPUT);
+#endif
 
 #if OPENHARDWAREEXG_HARDWARE_VERSION == 1
 	lead_leds.begin();
@@ -318,15 +321,15 @@ void setup_2(void)
 	SPI.setClockDivider(SPI_CLOCK_DIVIDER_VAL);
 	SPI.setDataMode(SPI_MODE1);
 
-	//digitalWrite(IPIN_CS, LOW);
+	//digitalWrite(IPIN_MASTER_CS, LOW);
 
+#if OPENHARDWAREEXG_HARDWARE_VERSION <= 1
 	//PIN_CLKSEL
 	digitalWrite(PIN_CLKSEL, HIGH);
 
 	// Wait for 20 microseconds Oscillator to Wake Up
 	delay(1);		// we'll actually wait 1 millisecond
 
-#if OPENHARDWAREEXG_HARDWARE_VERSION <= 1
 	digitalWrite(IPIN_PWDN, HIGH);
 	digitalWrite(IPIN_RESET, HIGH);
 #endif
@@ -437,8 +440,8 @@ void loop(void)
 	}
 	// read the next frame, if available
 	ADS1298::Data_frame frame;
-	// IPIN_DRDY
-	if (digitalRead(IPIN_DRDY) == LOW) {
+	// IPIN_MASTER_DRDY
+	if (digitalRead(IPIN_MASTER_DRDY) == LOW) {
 		read_data_frame(&frame);
 #if OPENHARDWAREEXG_HARDWARE_VERSION == 1
 		update_leadoff_led_data(frame);

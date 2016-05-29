@@ -1,5 +1,5 @@
 #include <Arduino.h>
-#include "OpenHardwareExG_firmware.h"
+#include "OpenHardwareExG_firmware_rev1.h"
 #include "exg_lead_leds.h"
 
 const int num_inputs_per_channel = 2;	// IN1N, IN1P
