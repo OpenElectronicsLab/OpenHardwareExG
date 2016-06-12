@@ -225,10 +225,12 @@ void blink_led(void)
 void print_commit_hash()
 {
 #ifdef EEG_MOUSE_COMMIT_HASH
-	SERIAL_OBJ.print("[in]EEG_MOUSE_COMMIT_HASH: " EEG_MOUSE_COMMIT_HASH "[fo]\n");
+	SERIAL_OBJ.print("[in]EEG_MOUSE_COMMIT_HASH: " EEG_MOUSE_COMMIT_HASH
+			 "[fo]\n");
 #endif
 #ifdef EEG_MOUSE_FILES_MODIFIED
-	SERIAL_OBJ.print("[in]EEG_MOUSE_FILES_MODIFIED: " EEG_MOUSE_FILES_MODIFIED "[fo]\n");
+	SERIAL_OBJ.print("[in]EEG_MOUSE_FILES_MODIFIED: "
+			 EEG_MOUSE_FILES_MODIFIED "[fo]\n");
 #endif
 }
 
@@ -383,7 +385,7 @@ void setup_2(void)
 	adc_wreg(LOFF_SENSN, shared_negative_electrode ? 0x01 : 0xFF);
 
 	uint8_t reserved = (0x01 << 4) | (0x01 << 7);
-	adc_wreg(CONFIG1, reserved | 0x6); // 250 SPS
+	adc_wreg(CONFIG1, reserved | 0x6);	// 250 SPS
 	//adc_wreg(CONFIG1, reserved | 0x5); // 500 SPS
 	//adc_wreg(CONFIG1, reserved | 0x4); // 1k SPS
 	//adc_wreg(CONFIG1, reserved | 0x3); // 2k SPS
@@ -469,11 +471,11 @@ void loop(void)
 			SERIAL_OBJ.print("[me]");
 			format_data_frame(frame, byte_buf);
 			SERIAL_OBJ.print(byte_buf);
-			if ( idle_loops ) {
+			if (idle_loops) {
 				idle_loops = 0;
 			} else {
 				serial_print_error("may have lost samples: "
-						"no idle loops between frames");
+						   "no idle loops between frames");
 			}
 		}
 	} else {
