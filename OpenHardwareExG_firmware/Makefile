@@ -60,7 +60,12 @@ AR=$(TOOLCHAIN_BIN_DIR)/arm-none-eabi-ar
 # see: http://sourceforge.net/projects/b-o-s-s-a/
 BOSSAC=$(ARDIUNO_TOOLS_DIR)/bossac
 
+COMMIT_HASH=`git show HEAD | head -n1 | cut -f2 -d' '`
+MODIFIED_CNT=`git status -uno --short | wc -l`
+
 SHAREDFLAGS= -g -Os \
+		-DEEG_MOUSE_COMMIT_HASH=\"$(COMMIT_HASH)\" \
+		-DEEG_MOUSE_FILES_MODIFIED=\"$(MODIFIED_CNT)\" \
 		-ffunction-sections \
 		-fdata-sections \
 		-nostdlib \

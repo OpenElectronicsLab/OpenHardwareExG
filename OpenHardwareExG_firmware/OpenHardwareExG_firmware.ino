@@ -222,6 +222,16 @@ void blink_led(void)
 	}
 }
 
+void print_commit_hash()
+{
+#ifdef EEG_MOUSE_COMMIT_HASH
+	SERIAL_OBJ.print("[in]EEG_MOUSE_COMMIT_HASH: " EEG_MOUSE_COMMIT_HASH "[fo]\n");
+#endif
+#ifdef EEG_MOUSE_FILES_MODIFIED
+	SERIAL_OBJ.print("[in]EEG_MOUSE_FILES_MODIFIED: " EEG_MOUSE_FILES_MODIFIED "[fo]\n");
+#endif
+}
+
 void print_chip_id()
 {
 	using namespace ADS1298;
@@ -372,10 +382,12 @@ void setup_2(void)
 	adc_wreg(LOFF_SENSP, 0xFF);
 	adc_wreg(LOFF_SENSN, shared_negative_electrode ? 0x01 : 0xFF);
 
-	// Write Certain Registers, Including Input Short
-	// Set Device in HR Mode and DR = fMOD/1024
-	//adc_wreg(CONFIG1, HR | LOW_POWR_500_SPS);
-	adc_wreg(CONFIG1, HR | LOW_POWR_250_SPS);
+	uint8_t reserved = (0x01 << 4) | (0x01 << 7);
+	adc_wreg(CONFIG1, reserved | 0x6); // 250 SPS
+	//adc_wreg(CONFIG1, reserved | 0x5); // 500 SPS
+	//adc_wreg(CONFIG1, reserved | 0x4); // 1k SPS
+	//adc_wreg(CONFIG1, reserved | 0x3); // 2k SPS
+	//adc_wreg(CONFIG1, reserved | 0x2); // 4k SPS
 	adc_wreg(CONFIG2, INT_TEST);	// generate internal test signals
 
 	// If we want to share a single negative electrode, tie the negative
@@ -394,7 +406,7 @@ void setup_2(void)
 	}
 
 	delay(3 * 1000);
-	print_chip_id();
+
 #if OPENHARDWAREEXG_HARDWARE_VERSION <= 1
 	digitalWrite(PIN_START, HIGH);
 #else
@@ -420,6 +432,7 @@ void check_for_ping_from_serial()
 		// Send SDATAC Command (Stop Read Data Continuously mode)
 		adc_send_command(SDATAC);
 
+		print_commit_hash();
 		print_chip_id();
 
 		// Put the Device Back in Read DATA Continuous Mode
@@ -430,6 +443,7 @@ void check_for_ping_from_serial()
 
 void loop(void)
 {
+	static unsigned idle_loops = 1;
 	char byte_buf[DATA_BUF_SIZE];
 
 	blink_led();
@@ -450,10 +464,22 @@ void loop(void)
 #endif
 		update_bias_ref(frame);
 		if (in_byte != 0) {
+			SERIAL_OBJ.print("[ti]");
+			SERIAL_OBJ.print(micros());
+			SERIAL_OBJ.print("[me]");
 			format_data_frame(frame, byte_buf);
 			SERIAL_OBJ.print(byte_buf);
+			if ( idle_loops ) {
+				idle_loops = 0;
+			} else {
+				serial_print_error("may have lost samples: "
+						"no idle loops between frames");
+			}
 		}
+	} else {
+		++idle_loops;
 	}
+
 	// wait for a non-zero byte as a ping from the computer
 	// loop until data available
 	if (in_byte == 0) {

@@ -38,7 +38,7 @@ while (1) {
 
     # If we get data, then print it
     if ($received) {
-        print "Received '$received'\n";
+        print "'$received'\n";
         $missing = 0;
     }
     else {
