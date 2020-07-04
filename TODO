@@ -1,2 +1,6 @@
-TODO items can be found in:
+* Review OHL 2 for possible relicensing of hardware
+* consider splitting project and using git sub-modules, to make licensing of
+  various components clearer
+
+additional TODO items can be found in:
 https://github.com/OpenElectronicsLab/eeg-mouse-notes/blob/master/log.txt
