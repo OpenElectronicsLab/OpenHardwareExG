@@ -1,12 +1,19 @@
 The OpenHardwareExG is a platform for ECG, EEG, EMG, ENG, EOG, and evoked potential applications.
 
-http://openelectronicslab.github.io/OpenHardwareExG/
+[About OpenHardwareExG](http://openelectronicslab.github.io/OpenHardwareExG/)
 
-The OpenHardwareExG platform was originally developed as part of the eeg-mouse project.
-https://github.com/OpenElectronicsLab/eeg-mouse
+The schematic can be found at:
+[arduino-ads129x-schematic.pdf](./kicad-files/rev1/generated-files/arduino-ads129x-schematic.pdf)
 
 
+History
+-------
+The OpenHardwareExG platform was originally developed as part of the
+[eeg-mouse](https://github.com/OpenElectronicsLab/eeg-mouse) project.
 
+
+Licences
+--------
 Hardware and Hardware Documentation License
 
 CERN Open Hardware Licence
