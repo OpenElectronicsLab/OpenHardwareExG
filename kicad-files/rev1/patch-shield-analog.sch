@@ -240,7 +240,7 @@ Wire Wire Line
 	6250 2500 6250 2600
 Connection ~ 6250 2600
 $Comp
-L patch-shield-analog-rescue:DGND #PWR01
+L patch-shield-analog-rescue:DGND-patch-shield-analog-rescue #PWR01
 U 1 1 5201A76F
 P 8750 4200
 F 0 "#PWR01" H 8750 4200 40  0001 C CNN
@@ -251,7 +251,7 @@ F 3 "" H 8750 4200 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L patch-shield-analog-rescue:DGND #PWR02
+L patch-shield-analog-rescue:DGND-patch-shield-analog-rescue #PWR02
 U 1 1 5201A769
 P 6250 2700
 F 0 "#PWR02" H 6250 2700 40  0001 C CNN
@@ -262,7 +262,7 @@ F 3 "" H 6250 2700 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L patch-shield-analog-rescue:DGND #PWR03
+L patch-shield-analog-rescue:DGND-patch-shield-analog-rescue #PWR03
 U 1 1 5201A761
 P 9150 1950
 F 0 "#PWR03" H 9150 1950 40  0001 C CNN
@@ -275,7 +275,7 @@ $EndComp
 NoConn ~ 8200 5700
 NoConn ~ 7400 5700
 $Comp
-L patch-shield-analog-rescue:CONN_5X2 P35
+L patch-shield-analog-rescue:CONN_5X2-patch-shield-analog-rescue P35
 U 1 1 51D81450
 P 7800 5500
 F 0 "P35" H 7800 5800 60  0000 C CNN
@@ -327,7 +327,7 @@ NoConn ~ 7400 5400
 NoConn ~ 7400 5500
 NoConn ~ 7400 5600
 $Comp
-L patch-shield-analog-rescue:AGND #PWR04
+L patch-shield-analog-rescue:AGND-patch-shield-analog-rescue #PWR04
 U 1 1 51B368C7
 P 3600 1350
 F 0 "#PWR04" H 3600 1350 40  0001 C CNN
@@ -362,7 +362,7 @@ $EndComp
 Text Notes 2250 1050 0    60   ~ 0
 Power Indicator
 $Comp
-L patch-shield-analog-rescue:R-RESCUE-patch-shield-analog R1
+L patch-shield-analog-rescue:R-RESCUE-patch-shield-analog-patch-shield-analog-rescue R1
 U 1 1 51A0E0BF
 P 2400 1150
 F 0 "R1" V 2480 1150 50  0000 C CNN
@@ -373,7 +373,7 @@ F 3 "" H 2400 1150 60  0001 C CNN
 	0    -1   1    0   
 $EndComp
 $Comp
-L patch-shield-analog-rescue:LED-RESCUE-patch-shield-analog D1
+L patch-shield-analog-rescue:LED-RESCUE-patch-shield-analog-patch-shield-analog-rescue D1
 U 1 1 51A0E0BE
 P 3150 1150
 F 0 "D1" H 3150 1250 50  0000 C CNN
@@ -384,7 +384,7 @@ F 3 "" H 3150 1150 60  0001 C CNN
 	1    0    0    1   
 $EndComp
 $Comp
-L patch-shield-analog-rescue:CONN_1 P2
+L patch-shield-analog-rescue:CONN_1-patch-shield-analog-rescue P2
 U 1 1 51A0B540
 P 1200 1950
 F 0 "P2" H 1280 1950 40  0000 L CNN
@@ -395,7 +395,7 @@ F 3 "" H 1200 1950 60  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L patch-shield-analog-rescue:CONN_1 P3
+L patch-shield-analog-rescue:CONN_1-patch-shield-analog-rescue P3
 U 1 1 51A0B53F
 P 1200 2150
 F 0 "P3" H 1280 2150 40  0000 L CNN
@@ -406,7 +406,7 @@ F 3 "" H 1200 2150 60  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L patch-shield-analog-rescue:CONN_1 P5
+L patch-shield-analog-rescue:CONN_1-patch-shield-analog-rescue P5
 U 1 1 51A0B53E
 P 1200 2550
 F 0 "P5" H 1280 2550 40  0000 L CNN
@@ -417,7 +417,7 @@ F 3 "" H 1200 2550 60  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L patch-shield-analog-rescue:CONN_1 P4
+L patch-shield-analog-rescue:CONN_1-patch-shield-analog-rescue P4
 U 1 1 51A0B53D
 P 1200 2350
 F 0 "P4" H 1280 2350 40  0000 L CNN
@@ -428,7 +428,7 @@ F 3 "" H 1200 2350 60  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L patch-shield-analog-rescue:CONN_1 P8
+L patch-shield-analog-rescue:CONN_1-patch-shield-analog-rescue P8
 U 1 1 51A0B53C
 P 1200 3150
 F 0 "P8" H 1280 3150 40  0000 L CNN
@@ -439,7 +439,7 @@ F 3 "" H 1200 3150 60  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L patch-shield-analog-rescue:CONN_1 P9
+L patch-shield-analog-rescue:CONN_1-patch-shield-analog-rescue P9
 U 1 1 51A0B53B
 P 1200 3350
 F 0 "P9" H 1280 3350 40  0000 L CNN
@@ -450,7 +450,7 @@ F 3 "" H 1200 3350 60  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L patch-shield-analog-rescue:CONN_1 P7
+L patch-shield-analog-rescue:CONN_1-patch-shield-analog-rescue P7
 U 1 1 51A0B53A
 P 1200 2950
 F 0 "P7" H 1280 2950 40  0000 L CNN
@@ -461,7 +461,7 @@ F 3 "" H 1200 2950 60  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L patch-shield-analog-rescue:CONN_1 P6
+L patch-shield-analog-rescue:CONN_1-patch-shield-analog-rescue P6
 U 1 1 51A0B539
 P 1200 2750
 F 0 "P6" H 1280 2750 40  0000 L CNN
@@ -472,7 +472,7 @@ F 3 "" H 1200 2750 60  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L patch-shield-analog-rescue:CONN_1 P31
+L patch-shield-analog-rescue:CONN_1-patch-shield-analog-rescue P31
 U 1 1 51A0B512
 P 4600 2750
 F 0 "P31" H 4680 2750 40  0000 L CNN
@@ -483,7 +483,7 @@ F 3 "" H 4600 2750 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L patch-shield-analog-rescue:CONN_1 P32
+L patch-shield-analog-rescue:CONN_1-patch-shield-analog-rescue P32
 U 1 1 51A0B511
 P 4600 2950
 F 0 "P32" H 4680 2950 40  0000 L CNN
@@ -494,7 +494,7 @@ F 3 "" H 4600 2950 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L patch-shield-analog-rescue:CONN_1 P34
+L patch-shield-analog-rescue:CONN_1-patch-shield-analog-rescue P34
 U 1 1 51A0B510
 P 4600 3350
 F 0 "P34" H 4680 3350 40  0000 L CNN
@@ -505,7 +505,7 @@ F 3 "" H 4600 3350 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L patch-shield-analog-rescue:CONN_1 P33
+L patch-shield-analog-rescue:CONN_1-patch-shield-analog-rescue P33
 U 1 1 51A0B50F
 P 4600 3150
 F 0 "P33" H 4680 3150 40  0000 L CNN
@@ -516,7 +516,7 @@ F 3 "" H 4600 3150 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L patch-shield-analog-rescue:CONN_1 P29
+L patch-shield-analog-rescue:CONN_1-patch-shield-analog-rescue P29
 U 1 1 51A0B508
 P 4600 2350
 F 0 "P29" H 4680 2350 40  0000 L CNN
@@ -527,7 +527,7 @@ F 3 "" H 4600 2350 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L patch-shield-analog-rescue:CONN_1 P30
+L patch-shield-analog-rescue:CONN_1-patch-shield-analog-rescue P30
 U 1 1 51A0B507
 P 4600 2550
 F 0 "P30" H 4680 2550 40  0000 L CNN
@@ -538,7 +538,7 @@ F 3 "" H 4600 2550 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L patch-shield-analog-rescue:CONN_1 P28
+L patch-shield-analog-rescue:CONN_1-patch-shield-analog-rescue P28
 U 1 1 51A0B4FC
 P 4600 2150
 F 0 "P28" H 4680 2150 40  0000 L CNN
@@ -549,7 +549,7 @@ F 3 "" H 4600 2150 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L patch-shield-analog-rescue:CONN_1 P27
+L patch-shield-analog-rescue:CONN_1-patch-shield-analog-rescue P27
 U 1 1 51A0B4B7
 P 4600 1950
 F 0 "P27" H 4680 1950 40  0000 L CNN
@@ -594,7 +594,7 @@ IN8N
 Text Label 1000 3550 0    60   ~ 0
 BIASOUT
 $Comp
-L patch-shield-analog-rescue:CONN_1 P1
+L patch-shield-analog-rescue:CONN_1-patch-shield-analog-rescue P1
 U 1 1 51A0AFA6
 P 850 3550
 F 0 "P1" H 930 3550 40  0000 L CNN
@@ -638,7 +638,7 @@ F 3 "" H 2400 1500 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L patch-shield-analog-rescue:CONN_1 P10
+L patch-shield-analog-rescue:CONN_1-patch-shield-analog-rescue P10
 U 1 1 51A0ADBD
 P 1600 1950
 F 0 "P10" H 1680 1950 40  0000 L CNN
@@ -649,7 +649,7 @@ F 3 "" H 1600 1950 60  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L patch-shield-analog-rescue:CONN_1 P11
+L patch-shield-analog-rescue:CONN_1-patch-shield-analog-rescue P11
 U 1 1 51A0ADBC
 P 1600 2150
 F 0 "P11" H 1680 2150 40  0000 L CNN
@@ -660,7 +660,7 @@ F 3 "" H 1600 2150 60  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L patch-shield-analog-rescue:CONN_1 P13
+L patch-shield-analog-rescue:CONN_1-patch-shield-analog-rescue P13
 U 1 1 51A0ADBB
 P 1600 2550
 F 0 "P13" H 1680 2550 40  0000 L CNN
@@ -671,7 +671,7 @@ F 3 "" H 1600 2550 60  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L patch-shield-analog-rescue:CONN_1 P12
+L patch-shield-analog-rescue:CONN_1-patch-shield-analog-rescue P12
 U 1 1 51A0ADBA
 P 1600 2350
 F 0 "P12" H 1680 2350 40  0000 L CNN
@@ -682,7 +682,7 @@ F 3 "" H 1600 2350 60  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L patch-shield-analog-rescue:CONN_1 P16
+L patch-shield-analog-rescue:CONN_1-patch-shield-analog-rescue P16
 U 1 1 51A0ADB9
 P 1600 3150
 F 0 "P16" H 1680 3150 40  0000 L CNN
@@ -693,7 +693,7 @@ F 3 "" H 1600 3150 60  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L patch-shield-analog-rescue:CONN_1 P17
+L patch-shield-analog-rescue:CONN_1-patch-shield-analog-rescue P17
 U 1 1 51A0ADB8
 P 1600 3350
 F 0 "P17" H 1680 3350 40  0000 L CNN
@@ -704,7 +704,7 @@ F 3 "" H 1600 3350 60  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L patch-shield-analog-rescue:CONN_1 P15
+L patch-shield-analog-rescue:CONN_1-patch-shield-analog-rescue P15
 U 1 1 51A0ADB7
 P 1600 2950
 F 0 "P15" H 1680 2950 40  0000 L CNN
@@ -715,7 +715,7 @@ F 3 "" H 1600 2950 60  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L patch-shield-analog-rescue:CONN_1 P14
+L patch-shield-analog-rescue:CONN_1-patch-shield-analog-rescue P14
 U 1 1 51A0ADB6
 P 1600 2750
 F 0 "P14" H 1680 2750 40  0000 L CNN
@@ -726,7 +726,7 @@ F 3 "" H 1600 2750 60  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L patch-shield-analog-rescue:AGND #PWR09
+L patch-shield-analog-rescue:AGND-patch-shield-analog-rescue #PWR09
 U 1 1 51A0AD37
 P 2900 4200
 F 0 "#PWR09" H 2900 4200 40  0001 C CNN
@@ -737,7 +737,7 @@ F 3 "" H 2900 4200 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L patch-shield-analog-rescue:CONN_1 P23
+L patch-shield-analog-rescue:CONN_1-patch-shield-analog-rescue P23
 U 1 1 51A0AC59
 P 4200 2750
 F 0 "P23" H 4280 2750 40  0000 L CNN
@@ -748,7 +748,7 @@ F 3 "" H 4200 2750 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L patch-shield-analog-rescue:CONN_1 P24
+L patch-shield-analog-rescue:CONN_1-patch-shield-analog-rescue P24
 U 1 1 51A0AC58
 P 4200 2950
 F 0 "P24" H 4280 2950 40  0000 L CNN
@@ -759,7 +759,7 @@ F 3 "" H 4200 2950 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L patch-shield-analog-rescue:CONN_1 P26
+L patch-shield-analog-rescue:CONN_1-patch-shield-analog-rescue P26
 U 1 1 51A0AC57
 P 4200 3350
 F 0 "P26" H 4280 3350 40  0000 L CNN
@@ -770,7 +770,7 @@ F 3 "" H 4200 3350 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L patch-shield-analog-rescue:CONN_1 P25
+L patch-shield-analog-rescue:CONN_1-patch-shield-analog-rescue P25
 U 1 1 51A0AC56
 P 4200 3150
 F 0 "P25" H 4280 3150 40  0000 L CNN
@@ -781,7 +781,7 @@ F 3 "" H 4200 3150 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L patch-shield-analog-rescue:CONN_1 P21
+L patch-shield-analog-rescue:CONN_1-patch-shield-analog-rescue P21
 U 1 1 51A0AC3D
 P 4200 2350
 F 0 "P21" H 4280 2350 40  0000 L CNN
@@ -792,7 +792,7 @@ F 3 "" H 4200 2350 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L patch-shield-analog-rescue:CONN_1 P22
+L patch-shield-analog-rescue:CONN_1-patch-shield-analog-rescue P22
 U 1 1 51A0AC3C
 P 4200 2550
 F 0 "P22" H 4280 2550 40  0000 L CNN
@@ -803,7 +803,7 @@ F 3 "" H 4200 2550 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L patch-shield-analog-rescue:CONN_1 P20
+L patch-shield-analog-rescue:CONN_1-patch-shield-analog-rescue P20
 U 1 1 51A0AC26
 P 4200 2150
 F 0 "P20" H 4280 2150 40  0000 L CNN
@@ -814,7 +814,7 @@ F 3 "" H 4200 2150 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L patch-shield-analog-rescue:CONN_1 P19
+L patch-shield-analog-rescue:CONN_1-patch-shield-analog-rescue P19
 U 1 1 51A0ABA4
 P 4200 1950
 F 0 "P19" H 4280 1950 40  0000 L CNN
@@ -825,7 +825,7 @@ F 3 "" H 4200 1950 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L patch-shield-analog-rescue:CONN_20X2 P18
+L patch-shield-analog-rescue:CONN_20X2-patch-shield-analog-rescue P18
 U 1 1 51A0A305
 P 2900 2700
 F 0 "P18" H 2900 3750 60  0000 C CNN

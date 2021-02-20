@@ -2417,7 +2417,7 @@ Wire Wire Line
 Wire Wire Line
 	4900 21400 4900 21300
 $Comp
-L arduino-ads129x-rescue:+3.3V-RESCUE-arduino-ads129x #PWR01
+L arduino-ads129x-rescue:+3.3V-RESCUE-arduino-ads129x-arduino-ads129x-rescue #PWR01
 U 1 1 52B59069
 P 4900 21300
 F 0 "#PWR01" H 4900 21260 30  0001 C CNN
@@ -2428,7 +2428,7 @@ F 3 "" H 4900 21300 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:SW_PUSH SW2
+L arduino-ads129x-rescue:SW_PUSH-arduino-ads129x-rescue SW2
 U 1 1 52B58DF8
 P 5350 21400
 F 0 "SW2" H 5500 21510 50  0000 C CNN
@@ -2451,7 +2451,7 @@ Solder bridge to star connect AGND and DGND
 Text Label 8700 9650 2    60   ~ 0
 BIASOUT
 $Comp
-L arduino-ads129x-rescue:AGND #PWR02
+L arduino-ads129x-rescue:AGND-arduino-ads129x-rescue #PWR02
 U 1 1 51DB4AD2
 P 7000 9900
 F 0 "#PWR02" H 7000 9900 40  0001 C CNN
@@ -2462,7 +2462,7 @@ F 3 "" H 7000 9900 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:AGND #PWR03
+L arduino-ads129x-rescue:AGND-arduino-ads129x-rescue #PWR03
 U 1 1 51DB4AD1
 P 6250 9900
 F 0 "#PWR03" H 6250 9900 40  0001 C CNN
@@ -2473,7 +2473,7 @@ F 3 "" H 6250 9900 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C101
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C101
 U 1 1 51DB4AD0
 P 6700 9850
 F 0 "C101" H 6750 9950 50  0000 L CNN
@@ -2484,7 +2484,7 @@ F 3 "" H 6700 9850 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C99
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C99
 U 1 1 51DB4ACF
 P 5850 9850
 F 0 "C99" H 5900 9950 50  0000 L CNN
@@ -2495,7 +2495,7 @@ F 3 "" H 5850 9850 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x R56
+L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x-arduino-ads129x-rescue R56
 U 1 1 51DB4ACE
 P 6150 9650
 F 0 "R56" V 6230 9650 50  0000 C CNN
@@ -2506,7 +2506,7 @@ F 3 "" H 6150 9650 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x R55
+L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x-arduino-ads129x-rescue R55
 U 1 1 51DB4ACD
 P 5200 9650
 F 0 "R55" V 5280 9650 50  0000 C CNN
@@ -2519,7 +2519,7 @@ $EndComp
 Text Label 4200 9650 0    60   ~ 0
 BIASOUT_FILT
 $Comp
-L arduino-ads129x-rescue:+3.3V-RESCUE-arduino-ads129x #PWR04
+L arduino-ads129x-rescue:+3.3V-RESCUE-arduino-ads129x-arduino-ads129x-rescue #PWR04
 U 1 1 51A0DAED
 P 6550 15800
 F 0 "#PWR04" H 6550 15760 30  0001 C CNN
@@ -2530,7 +2530,7 @@ F 3 "" H 6550 15800 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:CONN_5X2 P5
+L arduino-ads129x-rescue:CONN_5X2-arduino-ads129x-rescue P5
 U 1 1 51D810AE
 P 7050 16350
 F 0 "P5" H 7050 16650 60  0000 C CNN
@@ -2545,7 +2545,7 @@ Resistor to ensure ESR is at least 20 mOhm for stability
 Text Notes 30350 15250 0    30   ~ 0
 Resistor to ensure ESR is at least 20 mOhm for stability
 $Comp
-L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x R86
+L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x-arduino-ads129x-rescue R86
 U 1 1 51D204E1
 P 30700 16850
 F 0 "R86" V 30780 16850 50  0000 C CNN
@@ -2556,7 +2556,7 @@ F 3 "" H 30700 16850 60  0001 C CNN
 	0    1    -1   0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x R87
+L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x-arduino-ads129x-rescue R87
 U 1 1 51D20422
 P 30700 15150
 F 0 "R87" V 30780 15150 50  0000 C CNN
@@ -2578,7 +2578,7 @@ F 3 "" H 31800 16200 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:+3.3V-RESCUE-arduino-ads129x #PWR06
+L arduino-ads129x-rescue:+3.3V-RESCUE-arduino-ads129x-arduino-ads129x-rescue #PWR06
 U 1 1 51D1FBFD
 P 30100 16200
 F 0 "#PWR06" H 30100 16160 30  0001 C CNN
@@ -2589,7 +2589,7 @@ F 3 "" H 30100 16200 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:LM317_SOT223 U19
+L arduino-ads129x-rescue:LM317_SOT223-arduino-ads129x-rescue U19
 U 1 1 51D1FB5A
 P 31000 16400
 F 0 "U19" H 31000 16700 60  0000 C CNN
@@ -2600,7 +2600,7 @@ F 3 "" H 31000 16400 60  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C122
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C122
 U 1 1 51D1FB59
 P 30400 16550
 F 0 "C122" H 30450 16650 50  0000 L CNN
@@ -2611,7 +2611,7 @@ F 3 "" H 30400 16550 60  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C123
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C123
 U 1 1 51D1FB58
 P 31500 16550
 F 0 "C123" H 31550 16650 50  0000 L CNN
@@ -2622,7 +2622,7 @@ F 3 "" H 31500 16550 60  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:GND-RESCUE-arduino-ads129x #PWR07
+L arduino-ads129x-rescue:GND-RESCUE-arduino-ads129x-arduino-ads129x-rescue #PWR07
 U 1 1 51D1FB56
 P 31050 16950
 F 0 "#PWR07" H 31050 16950 30  0001 C CNN
@@ -2635,7 +2635,7 @@ $EndComp
 Text Notes 30650 15950 0    60   ~ 0
 3.3V regulator
 $Comp
-L arduino-ads129x-rescue:INDUCTOR L23
+L arduino-ads129x-rescue:INDUCTOR-arduino-ads129x-rescue L23
 U 1 1 51C59A71
 P 27050 1850
 F 0 "L23" V 27000 1850 40  0000 C CNN
@@ -2646,7 +2646,7 @@ F 3 "" H 27050 1850 60  0001 C CNN
 	0    1    -1   0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x R68
+L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x-arduino-ads129x-rescue R68
 U 1 1 51C7AC95
 P 14450 13450
 F 0 "R68" V 14500 13250 50  0000 C CNN
@@ -2657,7 +2657,7 @@ F 3 "" H 14450 13450 60  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x R70
+L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x-arduino-ads129x-rescue R70
 U 1 1 51C7AC72
 P 19100 13450
 F 0 "R70" V 19150 13250 50  0000 C CNN
@@ -2668,7 +2668,7 @@ F 3 "" H 19100 13450 60  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x R69
+L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x-arduino-ads129x-rescue R69
 U 1 1 51C7AC71
 P 18950 13450
 F 0 "R69" V 19000 13250 50  0000 C CNN
@@ -2679,7 +2679,7 @@ F 3 "" H 18950 13450 60  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x R75
+L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x-arduino-ads129x-rescue R75
 U 1 1 51C7AC3E
 P 20200 17800
 F 0 "R75" V 20250 17600 50  0000 C CNN
@@ -2690,7 +2690,7 @@ F 3 "" H 20200 17800 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x R73
+L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x-arduino-ads129x-rescue R73
 U 1 1 51C7AC33
 P 20200 16000
 F 0 "R73" V 20250 15800 50  0000 C CNN
@@ -2701,7 +2701,7 @@ F 3 "" H 20200 16000 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x R74
+L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x-arduino-ads129x-rescue R74
 U 1 1 51C7AC32
 P 20200 16150
 F 0 "R74" V 20250 15950 50  0000 C CNN
@@ -2712,7 +2712,7 @@ F 3 "" H 20200 16150 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x R72
+L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x-arduino-ads129x-rescue R72
 U 1 1 51C7AC2E
 P 20200 15850
 F 0 "R72" V 20250 15650 50  0000 C CNN
@@ -2723,7 +2723,7 @@ F 3 "" H 20200 15850 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x R71
+L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x-arduino-ads129x-rescue R71
 U 1 1 51C7ABFE
 P 20200 15700
 F 0 "R71" V 20250 15500 50  0000 C CNN
@@ -2734,7 +2734,7 @@ F 3 "" H 20200 15700 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x R85
+L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x-arduino-ads129x-rescue R85
 U 1 1 51C7ABBC
 P 28950 6600
 F 0 "R85" V 29000 6400 50  0000 C CNN
@@ -2745,7 +2745,7 @@ F 3 "" H 28950 6600 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x R84
+L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x-arduino-ads129x-rescue R84
 U 1 1 51C7AB6B
 P 25750 6750
 F 0 "R84" V 25800 6550 50  0000 C CNN
@@ -2756,7 +2756,7 @@ F 3 "" H 25750 6750 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x R81
+L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x-arduino-ads129x-rescue R81
 U 1 1 51C7AB47
 P 23950 6550
 F 0 "R81" V 24000 6350 50  0000 C CNN
@@ -2767,7 +2767,7 @@ F 3 "" H 23950 6550 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x R80
+L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x-arduino-ads129x-rescue R80
 U 1 1 51C7AB46
 P 23950 6450
 F 0 "R80" V 24000 6250 50  0000 C CNN
@@ -2778,7 +2778,7 @@ F 3 "" H 23950 6450 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x R78
+L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x-arduino-ads129x-rescue R78
 U 1 1 51C7AB3F
 P 23950 6250
 F 0 "R78" V 24000 6050 50  0000 C CNN
@@ -2789,7 +2789,7 @@ F 3 "" H 23950 6250 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x R79
+L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x-arduino-ads129x-rescue R79
 U 1 1 51C7AB3E
 P 23950 6350
 F 0 "R79" V 24000 6150 50  0000 C CNN
@@ -2800,7 +2800,7 @@ F 3 "" H 23950 6350 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x R82
+L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x-arduino-ads129x-rescue R82
 U 1 1 51C7AAD8
 P 23950 8350
 F 0 "R82" V 24000 8150 50  0000 C CNN
@@ -2811,7 +2811,7 @@ F 3 "" H 23950 8350 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x R83
+L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x-arduino-ads129x-rescue R83
 U 1 1 51C7AAD7
 P 23950 8450
 F 0 "R83" V 24000 8250 50  0000 C CNN
@@ -2822,7 +2822,7 @@ F 3 "" H 23950 8450 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x R77
+L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x-arduino-ads129x-rescue R77
 U 1 1 51C7AA78
 P 23950 4650
 F 0 "R77" V 24000 4450 50  0000 C CNN
@@ -2833,7 +2833,7 @@ F 3 "" H 23950 4650 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x R76
+L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x-arduino-ads129x-rescue R76
 U 1 1 51C7A9D8
 P 23950 4550
 F 0 "R76" V 24000 4350 50  0000 C CNN
@@ -2844,7 +2844,7 @@ F 3 "" H 23950 4550 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x R67
+L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x-arduino-ads129x-rescue R67
 U 1 1 51C7A940
 P 12900 4150
 F 0 "R67" V 12950 4400 50  0000 C CNN
@@ -2855,7 +2855,7 @@ F 3 "" H 12900 4150 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x R66
+L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x-arduino-ads129x-rescue R66
 U 1 1 51C7A8FB
 P 12900 3750
 F 0 "R66" V 12950 4000 50  0000 C CNN
@@ -2870,7 +2870,7 @@ NoConn ~ 27450 1950
 Text Notes 27050 800  2    120  ~ 0
 Basic isolation
 $Comp
-L arduino-ads129x-rescue:GND-RESCUE-arduino-ads129x #PWR08
+L arduino-ads129x-rescue:GND-RESCUE-arduino-ads129x-arduino-ads129x-rescue #PWR08
 U 1 1 51C59AE5
 P 30950 2600
 F 0 "#PWR08" H 30950 2600 30  0001 C CNN
@@ -2896,7 +2896,7 @@ F 3 "" H 28900 1800 60  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C120
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C120
 U 1 1 51C59A04
 P 29650 2100
 F 0 "C120" H 29700 2200 50  0000 L CNN
@@ -2907,7 +2907,7 @@ F 3 "" H 29650 2100 60  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C121
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C121
 U 1 1 51C59A03
 P 29950 2100
 F 0 "C121" H 30000 2200 50  0000 L CNN
@@ -2918,7 +2918,7 @@ F 3 "" H 29950 2100 60  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:INDUCTOR L24
+L arduino-ads129x-rescue:INDUCTOR-arduino-ads129x-rescue L24
 U 1 1 51C59A02
 P 29250 1850
 F 0 "L24" V 29200 1850 40  0000 C CNN
@@ -2929,7 +2929,7 @@ F 3 "" H 29250 1850 60  0001 C CNN
 	0    1    -1   0   
 $EndComp
 $Comp
-L isolators:SIP7_ISOLATOR U18
+L arduino-ads129x-rescue:SIP7_ISOLATOR-isolators U18
 U 1 1 51C59A01
 P 28150 1950
 F 0 "U18" H 28150 1700 60  0000 C CNN
@@ -2952,7 +2952,7 @@ PA17_SDA1
 Text Label 24100 21600 2    60   ~ 0
 PA18_SCL1
 $Comp
-L arduino-ads129x-rescue:GND-RESCUE-arduino-ads129x #PWR010
+L arduino-ads129x-rescue:GND-RESCUE-arduino-ads129x-arduino-ads129x-rescue #PWR010
 U 1 1 51C3BBD4
 P 23800 22200
 F 0 "#PWR010" H 23800 22200 30  0001 C CNN
@@ -2963,7 +2963,7 @@ F 3 "" H 23800 22200 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:GND-RESCUE-arduino-ads129x #PWR011
+L arduino-ads129x-rescue:GND-RESCUE-arduino-ads129x-arduino-ads129x-rescue #PWR011
 U 1 1 51C3BBCD
 P 22500 21000
 F 0 "#PWR011" H 22500 21000 30  0001 C CNN
@@ -2974,7 +2974,7 @@ F 3 "" H 22500 21000 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:+3.3V-RESCUE-arduino-ads129x #PWR012
+L arduino-ads129x-rescue:+3.3V-RESCUE-arduino-ads129x-arduino-ads129x-rescue #PWR012
 U 1 1 51C3BBC6
 P 21300 20200
 F 0 "#PWR012" H 21300 20160 30  0001 C CNN
@@ -2985,7 +2985,7 @@ F 3 "" H 21300 20200 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C119
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C119
 U 1 1 51C3BB88
 P 22500 20600
 F 0 "C119" H 22550 20700 50  0000 L CNN
@@ -2996,7 +2996,7 @@ F 3 "" H 22500 20600 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:INDUCTOR L22
+L arduino-ads129x-rescue:INDUCTOR-arduino-ads129x-rescue L22
 U 1 1 51C3BB87
 P 21700 20300
 F 0 "L22" V 21650 20300 40  0000 C CNN
@@ -3007,7 +3007,7 @@ F 3 "" H 21700 20300 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C118
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C118
 U 1 1 51C3BB86
 P 22100 20600
 F 0 "C118" H 22150 20700 50  0000 L CNN
@@ -3029,7 +3029,7 @@ F 3 "" H 22350 20200 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:24C16 U17
+L arduino-ads129x-rescue:24C16-arduino-ads129x-rescue U17
 U 1 1 51C3BAFC
 P 22900 21500
 F 0 "U17" H 23050 21850 60  0000 C CNN
@@ -3040,7 +3040,7 @@ F 3 "" H 22900 21500 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:GND-RESCUE-arduino-ads129x #PWR014
+L arduino-ads129x-rescue:GND-RESCUE-arduino-ads129x-arduino-ads129x-rescue #PWR014
 U 1 1 51C106FA
 P 12250 20350
 F 0 "#PWR014" H 12250 20350 30  0001 C CNN
@@ -3051,7 +3051,7 @@ F 3 "" H 12250 20350 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L smt-crystals:CRYSTAL-SHIELDED X1
+L arduino-ads129x-rescue:CRYSTAL-SHIELDED-smt-crystals X1
 U 1 1 51C106BF
 P 12250 19900
 F 0 "X1" H 12250 19650 60  0000 C CNN
@@ -3112,7 +3112,7 @@ Text Notes 19850 1700 0    40   ~ 0
 Text Notes 19850 2200 1    40   ~ 0
 27V Zener
 $Comp
-L arduino-ads129x-rescue:DIODESCH D2
+L arduino-ads129x-rescue:DIODESCH-arduino-ads129x-rescue D2
 U 1 1 51BC8410
 P 20750 1850
 F 0 "D2" H 20750 1950 40  0000 C CNN
@@ -3123,7 +3123,7 @@ F 3 "" H 20750 1850 60  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:DIODESCH D3
+L arduino-ads129x-rescue:DIODESCH-arduino-ads129x-rescue D3
 U 1 1 51BC83F3
 P 22650 1850
 F 0 "D3" H 22650 1950 40  0000 C CNN
@@ -3134,7 +3134,7 @@ F 3 "" H 22650 1850 60  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:CONN_5X2 P4
+L arduino-ads129x-rescue:CONN_5X2-arduino-ads129x-rescue P4
 U 1 1 51BC70C8
 P 9250 1800
 F 0 "P4" H 9250 2100 60  0000 C CNN
@@ -3147,7 +3147,7 @@ $EndComp
 Text Notes 2050 13500 3    60   ~ 0
 bluetooth
 $Comp
-L arduino-ads129x-rescue:INDUCTOR L21
+L arduino-ads129x-rescue:INDUCTOR-arduino-ads129x-rescue L21
 U 1 1 51BC5BE0
 P 29100 9700
 F 0 "L21" V 29050 9700 40  0000 C CNN
@@ -3158,7 +3158,7 @@ F 3 "" H 29100 9700 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:DGND #PWR015
+L arduino-ads129x-rescue:DGND-arduino-ads129x-rescue #PWR015
 U 1 1 51BBCD9E
 P 15850 7550
 F 0 "#PWR015" H 15850 7550 40  0001 C CNN
@@ -3169,7 +3169,7 @@ F 3 "" H 15850 7550 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:TL431LP U15
+L arduino-ads129x-rescue:TL431LP-arduino-ads129x-rescue U15
 U 1 1 51BBCCA5
 P 15600 6800
 F 0 "U15" H 15800 6650 70  0000 C CNN
@@ -3180,7 +3180,7 @@ F 3 "" H 15600 6800 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x R62
+L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x-arduino-ads129x-rescue R62
 U 1 1 51BBCCA4
 P 16100 6450
 F 0 "R62" V 16180 6450 50  0000 C CNN
@@ -3191,7 +3191,7 @@ F 3 "" H 16100 6450 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x R65
+L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x-arduino-ads129x-rescue R65
 U 1 1 51BBCCA3
 P 16100 7150
 F 0 "R65" V 16180 7150 50  0000 C CNN
@@ -3202,7 +3202,7 @@ F 3 "" H 16100 7150 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x R60
+L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x-arduino-ads129x-rescue R60
 U 1 1 51BBCCA2
 P 15600 5850
 F 0 "R60" V 15680 5850 50  0000 C CNN
@@ -3213,7 +3213,7 @@ F 3 "" H 15600 5850 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C60
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C60
 U 1 1 51BBCCA1
 P 15200 6800
 F 0 "C60" H 15250 6900 50  0000 L CNN
@@ -3224,7 +3224,7 @@ F 3 "" H 15200 6800 60  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:TRIAC U4
+L arduino-ads129x-rescue:TRIAC-arduino-ads129x-rescue U4
 U 1 1 51BBCCA0
 P 14600 6400
 F 0 "U4" H 14350 6750 70  0000 C CNN
@@ -3243,7 +3243,7 @@ Text Notes 15000 8250 0    60   ~ 0
 Text Label 16500 8400 2    60   ~ 0
 5V_ISO
 $Comp
-L arduino-ads129x-rescue:AGND #PWR016
+L arduino-ads129x-rescue:AGND-arduino-ads129x-rescue #PWR016
 U 1 1 51BBC2BB
 P 15850 10500
 F 0 "#PWR016" H 15850 10500 40  0001 C CNN
@@ -3254,7 +3254,7 @@ F 3 "" H 15850 10500 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:TRIAC U14
+L arduino-ads129x-rescue:TRIAC-arduino-ads129x-rescue U14
 U 1 1 51BBC1F0
 P 14600 9350
 F 0 "U14" H 14350 9700 70  0000 C CNN
@@ -3265,7 +3265,7 @@ F 3 "" H 14600 9350 60  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C61
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C61
 U 1 1 51BBC1E0
 P 15200 9750
 F 0 "C61" H 15250 9850 50  0000 L CNN
@@ -3276,7 +3276,7 @@ F 3 "" H 15200 9750 60  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x R61
+L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x-arduino-ads129x-rescue R61
 U 1 1 51BBC1C9
 P 15600 8800
 F 0 "R61" V 15680 8800 50  0000 C CNN
@@ -3287,7 +3287,7 @@ F 3 "" H 15600 8800 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x R64
+L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x-arduino-ads129x-rescue R64
 U 1 1 51BBC178
 P 16100 10100
 F 0 "R64" V 16180 10100 50  0000 C CNN
@@ -3298,7 +3298,7 @@ F 3 "" H 16100 10100 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x R63
+L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x-arduino-ads129x-rescue R63
 U 1 1 51BBC162
 P 16100 9400
 F 0 "R63" V 16180 9400 50  0000 C CNN
@@ -3309,7 +3309,7 @@ F 3 "" H 16100 9400 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:TL431LP U16
+L arduino-ads129x-rescue:TL431LP-arduino-ads129x-rescue U16
 U 1 1 51BBC14D
 P 15600 9750
 F 0 "U16" H 15800 9600 70  0000 C CNN
@@ -3320,7 +3320,7 @@ F 3 "" H 15600 9750 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:GND-RESCUE-arduino-ads129x #PWR017
+L arduino-ads129x-rescue:GND-RESCUE-arduino-ads129x-arduino-ads129x-rescue #PWR017
 U 1 1 51BBA971
 P 15950 20200
 F 0 "#PWR017" H 15950 20200 30  0001 C CNN
@@ -3332,7 +3332,7 @@ F 3 "" H 15950 20200 60  0001 C CNN
 $EndComp
 NoConn ~ 15800 20050
 $Comp
-L arduino-ads129x-rescue:+3.3V-RESCUE-arduino-ads129x #PWR018
+L arduino-ads129x-rescue:+3.3V-RESCUE-arduino-ads129x-arduino-ads129x-rescue #PWR018
 U 1 1 51BBA8DD
 P 16150 20750
 F 0 "#PWR018" H 16150 20710 30  0001 C CNN
@@ -3343,7 +3343,7 @@ F 3 "" H 16150 20750 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x R59
+L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x-arduino-ads129x-rescue R59
 U 1 1 51BBA8CF
 P 16250 20400
 F 0 "R59" V 16330 20400 50  0000 C CNN
@@ -3546,7 +3546,7 @@ F 3 "" H 26450 3450 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L esd:USBLC6 U13
+L arduino-ads129x-rescue:USBLC6-esd U13
 U 1 1 51B35466
 P 29100 11600
 F 0 "U13" H 29100 11750 60  0000 C CNN
@@ -3627,7 +3627,7 @@ PA25_MISO
 Text Label 6300 20250 2    60   ~ 0
 PA26_MOSI
 $Comp
-L arduino-ads129x-rescue:GND-RESCUE-arduino-ads129x #PWR032
+L arduino-ads129x-rescue:GND-RESCUE-arduino-ads129x-arduino-ads129x-rescue #PWR032
 U 1 1 51B33A70
 P 5800 20450
 F 0 "#PWR032" H 5800 20450 30  0001 C CNN
@@ -3654,7 +3654,7 @@ PA18_SCL1
 Text Label 6800 17900 2    60   ~ 0
 PA17_SDA1
 $Comp
-L arduino-ads129x-rescue:GND-RESCUE-arduino-ads129x #PWR034
+L arduino-ads129x-rescue:GND-RESCUE-arduino-ads129x-arduino-ads129x-rescue #PWR034
 U 1 1 51B339FC
 P 7300 18150
 F 0 "#PWR034" H 7300 18150 30  0001 C CNN
@@ -3667,7 +3667,7 @@ $EndComp
 Text Label 10500 20200 3    60   ~ 0
 PB27_PWM13
 $Comp
-L arduino-ads129x-rescue:GND-RESCUE-arduino-ads129x #PWR035
+L arduino-ads129x-rescue:GND-RESCUE-arduino-ads129x-arduino-ads129x-rescue #PWR035
 U 1 1 51B339BF
 P 10500 22150
 F 0 "#PWR035" H 10500 22150 30  0001 C CNN
@@ -3678,7 +3678,7 @@ F 3 "" H 10500 22150 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x R47
+L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x-arduino-ads129x-rescue R47
 U 1 1 51B339AF
 P 10500 21750
 F 0 "R47" V 10580 21750 50  0000 C CNN
@@ -3689,7 +3689,7 @@ F 3 "" H 10500 21750 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:LED-RESCUE-arduino-ads129x D4
+L arduino-ads129x-rescue:LED-RESCUE-arduino-ads129x-arduino-ads129x-rescue D4
 U 1 1 51B33995
 P 10500 21150
 F 0 "D4" H 10500 21250 50  0000 C CNN
@@ -3744,7 +3744,7 @@ PA24_A1
 Text Label 2700 19100 0    60   ~ 0
 PA16_A0
 $Comp
-L arduino-ads129x-rescue:GND-RESCUE-arduino-ads129x #PWR036
+L arduino-ads129x-rescue:GND-RESCUE-arduino-ads129x-arduino-ads129x-rescue #PWR036
 U 1 1 51B33726
 P 2300 19000
 F 0 "#PWR036" H 2300 19000 30  0001 C CNN
@@ -3761,7 +3761,7 @@ V_IN
 Text Label 2700 18400 0    60   ~ 0
 RESET
 $Comp
-L arduino-ads129x-rescue:+3.3V-RESCUE-arduino-ads129x #PWR037
+L arduino-ads129x-rescue:+3.3V-RESCUE-arduino-ads129x-arduino-ads129x-rescue #PWR037
 U 1 1 51B33644
 P 2450 18100
 F 0 "#PWR037" H 2450 18060 30  0001 C CNN
@@ -3794,7 +3794,7 @@ F 3 "" H 4700 18800 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:DGND #PWR039
+L arduino-ads129x-rescue:DGND-arduino-ads129x-rescue #PWR039
 U 1 1 51ABEC65
 P 21800 8050
 F 0 "#PWR039" H 21800 8050 40  0001 C CNN
@@ -3817,7 +3817,7 @@ Reinforced isolation
 Text Notes 29000 7000 2    60   ~ 0
 Allows other SPI devices to drive MISO
 $Comp
-L arduino-ads129x-rescue:GND-RESCUE-arduino-ads129x #PWR040
+L arduino-ads129x-rescue:GND-RESCUE-arduino-ads129x-arduino-ads129x-rescue #PWR040
 U 1 1 51AD4545
 P 28750 6350
 F 0 "#PWR040" H 28750 6350 30  0001 C CNN
@@ -3828,7 +3828,7 @@ F 3 "" H 28750 6350 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:+3.3V-RESCUE-arduino-ads129x #PWR041
+L arduino-ads129x-rescue:+3.3V-RESCUE-arduino-ads129x-arduino-ads129x-rescue #PWR041
 U 1 1 51AD4544
 P 28900 5750
 F 0 "#PWR041" H 28900 5710 30  0001 C CNN
@@ -3839,7 +3839,7 @@ F 3 "" H 28900 5750 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C82
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C82
 U 1 1 51AD451B
 P 28750 6100
 F 0 "C82" H 28800 6200 50  0000 L CNN
@@ -3850,7 +3850,7 @@ F 3 "" H 28750 6100 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:GND-RESCUE-arduino-ads129x #PWR042
+L arduino-ads129x-rescue:GND-RESCUE-arduino-ads129x-arduino-ads129x-rescue #PWR042
 U 1 1 51AD44AA
 P 27500 6850
 F 0 "#PWR042" H 27500 6850 30  0001 C CNN
@@ -3863,7 +3863,7 @@ $EndComp
 Text Label 27000 6650 2    60   ~ 0
 ADS129x_MISO
 $Comp
-L additional-logic:74AUP1G125GW U9
+L arduino-ads129x-rescue:74AUP1G125GW-additional-logic U9
 U 1 1 51AD441B
 P 28100 6550
 F 0 "U9" H 28100 6250 60  0000 C CNN
@@ -3874,7 +3874,7 @@ F 3 "" H 28100 6550 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:GND-RESCUE-arduino-ads129x #PWR043
+L arduino-ads129x-rescue:GND-RESCUE-arduino-ads129x-arduino-ads129x-rescue #PWR043
 U 1 1 51AD3FE3
 P 12900 16050
 F 0 "#PWR043" H 12900 16050 30  0001 C CNN
@@ -3885,7 +3885,7 @@ F 3 "" H 12900 16050 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:GND-RESCUE-arduino-ads129x #PWR044
+L arduino-ads129x-rescue:GND-RESCUE-arduino-ads129x-arduino-ads129x-rescue #PWR044
 U 1 1 51AD3F5A
 P 23500 18950
 F 0 "#PWR044" H 23500 18950 30  0001 C CNN
@@ -3896,7 +3896,7 @@ F 3 "" H 23500 18950 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:GND-RESCUE-arduino-ads129x #PWR045
+L arduino-ads129x-rescue:GND-RESCUE-arduino-ads129x-arduino-ads129x-rescue #PWR045
 U 1 1 51AD3F53
 P 25550 21000
 F 0 "#PWR045" H 25550 21000 30  0001 C CNN
@@ -3907,7 +3907,7 @@ F 3 "" H 25550 21000 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:GND-RESCUE-arduino-ads129x #PWR046
+L arduino-ads129x-rescue:GND-RESCUE-arduino-ads129x-arduino-ads129x-rescue #PWR046
 U 1 1 51AD3F3F
 P 20000 14700
 F 0 "#PWR046" H 20000 14700 30  0001 C CNN
@@ -3918,7 +3918,7 @@ F 3 "" H 20000 14700 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:GND-RESCUE-arduino-ads129x #PWR047
+L arduino-ads129x-rescue:GND-RESCUE-arduino-ads129x-arduino-ads129x-rescue #PWR047
 U 1 1 51AD3F2E
 P 16600 13700
 F 0 "#PWR047" H 16600 13700 30  0001 C CNN
@@ -3929,7 +3929,7 @@ F 3 "" H 16600 13700 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:GND-RESCUE-arduino-ads129x #PWR048
+L arduino-ads129x-rescue:GND-RESCUE-arduino-ads129x-arduino-ads129x-rescue #PWR048
 U 1 1 51AD3F0E
 P 12900 19200
 F 0 "#PWR048" H 12900 19200 30  0001 C CNN
@@ -3940,7 +3940,7 @@ F 3 "" H 12900 19200 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:GND-RESCUE-arduino-ads129x #PWR049
+L arduino-ads129x-rescue:GND-RESCUE-arduino-ads129x-arduino-ads129x-rescue #PWR049
 U 1 1 51AD3F05
 P 20000 19500
 F 0 "#PWR049" H 20000 19500 30  0001 C CNN
@@ -3951,7 +3951,7 @@ F 3 "" H 20000 19500 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:GND-RESCUE-arduino-ads129x #PWR050
+L arduino-ads129x-rescue:GND-RESCUE-arduino-ads129x-arduino-ads129x-rescue #PWR050
 U 1 1 51AD3EFB
 P 17000 20200
 F 0 "#PWR050" H 17000 20200 30  0001 C CNN
@@ -3962,7 +3962,7 @@ F 3 "" H 17000 20200 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:GND-RESCUE-arduino-ads129x #PWR051
+L arduino-ads129x-rescue:GND-RESCUE-arduino-ads129x-arduino-ads129x-rescue #PWR051
 U 1 1 51AD3EF5
 P 15200 20200
 F 0 "#PWR051" H 15200 20200 30  0001 C CNN
@@ -3973,7 +3973,7 @@ F 3 "" H 15200 20200 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:GND-RESCUE-arduino-ads129x #PWR052
+L arduino-ads129x-rescue:GND-RESCUE-arduino-ads129x-arduino-ads129x-rescue #PWR052
 U 1 1 51AD3EEF
 P 14900 20200
 F 0 "#PWR052" H 14900 20200 30  0001 C CNN
@@ -3984,7 +3984,7 @@ F 3 "" H 14900 20200 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:GND-RESCUE-arduino-ads129x #PWR053
+L arduino-ads129x-rescue:GND-RESCUE-arduino-ads129x-arduino-ads129x-rescue #PWR053
 U 1 1 51AD3ED3
 P 12300 20750
 F 0 "#PWR053" H 12300 20750 30  0001 C CNN
@@ -3995,7 +3995,7 @@ F 3 "" H 12300 20750 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:GND-RESCUE-arduino-ads129x #PWR054
+L arduino-ads129x-rescue:GND-RESCUE-arduino-ads129x-arduino-ads129x-rescue #PWR054
 U 1 1 51AD3ECE
 P 6650 21500
 F 0 "#PWR054" H 6650 21500 30  0001 C CNN
@@ -4006,7 +4006,7 @@ F 3 "" H 6650 21500 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:GND-RESCUE-arduino-ads129x #PWR055
+L arduino-ads129x-rescue:GND-RESCUE-arduino-ads129x-arduino-ads129x-rescue #PWR055
 U 1 1 51AD3EB9
 P 15850 22350
 F 0 "#PWR055" H 15850 22350 30  0001 C CNN
@@ -4017,7 +4017,7 @@ F 3 "" H 15850 22350 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:GND-RESCUE-arduino-ads129x #PWR056
+L arduino-ads129x-rescue:GND-RESCUE-arduino-ads129x-arduino-ads129x-rescue #PWR056
 U 1 1 51AD3EB4
 P 14300 22200
 F 0 "#PWR056" H 14300 22200 30  0001 C CNN
@@ -4028,7 +4028,7 @@ F 3 "" H 14300 22200 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:GND-RESCUE-arduino-ads129x #PWR057
+L arduino-ads129x-rescue:GND-RESCUE-arduino-ads129x-arduino-ads129x-rescue #PWR057
 U 1 1 51AD3EA1
 P 5300 14800
 F 0 "#PWR057" H 5300 14800 30  0001 C CNN
@@ -4039,7 +4039,7 @@ F 3 "" H 5300 14800 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:GND-RESCUE-arduino-ads129x #PWR058
+L arduino-ads129x-rescue:GND-RESCUE-arduino-ads129x-arduino-ads129x-rescue #PWR058
 U 1 1 51AD3E94
 P 3400 13700
 F 0 "#PWR058" H 3400 13700 30  0001 C CNN
@@ -4050,7 +4050,7 @@ F 3 "" H 3400 13700 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:GND-RESCUE-arduino-ads129x #PWR059
+L arduino-ads129x-rescue:GND-RESCUE-arduino-ads129x-arduino-ads129x-rescue #PWR059
 U 1 1 51AD3E8D
 P 3350 15000
 F 0 "#PWR059" H 3350 15000 30  0001 C CNN
@@ -4061,7 +4061,7 @@ F 3 "" H 3350 15000 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:GND-RESCUE-arduino-ads129x #PWR060
+L arduino-ads129x-rescue:GND-RESCUE-arduino-ads129x-arduino-ads129x-rescue #PWR060
 U 1 1 51AD3E81
 P 9850 22150
 F 0 "#PWR060" H 9850 22150 30  0001 C CNN
@@ -4074,7 +4074,7 @@ $EndComp
 Text Notes 30258 14150 0    60   ~ 0
 5V regulator for battery power
 $Comp
-L arduino-ads129x-rescue:GND-RESCUE-arduino-ads129x #PWR061
+L arduino-ads129x-rescue:GND-RESCUE-arduino-ads129x-arduino-ads129x-rescue #PWR061
 U 1 1 51AD3C64
 P 31050 15250
 F 0 "#PWR061" H 31050 15250 30  0001 C CNN
@@ -4096,7 +4096,7 @@ F 3 "" H 30100 14500 60  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C116
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C116
 U 1 1 51AD3C46
 P 31500 14850
 F 0 "C116" H 31550 14950 50  0000 L CNN
@@ -4107,7 +4107,7 @@ F 3 "" H 31500 14850 60  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C115
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C115
 U 1 1 51AD3C2B
 P 30400 14850
 F 0 "C115" H 30450 14950 50  0000 L CNN
@@ -4118,7 +4118,7 @@ F 3 "" H 30400 14850 60  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:LM317_SOT223 U12
+L arduino-ads129x-rescue:LM317_SOT223-arduino-ads129x-rescue U12
 U 1 1 51AD3B58
 P 31000 14700
 F 0 "U12" H 31000 15000 60  0000 C CNN
@@ -4140,7 +4140,7 @@ F 3 "" H 20050 3500 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C52
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C52
 U 1 1 51AD280E
 P 19100 3850
 F 0 "C52" H 19150 3950 50  0000 L CNN
@@ -4153,7 +4153,7 @@ $EndComp
 Text Notes 19100 3550 1    45   ~ 0
 PIN\n48
 $Comp
-L arduino-ads129x-rescue:DGND #PWR064
+L arduino-ads129x-rescue:DGND-arduino-ads129x-rescue #PWR064
 U 1 1 51AD27DB
 P 18450 4200
 F 0 "#PWR064" H 18450 4200 40  0001 C CNN
@@ -4168,7 +4168,7 @@ PIN\n50
 Text Notes 19650 3350 2    60   ~ 0
 DVDD decoupling capacitors for ADS1299
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C49
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C49
 U 1 1 51AD27B7
 P 18750 3850
 F 0 "C49" H 18800 3950 50  0000 L CNN
@@ -4179,7 +4179,7 @@ F 3 "" H 18750 3850 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C54
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C54
 U 1 1 51AD27B5
 P 19450 3850
 F 0 "C54" H 19500 3950 50  0000 L CNN
@@ -4190,7 +4190,7 @@ F 3 "" H 19450 3850 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:INDUCTOR L3
+L arduino-ads129x-rescue:INDUCTOR-arduino-ads129x-rescue L3
 U 1 1 51AD27B4
 P 18100 3600
 F 0 "L3" V 18050 3600 40  0000 C CNN
@@ -4214,7 +4214,7 @@ $EndComp
 Text Label 17450 3600 0    60   ~ 0
 3.3V_ISO
 $Comp
-L arduino-ads129x-rescue:AGND #PWR066
+L arduino-ads129x-rescue:AGND-arduino-ads129x-rescue #PWR066
 U 1 1 51AD26C4
 P 17600 9750
 F 0 "#PWR066" H 17600 9750 40  0001 C CNN
@@ -4225,7 +4225,7 @@ F 3 "" H 17600 9750 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:DGND #PWR067
+L arduino-ads129x-rescue:DGND-arduino-ads129x-rescue #PWR067
 U 1 1 51AD26B8
 P 17600 6800
 F 0 "#PWR067" H 17600 6800 40  0001 C CNN
@@ -4251,7 +4251,7 @@ Text Label 14950 3650 0    60   ~ 0
 Text Notes 18790 5300 0    60   ~ 0
 3.3V power regulation
 $Comp
-L regulators:TPS7A49XX U2
+L arduino-ads129x-rescue:TPS7A49XX-regulators U2
 U 1 1 51AD2613
 P 19250 6100
 F 0 "U2" H 19450 5750 60  0000 C CNN
@@ -4262,7 +4262,7 @@ F 3 "" H 19250 6100 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C44
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C44
 U 1 1 51AD2612
 P 18400 5750
 F 0 "C44" H 18450 5850 50  0000 L CNN
@@ -4273,7 +4273,7 @@ F 3 "" H 18400 5750 60  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C41
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C41
 U 1 1 51AD2611
 P 17600 5700
 F 0 "C41" H 17650 5800 50  0000 L CNN
@@ -4284,7 +4284,7 @@ F 3 "" H 17600 5700 60  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C58
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C58
 U 1 1 51AD2610
 P 20550 6200
 F 0 "C58" H 20600 6300 50  0000 L CNN
@@ -4295,7 +4295,7 @@ F 3 "" H 20550 6200 60  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C56
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C56
 U 1 1 51AD260F
 P 20200 6400
 F 0 "C56" H 20250 6500 50  0000 L CNN
@@ -4306,7 +4306,7 @@ F 3 "" H 20200 6400 60  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x R38
+L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x-arduino-ads129x-rescue R38
 U 1 1 51AD260E
 P 18050 5750
 F 0 "R38" V 18130 5750 50  0000 C CNN
@@ -4317,7 +4317,7 @@ F 3 "" H 18050 5750 60  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x R39
+L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x-arduino-ads129x-rescue R39
 U 1 1 51AD260D
 P 18050 6350
 F 0 "R39" V 18130 6350 50  0000 C CNN
@@ -4340,7 +4340,7 @@ GND_ISO
 Text Label 21600 8900 2    60   ~ 0
 9V_ISO
 $Comp
-L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x R41
+L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x-arduino-ads129x-rescue R41
 U 1 1 51AD24F5
 P 18050 9300
 F 0 "R41" V 18130 9300 50  0000 C CNN
@@ -4351,7 +4351,7 @@ F 3 "" H 18050 9300 60  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x R40
+L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x-arduino-ads129x-rescue R40
 U 1 1 51AD24F4
 P 18050 8700
 F 0 "R40" V 18130 8700 50  0000 C CNN
@@ -4362,7 +4362,7 @@ F 3 "" H 18050 8700 60  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C57
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C57
 U 1 1 51AD24F3
 P 20200 9350
 F 0 "C57" H 20250 9450 50  0000 L CNN
@@ -4373,7 +4373,7 @@ F 3 "" H 20200 9350 60  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C59
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C59
 U 1 1 51AD24F2
 P 20550 9150
 F 0 "C59" H 20600 9250 50  0000 L CNN
@@ -4384,7 +4384,7 @@ F 3 "" H 20550 9150 60  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C42
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C42
 U 1 1 51AD24F1
 P 17600 8650
 F 0 "C42" H 17650 8750 50  0000 L CNN
@@ -4395,7 +4395,7 @@ F 3 "" H 17600 8650 60  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C45
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C45
 U 1 1 51AD24F0
 P 18400 8700
 F 0 "C45" H 18450 8800 50  0000 L CNN
@@ -4406,7 +4406,7 @@ F 3 "" H 18400 8700 60  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L regulators:TPS7A49XX U3
+L arduino-ads129x-rescue:TPS7A49XX-regulators U3
 U 1 1 51AD24EF
 P 19250 9050
 F 0 "U3" H 19450 8700 60  0000 C CNN
@@ -4497,7 +4497,7 @@ ADS129x_~CS~_ISO
 Text Label 22300 6650 0    60   ~ 0
 ADS129x_MISO_ISO
 $Comp
-L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x R45
+L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x-arduino-ads129x-rescue R45
 U 1 1 51ABF28E
 P 23400 5800
 F 0 "R45" V 23480 5800 50  0000 C CNN
@@ -4532,7 +4532,7 @@ ADS129x_GPIO2_ISO
 Text Label 22300 4450 0    60   ~ 0
 ADS129x_GPIO3_ISO
 $Comp
-L arduino-ads129x-rescue:GND-RESCUE-arduino-ads129x #PWR073
+L arduino-ads129x-rescue:GND-RESCUE-arduino-ads129x-arduino-ads129x-rescue #PWR073
 U 1 1 51ABEC76
 P 25500 6950
 F 0 "#PWR073" H 25500 6950 30  0001 C CNN
@@ -4543,7 +4543,7 @@ F 3 "" H 25500 6950 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:DGND #PWR074
+L arduino-ads129x-rescue:DGND-arduino-ads129x-rescue #PWR074
 U 1 1 51ABEC75
 P 24200 6950
 F 0 "#PWR074" H 24200 6950 40  0001 C CNN
@@ -4554,7 +4554,7 @@ F 3 "" H 24200 6950 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:INDUCTOR L11
+L arduino-ads129x-rescue:INDUCTOR-arduino-ads129x-rescue L11
 U 1 1 51ABEC74
 P 27100 7350
 F 0 "L11" V 27050 7350 40  0000 C CNN
@@ -4565,7 +4565,7 @@ F 3 "" H 27100 7350 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C72
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C72
 U 1 1 51ABEC73
 P 26200 7650
 F 0 "C72" H 26250 7750 50  0000 L CNN
@@ -4576,7 +4576,7 @@ F 3 "" H 26200 7650 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C76
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C76
 U 1 1 51ABEC72
 P 26600 7650
 F 0 "C76" H 26650 7750 50  0000 L CNN
@@ -4587,7 +4587,7 @@ F 3 "" H 26600 7650 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x R51
+L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x-arduino-ads129x-rescue R51
 U 1 1 51ABEC71
 P 25900 7700
 F 0 "R51" V 25980 7700 50  0000 C CNN
@@ -4598,7 +4598,7 @@ F 3 "" H 25900 7700 60  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x R49
+L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x-arduino-ads129x-rescue R49
 U 1 1 51ABEC70
 P 25700 7700
 F 0 "R49" V 25780 7700 50  0000 C CNN
@@ -4609,7 +4609,7 @@ F 3 "" H 25700 7700 60  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x R46
+L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x-arduino-ads129x-rescue R46
 U 1 1 51ABEC6F
 P 23600 7700
 F 0 "R46" V 23680 7700 50  0000 C CNN
@@ -4620,7 +4620,7 @@ F 3 "" H 23600 7700 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x R43
+L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x-arduino-ads129x-rescue R43
 U 1 1 51ABEC6E
 P 23400 7700
 F 0 "R43" V 23480 7700 50  0000 C CNN
@@ -4631,7 +4631,7 @@ F 3 "" H 23400 7700 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:DGND #PWR075
+L arduino-ads129x-rescue:DGND-arduino-ads129x-rescue #PWR075
 U 1 1 51ABEC6D
 P 24200 8850
 F 0 "#PWR075" H 24200 8850 40  0001 C CNN
@@ -4642,7 +4642,7 @@ F 3 "" H 24200 8850 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:GND-RESCUE-arduino-ads129x #PWR076
+L arduino-ads129x-rescue:GND-RESCUE-arduino-ads129x-arduino-ads129x-rescue #PWR076
 U 1 1 51ABEC6B
 P 25500 8850
 F 0 "#PWR076" H 25500 8850 30  0001 C CNN
@@ -4653,7 +4653,7 @@ F 3 "" H 25500 8850 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:GND-RESCUE-arduino-ads129x #PWR077
+L arduino-ads129x-rescue:GND-RESCUE-arduino-ads129x-arduino-ads129x-rescue #PWR077
 U 1 1 51ABEC6A
 P 27500 8000
 F 0 "#PWR077" H 27500 8000 30  0001 C CNN
@@ -4664,7 +4664,7 @@ F 3 "" H 27500 8000 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C65
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C65
 U 1 1 51ABEC69
 P 22700 7650
 F 0 "C65" H 22750 7750 50  0000 L CNN
@@ -4675,7 +4675,7 @@ F 3 "" H 22700 7650 60  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C69
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C69
 U 1 1 51ABEC68
 P 23100 7650
 F 0 "C69" H 23150 7750 50  0000 L CNN
@@ -4686,7 +4686,7 @@ F 3 "" H 23100 7650 60  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:+3.3V-RESCUE-arduino-ads129x #PWR078
+L arduino-ads129x-rescue:+3.3V-RESCUE-arduino-ads129x-arduino-ads129x-rescue #PWR078
 U 1 1 51ABEC67
 P 27500 7300
 F 0 "#PWR078" H 27500 7260 30  0001 C CNN
@@ -4697,7 +4697,7 @@ F 3 "" H 27500 7300 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:INDUCTOR L6
+L arduino-ads129x-rescue:INDUCTOR-arduino-ads129x-rescue L6
 U 1 1 51ABEC66
 P 22200 7350
 F 0 "L6" V 22150 7350 40  0000 C CNN
@@ -4708,7 +4708,7 @@ F 3 "" H 22200 7350 60  0001 C CNN
 	0    1    -1   0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:DGND #PWR079
+L arduino-ads129x-rescue:DGND-arduino-ads129x-rescue #PWR079
 U 1 1 51ABEC58
 P 21800 6150
 F 0 "#PWR079" H 21800 6150 40  0001 C CNN
@@ -4719,7 +4719,7 @@ F 3 "" H 21800 6150 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:INDUCTOR L5
+L arduino-ads129x-rescue:INDUCTOR-arduino-ads129x-rescue L5
 U 1 1 51ABEC57
 P 22200 5450
 F 0 "L5" V 22150 5450 40  0000 C CNN
@@ -4730,7 +4730,7 @@ F 3 "" H 22200 5450 60  0001 C CNN
 	0    1    -1   0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:+3.3V-RESCUE-arduino-ads129x #PWR080
+L arduino-ads129x-rescue:+3.3V-RESCUE-arduino-ads129x-arduino-ads129x-rescue #PWR080
 U 1 1 51ABEC56
 P 27500 5400
 F 0 "#PWR080" H 27500 5360 30  0001 C CNN
@@ -4741,7 +4741,7 @@ F 3 "" H 27500 5400 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C68
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C68
 U 1 1 51ABEC55
 P 23100 5750
 F 0 "C68" H 23150 5850 50  0000 L CNN
@@ -4752,7 +4752,7 @@ F 3 "" H 23100 5750 60  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C64
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C64
 U 1 1 51ABEC54
 P 22700 5750
 F 0 "C64" H 22750 5850 50  0000 L CNN
@@ -4763,7 +4763,7 @@ F 3 "" H 22700 5750 60  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:GND-RESCUE-arduino-ads129x #PWR081
+L arduino-ads129x-rescue:GND-RESCUE-arduino-ads129x-arduino-ads129x-rescue #PWR081
 U 1 1 51ABEC53
 P 27500 6100
 F 0 "#PWR081" H 27500 6100 30  0001 C CNN
@@ -4774,7 +4774,7 @@ F 3 "" H 27500 6100 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:GND-RESCUE-arduino-ads129x #PWR082
+L arduino-ads129x-rescue:GND-RESCUE-arduino-ads129x-arduino-ads129x-rescue #PWR082
 U 1 1 51ABEC52
 P 25500 6950
 F 0 "#PWR082" H 25500 6950 30  0001 C CNN
@@ -4785,7 +4785,7 @@ F 3 "" H 25500 6950 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:DGND #PWR083
+L arduino-ads129x-rescue:DGND-arduino-ads129x-rescue #PWR083
 U 1 1 51ABEC50
 P 24200 6950
 F 0 "#PWR083" H 24200 6950 40  0001 C CNN
@@ -4796,7 +4796,7 @@ F 3 "" H 24200 6950 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C75
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C75
 U 1 1 51ABEC4B
 P 26600 5750
 F 0 "C75" H 26650 5850 50  0000 L CNN
@@ -4807,7 +4807,7 @@ F 3 "" H 26600 5750 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C71
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C71
 U 1 1 51ABEC4A
 P 26200 5750
 F 0 "C71" H 26250 5850 50  0000 L CNN
@@ -4818,7 +4818,7 @@ F 3 "" H 26200 5750 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:INDUCTOR L10
+L arduino-ads129x-rescue:INDUCTOR-arduino-ads129x-rescue L10
 U 1 1 51ABEC49
 P 27100 5450
 F 0 "L10" V 27050 5450 40  0000 C CNN
@@ -4829,7 +4829,7 @@ F 3 "" H 27100 5450 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:INDUCTOR L9
+L arduino-ads129x-rescue:INDUCTOR-arduino-ads129x-rescue L9
 U 1 1 51ABEB67
 P 27100 3550
 F 0 "L9" V 27050 3550 40  0000 C CNN
@@ -4840,7 +4840,7 @@ F 3 "" H 27100 3550 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C70
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C70
 U 1 1 51ABEB66
 P 26200 3850
 F 0 "C70" H 26250 3950 50  0000 L CNN
@@ -4851,7 +4851,7 @@ F 3 "" H 26200 3850 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C74
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C74
 U 1 1 51ABEB65
 P 26600 3850
 F 0 "C74" H 26650 3950 50  0000 L CNN
@@ -4862,7 +4862,7 @@ F 3 "" H 26600 3850 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x R50
+L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x-arduino-ads129x-rescue R50
 U 1 1 51ABEB64
 P 25900 3900
 F 0 "R50" V 25980 3900 50  0000 C CNN
@@ -4873,7 +4873,7 @@ F 3 "" H 25900 3900 60  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x R48
+L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x-arduino-ads129x-rescue R48
 U 1 1 51ABEB63
 P 25700 3900
 F 0 "R48" V 25780 3900 50  0000 C CNN
@@ -4884,7 +4884,7 @@ F 3 "" H 25700 3900 60  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x R44
+L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x-arduino-ads129x-rescue R44
 U 1 1 51ABE5C1
 P 23600 3900
 F 0 "R44" V 23680 3900 50  0000 C CNN
@@ -4895,7 +4895,7 @@ F 3 "" H 23600 3900 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x R42
+L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x-arduino-ads129x-rescue R42
 U 1 1 51ABE5B7
 P 23400 3900
 F 0 "R42" V 23480 3900 50  0000 C CNN
@@ -4906,7 +4906,7 @@ F 3 "" H 23400 3900 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:DGND #PWR084
+L arduino-ads129x-rescue:DGND-arduino-ads129x-rescue #PWR084
 U 1 1 51ABE57C
 P 24200 5050
 F 0 "#PWR084" H 24200 5050 40  0001 C CNN
@@ -4917,7 +4917,7 @@ F 3 "" H 24200 5050 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:GND-RESCUE-arduino-ads129x #PWR085
+L arduino-ads129x-rescue:GND-RESCUE-arduino-ads129x-arduino-ads129x-rescue #PWR085
 U 1 1 51ABD76C
 P 25500 5050
 F 0 "#PWR085" H 25500 5050 30  0001 C CNN
@@ -4928,7 +4928,7 @@ F 3 "" H 25500 5050 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:GND-RESCUE-arduino-ads129x #PWR086
+L arduino-ads129x-rescue:GND-RESCUE-arduino-ads129x-arduino-ads129x-rescue #PWR086
 U 1 1 51ABD768
 P 27500 4200
 F 0 "#PWR086" H 27500 4200 30  0001 C CNN
@@ -4939,7 +4939,7 @@ F 3 "" H 27500 4200 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C63
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C63
 U 1 1 51ABD767
 P 22700 3850
 F 0 "C63" H 22750 3950 50  0000 L CNN
@@ -4950,7 +4950,7 @@ F 3 "" H 22700 3850 60  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C67
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C67
 U 1 1 51ABD766
 P 23100 3850
 F 0 "C67" H 23150 3950 50  0000 L CNN
@@ -4961,7 +4961,7 @@ F 3 "" H 23100 3850 60  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:+3.3V-RESCUE-arduino-ads129x #PWR087
+L arduino-ads129x-rescue:+3.3V-RESCUE-arduino-ads129x-arduino-ads129x-rescue #PWR087
 U 1 1 51ABD765
 P 27500 3500
 F 0 "#PWR087" H 27500 3460 30  0001 C CNN
@@ -4972,7 +4972,7 @@ F 3 "" H 27500 3500 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:INDUCTOR L4
+L arduino-ads129x-rescue:INDUCTOR-arduino-ads129x-rescue L4
 U 1 1 51ABD764
 P 22200 3550
 F 0 "L4" V 22150 3550 40  0000 C CNN
@@ -4983,7 +4983,7 @@ F 3 "" H 22200 3550 60  0001 C CNN
 	0    1    -1   0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:DGND #PWR088
+L arduino-ads129x-rescue:DGND-arduino-ads129x-rescue #PWR088
 U 1 1 51ABD763
 P 21800 4250
 F 0 "#PWR088" H 21800 4250 40  0001 C CNN
@@ -4994,7 +4994,7 @@ F 3 "" H 21800 4250 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L isolators:Si8606 U8
+L arduino-ads129x-rescue:Si8606-isolators U8
 U 1 1 51ABD69A
 P 24850 8400
 F 0 "U8" H 24850 7900 60  0000 C CNN
@@ -5005,7 +5005,7 @@ F 3 "" H 24850 8400 60  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L isolators:Si8606 U6
+L arduino-ads129x-rescue:Si8606-isolators U6
 U 1 1 51ABD691
 P 24850 4600
 F 0 "U6" H 24850 4100 60  0000 C CNN
@@ -5016,7 +5016,7 @@ F 3 "" H 24850 4600 60  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L isolators:Si8662 U7
+L arduino-ads129x-rescue:Si8662-isolators U7
 U 1 1 51ABD685
 P 24850 6500
 F 0 "U7" H 24850 6000 60  0000 C CNN
@@ -5107,7 +5107,7 @@ LED_SHIFT_REG_CLK
 Text Label 9100 16550 2    60   ~ 0
 LED_SERIAL
 $Comp
-L arduino-ads129x-rescue:CONN_20X2 P1
+L arduino-ads129x-rescue:CONN_20X2-arduino-ads129x-rescue P1
 U 1 1 51A0B888
 P 2600 6150
 F 0 "P1" H 2600 7200 60  0000 C CNN
@@ -5188,7 +5188,7 @@ PA9_TX
 Text Label 3200 13750 2    60   ~ 0
 PA8_RX
 $Comp
-L arduino-ads129x-rescue:+3.3V-RESCUE-arduino-ads129x #PWR089
+L arduino-ads129x-rescue:+3.3V-RESCUE-arduino-ads129x-arduino-ads129x-rescue #PWR089
 U 1 1 51977D37
 P 3400 13400
 F 0 "#PWR089" H 3400 13360 30  0001 C CNN
@@ -5207,7 +5207,7 @@ GND
 Text Notes 2550 13550 0    60   ~ 0
 VCC
 $Comp
-L arduino-ads129x-rescue:CONN_4 P7
+L arduino-ads129x-rescue:CONN_4-arduino-ads129x-rescue P7
 U 1 1 51977BF4
 P 2200 13700
 F 0 "P7" V 2150 13700 50  0000 C CNN
@@ -5218,7 +5218,7 @@ F 3 "" H 2200 13700 60  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:+3.3V-RESCUE-arduino-ads129x #PWR090
+L arduino-ads129x-rescue:+3.3V-RESCUE-arduino-ads129x-arduino-ads129x-rescue #PWR090
 U 1 1 51977B17
 P 3350 14850
 F 0 "#PWR090" H 3350 14810 30  0001 C CNN
@@ -5234,7 +5234,7 @@ Text Label 2900 15250 2    60   ~ 0
 PA8_RX
 NoConn ~ 2900 15450
 $Comp
-L arduino-ads129x-rescue:CONN_6 P6
+L arduino-ads129x-rescue:CONN_6-arduino-ads129x-rescue P6
 U 1 1 5197789B
 P 1900 15200
 F 0 "P6" V 1850 15200 60  0000 C CNN
@@ -5265,7 +5265,7 @@ JTAG_TCK
 Text Label 8600 14150 2    60   ~ 0
 JTAG_TMS
 $Comp
-L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x R37
+L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x-arduino-ads129x-rescue R37
 U 1 1 51976F5F
 P 7950 13700
 F 0 "R37" V 8030 13700 50  0000 C CNN
@@ -5276,7 +5276,7 @@ F 3 "" H 7950 13700 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x R36
+L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x-arduino-ads129x-rescue R36
 U 1 1 51976F59
 P 7600 13700
 F 0 "R36" V 7680 13700 50  0000 C CNN
@@ -5287,7 +5287,7 @@ F 3 "" H 7600 13700 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x R35
+L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x-arduino-ads129x-rescue R35
 U 1 1 51976F52
 P 7250 13700
 F 0 "R35" V 7330 13700 50  0000 C CNN
@@ -5298,7 +5298,7 @@ F 3 "" H 7250 13700 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x R34
+L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x-arduino-ads129x-rescue R34
 U 1 1 51976F3D
 P 6900 13700
 F 0 "R34" V 6980 13700 50  0000 C CNN
@@ -5310,7 +5310,7 @@ F 3 "" H 6900 13700 60  0001 C CNN
 $EndComp
 NoConn ~ 5800 14450
 $Comp
-L arduino-ads129x-rescue:+3.3V-RESCUE-arduino-ads129x #PWR091
+L arduino-ads129x-rescue:+3.3V-RESCUE-arduino-ads129x-arduino-ads129x-rescue #PWR091
 U 1 1 51976E77
 P 5300 13300
 F 0 "#PWR091" H 5300 13260 30  0001 C CNN
@@ -5321,7 +5321,7 @@ F 3 "" H 5300 13300 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:CONN_5X2 P8
+L arduino-ads129x-rescue:CONN_5X2-arduino-ads129x-rescue P8
 U 1 1 51976DEF
 P 6200 14350
 F 0 "P8" H 6200 14650 60  0000 C CNN
@@ -5336,7 +5336,7 @@ Data sheet\nspec is\n10nF
 Text Label 7500 22400 1    60   ~ 0
 VDDBU
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C80
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C80
 U 1 1 519768E7
 P 7500 21750
 F 0 "C80" H 7550 21850 50  0000 L CNN
@@ -5351,7 +5351,7 @@ RESET
 Text Label 15350 20800 1    60   ~ 0
 RESET
 $Comp
-L arduino-ads129x-rescue:SW_PUSH SW1
+L arduino-ads129x-rescue:SW_PUSH-arduino-ads129x-rescue SW1
 U 1 1 5197655F
 P 7100 21400
 F 0 "SW1" H 7250 21510 50  0000 C CNN
@@ -5362,7 +5362,7 @@ F 3 "" H 7100 21400 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x R58
+L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x-arduino-ads129x-rescue R58
 U 1 1 51976086
 P 9850 21800
 F 0 "R58" V 9930 21800 50  0000 C CNN
@@ -5373,7 +5373,7 @@ F 3 "" H 9850 21800 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:LED-RESCUE-arduino-ads129x D6
+L arduino-ads129x-rescue:LED-RESCUE-arduino-ads129x-arduino-ads129x-rescue D6
 U 1 1 51976061
 P 9850 21150
 F 0 "D6" H 9850 21250 50  0000 C CNN
@@ -5384,7 +5384,7 @@ F 3 "" H 9850 21150 60  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:ZENER D1
+L arduino-ads129x-rescue:ZENER-arduino-ads129x-rescue D1
 U 1 1 51975BF8
 P 19650 2050
 F 0 "D1" H 19650 2150 50  0000 C CNN
@@ -5395,7 +5395,7 @@ F 3 "" H 19650 2050 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:THERMISTOR TH1
+L arduino-ads129x-rescue:THERMISTOR-arduino-ads129x-rescue TH1
 U 1 1 51975BAD
 P 20200 1850
 F 0 "TH1" V 20300 1900 50  0000 C CNN
@@ -5418,7 +5418,7 @@ USB_DATA_P
 Text Notes 13600 20100 3    40   ~ 0
 See SAM3X data sheet section 40.5.1.9 Plug-In Detection:\nIn device mode, USB is detected when VBUS >= 1.4V
 $Comp
-L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x R52
+L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x-arduino-ads129x-rescue R52
 U 1 1 51869471
 P 14050 21750
 F 0 "R52" V 14130 21750 50  0000 C CNN
@@ -5429,7 +5429,7 @@ F 3 "" H 14050 21750 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C85
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C85
 U 1 1 51869469
 P 14300 21750
 F 0 "C85" H 14350 21850 50  0000 L CNN
@@ -5442,7 +5442,7 @@ $EndComp
 Text Label 14150 20550 1    60   ~ 0
 VDDIO
 $Comp
-L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x R54
+L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x-arduino-ads129x-rescue R54
 U 1 1 51868FFC
 P 14750 20450
 F 0 "R54" V 14830 20450 50  0000 C CNN
@@ -5453,7 +5453,7 @@ F 3 "" H 14750 20450 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x R53
+L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x-arduino-ads129x-rescue R53
 U 1 1 51868FE5
 P 14600 20450
 F 0 "R53" V 14680 20450 50  0000 C CNN
@@ -5464,7 +5464,7 @@ F 3 "" H 14600 20450 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:CRYSTAL X2
+L arduino-ads129x-rescue:CRYSTAL-arduino-ads129x-rescue X2
 U 1 1 518685E7
 P 15800 21500
 F 0 "X2" H 15800 21650 60  0000 C CNN
@@ -5475,7 +5475,7 @@ F 3 "" H 15800 21500 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C90
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C90
 U 1 1 518685E6
 P 15500 22050
 F 0 "C90" H 15550 22150 50  0000 L CNN
@@ -5486,7 +5486,7 @@ F 3 "" H 15500 22050 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C95
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C95
 U 1 1 518685E5
 P 16100 22050
 F 0 "C95" H 16150 22150 50  0000 L CNN
@@ -5497,7 +5497,7 @@ F 3 "" H 16100 22050 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C79
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C79
 U 1 1 51868588
 P 12550 20450
 F 0 "C79" H 12600 20550 50  0000 L CNN
@@ -5508,7 +5508,7 @@ F 3 "" H 12550 20450 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C78
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C78
 U 1 1 51868581
 P 11950 20450
 F 0 "C78" H 12000 20550 50  0000 L CNN
@@ -5523,7 +5523,7 @@ VDDIO
 Text Label 20550 19300 2    60   ~ 0
 ADVREF
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C111
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C111
 U 1 1 51867D49
 P 30050 18400
 F 0 "C111" H 30100 18500 50  0000 L CNN
@@ -5534,7 +5534,7 @@ F 3 "" H 30050 18400 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C112
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C112
 U 1 1 51867D48
 P 30450 18400
 F 0 "C112" H 30500 18500 50  0000 L CNN
@@ -5545,7 +5545,7 @@ F 3 "" H 30450 18400 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:INDUCTOR L18
+L arduino-ads129x-rescue:INDUCTOR-arduino-ads129x-rescue L18
 U 1 1 51867D47
 P 30050 17750
 F 0 "L18" V 30000 17750 40  0000 C CNN
@@ -5586,7 +5586,7 @@ VDDOUT
 Text Label 16850 20550 1    60   ~ 0
 VDDIN
 $Comp
-L arduino-ads129x-rescue:INDUCTOR L20
+L arduino-ads129x-rescue:INDUCTOR-arduino-ads129x-rescue L20
 U 1 1 51864A3E
 P 29100 11050
 F 0 "L20" V 29050 11050 40  0000 C CNN
@@ -5603,7 +5603,7 @@ USB_DATA_M
 Text Notes 24500 3250 0    60   ~ 0
 Data Isolation
 $Comp
-L arduino-ads129x-rescue:+3.3V-RESCUE-arduino-ads129x #PWR092
+L arduino-ads129x-rescue:+3.3V-RESCUE-arduino-ads129x-arduino-ads129x-rescue #PWR092
 U 1 1 51695431
 P 9850 20850
 F 0 "#PWR092" H 9850 20810 30  0001 C CNN
@@ -5616,7 +5616,7 @@ $EndComp
 Text Notes 18950 2400 0    40   ~ 0
 (more like 7 to 9 volts in reality\n with diodes and depending on draw)
 $Comp
-L isolators:SIP7_ISOLATOR U5
+L arduino-ads129x-rescue:SIP7_ISOLATOR-isolators U5
 U 1 1 51600FCA
 P 24850 1950
 F 0 "U5" H 24850 1700 60  0000 C CNN
@@ -5628,7 +5628,7 @@ F 3 "" H 24850 1950 60  0001 C CNN
 $EndComp
 NoConn ~ 24150 1950
 $Comp
-L arduino-ads129x-rescue:INDUCTOR L7
+L arduino-ads129x-rescue:INDUCTOR-arduino-ads129x-rescue L7
 U 1 1 51600FC9
 P 23750 1850
 F 0 "L7" V 23700 1850 40  0000 C CNN
@@ -5639,7 +5639,7 @@ F 3 "" H 23750 1850 60  0001 C CNN
 	0    1    -1   0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:INDUCTOR L8
+L arduino-ads129x-rescue:INDUCTOR-arduino-ads129x-rescue L8
 U 1 1 51600FC8
 P 25950 1850
 F 0 "L8" V 25900 1850 40  0000 C CNN
@@ -5650,7 +5650,7 @@ F 3 "" H 25950 1850 60  0001 C CNN
 	0    1    -1   0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C77
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C77
 U 1 1 51600FC7
 P 26650 2100
 F 0 "C77" H 26700 2200 50  0000 L CNN
@@ -5661,7 +5661,7 @@ F 3 "" H 26650 2100 60  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C62
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C62
 U 1 1 51600FC6
 P 23050 2100
 F 0 "C62" H 23100 2200 50  0000 L CNN
@@ -5672,7 +5672,7 @@ F 3 "" H 23050 2100 60  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C66
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C66
 U 1 1 51600FC5
 P 23350 2100
 F 0 "C66" H 23400 2200 50  0000 L CNN
@@ -5683,7 +5683,7 @@ F 3 "" H 23350 2100 60  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C73
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C73
 U 1 1 51600FC4
 P 26350 2100
 F 0 "C73" H 26400 2200 50  0000 L CNN
@@ -5700,7 +5700,7 @@ Text Label 18900 1850 0    60   ~ 0
 Text Notes 25200 1200 2    60   ~ 0
 Power Isolation
 $Comp
-L arduino-ads129x-rescue:CONN_2 P13
+L arduino-ads129x-rescue:CONN_2-arduino-ads129x-rescue P13
 U 1 1 51600FC3
 P 30500 1500
 F 0 "P13" V 30450 1500 40  0000 C CNN
@@ -5711,7 +5711,7 @@ F 3 "" H 30500 1500 60  0001 C CNN
 	0    1    -1   0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:CONN_2X2 P12
+L arduino-ads129x-rescue:CONN_2X2-arduino-ads129x-rescue P12
 U 1 1 51600FC2
 P 21650 2050
 F 0 "P12" V 21600 2050 40  0000 C CNN
@@ -5752,7 +5752,7 @@ Text Label 23754 1850 0    30   ~ 0
 Text Label 22930 1850 0    30   ~ 0
 9V_iso_postfilter
 $Comp
-L arduino-ads129x-rescue:THERMISTOR TH2
+L arduino-ads129x-rescue:THERMISTOR-arduino-ads129x-rescue TH2
 U 1 1 51600DE4
 P 30600 11600
 F 0 "TH2" V 30700 11650 50  0000 C CNN
@@ -5763,7 +5763,7 @@ F 3 "" H 30600 11600 60  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:GND-RESCUE-arduino-ads129x #PWR095
+L arduino-ads129x-rescue:GND-RESCUE-arduino-ads129x-arduino-ads129x-rescue #PWR095
 U 1 1 51600D3F
 P 28250 11900
 F 0 "#PWR095" H 28250 11900 30  0001 C CNN
@@ -5774,7 +5774,7 @@ F 3 "" H 28250 11900 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C87
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C87
 U 1 1 515703E3
 P 25200 18400
 F 0 "C87" H 25250 18500 50  0000 L CNN
@@ -5785,7 +5785,7 @@ F 3 "" H 25200 18400 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C103
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C103
 U 1 1 515701E3
 P 29100 20450
 F 0 "C103" H 29150 20550 50  0000 L CNN
@@ -5796,7 +5796,7 @@ F 3 "" H 29100 20450 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C105
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C105
 U 1 1 515701E2
 P 29500 20450
 F 0 "C105" H 29550 20550 50  0000 L CNN
@@ -5807,7 +5807,7 @@ F 3 "" H 29500 20450 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:INDUCTOR L15
+L arduino-ads129x-rescue:INDUCTOR-arduino-ads129x-rescue L15
 U 1 1 515701E1
 P 29100 19800
 F 0 "L15" V 29050 19800 40  0000 C CNN
@@ -5820,7 +5820,7 @@ $EndComp
 Text Label 29850 20150 2    60   ~ 0
 VDDPLL
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C98
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C98
 U 1 1 51570199
 P 28300 20450
 F 0 "C98" H 28350 20550 50  0000 L CNN
@@ -5831,7 +5831,7 @@ F 3 "" H 28300 20450 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C89
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C89
 U 1 1 51570139
 P 26700 20450
 F 0 "C89" H 26750 20550 50  0000 L CNN
@@ -5842,7 +5842,7 @@ F 3 "" H 26700 20450 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C92
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C92
 U 1 1 51570138
 P 27100 20450
 F 0 "C92" H 27150 20550 50  0000 L CNN
@@ -5853,7 +5853,7 @@ F 3 "" H 27100 20450 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C97
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C97
 U 1 1 51570137
 P 27900 20450
 F 0 "C97" H 27950 20550 50  0000 L CNN
@@ -5864,7 +5864,7 @@ F 3 "" H 27900 20450 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C94
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C94
 U 1 1 51570136
 P 27500 20450
 F 0 "C94" H 27550 20550 50  0000 L CNN
@@ -5877,7 +5877,7 @@ $EndComp
 Text Label 28700 20150 2    60   ~ 0
 VDDCORE
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C84
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C84
 U 1 1 515700E5
 P 25750 20450
 F 0 "C84" H 25800 20550 50  0000 L CNN
@@ -5888,7 +5888,7 @@ F 3 "" H 25750 20450 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C86
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C86
 U 1 1 515700E4
 P 26150 20450
 F 0 "C86" H 26200 20550 50  0000 L CNN
@@ -5911,7 +5911,7 @@ VDDANA
 Text Label 28850 18100 2    60   ~ 0
 VDDUTMI
 $Comp
-L arduino-ads129x-rescue:INDUCTOR L17
+L arduino-ads129x-rescue:INDUCTOR-arduino-ads129x-rescue L17
 U 1 1 5156FC18
 P 29100 17750
 F 0 "L17" V 29050 17750 40  0000 C CNN
@@ -5922,7 +5922,7 @@ F 3 "" H 29100 17750 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C109
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C109
 U 1 1 5156FC17
 P 29500 18400
 F 0 "C109" H 29550 18500 50  0000 L CNN
@@ -5933,7 +5933,7 @@ F 3 "" H 29500 18400 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C107
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C107
 U 1 1 5156FC16
 P 29100 18400
 F 0 "C107" H 29150 18500 50  0000 L CNN
@@ -5944,7 +5944,7 @@ F 3 "" H 29100 18400 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C102
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C102
 U 1 1 5156FBCC
 P 28000 18400
 F 0 "C102" H 28050 18500 50  0000 L CNN
@@ -5955,7 +5955,7 @@ F 3 "" H 28000 18400 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C104
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C104
 U 1 1 5156FBCB
 P 28400 18400
 F 0 "C104" H 28450 18500 50  0000 L CNN
@@ -5966,7 +5966,7 @@ F 3 "" H 28400 18400 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:INDUCTOR L14
+L arduino-ads129x-rescue:INDUCTOR-arduino-ads129x-rescue L14
 U 1 1 5156FBCA
 P 28000 17750
 F 0 "L14" V 27950 17750 40  0000 C CNN
@@ -5977,7 +5977,7 @@ F 3 "" H 28000 17750 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:INDUCTOR L13
+L arduino-ads129x-rescue:INDUCTOR-arduino-ads129x-rescue L13
 U 1 1 5156FB80
 P 25200 17750
 F 0 "L13" V 25150 17750 40  0000 C CNN
@@ -5988,7 +5988,7 @@ F 3 "" H 25200 17750 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:INDUCTOR L12
+L arduino-ads129x-rescue:INDUCTOR-arduino-ads129x-rescue L12
 U 1 1 5156FB79
 P 23700 17750
 F 0 "L12" V 23650 17750 40  0000 C CNN
@@ -5999,7 +5999,7 @@ F 3 "" H 23700 17750 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C100
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C100
 U 1 1 5156FA3A
 P 27400 18400
 F 0 "C100" H 27450 18500 50  0000 L CNN
@@ -6010,7 +6010,7 @@ F 3 "" H 27400 18400 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C93
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C93
 U 1 1 5156FA28
 P 26400 18400
 F 0 "C93" H 26450 18500 50  0000 L CNN
@@ -6021,7 +6021,7 @@ F 3 "" H 26400 18400 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C96
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C96
 U 1 1 5156FA27
 P 26800 18400
 F 0 "C96" H 26850 18500 50  0000 L CNN
@@ -6032,7 +6032,7 @@ F 3 "" H 26800 18400 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C91
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C91
 U 1 1 5156F9E9
 P 26000 18400
 F 0 "C91" H 26050 18500 50  0000 L CNN
@@ -6043,7 +6043,7 @@ F 3 "" H 26000 18400 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C88
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C88
 U 1 1 5156F9DB
 P 25600 18400
 F 0 "C88" H 25650 18500 50  0000 L CNN
@@ -6054,7 +6054,7 @@ F 3 "" H 25600 18400 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C83
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C83
 U 1 1 5156F9AA
 P 24100 18400
 F 0 "C83" H 24150 18500 50  0000 L CNN
@@ -6065,7 +6065,7 @@ F 3 "" H 24100 18400 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C81
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C81
 U 1 1 5156F9A3
 P 23700 18400
 F 0 "C81" H 23750 18500 50  0000 L CNN
@@ -6076,7 +6076,7 @@ F 3 "" H 23700 18400 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:+3.3V-RESCUE-arduino-ads129x #PWR096
+L arduino-ads129x-rescue:+3.3V-RESCUE-arduino-ads129x-arduino-ads129x-rescue #PWR096
 U 1 1 5156F98A
 P 23500 17300
 F 0 "#PWR096" H 23500 17260 30  0001 C CNN
@@ -6087,7 +6087,7 @@ F 3 "" H 23500 17300 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L sam3x8e:SAM3X8E U10
+L arduino-ads129x-rescue:SAM3X8E-sam3x8e U10
 U 1 1 5156EEFB
 P 16650 17850
 F 0 "U10" H 16650 17850 60  0000 C CNN
@@ -6113,7 +6113,7 @@ F 3 "" H 11100 2500 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:INDUCTOR L1
+L arduino-ads129x-rescue:INDUCTOR-arduino-ads129x-rescue L1
 U 1 1 514DD8C7
 P 14850 2100
 F 0 "L1" V 14800 2100 40  0000 C CNN
@@ -6124,7 +6124,7 @@ F 3 "" H 14850 2100 60  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:INDUCTOR L2
+L arduino-ads129x-rescue:INDUCTOR-arduino-ads129x-rescue L2
 U 1 1 514DD6DF
 P 15600 3650
 F 0 "L2" V 15550 3650 40  0000 C CNN
@@ -6135,7 +6135,7 @@ F 3 "" H 15600 3650 60  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C51
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C51
 U 1 1 514DD5E0
 P 16600 3900
 F 0 "C51" H 16650 4000 50  0000 L CNN
@@ -6146,7 +6146,7 @@ F 3 "" H 16600 3900 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:AGND #PWR098
+L arduino-ads129x-rescue:AGND-arduino-ads129x-rescue #PWR098
 U 1 1 514DD5DF
 P 15950 4250
 F 0 "#PWR098" H 15950 4250 40  0001 C CNN
@@ -6157,7 +6157,7 @@ F 3 "" H 15950 4250 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C48
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C48
 U 1 1 514DD5DE
 P 16250 3900
 F 0 "C48" H 16300 4000 50  0000 L CNN
@@ -6182,7 +6182,7 @@ SRB2
 Text Label 9450 5650 0    60   ~ 0
 SRB1
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C33
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C33
 U 1 1 514DCB38
 P 10150 2250
 F 0 "C33" H 10200 2350 50  0000 L CNN
@@ -6193,7 +6193,7 @@ F 3 "" H 10150 2250 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x R33
+L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x-arduino-ads129x-rescue R33
 U 1 1 514DCB2E
 P 10100 1900
 F 0 "R33" V 10180 1900 50  0000 C CNN
@@ -6204,7 +6204,7 @@ F 3 "" H 10100 1900 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C37
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C37
 U 1 1 514DC39B
 P 11450 6550
 F 0 "C37" H 11500 6650 50  0000 L CNN
@@ -6215,7 +6215,7 @@ F 3 "" H 11450 6550 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:AGND #PWR099
+L arduino-ads129x-rescue:AGND-arduino-ads129x-rescue #PWR099
 U 1 1 514DC373
 P 11800 2400
 F 0 "#PWR099" H 11800 2400 40  0001 C CNN
@@ -6226,7 +6226,7 @@ F 3 "" H 11800 2400 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C38
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C38
 U 1 1 514DC307
 P 11500 2000
 F 0 "C38" H 11550 2100 50  0000 L CNN
@@ -6237,7 +6237,7 @@ F 3 "" H 11500 2000 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C36
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C36
 U 1 1 514DC2FF
 P 11200 2000
 F 0 "C36" H 11250 2100 50  0000 L CNN
@@ -6248,7 +6248,7 @@ F 3 "" H 11200 2000 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C40
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C40
 U 1 1 514DC28A
 P 12100 6550
 F 0 "C40" H 12150 6650 50  0000 L CNN
@@ -6259,7 +6259,7 @@ F 3 "" H 12100 6550 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:CP-RESCUE-arduino-ads129x C39
+L arduino-ads129x-rescue:CP-RESCUE-arduino-ads129x-arduino-ads129x-rescue C39
 U 1 1 514DC237
 P 11800 6550
 F 0 "C39" H 11850 6650 50  0000 L CNN
@@ -6270,7 +6270,7 @@ F 3 "" H 11800 6550 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C35
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C35
 U 1 1 514DBE36
 P 11050 7050
 F 0 "C35" H 11100 7150 50  0000 L CNN
@@ -6281,7 +6281,7 @@ F 3 "" H 11050 7050 60  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C34
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C34
 U 1 1 514DBE2C
 P 11050 6550
 F 0 "C34" H 11100 6650 50  0000 L CNN
@@ -6292,7 +6292,7 @@ F 3 "" H 11050 6550 60  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:AGND #PWR0100
+L arduino-ads129x-rescue:AGND-arduino-ads129x-rescue #PWR0100
 U 1 1 514DBCE4
 P 9950 7550
 F 0 "#PWR0100" H 9950 7550 40  0001 C CNN
@@ -6314,7 +6314,7 @@ F 3 "" H 9950 6100 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:DGND #PWR0102
+L arduino-ads129x-rescue:DGND-arduino-ads129x-rescue #PWR0102
 U 1 1 514DBC88
 P 12050 3300
 F 0 "#PWR0102" H 12050 3300 40  0001 C CNN
@@ -6336,7 +6336,7 @@ F 3 "" H 10800 2500 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:DGND #PWR0104
+L arduino-ads129x-rescue:DGND-arduino-ads129x-rescue #PWR0104
 U 1 1 514DBBA3
 P 12550 5850
 F 0 "#PWR0104" H 12550 5850 40  0001 C CNN
@@ -6359,7 +6359,7 @@ PIN\n59
 Text Notes 16900 1900 2    60   ~ 0
 AVDD decoupling capacitors for ADS1299
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C55
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C55
 U 1 1 514DB8A1
 P 17200 2350
 F 0 "C55" H 17250 2450 50  0000 L CNN
@@ -6370,7 +6370,7 @@ F 3 "" H 17200 2350 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C50
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C50
 U 1 1 514DB893
 P 16500 2350
 F 0 "C50" H 16550 2450 50  0000 L CNN
@@ -6381,7 +6381,7 @@ F 3 "" H 16500 2350 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C53
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C53
 U 1 1 514DB892
 P 16850 2350
 F 0 "C53" H 16900 2450 50  0000 L CNN
@@ -6392,7 +6392,7 @@ F 3 "" H 16850 2350 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C47
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C47
 U 1 1 514DB887
 P 16150 2350
 F 0 "C47" H 16200 2450 50  0000 L CNN
@@ -6403,7 +6403,7 @@ F 3 "" H 16150 2350 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C43
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C43
 U 1 1 514DB775
 P 15450 2350
 F 0 "C43" H 15500 2450 50  0000 L CNN
@@ -6414,7 +6414,7 @@ F 3 "" H 15450 2350 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:AGND #PWR0105
+L arduino-ads129x-rescue:AGND-arduino-ads129x-rescue #PWR0105
 U 1 1 514DB754
 P 15150 2700
 F 0 "#PWR0105" H 15150 2700 40  0001 C CNN
@@ -6425,7 +6425,7 @@ F 3 "" H 15150 2700 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C46
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C46
 U 1 1 514DB710
 P 15800 2350
 F 0 "C46" H 15850 2450 50  0000 L CNN
@@ -6449,7 +6449,7 @@ $EndComp
 Text Label 1500 7000 0    60   ~ 0
 BIASOUT_FILT
 $Comp
-L arduino-ads129x-rescue:AGND #PWR0107
+L arduino-ads129x-rescue:AGND-arduino-ads129x-rescue #PWR0107
 U 1 1 513B51AD
 P 2150 7300
 F 0 "#PWR0107" H 2150 7300 40  0001 C CNN
@@ -6460,7 +6460,7 @@ F 3 "" H 2150 7300 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:AGND #PWR0108
+L arduino-ads129x-rescue:AGND-arduino-ads129x-rescue #PWR0108
 U 1 1 513B4DA1
 P 7000 7600
 F 0 "#PWR0108" H 7000 7600 40  0001 C CNN
@@ -6471,7 +6471,7 @@ F 3 "" H 7000 7600 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:AGND #PWR0109
+L arduino-ads129x-rescue:AGND-arduino-ads129x-rescue #PWR0109
 U 1 1 513B4DA0
 P 6250 7600
 F 0 "#PWR0109" H 6250 7600 40  0001 C CNN
@@ -6482,7 +6482,7 @@ F 3 "" H 6250 7600 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C28
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C28
 U 1 1 513B4D9F
 P 6700 7550
 F 0 "C28" H 6750 7650 50  0000 L CNN
@@ -6493,7 +6493,7 @@ F 3 "" H 6700 7550 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C12
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C12
 U 1 1 513B4D9E
 P 5850 7550
 F 0 "C12" H 5900 7650 50  0000 L CNN
@@ -6504,7 +6504,7 @@ F 3 "" H 5850 7550 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x R28
+L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x-arduino-ads129x-rescue R28
 U 1 1 513B4D9D
 P 6150 7350
 F 0 "R28" V 6230 7350 50  0000 C CNN
@@ -6515,7 +6515,7 @@ F 3 "" H 6150 7350 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x R12
+L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x-arduino-ads129x-rescue R12
 U 1 1 513B4D9C
 P 5200 7350
 F 0 "R12" V 5280 7350 50  0000 C CNN
@@ -6526,7 +6526,7 @@ F 3 "" H 5200 7350 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x R11
+L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x-arduino-ads129x-rescue R11
 U 1 1 513B4D9B
 P 5200 6900
 F 0 "R11" V 5280 6900 50  0000 C CNN
@@ -6537,7 +6537,7 @@ F 3 "" H 5200 6900 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x R27
+L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x-arduino-ads129x-rescue R27
 U 1 1 513B4D9A
 P 6150 6900
 F 0 "R27" V 6230 6900 50  0000 C CNN
@@ -6548,7 +6548,7 @@ F 3 "" H 6150 6900 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C11
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C11
 U 1 1 513B4D99
 P 5850 7100
 F 0 "C11" H 5900 7200 50  0000 L CNN
@@ -6559,7 +6559,7 @@ F 3 "" H 5850 7100 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C27
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C27
 U 1 1 513B4D98
 P 6700 7100
 F 0 "C27" H 6750 7200 50  0000 L CNN
@@ -6570,7 +6570,7 @@ F 3 "" H 6700 7100 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:AGND #PWR0110
+L arduino-ads129x-rescue:AGND-arduino-ads129x-rescue #PWR0110
 U 1 1 513B4D97
 P 6250 7150
 F 0 "#PWR0110" H 6250 7150 40  0001 C CNN
@@ -6581,7 +6581,7 @@ F 3 "" H 6250 7150 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:AGND #PWR0111
+L arduino-ads129x-rescue:AGND-arduino-ads129x-rescue #PWR0111
 U 1 1 513B4D96
 P 7000 7150
 F 0 "#PWR0111" H 7000 7150 40  0001 C CNN
@@ -6592,7 +6592,7 @@ F 3 "" H 7000 7150 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:AGND #PWR0112
+L arduino-ads129x-rescue:AGND-arduino-ads129x-rescue #PWR0112
 U 1 1 513B4D95
 P 7000 6250
 F 0 "#PWR0112" H 7000 6250 40  0001 C CNN
@@ -6603,7 +6603,7 @@ F 3 "" H 7000 6250 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:AGND #PWR0113
+L arduino-ads129x-rescue:AGND-arduino-ads129x-rescue #PWR0113
 U 1 1 513B4D94
 P 6250 6250
 F 0 "#PWR0113" H 6250 6250 40  0001 C CNN
@@ -6614,7 +6614,7 @@ F 3 "" H 6250 6250 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C25
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C25
 U 1 1 513B4D93
 P 6700 6200
 F 0 "C25" H 6750 6300 50  0000 L CNN
@@ -6625,7 +6625,7 @@ F 3 "" H 6700 6200 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C9
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C9
 U 1 1 513B4D92
 P 5850 6200
 F 0 "C9" H 5900 6300 50  0000 L CNN
@@ -6636,7 +6636,7 @@ F 3 "" H 5850 6200 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x R25
+L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x-arduino-ads129x-rescue R25
 U 1 1 513B4D91
 P 6150 6000
 F 0 "R25" V 6230 6000 50  0000 C CNN
@@ -6647,7 +6647,7 @@ F 3 "" H 6150 6000 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x R9
+L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x-arduino-ads129x-rescue R9
 U 1 1 513B4D90
 P 5200 6000
 F 0 "R9" V 5280 6000 50  0000 C CNN
@@ -6658,7 +6658,7 @@ F 3 "" H 5200 6000 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x R10
+L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x-arduino-ads129x-rescue R10
 U 1 1 513B4D8F
 P 5200 6450
 F 0 "R10" V 5280 6450 50  0000 C CNN
@@ -6669,7 +6669,7 @@ F 3 "" H 5200 6450 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x R26
+L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x-arduino-ads129x-rescue R26
 U 1 1 513B4D8E
 P 6150 6450
 F 0 "R26" V 6230 6450 50  0000 C CNN
@@ -6680,7 +6680,7 @@ F 3 "" H 6150 6450 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C10
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C10
 U 1 1 513B4D8D
 P 5850 6650
 F 0 "C10" H 5900 6750 50  0000 L CNN
@@ -6691,7 +6691,7 @@ F 3 "" H 5850 6650 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C26
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C26
 U 1 1 513B4D8C
 P 6700 6650
 F 0 "C26" H 6750 6750 50  0000 L CNN
@@ -6702,7 +6702,7 @@ F 3 "" H 6700 6650 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:AGND #PWR0114
+L arduino-ads129x-rescue:AGND-arduino-ads129x-rescue #PWR0114
 U 1 1 513B4D8B
 P 6250 6700
 F 0 "#PWR0114" H 6250 6700 40  0001 C CNN
@@ -6713,7 +6713,7 @@ F 3 "" H 6250 6700 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:AGND #PWR0115
+L arduino-ads129x-rescue:AGND-arduino-ads129x-rescue #PWR0115
 U 1 1 513B4D8A
 P 7000 6700
 F 0 "#PWR0115" H 7000 6700 40  0001 C CNN
@@ -6724,7 +6724,7 @@ F 3 "" H 7000 6700 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:AGND #PWR0116
+L arduino-ads129x-rescue:AGND-arduino-ads129x-rescue #PWR0116
 U 1 1 513B4D89
 P 7000 8500
 F 0 "#PWR0116" H 7000 8500 40  0001 C CNN
@@ -6735,7 +6735,7 @@ F 3 "" H 7000 8500 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:AGND #PWR0117
+L arduino-ads129x-rescue:AGND-arduino-ads129x-rescue #PWR0117
 U 1 1 513B4D88
 P 6250 8500
 F 0 "#PWR0117" H 6250 8500 40  0001 C CNN
@@ -6746,7 +6746,7 @@ F 3 "" H 6250 8500 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C30
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C30
 U 1 1 513B4D87
 P 6700 8450
 F 0 "C30" H 6750 8550 50  0000 L CNN
@@ -6757,7 +6757,7 @@ F 3 "" H 6700 8450 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C14
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C14
 U 1 1 513B4D86
 P 5850 8450
 F 0 "C14" H 5900 8550 50  0000 L CNN
@@ -6768,7 +6768,7 @@ F 3 "" H 5850 8450 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x R30
+L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x-arduino-ads129x-rescue R30
 U 1 1 513B4D85
 P 6150 8250
 F 0 "R30" V 6230 8250 50  0000 C CNN
@@ -6779,7 +6779,7 @@ F 3 "" H 6150 8250 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x R14
+L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x-arduino-ads129x-rescue R14
 U 1 1 513B4D84
 P 5200 8250
 F 0 "R14" V 5280 8250 50  0000 C CNN
@@ -6790,7 +6790,7 @@ F 3 "" H 5200 8250 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x R13
+L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x-arduino-ads129x-rescue R13
 U 1 1 513B4D83
 P 5200 7800
 F 0 "R13" V 5280 7800 50  0000 C CNN
@@ -6801,7 +6801,7 @@ F 3 "" H 5200 7800 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x R29
+L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x-arduino-ads129x-rescue R29
 U 1 1 513B4D82
 P 6150 7800
 F 0 "R29" V 6230 7800 50  0000 C CNN
@@ -6812,7 +6812,7 @@ F 3 "" H 6150 7800 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C13
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C13
 U 1 1 513B4D81
 P 5850 8000
 F 0 "C13" H 5900 8100 50  0000 L CNN
@@ -6823,7 +6823,7 @@ F 3 "" H 5850 8000 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C29
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C29
 U 1 1 513B4D80
 P 6700 8000
 F 0 "C29" H 6750 8100 50  0000 L CNN
@@ -6834,7 +6834,7 @@ F 3 "" H 6700 8000 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:AGND #PWR0118
+L arduino-ads129x-rescue:AGND-arduino-ads129x-rescue #PWR0118
 U 1 1 513B4D7F
 P 6250 8050
 F 0 "#PWR0118" H 6250 8050 40  0001 C CNN
@@ -6845,7 +6845,7 @@ F 3 "" H 6250 8050 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:AGND #PWR0119
+L arduino-ads129x-rescue:AGND-arduino-ads129x-rescue #PWR0119
 U 1 1 513B4D7E
 P 7000 8050
 F 0 "#PWR0119" H 7000 8050 40  0001 C CNN
@@ -6856,7 +6856,7 @@ F 3 "" H 7000 8050 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:AGND #PWR0120
+L arduino-ads129x-rescue:AGND-arduino-ads129x-rescue #PWR0120
 U 1 1 513B4D7D
 P 7000 8950
 F 0 "#PWR0120" H 7000 8950 40  0001 C CNN
@@ -6867,7 +6867,7 @@ F 3 "" H 7000 8950 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:AGND #PWR0121
+L arduino-ads129x-rescue:AGND-arduino-ads129x-rescue #PWR0121
 U 1 1 513B4D7C
 P 6250 8950
 F 0 "#PWR0121" H 6250 8950 40  0001 C CNN
@@ -6878,7 +6878,7 @@ F 3 "" H 6250 8950 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C31
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C31
 U 1 1 513B4D7B
 P 6700 8900
 F 0 "C31" H 6750 9000 50  0000 L CNN
@@ -6889,7 +6889,7 @@ F 3 "" H 6700 8900 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C15
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C15
 U 1 1 513B4D7A
 P 5850 8900
 F 0 "C15" H 5900 9000 50  0000 L CNN
@@ -6900,7 +6900,7 @@ F 3 "" H 5850 8900 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x R31
+L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x-arduino-ads129x-rescue R31
 U 1 1 513B4D79
 P 6150 8700
 F 0 "R31" V 6230 8700 50  0000 C CNN
@@ -6911,7 +6911,7 @@ F 3 "" H 6150 8700 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x R15
+L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x-arduino-ads129x-rescue R15
 U 1 1 513B4D78
 P 5200 8700
 F 0 "R15" V 5280 8700 50  0000 C CNN
@@ -6922,7 +6922,7 @@ F 3 "" H 5200 8700 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x R16
+L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x-arduino-ads129x-rescue R16
 U 1 1 513B4D77
 P 5200 9150
 F 0 "R16" V 5280 9150 50  0000 C CNN
@@ -6933,7 +6933,7 @@ F 3 "" H 5200 9150 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x R32
+L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x-arduino-ads129x-rescue R32
 U 1 1 513B4D76
 P 6150 9150
 F 0 "R32" V 6230 9150 50  0000 C CNN
@@ -6944,7 +6944,7 @@ F 3 "" H 6150 9150 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C16
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C16
 U 1 1 513B4D75
 P 5850 9350
 F 0 "C16" H 5900 9450 50  0000 L CNN
@@ -6955,7 +6955,7 @@ F 3 "" H 5850 9350 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C32
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C32
 U 1 1 513B4D74
 P 6700 9350
 F 0 "C32" H 6750 9450 50  0000 L CNN
@@ -6966,7 +6966,7 @@ F 3 "" H 6700 9350 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:AGND #PWR0122
+L arduino-ads129x-rescue:AGND-arduino-ads129x-rescue #PWR0122
 U 1 1 513B4D73
 P 6250 9400
 F 0 "#PWR0122" H 6250 9400 40  0001 C CNN
@@ -6977,7 +6977,7 @@ F 3 "" H 6250 9400 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:AGND #PWR0123
+L arduino-ads129x-rescue:AGND-arduino-ads129x-rescue #PWR0123
 U 1 1 513B4D72
 P 7000 9400
 F 0 "#PWR0123" H 7000 9400 40  0001 C CNN
@@ -6988,7 +6988,7 @@ F 3 "" H 7000 9400 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:AGND #PWR0124
+L arduino-ads129x-rescue:AGND-arduino-ads129x-rescue #PWR0124
 U 1 1 513B4D48
 P 7000 5800
 F 0 "#PWR0124" H 7000 5800 40  0001 C CNN
@@ -6999,7 +6999,7 @@ F 3 "" H 7000 5800 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:AGND #PWR0125
+L arduino-ads129x-rescue:AGND-arduino-ads129x-rescue #PWR0125
 U 1 1 513B4D47
 P 6250 5800
 F 0 "#PWR0125" H 6250 5800 40  0001 C CNN
@@ -7010,7 +7010,7 @@ F 3 "" H 6250 5800 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C24
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C24
 U 1 1 513B4D46
 P 6700 5750
 F 0 "C24" H 6750 5850 50  0000 L CNN
@@ -7021,7 +7021,7 @@ F 3 "" H 6700 5750 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C8
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C8
 U 1 1 513B4D45
 P 5850 5750
 F 0 "C8" H 5900 5850 50  0000 L CNN
@@ -7032,7 +7032,7 @@ F 3 "" H 5850 5750 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x R24
+L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x-arduino-ads129x-rescue R24
 U 1 1 513B4D44
 P 6150 5550
 F 0 "R24" V 6230 5550 50  0000 C CNN
@@ -7043,7 +7043,7 @@ F 3 "" H 6150 5550 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x R8
+L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x-arduino-ads129x-rescue R8
 U 1 1 513B4D43
 P 5200 5550
 F 0 "R8" V 5280 5550 50  0000 C CNN
@@ -7054,7 +7054,7 @@ F 3 "" H 5200 5550 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x R7
+L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x-arduino-ads129x-rescue R7
 U 1 1 513B4D42
 P 5200 5100
 F 0 "R7" V 5280 5100 50  0000 C CNN
@@ -7065,7 +7065,7 @@ F 3 "" H 5200 5100 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x R23
+L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x-arduino-ads129x-rescue R23
 U 1 1 513B4D41
 P 6150 5100
 F 0 "R23" V 6230 5100 50  0000 C CNN
@@ -7076,7 +7076,7 @@ F 3 "" H 6150 5100 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C7
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C7
 U 1 1 513B4D40
 P 5850 5300
 F 0 "C7" H 5900 5400 50  0000 L CNN
@@ -7087,7 +7087,7 @@ F 3 "" H 5850 5300 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C23
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C23
 U 1 1 513B4D3F
 P 6700 5300
 F 0 "C23" H 6750 5400 50  0000 L CNN
@@ -7098,7 +7098,7 @@ F 3 "" H 6700 5300 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:AGND #PWR0126
+L arduino-ads129x-rescue:AGND-arduino-ads129x-rescue #PWR0126
 U 1 1 513B4D3E
 P 6250 5350
 F 0 "#PWR0126" H 6250 5350 40  0001 C CNN
@@ -7109,7 +7109,7 @@ F 3 "" H 6250 5350 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:AGND #PWR0127
+L arduino-ads129x-rescue:AGND-arduino-ads129x-rescue #PWR0127
 U 1 1 513B4D3D
 P 7000 5350
 F 0 "#PWR0127" H 7000 5350 40  0001 C CNN
@@ -7120,7 +7120,7 @@ F 3 "" H 7000 5350 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:AGND #PWR0128
+L arduino-ads129x-rescue:AGND-arduino-ads129x-rescue #PWR0128
 U 1 1 513B4D3C
 P 7000 4450
 F 0 "#PWR0128" H 7000 4450 40  0001 C CNN
@@ -7131,7 +7131,7 @@ F 3 "" H 7000 4450 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:AGND #PWR0129
+L arduino-ads129x-rescue:AGND-arduino-ads129x-rescue #PWR0129
 U 1 1 513B4D3B
 P 6250 4450
 F 0 "#PWR0129" H 6250 4450 40  0001 C CNN
@@ -7142,7 +7142,7 @@ F 3 "" H 6250 4450 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C21
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C21
 U 1 1 513B4D3A
 P 6700 4400
 F 0 "C21" H 6750 4500 50  0000 L CNN
@@ -7153,7 +7153,7 @@ F 3 "" H 6700 4400 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C5
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C5
 U 1 1 513B4D39
 P 5850 4400
 F 0 "C5" H 5900 4500 50  0000 L CNN
@@ -7164,7 +7164,7 @@ F 3 "" H 5850 4400 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x R21
+L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x-arduino-ads129x-rescue R21
 U 1 1 513B4D38
 P 6150 4200
 F 0 "R21" V 6230 4200 50  0000 C CNN
@@ -7175,7 +7175,7 @@ F 3 "" H 6150 4200 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x R5
+L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x-arduino-ads129x-rescue R5
 U 1 1 513B4D37
 P 5200 4200
 F 0 "R5" V 5280 4200 50  0000 C CNN
@@ -7186,7 +7186,7 @@ F 3 "" H 5200 4200 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x R6
+L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x-arduino-ads129x-rescue R6
 U 1 1 513B4D36
 P 5200 4650
 F 0 "R6" V 5280 4650 50  0000 C CNN
@@ -7197,7 +7197,7 @@ F 3 "" H 5200 4650 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x R22
+L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x-arduino-ads129x-rescue R22
 U 1 1 513B4D35
 P 6150 4650
 F 0 "R22" V 6230 4650 50  0000 C CNN
@@ -7208,7 +7208,7 @@ F 3 "" H 6150 4650 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C6
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C6
 U 1 1 513B4D34
 P 5850 4850
 F 0 "C6" H 5900 4950 50  0000 L CNN
@@ -7219,7 +7219,7 @@ F 3 "" H 5850 4850 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C22
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C22
 U 1 1 513B4D33
 P 6700 4850
 F 0 "C22" H 6750 4950 50  0000 L CNN
@@ -7230,7 +7230,7 @@ F 3 "" H 6700 4850 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:AGND #PWR0130
+L arduino-ads129x-rescue:AGND-arduino-ads129x-rescue #PWR0130
 U 1 1 513B4D32
 P 6250 4900
 F 0 "#PWR0130" H 6250 4900 40  0001 C CNN
@@ -7241,7 +7241,7 @@ F 3 "" H 6250 4900 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:AGND #PWR0131
+L arduino-ads129x-rescue:AGND-arduino-ads129x-rescue #PWR0131
 U 1 1 513B4D31
 P 7000 4900
 F 0 "#PWR0131" H 7000 4900 40  0001 C CNN
@@ -7252,7 +7252,7 @@ F 3 "" H 7000 4900 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:AGND #PWR0132
+L arduino-ads129x-rescue:AGND-arduino-ads129x-rescue #PWR0132
 U 1 1 513B4D1D
 P 7000 3100
 F 0 "#PWR0132" H 7000 3100 40  0001 C CNN
@@ -7263,7 +7263,7 @@ F 3 "" H 7000 3100 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:AGND #PWR0133
+L arduino-ads129x-rescue:AGND-arduino-ads129x-rescue #PWR0133
 U 1 1 513B4D1C
 P 6250 3100
 F 0 "#PWR0133" H 6250 3100 40  0001 C CNN
@@ -7274,7 +7274,7 @@ F 3 "" H 6250 3100 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C18
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C18
 U 1 1 513B4D1B
 P 6700 3050
 F 0 "C18" H 6750 3150 50  0000 L CNN
@@ -7285,7 +7285,7 @@ F 3 "" H 6700 3050 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C2
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C2
 U 1 1 513B4D1A
 P 5850 3050
 F 0 "C2" H 5900 3150 50  0000 L CNN
@@ -7296,7 +7296,7 @@ F 3 "" H 5850 3050 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x R18
+L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x-arduino-ads129x-rescue R18
 U 1 1 513B4D19
 P 6150 2850
 F 0 "R18" V 6230 2850 50  0000 C CNN
@@ -7307,7 +7307,7 @@ F 3 "" H 6150 2850 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x R2
+L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x-arduino-ads129x-rescue R2
 U 1 1 513B4D18
 P 5200 2850
 F 0 "R2" V 5280 2850 50  0000 C CNN
@@ -7318,7 +7318,7 @@ F 3 "" H 5200 2850 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x R1
+L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x-arduino-ads129x-rescue R1
 U 1 1 513B4D17
 P 5200 2400
 F 0 "R1" V 5280 2400 50  0000 C CNN
@@ -7329,7 +7329,7 @@ F 3 "" H 5200 2400 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x R17
+L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x-arduino-ads129x-rescue R17
 U 1 1 513B4D16
 P 6150 2400
 F 0 "R17" V 6230 2400 50  0000 C CNN
@@ -7340,7 +7340,7 @@ F 3 "" H 6150 2400 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C1
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C1
 U 1 1 513B4D15
 P 5850 2600
 F 0 "C1" H 5900 2700 50  0000 L CNN
@@ -7351,7 +7351,7 @@ F 3 "" H 5850 2600 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C17
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C17
 U 1 1 513B4D14
 P 6700 2600
 F 0 "C17" H 6750 2700 50  0000 L CNN
@@ -7362,7 +7362,7 @@ F 3 "" H 6700 2600 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:AGND #PWR0134
+L arduino-ads129x-rescue:AGND-arduino-ads129x-rescue #PWR0134
 U 1 1 513B4D13
 P 6250 2650
 F 0 "#PWR0134" H 6250 2650 40  0001 C CNN
@@ -7373,7 +7373,7 @@ F 3 "" H 6250 2650 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:AGND #PWR0135
+L arduino-ads129x-rescue:AGND-arduino-ads129x-rescue #PWR0135
 U 1 1 513B4D12
 P 7000 2650
 F 0 "#PWR0135" H 7000 2650 40  0001 C CNN
@@ -7384,7 +7384,7 @@ F 3 "" H 7000 2650 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:AGND #PWR0136
+L arduino-ads129x-rescue:AGND-arduino-ads129x-rescue #PWR0136
 U 1 1 513B4CBC
 P 7000 3550
 F 0 "#PWR0136" H 7000 3550 40  0001 C CNN
@@ -7395,7 +7395,7 @@ F 3 "" H 7000 3550 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:AGND #PWR0137
+L arduino-ads129x-rescue:AGND-arduino-ads129x-rescue #PWR0137
 U 1 1 513B4CBB
 P 6250 3550
 F 0 "#PWR0137" H 6250 3550 40  0001 C CNN
@@ -7406,7 +7406,7 @@ F 3 "" H 6250 3550 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C19
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C19
 U 1 1 513B4CBA
 P 6700 3500
 F 0 "C19" H 6750 3600 50  0000 L CNN
@@ -7417,7 +7417,7 @@ F 3 "" H 6700 3500 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C3
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C3
 U 1 1 513B4CB9
 P 5850 3500
 F 0 "C3" H 5900 3600 50  0000 L CNN
@@ -7428,7 +7428,7 @@ F 3 "" H 5850 3500 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x R19
+L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x-arduino-ads129x-rescue R19
 U 1 1 513B4CB8
 P 6150 3300
 F 0 "R19" V 6230 3300 50  0000 C CNN
@@ -7439,7 +7439,7 @@ F 3 "" H 6150 3300 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x R3
+L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x-arduino-ads129x-rescue R3
 U 1 1 513B4CB7
 P 5200 3300
 F 0 "R3" V 5280 3300 50  0000 C CNN
@@ -7450,7 +7450,7 @@ F 3 "" H 5200 3300 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x R4
+L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x-arduino-ads129x-rescue R4
 U 1 1 513B4BD9
 P 5200 3750
 F 0 "R4" V 5280 3750 50  0000 C CNN
@@ -7461,7 +7461,7 @@ F 3 "" H 5200 3750 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x R20
+L arduino-ads129x-rescue:R-RESCUE-arduino-ads129x-arduino-ads129x-rescue R20
 U 1 1 513B4BD8
 P 6150 3750
 F 0 "R20" V 6230 3750 50  0000 C CNN
@@ -7472,7 +7472,7 @@ F 3 "" H 6150 3750 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C4
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C4
 U 1 1 513B4BD7
 P 5850 3950
 F 0 "C4" H 5900 4050 50  0000 L CNN
@@ -7483,7 +7483,7 @@ F 3 "" H 5850 3950 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x C20
+L arduino-ads129x-rescue:C-RESCUE-arduino-ads129x-arduino-ads129x-rescue C20
 U 1 1 513B4BD6
 P 6700 3950
 F 0 "C20" H 6750 4050 50  0000 L CNN
@@ -7494,7 +7494,7 @@ F 3 "" H 6700 3950 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L arduino-ads129x-rescue:AGND #PWR0138
+L arduino-ads129x-rescue:AGND-arduino-ads129x-rescue #PWR0138
 U 1 1 513B4BD5
 P 6250 4000
 F 0 "#PWR0138" H 6250 4000 40  0001 C CNN
@@ -7505,7 +7505,7 @@ F 3 "" H 6250 4000 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:AGND #PWR0139
+L arduino-ads129x-rescue:AGND-arduino-ads129x-rescue #PWR0139
 U 1 1 513B4BD4
 P 7000 4000
 F 0 "#PWR0139" H 7000 4000 40  0001 C CNN
@@ -7516,7 +7516,7 @@ F 3 "" H 7000 4000 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:CONN_8X2 P3
+L arduino-ads129x-rescue:CONN_8X2-arduino-ads129x-rescue P3
 U 1 1 513B499D
 P 9100 4800
 F 0 "P3" H 9100 5250 60  0000 C CNN
@@ -7527,7 +7527,7 @@ F 3 "" H 9100 4800 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L arduino-ads129x-rescue:CONN_8X2 P2
+L arduino-ads129x-rescue:CONN_8X2-arduino-ads129x-rescue P2
 U 1 1 513B4982
 P 9100 4000
 F 0 "P2" H 9100 4450 60  0000 C CNN
@@ -7538,7 +7538,7 @@ F 3 "" H 9100 4000 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L ads1299:ADS1299 U1
+L arduino-ads129x-rescue:ADS1299-ads1299 U1
 U 1 1 513B46BF
 P 11050 4400
 F 0 "U1" H 11050 4200 60  0000 C CNN
@@ -7551,7 +7551,7 @@ $EndComp
 Text Notes 9650 7850 0    120  ~ 0
 VCAP capacitor values do not match datasheet.\n(But seem to work fine for us.)
 $Comp
-L arduino-ads129x-rescue:USB J1
+L arduino-ads129x-rescue:USB-arduino-ads129x-rescue J1
 U 1 1 516008AA
 P 29150 10250
 F 0 "J1" H 29000 10650 60  0000 C CNN

@@ -1,11 +1,11 @@
 EESchema-LIBRARY Version 2.4
 #encoding utf-8
 #
-# AGND
+# AGND-patch-shield-analog-rescue
 #
-DEF AGND #PWR 0 10 Y Y 1 F P
+DEF AGND-patch-shield-analog-rescue #PWR 0 10 Y Y 1 F P
 F0 "#PWR" 0 0 40 H I C CNN
-F1 "AGND" 0 -70 50 H V C CNN
+F1 "AGND-patch-shield-analog-rescue" 0 -70 50 H V C CNN
 F2 "" 0 0 60 H V C CNN
 F3 "" 0 0 60 H V C CNN
 DRAW
@@ -14,11 +14,11 @@ X AGND 1 0 0 0 U 40 40 1 1 W N
 ENDDRAW
 ENDDEF
 #
-# CONN_1
+# CONN_1-patch-shield-analog-rescue
 #
-DEF CONN_1 P 0 30 N N 1 F N
+DEF CONN_1-patch-shield-analog-rescue P 0 30 N N 1 F N
 F0 "P" 80 0 40 H V L CNN
-F1 "CONN_1" 0 55 30 H I C CNN
+F1 "CONN_1-patch-shield-analog-rescue" 0 55 30 H I C CNN
 F2 "" 0 0 60 H V C CNN
 F3 "" 0 0 60 H V C CNN
 DRAW
@@ -28,11 +28,11 @@ X 1 1 -150 0 100 R 60 60 1 1 P
 ENDDRAW
 ENDDEF
 #
-# CONN_20X2
+# CONN_20X2-patch-shield-analog-rescue
 #
-DEF CONN_20X2 P 0 10 Y N 1 F N
+DEF CONN_20X2-patch-shield-analog-rescue P 0 10 Y N 1 F N
 F0 "P" 0 1050 60 H V C CNN
-F1 "CONN_20X2" 0 0 50 V V C CNN
+F1 "CONN_20X2-patch-shield-analog-rescue" 0 0 50 V V C CNN
 F2 "" 0 0 60 H V C CNN
 F3 "" 0 0 60 H V C CNN
 DRAW
@@ -80,11 +80,11 @@ X P9 9 -400 550 300 R 60 30 1 1 P I
 ENDDRAW
 ENDDEF
 #
-# CONN_5X2
+# CONN_5X2-patch-shield-analog-rescue
 #
-DEF CONN_5X2 P 0 40 Y Y 1 F N
+DEF CONN_5X2-patch-shield-analog-rescue P 0 40 Y Y 1 F N
 F0 "P" 0 300 60 H V C CNN
-F1 "CONN_5X2" 0 0 50 V V C CNN
+F1 "CONN_5X2-patch-shield-analog-rescue" 0 0 50 V V C CNN
 F2 "" 0 0 60 H V C CNN
 F3 "" 0 0 60 H V C CNN
 DRAW
@@ -102,11 +102,11 @@ X ~ 9 -400 -200 300 R 60 60 1 1 P I
 ENDDRAW
 ENDDEF
 #
-# DGND
+# DGND-patch-shield-analog-rescue
 #
-DEF DGND #PWR 0 40 Y Y 1 F P
+DEF DGND-patch-shield-analog-rescue #PWR 0 40 Y Y 1 F P
 F0 "#PWR" 0 0 40 H I C CNN
-F1 "DGND" 0 -70 40 H V C CNN
+F1 "DGND-patch-shield-analog-rescue" 0 -70 40 H V C CNN
 F2 "" 0 0 60 H V C CNN
 F3 "" 0 0 60 H V C CNN
 DRAW
@@ -115,11 +115,11 @@ X DGND 1 0 0 0 U 40 40 1 1 W N
 ENDDRAW
 ENDDEF
 #
-# LED-RESCUE-patch-shield-analog
+# LED-RESCUE-patch-shield-analog-patch-shield-analog-rescue
 #
-DEF LED-RESCUE-patch-shield-analog D 0 40 Y N 1 F N
+DEF LED-RESCUE-patch-shield-analog-patch-shield-analog-rescue D 0 40 Y N 1 F N
 F0 "D" 0 100 50 H V C CNN
-F1 "LED-RESCUE-patch-shield-analog" 0 -100 50 H V C CNN
+F1 "LED-RESCUE-patch-shield-analog-patch-shield-analog-rescue" 0 -100 50 H V C CNN
 F2 "" 0 0 60 H V C CNN
 F3 "" 0 0 60 H V C CNN
 $FPLIST
@@ -141,11 +141,11 @@ X K 2 200 0 150 L 40 40 1 1 P
 ENDDRAW
 ENDDEF
 #
-# R-RESCUE-patch-shield-analog
+# R-RESCUE-patch-shield-analog-patch-shield-analog-rescue
 #
-DEF R-RESCUE-patch-shield-analog R 0 0 N Y 1 F N
+DEF R-RESCUE-patch-shield-analog-patch-shield-analog-rescue R 0 0 N Y 1 F N
 F0 "R" 80 0 40 V V C CNN
-F1 "R-RESCUE-patch-shield-analog" 7 1 40 V V C CNN
+F1 "R-RESCUE-patch-shield-analog-patch-shield-analog-rescue" 7 1 40 V V C CNN
 F2 "" -70 0 30 V V C CNN
 F3 "" 0 0 30 H V C CNN
 $FPLIST
