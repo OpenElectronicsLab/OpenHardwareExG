@@ -1,0 +1,6 @@
+(sym_lib_table
+  (lib (name patch-shield-analog-rescue)(type Legacy)(uri ${KIPRJMOD}/patch-shield-analog-rescue.lib)(options "")(descr ""))
+  (lib (name rs485)(type Legacy)(uri ${KIPRJMOD}/rs485.lib)(options "")(descr ""))
+  (lib (name analog-switches)(type Legacy)(uri ${KIPRJMOD}/analog-switches.lib)(options "")(descr ""))
+  (lib (name arduino-shield)(type Legacy)(uri ${KIPRJMOD}/arduino-shield.lib)(options "")(descr ""))
+)

@@ -1,0 +1,13 @@
+(sym_lib_table
+  (lib (name arduino-ads129x-rescue)(type Legacy)(uri ${KIPRJMOD}/arduino-ads129x-rescue.lib)(options "")(descr ""))
+  (lib (name ads1299)(type Legacy)(uri ${KIPRJMOD}/ads1299.lib)(options "")(descr ""))
+  (lib (name sam3x8e)(type Legacy)(uri ${KIPRJMOD}/sam3x8e.lib)(options "")(descr ""))
+  (lib (name isolators)(type Legacy)(uri ${KIPRJMOD}/isolators.lib)(options "")(descr ""))
+  (lib (name regulators)(type Legacy)(uri ${KIPRJMOD}/regulators.lib)(options "")(descr ""))
+  (lib (name rs485)(type Legacy)(uri ${KIPRJMOD}/rs485.lib)(options "")(descr ""))
+  (lib (name analog-switches)(type Legacy)(uri ${KIPRJMOD}/analog-switches.lib)(options "")(descr ""))
+  (lib (name additional-logic)(type Legacy)(uri ${KIPRJMOD}/additional-logic.lib)(options "")(descr ""))
+  (lib (name arduino-shield)(type Legacy)(uri ${KIPRJMOD}/arduino-shield.lib)(options "")(descr ""))
+  (lib (name esd)(type Legacy)(uri ${KIPRJMOD}/esd.lib)(options "")(descr ""))
+  (lib (name smt-crystals)(type Legacy)(uri ${KIPRJMOD}/smt-crystals.lib)(options "")(descr ""))
+)
