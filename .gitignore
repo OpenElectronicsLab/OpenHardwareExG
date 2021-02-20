@@ -2,6 +2,7 @@
 # backup files
 ###################
 *.bak
+*-bak
 *.bck
 $*
 *.swp
